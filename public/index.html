@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Wameir — Community management, done right</title>
+<meta name="description" content="Wameir buys and invests in local HOA management companies in Greater Houston — building communities that give back to the people who live in them.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wameir — Community management, done right">
+<meta property="og:description" content="We buy and invest in local HOA management companies in Greater Houston, building communities that give back to the people who live in them.">
+<meta property="og:site_name" content="Wameir">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wameir — Community management, done right">
+<meta name="twitter:description" content="Community management, done right. Greater Houston.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 140'%3E%3Crect width='240' height='140' fill='%23142036'/%3E%3Cpolyline points='30,38 70,96 110,38 150,96 190,38' fill='none' stroke='%23C9A85F' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpolyline points='30,102 70,44 110,102 150,44 190,102' fill='none' stroke='%23A8854A' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --navy:#142036; --ink:#1B2942; --slate:#5A6678; --gold:#A8854A; --gold-deep:#8A6B38;
+    --bone:#F4F1E9; --paper:#FCFBF7; --line:#E0DACB; --white:#fff;
+    --disp:"Fraunces",Georgia,serif;
+    --body:"Inter",-apple-system,system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px}
+  section{background:var(--paper)}
+  .vision{background:var(--bone)}
+  .hero,.invite{background:var(--navy)}
+  .disp{font-family:var(--disp)}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 40px}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+  a{color:inherit}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+      padding:22px 40px;transition:background .35s,padding .35s,border-color .35s;border-bottom:1px solid transparent}
+  nav.scrolled{background:rgba(20,32,54,.97);padding:14px 40px;border-bottom-color:rgba(168,133,74,.25)}
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+  .brand svg{width:40px;height:25px;display:block}
+  .brand b{font-family:var(--disp);font-size:22px;font-weight:600;letter-spacing:.04em;color:#fff}
+  .nav-cta{font-size:14px;color:#142036;background:#C9A85F;padding:11px 22px;border-radius:1px;text-decoration:none;font-weight:600;transition:background .2s}
+  .nav-cta:hover{background:#fff}
+
+  .hero{position:relative;background:var(--navy);color:#fff;padding:172px 0 0;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.45fr .85fr;gap:60px;align-items:end}
+  .hero-l{padding-bottom:96px}
+  .hero h1{font-family:var(--disp);font-weight:500;font-size:clamp(40px,6vw,80px);line-height:.98;letter-spacing:-.015em}
+  .hero h1 .it{font-style:italic;font-weight:500;color:#D8B86B}
+  .hero .sub{font-size:20px;line-height:1.5;color:#C2CADA;margin-top:30px;max-width:38ch}
+  .hero .actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-r{padding-bottom:96px;border-left:1px solid rgba(168,133,74,.3);padding-left:34px}
+  .hero-r .stat{margin-bottom:30px}
+  .hero-r .stat:last-child{margin-bottom:0}
+  .hero-r .num{font-family:var(--disp);font-size:32px;font-weight:500;color:#D8B86B;line-height:1}
+  .hero-r .lab{font-size:13.5px;color:#9AA5B8;margin-top:7px;line-height:1.4;max-width:24ch}
+  .hero-rule{height:80px;background:var(--navy)}
+  .hero-rule svg{display:block;width:100%;height:100%}
+
+  .btn{font-size:15px;font-weight:600;padding:15px 28px;border-radius:1px;text-decoration:none;display:inline-block;
+    transition:transform .18s,background .22s,color .22s,border-color .22s;border:1px solid transparent;cursor:pointer}
+  .btn-gold{background:#C9A85F;color:#142036}
+  .btn-gold:hover{background:#fff;transform:translateY(-2px)}
+  .btn-line{border-color:rgba(255,255,255,.32);color:#fff}
+  .btn-line:hover{border-color:#D8B86B;color:#D8B86B}
+
+  section{padding:120px 0}
+  .lead-statement{font-family:var(--disp);font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.26;letter-spacing:-.01em;color:var(--navy);max-width:24ch}
+  .lead-statement .g{color:var(--gold)}
+
+  .split{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+  .split .label{position:sticky;top:120px}
+  .split .label .eyebrow{display:block;margin-bottom:18px}
+  .split .label .kicker{font-family:var(--disp);font-size:23px;color:var(--navy);font-weight:500;line-height:1.3}
+  .split .body p{font-size:18px;color:var(--ink);margin-bottom:22px;max-width:54ch}
+  .split .body p:last-child{margin-bottom:0}
+  .split .body strong{font-weight:600;color:var(--navy)}
+
+  .vision{background:var(--bone)}
+  .vision-intro{max-width:50ch}
+  .vision-intro h2{font-family:var(--disp);font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.1;color:var(--navy);margin-top:14px;letter-spacing:-.01em}
+  .vision-intro p{color:var(--slate);margin-top:18px;font-size:17px}
+  .vgroup{margin-top:64px}
+  .vgroup-head{font-family:var(--disp);font-size:14px;letter-spacing:.04em;color:var(--gold-deep);font-weight:600;
+    text-transform:uppercase;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .ventry{display:grid;grid-template-columns:64px 1fr 1.1fr;gap:28px;padding:30px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .ventry .vn{font-family:var(--disp);font-size:22px;color:var(--gold);font-weight:500}
+  .ventry h3{font-family:var(--disp);font-size:23px;font-weight:500;color:var(--navy);line-height:1.15}
+  .ventry .vtext p{font-size:16px;color:var(--slate);line-height:1.6}
+  .ventry .vtext .pocket{display:inline-block;margin-top:12px;font-size:14px;color:var(--gold-deep);font-weight:600}
+
+  .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+  .who-cell{background:var(--paper);padding:38px 32px}
+  .who-cell .mono{font-family:var(--disp);font-size:13px;letter-spacing:.06em;color:var(--gold-deep);font-weight:600;text-transform:uppercase}
+  .who-cell h3{font-family:var(--disp);font-size:25px;font-weight:500;color:var(--navy);margin:16px 0 4px;line-height:1.1}
+  .who-cell .role{font-size:14px;color:var(--slate);margin-bottom:16px}
+  .who-cell p{font-size:15.5px;color:var(--ink);line-height:1.6}
+
+  .invite{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .invite .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.3fr .7fr;gap:60px;align-items:center}
+  .invite h2{font-family:var(--disp);font-weight:500;font-size:clamp(30px,4.4vw,54px);line-height:1.04;letter-spacing:-.015em}
+  .invite h2 .it{font-style:italic;color:#D8B86B}
+  .invite p{font-size:18px;color:#C2CADA;margin-top:24px;max-width:48ch}
+  .invite .actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .invite-side{border-left:1px solid rgba(168,133,74,.3);padding-left:32px}
+  .invite-side .row{margin-bottom:22px}
+  .invite-side .row:last-child{margin-bottom:0}
+  .invite-side .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A93A6;font-weight:600}
+  .invite-side .v{font-size:17px;color:#fff;margin-top:5px}
+  .invite-side .v a{color:#D8B86B;text-decoration:none}
+  .invite-weir{position:absolute;right:-90px;bottom:-110px;width:460px;opacity:.1;z-index:1}
+
+  footer{background:#0F1929;padding:50px 0 38px;color:#828DA1}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.07)}
+  .foot-brand{display:flex;align-items:center;gap:12px}
+  .foot-brand svg{width:36px;height:23px}
+  .foot-brand b{font-family:var(--disp);font-size:20px;color:#fff;font-weight:600;letter-spacing:.04em}
+  .foot-bottom{padding-top:22px;font-size:12.5px;color:#586475;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .foot-bottom .disc{max-width:60ch}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:880px){
+    .hero{padding-top:130px}
+    .hero .wrap{grid-template-columns:1fr;gap:0}
+    .hero-l{padding-bottom:48px}
+    .hero-r{border-left:none;border-top:1px solid rgba(168,133,74,.3);padding-left:0;padding-top:34px;padding-bottom:70px;display:flex;gap:34px;flex-wrap:wrap}
+    .hero-r .stat{margin-bottom:0}
+    .split{grid-template-columns:1fr;gap:30px}
+    .split .label{position:static}
+    .ventry{grid-template-columns:40px 1fr;gap:14px 18px}
+    .ventry .vtext{grid-column:1/-1}
+    .who-grid{grid-template-columns:1fr}
+    .invite .wrap{grid-template-columns:1fr;gap:40px}
+    .invite-side{border-left:none;border-top:1px solid rgba(168,133,74,.3);padding-left:0;padding-top:30px}
+    section{padding:84px 0}
+    .wrap{padding:0 26px}
+    nav,nav.scrolled{padding:14px 26px}
+    .nav-cta{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-weir path{animation:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="weir" viewBox="0 0 240 140">
+    <polyline points="22,30 67,98 112,30 157,98 202,30" fill="none" stroke="#C9A85F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="22,114 67,46 112,114 157,46 202,114" fill="none" stroke="#A8854A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+  </symbol>
+</svg>
+
+<nav id="nav">
+  <a class="brand" href="#top"><svg><use href="#weir"/></svg><b>WAMEIR</b></a>
+  <a class="nav-cta" href="#talk">Talk to us</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-l">
+      <p class="eyebrow reveal">Wameir &middot; Greater Houston</p>
+      <h1 class="reveal" style="margin-top:22px">Community<br>management,<br><span class="it">done right.</span></h1>
+      <p class="sub reveal">We buy local HOA management companies and invest in them &mdash; better service, real savings, and more value for the people who live in these communities.</p>
+      <div class="actions reveal">
+        <a class="btn btn-gold" href="#talk">Talk to us about your company</a>
+        <a class="btn btn-line" href="#how">How we run things</a>
+      </div>
+    </div>
+    <div class="hero-r reveal">
+      <div class="stat"><div class="num">Houston</div><div class="lab">Where we're building, one community at a time</div></div>
+      <div class="stat"><div class="num">Proven</div><div class="lab">Advised by the former CFO of a top HOA management company</div></div>
+      <div class="stat"><div class="num">For the long haul</div><div class="lab">We run what we buy, and we hold it</div></div>
+    </div>
+  </div>
+  <div class="hero-rule" aria-hidden="true">
+    <svg class="hero-weir" viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,40 L100,72 L200,8 L300,72 L400,8 L500,72 L600,8 L700,72 L800,8 L900,72 L1000,8 L1100,72 L1200,40" fill="none" stroke="#A8854A" stroke-width="2" opacity="0.45"/>
+    </svg>
+  </div>
+</header>
+
+<section id="why" style="padding-bottom:96px">
+  <div class="wrap">
+    <p class="lead-statement reveal">We're building HOAs that make a home worth <span class="g">more</span> to own &mdash; communities that give back to the people who live in them, every year.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="label reveal">
+        <span class="eyebrow">How we operate</span>
+        <p class="kicker">We're operators in it for the long haul.</p>
+      </div>
+      <div class="body reveal">
+        <p>We buy local management companies with our own capital, we run them ourselves, and <strong>we hold them</strong> for the long term. We're owners who are here to stay.</p>
+        <p>That long-term commitment changes everything about how we run things. We invest in the people, the service, and the technology that make a community genuinely better, year after year.</p>
+        <p>It's a simple idea: treat every community we take on as one we'll be proud to run for a very long time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vision" id="how">
+  <div class="wrap">
+    <div class="vision-intro reveal">
+      <span class="eyebrow">What we're building toward</span>
+      <h2>Two promises we're working to keep in every community.</h2>
+      <p>We're early, so call these goals, not guarantees. They're the bar we hold ourselves to.</p>
+    </div>
+
+    <div class="vgroup reveal">
+      <div class="vgroup-head">Money back in your pocket</div>
+      <div class="ventry">
+        <span class="vn">01</span>
+        <h3>Lower your property taxes</h3>
+        <div class="vtext"><p>We want to protest every home's assessment each year, working to keep the tax bill fair and in check.</p><span class="pocket">A check you'd never have chased yourself.</span></div>
+      </div>
+      <div class="ventry">
+        <span class="vn">02</span>
+        <h3>Catch problems before they cost you</h3>
+        <div class="vtext"><p>Simple sensors that flag a leak or a freeze early &mdash; the difference between a $40 part and a flooded first floor.</p><span class="pocket">A repair that never happens.</span></div>
+      </div>
+      <div class="ventry">
+        <span class="vn">03</span>
+        <h3>Bring your insurance down</h3>
+        <div class="vtext"><p>A home that's watched and well-kept should cost less to insure. We want to turn that into real money off the premium.</p><span class="pocket">Lower bills for doing nothing extra.</span></div>
+      </div>
+    </div>
+
+    <div class="vgroup reveal">
+      <div class="vgroup-head">An association that's easy to live with</div>
+      <div class="ventry">
+        <span class="vn">04</span>
+        <h3>Answers when you ask, not next week</h3>
+        <div class="vtext"><p>Your balance, the gate code, a rule you forgot &mdash; answered right away, day or night.</p></div>
+      </div>
+      <div class="ventry">
+        <span class="vn">05</span>
+        <h3>Billing that's simple and clear</h3>
+        <div class="vtext"><p>Dues, statements, and payments that are plain and online &mdash; always clear what you owe and why.</p></div>
+      </div>
+      <div class="ventry">
+        <span class="vn">06</span>
+        <h3>Books you can actually see</h3>
+        <div class="vtext"><p>Where the money goes and how decisions get made, out in the open. An HOA you can trust.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="split">
+      <div class="label reveal">
+        <span class="eyebrow">Who's behind it</span>
+        <p class="kicker">Two operators, guided by a CFO who's run this business at the top.</p>
+      </div>
+      <div class="body reveal">
+        <p>We started Wameir because we believe community management can be something people are genuinely glad to have. We're putting our own money in, and we're here to run these companies for the long haul.</p>
+      </div>
+    </div>
+    <div class="who-grid">
+      <div class="who-cell reveal">
+        <div class="mono">Co-founder</div>
+        <h3>Mitch Maurer</h3>
+        <div class="role">Finance &amp; communities</div>
+        <p>Ran the books inside larger HOA management firms. Knows where a community's money should go &mdash; and where it shouldn't.</p>
+      </div>
+      <div class="who-cell reveal">
+        <div class="mono">Co-founder</div>
+        <h3>Will Powell</h3>
+        <div class="role">Technology &amp; experience</div>
+        <p>Builds the software that makes an association quick to deal with and easy to see into. The day-to-day, made better.</p>
+      </div>
+      <div class="who-cell reveal">
+        <div class="mono">Advisor</div>
+        <h3>Bob Green</h3>
+        <div class="role">Former CFO, a leading HOA management company</div>
+        <p>Mitch's mentor and our guide. He ran the finances of one of the largest community management companies in the country, and knows this business inside and out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="invite" id="talk">
+  <svg class="invite-weir" viewBox="0 0 240 140" aria-hidden="true"><use href="#weir"/></svg>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow" style="color:#D8B86B">Thinking about selling?</span>
+      <h2 style="margin-top:18px">You built it. Let's keep <span class="it">building it.</span></h2>
+      <p>If you've spent years running a management company and you care what happens to it next, we should talk. We move at your pace, we keep it confidential, and there's no pressure to do anything at all.</p>
+      <div class="actions">
+        <a class="btn btn-gold" href="mailto:hello@wameir.com">Start the conversation</a>
+        <a class="btn btn-line" href="#why">See where we stand</a>
+      </div>
+    </div>
+    <div class="invite-side reveal">
+      <div class="row"><div class="k">Email</div><div class="v"><a href="mailto:hello@wameir.com">hello@wameir.com</a></div></div>
+      <div class="row"><div class="k">Where</div><div class="v">Greater Houston, Texas</div></div>
+      <div class="row"><div class="k">How we buy</div><div class="v">Our own capital, held for the long term.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand"><svg><use href="#weir"/></svg><b>WAMEIR</b></div>
+      <div style="font-size:14px;line-height:1.8">
+        <a href="mailto:hello@wameir.com" style="color:#D8B86B;text-decoration:none">hello@wameir.com</a><br>
+        Greater Houston, Texas
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Wameir.</span>
+      <span class="disc">Wameir is early-stage. The resident benefits described here are goals we're working toward, not services running today.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
+  onScroll();addEventListener('scroll',onScroll,{passive:true});
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,3)*.06)+'s';io.observe(el)});
+  const hw=document.querySelector('.hero-weir path');
+  if(hw){const L=hw.getTotalLength();hw.style.strokeDasharray=L;hw.style.strokeDashoffset=L;
+    hw.style.transition='stroke-dashoffset 2.6s cubic-bezier(.4,.7,.3,1) .3s';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>hw.style.strokeDashoffset=0));}
+</script>
+</body>
+</html>
