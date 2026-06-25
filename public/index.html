@@ -94,6 +94,8 @@
 
   .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
   .who-cell{background:var(--paper);padding:38px 32px}
+  .who-photo{aspect-ratio:4/5;background:var(--bone);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+  .who-photo svg{width:48px;height:48px;color:var(--gold);opacity:.45}
   .who-cell .mono{font-family:var(--disp);font-size:13px;letter-spacing:.06em;color:var(--gold-deep);font-weight:600;text-transform:uppercase}
   .who-cell h3{font-family:var(--disp);font-size:25px;font-weight:500;color:var(--navy);margin:16px 0 4px;line-height:1.1}
   .who-cell .role{font-size:14px;color:var(--slate);margin-bottom:16px}
@@ -152,6 +154,9 @@
     <polyline points="22,30 67,98 112,30 157,98 202,30" fill="none" stroke="#C9A85F" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="22,114 67,46 112,114 157,46 202,114" fill="none" stroke="#A8854A" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
   </symbol>
+  <symbol id="person" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-5 0-9 2.6-9 7h18c0-4.4-4-7-9-7Z"/>
+  </symbol>
 </svg>
 
 <nav id="nav">
@@ -172,7 +177,7 @@
     </div>
     <div class="hero-r reveal">
       <div class="stat"><div class="num">Houston</div><div class="lab">Where we're building, one community at a time</div></div>
-      <div class="stat"><div class="num">Proven</div><div class="lab">Advised by the former CFO of a top HOA management company</div></div>
+      <div class="stat"><div class="num">Proven</div><div class="lab">Co-founded by the former CFO of a top HOA management company</div></div>
       <div class="stat"><div class="num">For the long haul</div><div class="lab">We run what we buy, and we hold it</div></div>
     </div>
   </div>
@@ -214,40 +219,40 @@
     </div>
 
     <div class="vgroup reveal">
-      <div class="vgroup-head">Money back in your pocket</div>
-      <div class="ventry">
-        <span class="vn">01</span>
-        <h3>Lower your property taxes</h3>
-        <div class="vtext"><p>We want to protest every home's assessment each year, working to keep the tax bill fair and in check.</p><span class="pocket">A check you'd never have chased yourself.</span></div>
-      </div>
-      <div class="ventry">
-        <span class="vn">02</span>
-        <h3>Catch problems before they cost you</h3>
-        <div class="vtext"><p>Simple sensors that flag a leak or a freeze early. The difference between a $40 part and a flooded first floor.</p><span class="pocket">A repair that never happens.</span></div>
-      </div>
-      <div class="ventry">
-        <span class="vn">03</span>
-        <h3>Bring your insurance down</h3>
-        <div class="vtext"><p>A home that's watched and well-kept should cost less to insure. We want to turn that into real money off the premium.</p><span class="pocket">Lower bills for doing nothing extra.</span></div>
-      </div>
-    </div>
-
-    <div class="vgroup reveal">
       <div class="vgroup-head">An association that's easy to live with</div>
       <div class="ventry">
-        <span class="vn">04</span>
+        <span class="vn">01</span>
         <h3>Answers when you ask, not next week</h3>
         <div class="vtext"><p>Your balance, the gate code, a rule you forgot, all answered right away, day or night.</p></div>
       </div>
       <div class="ventry">
-        <span class="vn">05</span>
+        <span class="vn">02</span>
         <h3>Billing that's simple and clear</h3>
         <div class="vtext"><p>Dues, statements, and payments that are plain and online. Always clear what you owe and why.</p></div>
       </div>
       <div class="ventry">
-        <span class="vn">06</span>
+        <span class="vn">03</span>
         <h3>Books you can actually see</h3>
         <div class="vtext"><p>Where the money goes and how decisions get made, out in the open. An HOA you can trust.</p></div>
+      </div>
+    </div>
+
+    <div class="vgroup reveal">
+      <div class="vgroup-head">Money back in your pocket</div>
+      <div class="ventry">
+        <span class="vn">04</span>
+        <h3>Lower your property taxes</h3>
+        <div class="vtext"><p>We want to protest every home's assessment each year, working to keep the tax bill fair and in check.</p><span class="pocket">A check you'd never have chased yourself.</span></div>
+      </div>
+      <div class="ventry">
+        <span class="vn">05</span>
+        <h3>Catch problems before they cost you</h3>
+        <div class="vtext"><p>Simple sensors that flag a leak or a freeze early. The difference between a $40 part and a flooded first floor.</p><span class="pocket">A repair that never happens.</span></div>
+      </div>
+      <div class="ventry">
+        <span class="vn">06</span>
+        <h3>Bring your insurance down</h3>
+        <div class="vtext"><p>A home that's watched and well-kept should cost less to insure. We want to turn that into real money off the premium.</p><span class="pocket">Lower bills for doing nothing extra.</span></div>
       </div>
     </div>
   </div>
@@ -258,7 +263,7 @@
     <div class="split">
       <div class="label reveal">
         <span class="eyebrow">Who's behind it</span>
-        <p class="kicker">Two operators, guided by a CFO who's run this business at the top.</p>
+        <p class="kicker">Three co-founders, including a CFO who's run this business at the top.</p>
       </div>
       <div class="body reveal">
         <p>We started Wameir because we believe community management can be something people are genuinely glad to have. We're putting our own money in, and we're here to run these companies for the long haul.</p>
@@ -266,22 +271,25 @@
     </div>
     <div class="who-grid">
       <div class="who-cell reveal">
+        <div class="who-photo"><svg aria-hidden="true"><use href="#person"/></svg></div>
         <div class="mono">Co-founder</div>
         <h3>Mitch Maurer</h3>
         <div class="role">Finance &amp; communities</div>
         <p>Ran the books inside larger HOA management firms. Knows where a community's money should go, and where it shouldn't.</p>
       </div>
       <div class="who-cell reveal">
+        <div class="who-photo"><svg aria-hidden="true"><use href="#person"/></svg></div>
         <div class="mono">Co-founder</div>
         <h3>Will Powell</h3>
         <div class="role">Technology &amp; experience</div>
         <p>Builds the software that makes an association quick to deal with and easy to see into. The day-to-day, made better.</p>
       </div>
       <div class="who-cell reveal">
-        <div class="mono">Advisor</div>
+        <div class="who-photo"><svg aria-hidden="true"><use href="#person"/></svg></div>
+        <div class="mono">Co-founder</div>
         <h3>Bob Green</h3>
         <div class="role">Former CFO, a leading HOA management company</div>
-        <p>Mitch's mentor and our guide. He ran the finances of one of the largest community management companies in the country, and knows this business inside and out.</p>
+        <p>He ran the finances of one of the largest community management companies in the country, and knows this business inside and out.</p>
       </div>
     </div>
   </div>
