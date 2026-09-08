@@ -424,8 +424,21 @@ p { max-width: var(--measure); }
   font-size: 0.9375rem;
   max-width: 60ch;
 }
-.vgroup { margin-top: 56px; }
-.vgroup__head {
+/* ---- Benefits carousel (§5.1) — one slide per group; scroll-snap + controls ---- */
+.carousel { margin-top: 48px; }
+.carousel__viewport {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  scrollbar-width: none; /* Firefox */
+}
+.carousel__viewport::-webkit-scrollbar { display: none; }
+.carousel__slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
+.carousel__head {
   font-family: var(--font-display);
   font-size: 0.875rem;
   letter-spacing: 0.04em;
@@ -433,20 +446,60 @@ p { max-width: var(--measure); }
   font-weight: 600;
   text-transform: uppercase;
   padding-bottom: 14px;
+  margin-bottom: 28px;
   border-bottom: 1px solid var(--hairline-ink);
 }
-.ventry {
+.carousel__items {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 8px 24px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--hairline-ink);
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
-.ventry__icon { color: var(--gold); grid-row: span 2; }
-.ventry h3 { font-size: 1.4rem; font-weight: 500; color: var(--navy); line-height: 1.15; }
-.ventry p { font-size: 1rem; color: var(--ink-70); line-height: 1.55; }
-.ventry .pocket { display: inline-block; margin-top: 8px; font-size: 0.875rem; color: var(--gold); font-weight: 600; }
+.bcard {
+  border: 1px solid var(--hairline-ink);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  background: var(--paper);
+}
+.bcard__icon {
+  color: var(--gold);
+  width: 48px; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--hairline-gold);
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+}
+.bcard h3 { font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1.15; }
+.bcard p { font-size: 1rem; color: var(--ink-70); line-height: 1.55; margin-top: 10px; }
+.pocket { display: inline-block; margin-top: 10px; font-size: 0.875rem; color: var(--gold); font-weight: 600; }
+
+.carousel__controls { display: flex; align-items: center; gap: 18px; margin-top: 32px; }
+.carousel__arrow {
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; line-height: 1;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid var(--hairline-gold);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.carousel__arrow:hover:not(:disabled) { background: var(--gold); color: #fff; border-color: var(--gold); }
+.carousel__arrow:disabled { opacity: 0.35; cursor: default; }
+.carousel__dots { display: flex; align-items: center; gap: 8px; }
+.carousel__dot {
+  width: 9px; height: 9px; padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: transparent;
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
+}
+.carousel__dot.is-active { width: 26px; border-radius: 5px; background: var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__viewport { scroll-behavior: auto; }
+}
 
 /* ---- Icon cards trio ("why founders choose Wameir", §5.2) ---- */
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
