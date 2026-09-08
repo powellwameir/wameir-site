@@ -695,6 +695,56 @@ p { max-width: var(--measure); }
   .form__row { grid-template-columns: 1fr; }
 }
 
+/* ---- "What we're working toward" deep-dive page ---- */
+.goals-intro { margin-top: 28px; max-width: 62ch; }
+.goals-intro p { font-size: 1.125rem; color: var(--ink-70); margin-top: 16px; }
+
+.goal-group__head { max-width: 60ch; margin-bottom: 8px; }
+.goal-group__head h2 { margin-top: 12px; }
+.goal-group__intro { margin-top: 16px; font-size: 1.125rem; color: var(--ink-70); }
+
+.goal-list { margin-top: 8px; }
+.goal {
+  padding: 40px 0;
+  border-top: 1px solid var(--hairline-ink);
+  max-width: 68ch;
+}
+.goal__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.15;
+}
+.goal__goal { font-size: 1.125rem; color: var(--ink); margin-top: 14px; }
+.goal__k { font-weight: 600; color: var(--navy); }
+.goal__block { margin-top: 22px; }
+.goal__block p { color: var(--ink-70); margin-top: 10px; }
+.goal__label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+}
+.goal__block--limit .goal__label { color: var(--ink-70); }
+.goal__block--limit {
+  padding-left: 18px;
+  border-left: 2px solid var(--hairline-gold);
+}
+.goal__toward {
+  margin-top: 22px;
+  font-size: 1.0625rem;
+  color: var(--navy);
+}
+.goal__toward .goal__k { color: var(--gold-deep, var(--gold)); }
+
+.goals-closing { max-width: 60ch; }
+.goals-closing p { color: var(--cream-70); font-size: 1.125rem; line-height: 1.6; }
+.goals-closing p + p { margin-top: 18px; }
+.goals-closing .accent-italic { color: var(--gold-light); }
+
 /* Utility */
 .stack-lg > * + * { margin-top: 24px; }
 .mt-sm { margin-top: 16px; }
