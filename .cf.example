@@ -1,0 +1,10 @@
+# Cloudflare cache-purge credentials for scripts/purge-cache.mjs.
+# Copy to .cf.local (git-ignored) and fill in real values.
+#
+# Token: Cloudflare dashboard -> My Profile -> API Tokens -> Create Token ->
+#        custom token with permission "Zone -> Cache Purge -> Purge",
+#        scoped to the wameir.com zone only.
+# Zone ID: Cloudflare dashboard -> select wameir.com -> Overview -> right sidebar.
+
+CLOUDFLARE_API_TOKEN=""
+CLOUDFLARE_ZONE_ID=""
