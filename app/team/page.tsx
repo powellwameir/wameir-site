@@ -23,8 +23,13 @@ export default function TeamPage() {
             <span className="accent-italic">industry veteran.</span>
           </h1>
           <p className="lede">
-            We started Wameir because we believe community management can be better —
-            something residents, boards, and local teams are genuinely glad to have.
+            We started Wameir because we believe community management can be
+            meaningfully better — and that the way to prove it is to own the work, not
+            advise on it. The industry is ready for a more modern approach:
+            experienced local teams, supported by better technology, disciplined
+            operations, and owners who plan to stay. By investing our own capital and
+            operating every company we acquire, we are building businesses designed to
+            strengthen their communities for decades.
           </p>
         </div>
       </header>
@@ -49,6 +54,12 @@ export default function TeamPage() {
               </article>
             ))}
           </div>
+          <p className="lead-statement" style={{ marginTop: 64, maxWidth: "42ch" }}>
+            We are putting our own capital into this, and we intend to run these
+            companies for a <span className="g">long time.</span> If that is the kind
+            of owner you would want for your community — or your company — we would
+            like to talk.
+          </p>
         </div>
       </Section>
 

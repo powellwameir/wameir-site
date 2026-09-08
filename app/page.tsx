@@ -21,17 +21,20 @@ const TRACK: {
       {
         icon: "responsive",
         title: "Reliable execution, responsive service",
-        line: "Answers when you ask and things done when they should be — consistently, not occasionally.",
+        line: "When you ask a question or report a problem, you get an answer — promptly, and consistently, not only when someone happens to have time. We are building the systems and staffing to make responsiveness the norm rather than the exception.",
+        pocket: "A management office that responds.",
       },
       {
         icon: "billing",
         title: "Simple, transparent billing",
-        line: "Dues, statements, and payments that are plain and online. Always clear what you owe and why.",
+        line: "Dues, statements, and payments presented plainly and handled online, so it is always clear what you owe and why — without cryptic line items or a phone call to decode a charge.",
+        pocket: "Always clear what you're paying, and why.",
       },
       {
         icon: "clarity",
         title: "Financial clarity",
-        line: "Where the money goes and how decisions get made, out in the open.",
+        line: "Budgets, reserves, and spending you can actually see. How the money is used and how decisions are made should be open to the people they affect — because trust in an association begins with books you can read.",
+        pocket: "An association you can see into.",
       },
     ],
   },
@@ -41,20 +44,20 @@ const TRACK: {
       {
         icon: "taxes",
         title: "Lower property taxes",
-        line: "Protest assessments each year so the tax bill stays fair and in check.",
-        pocket: "A check you'd never have chased yourself.",
+        line: "We intend to protest every home's assessment each year — the kind of appeal that keeps a tax bill fair but that few homeowners have the time or expertise to pursue. Handled well across an entire community, it returns real money on a bill you would otherwise simply pay.",
+        pocket: "A refund you'd never have chased yourself.",
       },
       {
         icon: "maintenance",
         title: "Smarter preventive maintenance",
-        line: "Simple sensors that flag a leak or a freeze early — the difference between a small part and a flooded floor.",
-        pocket: "A repair that never happens.",
+        line: "Simple sensors that catch a slow leak, a freeze risk, or a failing water heater early — while it is still an inexpensive repair rather than a flooded floor and an insurance claim. The aim is to prevent the costly problem, not manage its aftermath.",
+        pocket: "The repair that never has to happen.",
       },
       {
         icon: "insurance",
         title: "Lower insurance costs",
-        line: "A home that's watched and well-kept should cost less to insure. We work to turn that into real money off the premium.",
-        pocket: "Lower bills for doing nothing extra.",
+        line: "A home that is monitored and well-maintained should cost less to insure. We want to turn that into a measurable reduction in your premium — savings that show up where you can feel them, not just in principle.",
+        pocket: "Lower premiums for doing nothing extra.",
       },
     ],
   },
@@ -63,13 +66,15 @@ const TRACK: {
     items: [
       {
         icon: "board-tools",
-        title: "Better board tools",
-        line: "Clear reporting and simple workflows so boards can govern without the busywork.",
+        title: "Better tools for your board",
+        line: "Serving on a board should not mean living in email threads and PDF attachments. We want to give boards a clear, single view of finances, requests, and decisions — so volunteers can govern well without it consuming their time.",
+        pocket: "Board service that respects your time.",
       },
       {
         icon: "technology",
         title: "Technology that works",
-        line: "Software built for residents and managers, not a portal nobody wants to log into.",
+        line: "Portals that load, payments that clear, requests that are never lost. The unglamorous commitment: the technology should do its job quietly and reliably, so you rarely have to think about it at all.",
+        pocket: "Software that stays out of your way.",
       },
     ],
   },
@@ -142,11 +147,12 @@ export default function Home() {
             <div className="track__intro">
               <span className="eyebrow">For your community</span>
               <h2 className="t-h2">
-                What we&apos;re working to bring to every community we serve.
+                What we&apos;re working toward in every community.
               </h2>
               <p>
-                These are the standards we hold ourselves to — for residents, boards,
-                and the local teams who serve them.
+                We are early, so these are goals rather than guarantees — the standard
+                we hold ourselves to. Each one has to save a household real money or
+                real effort, or it does not belong here.
               </p>
               {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
               <p className="track__disclaimer">{DISCLAIMER}</p>
