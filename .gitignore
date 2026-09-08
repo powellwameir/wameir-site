@@ -1,4 +1,20 @@
 node_modules/
 npm-debug.log*
 .DS_Store
+
+# env / secrets — never commit real values (spec §14)
 .env
+.env.local
+.env*.local
+.dev.vars
+
+# Next.js / Cloudflare build output
+.next/
+out/
+.vercel/
+.open-next/
+.wrangler/
+next-env.d.ts
+
+# Spec doc (kept out of the app build)
+Wameir-Site-Spec-v3-1.docx
