@@ -23,8 +23,9 @@ const FAQS: QA[] = [
     q: "Where does your funding come from?",
     a: (
       <p>
-        We invest our own capital. We&apos;re operators putting our own money behind
-        the businesses we acquire, with the intent to own them for the long term.
+        We invest our own capital. Every acquisition is funded with our own money,
+        committed with the intention of owning and operating the business for the
+        long term rather than moving on from it.
       </p>
     ),
   },
@@ -32,8 +33,10 @@ const FAQS: QA[] = [
     q: "What kind of companies do you buy?",
     a: (
       <p>
-        Exceptional HOA management companies, primarily in Greater Houston, with
-        strong local teams and good reputations we can build on.
+        Established HOA management companies, primarily in the Greater Houston area,
+        with strong local teams and reputations worth building on. We look for
+        businesses that are already good at what they do — our aim is to strengthen
+        them, not to turn them into something they are not.
       </p>
     ),
   },
@@ -41,8 +44,10 @@ const FAQS: QA[] = [
     q: "What happens to my employees and community managers?",
     a: (
       <p>
-        The local teams and relationships that make your company work stay in place.
-        We invest in the people, tools, and support they need to do their best work.
+        They stay, and we invest in them. The local teams and relationships are what
+        make a management company work, so keeping them in place is the point, not a
+        courtesy. Our focus is on giving those teams better tools, systems, and
+        support — the people closest to the communities remain closest to them.
       </p>
     ),
   },
@@ -51,8 +56,10 @@ const FAQS: QA[] = [
     gated: true,
     a: (
       <p>
-        How we think about it: every situation is different, and we&apos;ll walk
-        through the options with you. <em>Placeholder pending attorney review.</em>
+        How we think about it: every situation is different, and the right structure
+        depends on what the founder wants and what keeps the business strong. We will
+        walk through the options together.{" "}
+        <em>Full answer pending counsel review.</em>
       </p>
     ),
   },
@@ -61,9 +68,9 @@ const FAQS: QA[] = [
     gated: true,
     a: (
       <p>
-        How we think about it: we design each arrangement around what the founder
-        wants and what keeps the business strong. <em>Placeholder pending attorney
-        review.</em>
+        How we think about it: we design each arrangement around the founder&apos;s
+        goals and the continued health of the business, rather than fitting everyone
+        to a single template. <em>Full answer pending counsel review.</em>
       </p>
     ),
   },
@@ -71,9 +78,10 @@ const FAQS: QA[] = [
     q: "What happens to me after the sale?",
     a: (
       <p>
-        That&apos;s up to you. Some founders step back and retire; others stay
-        involved for a time to help with the transition. We&apos;ll design it around
-        what you want.
+        That is your decision. Some founders are ready to step back and retire;
+        others want to stay involved for a while to help with the transition, or
+        longer. We build the arrangement around what you want — there is no single
+        expectation you have to fit.
       </p>
     ),
   },
@@ -82,8 +90,11 @@ const FAQS: QA[] = [
     gated: true,
     a: (
       <p>
-        We move at your pace and keep it straightforward. <em>Typical timeframe
-        pending — to be confirmed with real numbers.</em>
+        We move at your pace and keep the process straightforward and confidential.{" "}
+        <em>
+          A typical timeframe will be added here once we can state it from
+          experience.
+        </em>
       </p>
     ),
   },
@@ -91,8 +102,9 @@ const FAQS: QA[] = [
     q: "Is this confidential?",
     a: (
       <p>
-        Yes. A founder exploring a sale doesn&apos;t want it known — we treat every
-        conversation and everything you share as strictly confidential.
+        Yes — completely. A founder exploring a sale rarely wants it known, and we
+        treat that seriously: every conversation and every document you share is kept
+        strictly confidential, from the first call onward.
       </p>
     ),
   },
@@ -102,8 +114,12 @@ const FAQS: QA[] = [
     a: (
       <p>
         How we think about it: value depends on the specifics of your business, and
-        we won&apos;t put a number on it before we understand it. Let&apos;s talk.{" "}
-        <em>Placeholder pending attorney review — never a number or a promise.</em>
+        we will not attach a number to it before we understand it properly. The
+        honest answer is that it is worth having the conversation.{" "}
+        <em>
+          Full answer pending counsel review — we will not quote a figure or make a
+          promise here.
+        </em>
       </p>
     ),
   },
@@ -111,9 +127,10 @@ const FAQS: QA[] = [
     q: "Will my company be integrated with others?",
     a: (
       <p>
-        We build on what already works. Where shared tools or support help your team,
-        we bring them in; where your local identity and relationships matter, they
-        stay right where they are.
+        Where shared tools or support genuinely help your team, we bring them in.
+        Where your local identity, name, and relationships are part of what makes the
+        business work, they stay. The test is always whether a change makes the
+        community better, not whether it makes things uniform.
       </p>
     ),
   },
