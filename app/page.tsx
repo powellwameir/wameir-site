@@ -5,6 +5,7 @@ import ContactSection from "@/components/ContactSection";
 import Icon, { type IconName } from "@/components/Icon";
 import Picture from "@/components/Picture";
 import Headshot from "@/components/Headshot";
+import BenefitsCarousel from "@/components/BenefitsCarousel";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
 
@@ -163,23 +164,7 @@ export default function Home() {
             />
           </div>
 
-          {TRACK.map((group) => (
-            <div className="vgroup" key={group.head}>
-              <div className="vgroup__head">{group.head}</div>
-              {group.items.map((item) => (
-                <div className="ventry" key={item.title}>
-                  <span className="ventry__icon">
-                    <Icon name={item.icon} size={30} />
-                  </span>
-                  <h3>{item.title}</h3>
-                  <div>
-                    <p>{item.line}</p>
-                    {item.pocket && <span className="pocket">{item.pocket}</span>}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
+          <BenefitsCarousel groups={TRACK} />
         </div>
       </Section>
 
