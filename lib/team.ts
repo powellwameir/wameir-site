@@ -4,8 +4,7 @@
  *
  * `photoConsent` is the consent gate (§15 #2). When false, the layout renders a
  * neutral placeholder and never publishes the person's photo — flip to true only
- * after written sign-off. Bob Green's headshot exists in /images but is NOT
- * exported or shown until consent is confirmed.
+ * after sign-off. All three members are consent-confirmed.
  */
 export type TeamMember = {
   key: string;
@@ -54,10 +53,9 @@ export const TEAM: TeamMember[] = [
     role: "Strategic Advisor",
     paras: [
       "Industry veteran with decades of experience in community management.",
-      // Full bio, title, and photo gated on written consent (§15 #2).
     ],
     teaserLine: "Industry veteran with decades in community management.",
-    // No photoBase and consent false -> neutral placeholder, photo not published.
-    photoConsent: false,
+    photoBase: "/img/team-bob-green",
+    photoConsent: true, // consent confirmed by the founder
   },
 ];
