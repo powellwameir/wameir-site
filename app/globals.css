@@ -501,6 +501,42 @@ p { max-width: var(--measure); }
   .carousel__viewport { scroll-behavior: auto; }
 }
 
+/* ---- Seller carousel (§5.2) — image + text per slide. Progressive enhancement:
+   stacked column by default (no JS), horizontal scroll-snap carousel once JS
+   sets data-enhanced. ---- */
+.sc { margin-top: 48px; }
+.sc__viewport { display: flex; flex-direction: column; gap: 40px; } /* no-JS: stacked */
+.sc__slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.sc__pic { display: block; }
+.sc__img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); display: block; }
+.sc__text h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 500; color: var(--navy); line-height: 1.14; }
+.sc__text p { font-size: 1.125rem; color: var(--ink-70); line-height: 1.6; margin-top: 16px; max-width: 40ch; }
+
+/* Enhanced: becomes a one-slide-at-a-time scroll-snap carousel. */
+.sc[data-enhanced="true"] .sc__viewport {
+  flex-direction: row;
+  gap: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.sc[data-enhanced="true"] .sc__viewport::-webkit-scrollbar { display: none; }
+.sc[data-enhanced="true"] .sc__slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
+
+@media (max-width: 880px) {
+  .sc__slide { grid-template-columns: 1fr; gap: 24px; } /* image above text */
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc[data-enhanced="true"] .sc__viewport { scroll-behavior: auto; }
+}
+
 /* ---- Icon cards trio ("why founders choose Wameir", §5.2) ---- */
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
 .card {
