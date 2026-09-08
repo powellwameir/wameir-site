@@ -306,22 +306,36 @@ p { max-width: var(--measure); }
 /* ---- Home hero (navy) — the one bold moment (§5.1) ---- */
 .hero {
   position: relative;
-  background: var(--navy);
+  background: var(--navy); /* fallback behind the image */
   color: #fff;
   overflow: hidden;
   padding: 168px 0 104px;
 }
-.hero__watermark {
-  position: absolute;
-  right: -6%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: min(760px, 78%);
-  opacity: 0.08; /* ≤8% (§4A) */
-  z-index: 0;
-  pointer-events: none;
+/* Full-bleed graded skyline. object-fit cover keeps the key skyline band centred
+   so it crops gracefully to portrait/mobile instead of letterboxing. */
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__bgimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
-.hero .wrap { position: relative; z-index: 1; }
+/* Navy scrim so white headline text stays AA over the buildings/sky. Darker at
+   top (headline over open sky) and bottom (CTA over ground), lighter mid so the
+   gold-lit towers still read. Explicit colours — unaffected by device dark mode. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 32, 54, 0.82) 0%,
+    rgba(20, 32, 54, 0.55) 45%,
+    rgba(20, 32, 54, 0.72) 100%
+  );
+}
+.hero .wrap { position: relative; z-index: 2; }
 .hero h1 { margin-top: 22px; }
 .hero .hero__sub {
   font-size: 1.25rem;
@@ -379,6 +393,25 @@ p { max-width: var(--measure); }
 .on-navy .split__body strong { color: #fff; }
 
 /* ---- Resident/board track: icon rows (§5.1, icons replace 01–06) ---- */
+.track__header {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+.track__photo {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.track__photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center 30%;
+}
 .track__intro { max-width: 52ch; }
 .track__intro h2 { margin-top: 12px; }
 .track__intro p { color: var(--ink-70); margin-top: 16px; }
@@ -447,6 +480,8 @@ p { max-width: var(--measure); }
   overflow: hidden;
 }
 .who-photo svg { width: 46px; height: 46px; color: var(--gold); opacity: 0.5; }
+.who-photo__pic { position: absolute; inset: 0; display: block; }
+.who-photo__img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .who-photo__note {
   position: absolute; bottom: 10px; left: 10px; right: 10px;
   font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase;
@@ -579,6 +614,8 @@ p { max-width: var(--measure); }
 @media (max-width: 880px) {
   .split { grid-template-columns: 1fr; gap: 28px; }
   .split__label { position: static; }
+  .track__header { grid-template-columns: 1fr; gap: 32px; }
+  .track__photo-img { max-height: 380px; }
   .trio { grid-template-columns: 1fr; }
   .who-grid { grid-template-columns: 1fr; gap: 32px; }
   .invite__grid { grid-template-columns: 1fr; gap: 40px; }

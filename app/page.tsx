@@ -3,9 +3,10 @@ import Section from "@/components/Section";
 import DualCTA from "@/components/DualCTA";
 import ContactSection from "@/components/ContactSection";
 import Icon, { type IconName } from "@/components/Icon";
-import { WeirWatermark } from "@/components/WeirLattice";
-import { WeirMark } from "@/components/WeirLattice";
+import Picture from "@/components/Picture";
+import Headshot from "@/components/Headshot";
 import { DISCLAIMER } from "@/lib/content";
+import { TEAM } from "@/lib/team";
 
 // Resident / board track (§5.1). Each item: icon → H3 → plain line.
 // Group A first (easy-to-live-with), then B (money back), then C (stronger communities).
@@ -91,31 +92,23 @@ const SELLER_TRIO: { icon: IconName; title: string; line: string }[] = [
   },
 ];
 
-const TEAM_TEASER = [
-  {
-    name: "Mitch Maurer",
-    role: "Co-Founder, Finance & Growth",
-    line: "Scaled one of the country's fastest-growing HOA management platforms.",
-  },
-  {
-    name: "Will Powell",
-    role: "Co-Founder, Technology & Operations",
-    line: "Modernizes operations and the day-to-day experience for residents and teams.",
-  },
-  {
-    name: "Bob Green",
-    role: "Strategic Advisor",
-    line: "Industry veteran with decades in community management.",
-    gated: true,
-  },
-];
-
 export default function Home() {
   return (
     <>
-      {/* ---- Hero (navy) — the one bold moment (§5.1) ---- */}
+      {/* ---- Hero — Houston skyline behind a navy scrim (§4A req 2) ---- */}
       <header className="hero">
-        <WeirWatermark className="hero__watermark" />
+        <Picture
+          base="/img/hero-houston-skyline"
+          widths={[1000, 1600, 2000, 2560]}
+          sizes="100vw"
+          alt="Downtown Houston skyline at golden hour"
+          width={2560}
+          height={1451}
+          eager
+          className="hero__bg"
+          imgClassName="hero__bgimg"
+        />
+        <div className="hero__scrim" aria-hidden="true" />
         <div className="wrap">
           <p className="eyebrow eyebrow-gold-light hero-reveal">
             Wameir &middot; Greater Houston
@@ -144,17 +137,30 @@ export default function Home() {
       {/* ---- Resident / board track (cream) — icons replace 01–06 ---- */}
       <Section bg="cream" id="communities">
         <div className="wrap">
-          <div className="track__intro">
-            <span className="eyebrow">For your community</span>
-            <h2 className="t-h2">
-              What we&apos;re working to bring to every community we serve.
-            </h2>
-            <p>
-              These are the standards we hold ourselves to — for residents, boards,
-              and the local teams who serve them.
-            </p>
-            {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
-            <p className="track__disclaimer">{DISCLAIMER}</p>
+          <div className="track__header">
+            <div className="track__intro">
+              <span className="eyebrow">For your community</span>
+              <h2 className="t-h2">
+                What we&apos;re working to bring to every community we serve.
+              </h2>
+              <p>
+                These are the standards we hold ourselves to — for residents, boards,
+                and the local teams who serve them.
+              </p>
+              {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
+              <p className="track__disclaimer">{DISCLAIMER}</p>
+            </div>
+            {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
+            <Picture
+              base="/img/community-parent-child"
+              widths={[640, 960, 1280]}
+              sizes="(max-width: 880px) 100vw, 42vw"
+              alt="A parent carrying their young child through a Houston neighborhood"
+              width={1280}
+              height={1920}
+              className="track__photo"
+              imgClassName="track__photo-img"
+            />
           </div>
 
           {TRACK.map((group) => (
@@ -249,21 +255,15 @@ export default function Home() {
             </div>
           </div>
           <div className="who-grid">
-            {TEAM_TEASER.map((p) => (
-              <div className="who-cell" key={p.name}>
-                <div className="who-photo">
-                  <WeirMark size={40} />
-                  {/* TODO(§15 #6): real headshot on one uniform navy backdrop. */}
-                  <span className="who-photo__note">Headshot to come</span>
-                </div>
-                <div className="mono">
-                  {p.gated ? "Advisor" : "Co-founder"}
-                </div>
-                <h3 style={{ color: "#fff" }}>{p.name}</h3>
+            {TEAM.map((m) => (
+              <div className="who-cell" key={m.key}>
+                <Headshot member={m} />
+                <div className="mono">{m.kind}</div>
+                <h3 style={{ color: "#fff" }}>{m.name}</h3>
                 <div className="role" style={{ color: "var(--cream-70)" }}>
-                  {p.role}
+                  {m.role}
                 </div>
-                <p style={{ color: "#fff" }}>{p.line}</p>
+                <p style={{ color: "#fff" }}>{m.teaserLine}</p>
               </div>
             ))}
           </div>

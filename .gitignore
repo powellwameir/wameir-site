@@ -18,3 +18,7 @@ next-env.d.ts
 
 # Spec doc (kept out of the app build)
 Wameir-Site-Spec-v3-1.docx
+
+# Rejected/unused source images — left on disk untouched, not part of the site
+images/joshua-rawson-harris-KRELIShKxTM-unsplash.jpg
+images/nicole-baster-OJcEMZHoY80-unsplash.jpg
