@@ -1,0 +1,11 @@
+# Local secrets for `npm run preview` (OpenNext + wrangler). Copy to `.dev.vars`
+# (git-ignored) and fill in. For plain `next dev`, use `.env.local` instead.
+# Real production values live in the Cloudflare dashboard / `wrangler secret` (§14).
+
+DATABASE_URL="postgresql://user:password@host/dbname?sslmode=require"
+RESEND_API_KEY="re_xxxxxxxxxxxxxxxxxxxxxxxx"
+RESEND_FROM="Wameir Site <notifications@wameir.com>"
+LEADS_NOTIFY_TO="hello@wameir.com"
+NEXT_PUBLIC_TURNSTILE_SITE_KEY="0x0000000000000000000000"
+TURNSTILE_SECRET_KEY="0x0000000000000000000000000000000000000000"
+CONTACT_FORM_ENABLED="false"

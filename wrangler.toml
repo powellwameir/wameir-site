@@ -1,0 +1,19 @@
+# Cloudflare Worker config for the Wameir site (OpenNext adapter).
+# The app deploys as a Worker with a static-assets binding (not Pages Functions).
+# Secrets (DATABASE_URL, RESEND_API_KEY, RESEND_FROM, TURNSTILE_SECRET_KEY,
+# CONTACT_FORM_ENABLED) are NOT set here — they live only in the Cloudflare
+# dashboard / `wrangler secret`, scoped per environment (§11, §14).
+# For local `npm run preview`, put them in a git-ignored `.dev.vars` file.
+name = "wameir-site"
+main = ".open-next/worker.js"
+compatibility_date = "2024-12-30"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+# Public (non-secret) var. The Turnstile SITE key is safe to expose to the browser;
+# the SECRET key must be set as a secret, never here.
+[vars]
+NEXT_PUBLIC_TURNSTILE_SITE_KEY = ""
