@@ -105,8 +105,7 @@ async function main() {
 
   // 3. HEADSHOTS — crop all to an identical 4:5 head-and-shoulders frame with a
   //    matched eye-line, then the shared grade. Uniform card treatment lives in
-  //    the layout. Bob Green is consent-gated (§15 #2) and intentionally NOT
-  //    exported here — his card stays a neutral placeholder until sign-off.
+  //    the layout.
   console.log("headshots:");
   const HEADSHOT_ASPECT = 4 / 5;
   const HEADSHOT_WIDTHS = [560];
@@ -124,6 +123,15 @@ async function main() {
     aspect: HEADSHOT_ASPECT,
     widths: HEADSHOT_WIDTHS,
     outBase: "team-will-powell",
+  });
+  // Bob Green — consent confirmed by the founder. Source is low-resolution
+  // (200px), so no tight extract: cover-crop the sides to 4:5 to preserve what
+  // detail exists. A higher-res original would improve quality.
+  await exportSet({
+    src: `${SRC}/bob-green-headshot.jpg`,
+    aspect: HEADSHOT_ASPECT,
+    widths: HEADSHOT_WIDTHS,
+    outBase: "team-bob-green",
   });
 
   console.log("\nDONE.");
