@@ -5,7 +5,7 @@ import Icon, { type IconName } from "./Icon";
 
 export type BenefitGroup = {
   head: string;
-  items: { icon: IconName; title: string; line: string; pocket?: string }[];
+  items: { icon: IconName; title: string; pocket: string }[];
 };
 
 /*
@@ -88,8 +88,9 @@ export default function BenefitsCarousel({ groups }: { groups: BenefitGroup[] })
                     <Icon name={item.icon} size={28} />
                   </span>
                   <h3>{item.title}</h3>
-                  <p>{item.line}</p>
-                  {item.pocket && <span className="pocket">{item.pocket}</span>}
+                  {/* Home summary stays scannable: title + one payoff line only.
+                      The full reasoning lives on the /working-toward deep-dive. */}
+                  <p className="bcard__payoff">{item.pocket}</p>
                 </div>
               ))}
             </div>

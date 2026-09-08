@@ -470,6 +470,30 @@ p { max-width: var(--measure); }
 }
 .bcard h3 { font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1.15; }
 .bcard p { font-size: 1rem; color: var(--ink-70); line-height: 1.55; margin-top: 10px; }
+/* Trimmed home summary: title + one payoff line (depth lives on /working-toward). */
+.bcard__payoff { color: var(--gold-deep, var(--gold)); font-weight: 600; }
+
+/* ---- Image tiles (visual-first teasers, e.g. home seller block) ---- */
+.tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.tile { display: block; text-decoration: none; }
+.tile__pic { display: block; border-radius: var(--radius); overflow: hidden; }
+.tile__img {
+  width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--radius); display: block;
+  transition: transform 0.3s ease;
+}
+.tile:hover .tile__img { transform: scale(1.02); }
+.tile__title {
+  display: block; margin-top: 14px;
+  font-family: var(--font-display); font-size: 1.2rem; font-weight: 500;
+  color: var(--navy); line-height: 1.2;
+}
+@media (max-width: 880px) {
+  .tile-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile:hover .tile__img { transform: none; }
+}
 .pocket { display: inline-block; margin-top: 10px; font-size: 0.875rem; color: var(--gold); font-weight: 600; }
 
 .carousel__controls { display: flex; align-items: center; gap: 18px; margin-top: 32px; }
