@@ -156,6 +156,9 @@ export default function Home() {
               </p>
               {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
               <p className="track__disclaimer">{DISCLAIMER}</p>
+              <Link className="teaser__link" href="/working-toward">
+                The thinking behind these <span aria-hidden="true">→</span>
+              </Link>
             </div>
             {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
             <Picture
