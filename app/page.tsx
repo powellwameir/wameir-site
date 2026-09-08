@@ -2,18 +2,18 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import DualCTA from "@/components/DualCTA";
 import ContactSection from "@/components/ContactSection";
-import Icon, { type IconName } from "@/components/Icon";
+import { type IconName } from "@/components/Icon";
 import Picture from "@/components/Picture";
 import Headshot from "@/components/Headshot";
 import BenefitsCarousel from "@/components/BenefitsCarousel";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
 
-// Resident / board track (§5.1). Each item: icon → H3 → plain line.
-// Group A first (easy-to-live-with), then B (money back), then C (stronger communities).
+// Resident / board track (§5.1) — home summary: icon + title + one payoff line.
+// Full reasoning for each lives on /working-toward (kept off the home page).
 const TRACK: {
   head: string;
-  items: { icon: IconName; title: string; line: string; pocket?: string }[];
+  items: { icon: IconName; title: string; pocket: string }[];
 }[] = [
   {
     head: "An association that's easy to live with",
@@ -21,19 +21,16 @@ const TRACK: {
       {
         icon: "responsive",
         title: "Reliable execution, responsive service",
-        line: "When you ask a question or report a problem, you get an answer — promptly, and consistently, not only when someone happens to have time. We are building the systems and staffing to make responsiveness the norm rather than the exception.",
         pocket: "A management office that responds.",
       },
       {
         icon: "billing",
         title: "Simple, transparent billing",
-        line: "Dues, statements, and payments presented plainly and handled online, so it is always clear what you owe and why — without cryptic line items or a phone call to decode a charge.",
         pocket: "Always clear what you're paying, and why.",
       },
       {
         icon: "clarity",
         title: "Financial clarity",
-        line: "Budgets, reserves, and spending you can actually see. How the money is used and how decisions are made should be open to the people they affect — because trust in an association begins with books you can read.",
         pocket: "An association you can see into.",
       },
     ],
@@ -44,19 +41,16 @@ const TRACK: {
       {
         icon: "taxes",
         title: "Lower property taxes",
-        line: "We intend to protest every home's assessment each year — the kind of appeal that keeps a tax bill fair but that few homeowners have the time or expertise to pursue. Handled well across an entire community, it returns real money on a bill you would otherwise simply pay.",
         pocket: "A refund you'd never have chased yourself.",
       },
       {
         icon: "maintenance",
         title: "Smarter preventive maintenance",
-        line: "Simple sensors that catch a slow leak, a freeze risk, or a failing water heater early — while it is still an inexpensive repair rather than a flooded floor and an insurance claim. The aim is to prevent the costly problem, not manage its aftermath.",
         pocket: "The repair that never has to happen.",
       },
       {
         icon: "insurance",
         title: "Lower insurance costs",
-        line: "A home that is monitored and well-maintained should cost less to insure. We want to turn that into a measurable reduction in your premium — savings that show up where you can feel them, not just in principle.",
         pocket: "Lower premiums for doing nothing extra.",
       },
     ],
@@ -67,34 +61,33 @@ const TRACK: {
       {
         icon: "board-tools",
         title: "Better tools for your board",
-        line: "Serving on a board should not mean living in email threads and PDF attachments. We want to give boards a clear, single view of finances, requests, and decisions — so volunteers can govern well without it consuming their time.",
         pocket: "Board service that respects your time.",
       },
       {
         icon: "technology",
         title: "Technology that works",
-        line: "Portals that load, payments that clear, requests that are never lost. The unglamorous commitment: the technology should do its job quietly and reliably, so you rarely have to think about it at all.",
         pocket: "Software that stays out of your way.",
       },
     ],
   },
 ];
 
-const SELLER_TRIO: { icon: IconName; title: string; line: string }[] = [
+// Home seller teaser — image tiles (visual-first); full detail lives on /selling.
+const SELLER_TILES: { base: string; title: string; alt: string }[] = [
   {
-    icon: "long-term",
+    base: "/img/seller-longterm",
     title: "Long-term ownership",
-    line: "We invest our own capital and plan to own the businesses we acquire for the long term.",
+    alt: "A home lit at dusk in a quiet neighborhood",
   },
   {
-    icon: "legacy",
+    base: "/img/seller-legacy",
     title: "Preserve your legacy",
-    line: "We build on what already makes your company work rather than replacing it.",
+    alt: "A craftsperson's hands measuring a piece of woodwork",
   },
   {
-    icon: "local-teams",
+    base: "/img/seller-local",
     title: "Local teams stay local",
-    line: "The people and relationships that serve your communities stay right where they are.",
+    alt: "A neon Texas sign above a local storefront",
   },
 ];
 
@@ -124,15 +117,9 @@ export default function Home() {
             <br />
             <span className="accent-italic">done right.</span>
           </h1>
-          {/* TODO(§15 #10): confirm final hero supporting line + sub-paragraph. */}
+          {/* TODO(§15 #10): confirm final hero supporting line. */}
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
             Modern tools. Optimized service. Elevated communities.
-          </p>
-          <p className="hero__para hero-reveal hero-reveal--3">
-            We acquire exceptional HOA management companies and invest in modern
-            technology, stronger teams, and better operations — creating better
-            experiences for homeowners, stronger businesses for employees, and
-            lasting legacies for founders.
           </p>
           <div className="hero__actions hero-reveal hero-reveal--3">
             <DualCTA onDark />
@@ -187,10 +174,8 @@ export default function Home() {
             </div>
             <div className="split__body">
               <p>
-                We acquire exceptional HOA management companies with our own capital
-                and operate them ourselves. Our goal is to build{" "}
-                <strong>stronger ones</strong> — putting capital behind the people,
-                technology, and relationships that make a community better every year.
+                We buy HOA management companies with our own capital, operate them
+                ourselves, and build them for the <strong>long term</strong>.
               </p>
               <Link className="teaser__link" href="/approach">
                 Read our approach <span aria-hidden="true">→</span>
@@ -211,15 +196,21 @@ export default function Home() {
               what happens to it next, we should talk.
             </p>
           </div>
-          <div className="trio">
-            {SELLER_TRIO.map((c) => (
-              <div className="card" key={c.title}>
-                <span className="card__icon">
-                  <Icon name={c.icon} size={26} />
-                </span>
-                <h3>{c.title}</h3>
-                <p>{c.line}</p>
-              </div>
+          <div className="tile-grid">
+            {SELLER_TILES.map((t) => (
+              <Link className="tile" href="/selling" key={t.title}>
+                <Picture
+                  base={t.base}
+                  widths={[800, 1200]}
+                  sizes="(max-width: 880px) 100vw, 33vw"
+                  alt={t.alt}
+                  width={1200}
+                  height={800}
+                  className="tile__pic"
+                  imgClassName="tile__img"
+                />
+                <span className="tile__title">{t.title}</span>
+              </Link>
             ))}
           </div>
           <div style={{ marginTop: 40 }}>
