@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
-import Icon, { type IconName } from "@/components/Icon";
+import SellerCarousel, { type SellerSlide } from "@/components/SellerCarousel";
 import { WeirWatermark } from "@/components/WeirLattice";
 
 export const metadata: Metadata = {
@@ -11,21 +11,24 @@ export const metadata: Metadata = {
     "Selling your management company is a big decision. Wameir is a long-term operator that invests its own capital and plans to own the businesses it acquires for the long term.",
 };
 
-const TRIO: { icon: IconName; title: string; line: string }[] = [
+const SLIDES: SellerSlide[] = [
   {
-    icon: "long-term",
-    title: "Long-term ownership",
-    line: "We invest our own capital, operate every business we acquire, and plan to own them for the long term.",
+    heading: "Long-term ownership",
+    body: "We invest our own capital and plan to own the businesses we acquire for the long term.",
+    base: "/img/seller-longterm",
+    alt: "A home lit at dusk in a quiet neighborhood",
   },
   {
-    icon: "legacy",
-    title: "Preserve your legacy",
-    line: "Our goal isn't to change what makes your company successful — it's to give it the resources to become even stronger.",
+    heading: "Preserve your legacy",
+    body: "We build on what already makes your company work rather than replacing it.",
+    base: "/img/seller-legacy",
+    alt: "A craftsperson's hands measuring a piece of woodwork",
   },
   {
-    icon: "local-teams",
-    title: "Local teams stay local",
-    line: "Great communities are built by great local teams. The people and relationships that serve them stay in place.",
+    heading: "Local teams stay local",
+    body: "The people and relationships that serve your communities stay right where they are.",
+    base: "/img/seller-local",
+    alt: "A neon Texas sign above a local storefront",
   },
 ];
 
@@ -95,17 +98,7 @@ export default function SellingPage() {
             <span className="eyebrow">Why founders choose Wameir</span>
             <h2 className="t-h2">What you can count on.</h2>
           </div>
-          <div className="trio">
-            {TRIO.map((c) => (
-              <div className="card" key={c.title}>
-                <span className="card__icon">
-                  <Icon name={c.icon} size={26} />
-                </span>
-                <h3>{c.title}</h3>
-                <p>{c.line}</p>
-              </div>
-            ))}
-          </div>
+          <SellerCarousel slides={SLIDES} />
         </div>
       </Section>
 
