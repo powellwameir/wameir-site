@@ -3,6 +3,7 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import SellerCarousel, { type SellerSlide } from "@/components/SellerCarousel";
+import ProcessDiagram from "@/components/ProcessDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
 export const metadata: Metadata = {
@@ -87,6 +88,14 @@ export default function SellingPage() {
                 Common questions from founders <span aria-hidden="true">→</span>
               </Link>
             </div>
+          </div>
+
+          {/* How it works — visual step-flow (no timeframes; those are gated). */}
+          <div style={{ marginTop: 72 }}>
+            <span className="eyebrow" style={{ display: "block" }}>
+              How it works
+            </span>
+            <ProcessDiagram />
           </div>
         </div>
       </Section>

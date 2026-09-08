@@ -34,16 +34,17 @@ export const metadata: Metadata = {
     title: "Wameir | Community management, done right",
     description:
       "We acquire exceptional HOA management companies and invest in modern technology, stronger teams, and better operations.",
-    // TODO(§8): add Open Graph share image (1200×630) once the asset exists.
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Wameir" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Wameir | Community management, done right",
     description: "Community management, done right. Greater Houston, Texas.",
+    images: ["/og.png"],
   },
   icons: {
-    // Weir mark favicon (inline SVG data URI) — navy field, gold interlocking lattice.
-    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 140'%3E%3Crect width='240' height='140' fill='%23142036'/%3E%3Cpolyline points='30,38 70,96 110,38 150,96 190,38' fill='none' stroke='%23C9A85F' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpolyline points='30,102 70,44 110,102 150,44 190,102' fill='none' stroke='%23A8854A' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E",
+    icon: "/icon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 

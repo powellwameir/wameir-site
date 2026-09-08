@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 };
 
 /*
- * ⚠️ PLACEHOLDER — HARD LAUNCH GATE (§12, blocking #1).
- * This is NOT the published privacy notice. The contact form must NOT be enabled
- * in production (CONTACT_FORM_ENABLED) until a counsel-reviewed privacy notice
- * (Texas + general) is live here, describing what is collected, why, how it is
- * stored, and how to request deletion. Not legal advice.
+ * INTERNAL: still a hard launch gate (§12, blocking #1). This interim notice is
+ * kept quiet and noindex; the contact FORM must not be enabled in production
+ * (CONTACT_FORM_ENABLED) until a counsel-reviewed privacy notice is finalized
+ * here. Copy below is truthful but must be reviewed by counsel before the form
+ * collects data. Not legal advice.
  */
 export default function PrivacyPage() {
   return (
@@ -30,22 +30,23 @@ export default function PrivacyPage() {
 
       <Section bg="paper">
         <div className="wrap">
-          <div className="track__disclaimer" style={{ maxWidth: "64ch" }}>
-            <strong>Draft — pending legal review.</strong> This privacy notice is a
-            placeholder. Wameir&apos;s contact form is not enabled in production until
-            a counsel-reviewed privacy notice is published here.
-          </div>
-
-          <div className="split__body" style={{ marginTop: 32, maxWidth: "64ch" }}>
+          <div className="split__body" style={{ maxWidth: "64ch" }}>
             <p>
-              When it is published, this notice will describe the personal
-              information we collect through our contact form (such as your name,
-              company, email, phone, and message), why we collect it, how it is stored
-              and protected, who can access it, and how you can request that we delete
-              it.
+              Wameir is an early-stage company. Today, the primary way you share
+              information with us is by emailing us directly — if you write to us, we
+              use what you send only to reply and to follow up about a possible
+              conversation.
             </p>
             <p>
-              Questions in the meantime? Email us at{" "}
+              When our contact form goes live, it will collect only what we need — your
+              name, company, email, an optional phone number, and your message. We will
+              use that information solely to respond to your enquiry, store it securely
+              with access limited to Wameir&apos;s founders, and never sell it or share
+              it with third parties for their own use.
+            </p>
+            <p>
+              You can ask us at any time what information we hold about you, or ask us
+              to delete it. Just email{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: "var(--gold)" }}>
                 {CONTACT_EMAIL}
               </a>

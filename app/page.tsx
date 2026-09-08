@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import DualCTA from "@/components/DualCTA";
 import ContactSection from "@/components/ContactSection";
 import { type IconName } from "@/components/Icon";
+import { WeirBaseline } from "@/components/WeirLattice";
 import Picture from "@/components/Picture";
 import Headshot from "@/components/Headshot";
 import BenefitsCarousel from "@/components/BenefitsCarousel";
@@ -126,6 +127,11 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {/* Branded transition out of the hero (§4A weir-lattice divider). */}
+      <div className="hero-baseline" aria-hidden="true">
+        <WeirBaseline />
+      </div>
 
       {/* ---- Resident / board track (cream) — icons replace 01–06 ---- */}
       <Section bg="cream" id="communities">
