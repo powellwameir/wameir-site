@@ -155,7 +155,9 @@ export default function FaqPage() {
       <Section bg="paper">
         <div className="wrap">
           <div className="faq">
-            {FAQS.map((item) => (
+            {/* Only render questions with real answers. Gated ones (legal review
+                pending) stay in the data and return once they're answered. */}
+            {FAQS.filter((item) => !item.gated).map((item) => (
               <details key={item.q}>
                 <summary>{item.q}</summary>
                 <div className="faq__body">{item.a}</div>

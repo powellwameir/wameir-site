@@ -3,6 +3,10 @@ import ContactForm from "./ContactForm";
 import { WeirWatermark } from "./WeirLattice";
 import { CONTACT_EMAIL, LOCATION } from "@/lib/content";
 
+// Build-time flag: show the real form only once it's enabled (privacy notice live).
+// Until then we show a clean "email us" CTA instead of a form that can't submit.
+const FORM_ENABLED = process.env.NEXT_PUBLIC_CONTACT_FORM_ENABLED === "true";
+
 /**
  * Closing contact band (§5A). Navy so it echoes the hero and carries the
  * weir-lattice motif through to the closing screen (§4A).
@@ -44,7 +48,24 @@ export default function ContactSection({
               </a>
             </p>
           </div>
-          <ContactForm defaultAudience={audience} source={source} />
+          {FORM_ENABLED ? (
+            <ContactForm defaultAudience={audience} source={source} />
+          ) : (
+            <div className="contact-cta">
+              <p className="contact-cta__lead">
+                Send us a note and we&apos;ll reply personally.
+              </p>
+              <a
+                className="btn btn--gold"
+                href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20enquiry`}
+              >
+                Email {CONTACT_EMAIL}
+              </a>
+              <p className="contact-cta__note">
+                Every message is read by a founder — and kept confidential.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </Section>

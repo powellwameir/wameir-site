@@ -14,6 +14,17 @@ const LINKS = [
 export default function Footer() {
   return (
     <footer className="footer">
+      {/* Closing CTA row — a last, low-key path forward. */}
+      <div className="footer__cta">
+        <div className="wrap footer__cta-inner">
+          <p className="footer__cta-line">
+            Community management, done right — in Greater Houston.
+          </p>
+          <Link className="btn btn--gold" href="/#contact">
+            Talk to us
+          </Link>
+        </div>
+      </div>
       <div className="wrap">
         <div className="footer__top">
           <div className="footer__brand">
