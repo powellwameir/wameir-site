@@ -781,15 +781,78 @@ p { max-width: var(--measure); }
 .goals-intro { margin-top: 28px; max-width: 62ch; }
 .goals-intro p { font-size: 1.125rem; color: var(--ink-70); margin-top: 16px; }
 
+/* Goal index: jump links to every group and goal (no new copy). */
+.goal-index {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--hairline-ink);
+}
+.goal-index__group {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--navy);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+.goal-index__list { list-style: none; margin-top: 14px; display: grid; gap: 10px; }
+.goal-index__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  color: var(--ink-70);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+.goal-index__group:is(:hover, :focus-visible) { color: var(--gold); }
+.goal-index__link:is(:hover, :focus-visible) { color: var(--navy); }
+.goal-index__icon {
+  flex: none;
+  width: 28px; height: 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: var(--gold-light);
+}
+
+.goal-group { scroll-margin-top: 112px; }
 .goal-group__head { max-width: 60ch; margin-bottom: 8px; }
 .goal-group__head h2 { margin-top: 12px; }
 .goal-group__intro { margin-top: 16px; font-size: 1.125rem; color: var(--ink-70); }
 
 .goal-list { margin-top: 8px; }
+/* Each goal is a two-column row: a summary that stays in view on the left,
+   the reasoning on the right. Stacks at 880px. */
 .goal {
-  padding: 40px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 56px;
+  align-items: start;
+  padding: 48px 0;
   border-top: 1px solid var(--hairline-ink);
-  max-width: 68ch;
+  scroll-margin-top: 112px;
+}
+.goal__summary { position: sticky; top: 120px; }
+.goal__icon {
+  width: 48px; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: var(--gold-light);
+  margin-bottom: 18px;
+}
+.goal__reasoning > .goal__block:first-child { margin-top: 0; }
+.goal__reasoning p { max-width: 62ch; }
+@media (max-width: 880px) {
+  .goal { grid-template-columns: 1fr; gap: 22px; padding: 40px 0; scroll-margin-top: 96px; }
+  .goal__summary { position: static; }
+  .goal-group { scroll-margin-top: 96px; }
+  .goal-index { grid-template-columns: 1fr; gap: 28px; }
 }
 .goal__title {
   font-family: var(--font-display);
@@ -950,6 +1013,21 @@ p { max-width: var(--measure); }
   display: inline-block;
   transition: transform 0.2s var(--ease-soft);
 }
+/* Home benefit cards are links to their goal on /working-toward. */
+.bcard--link { display: block; text-decoration: none; color: inherit; }
+.bcard__arrow {
+  position: absolute;
+  top: 26px; right: 24px;
+  font-size: 1.15rem; line-height: 1;
+  color: var(--gold);
+  transition: transform 0.2s var(--ease-soft);
+}
+.bcard--link:focus-visible { transform: translateY(-4px); }
+.bcard--link:focus-visible::after { opacity: 1; }
+.bcard--link:focus-visible .bcard__arrow { transform: translateX(4px); }
+@media (hover: hover) {
+  .bcard--link:hover .bcard__arrow { transform: translateX(4px); }
+}
 
 @media (hover: hover) {
   .card:hover, .bcard:hover, .who-cell:hover .who-photo { transform: translateY(-4px); }
@@ -979,6 +1057,6 @@ p { max-width: var(--measure); }
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
   [data-reveal-row] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .btn, .btn .arrow, .card, .bcard, .who-photo, .tile__img,
+  .btn, .btn .arrow, .card, .bcard, .bcard__arrow, .who-photo, .tile__img,
   .teaser__link > span[aria-hidden="true"] { transform: none !important; }
 }

@@ -3,8 +3,11 @@
  * /working-toward deep-dive and the home benefit cards. Framed as intent,
  * not results.
  */
+import type { IconName } from "@/components/Icon";
+
 export type Goal = {
   title: string;
+  icon: IconName; // same icon on the home card and the /working-toward row
   goal: string;
   whyLabel?: string;
   why: string[];
@@ -23,6 +26,7 @@ export const GROUPS: Group[] = [
     goals: [
       {
         title: "Reliable execution, responsive service",
+        icon: "responsive",
         goal: "when you ask a question or report a problem, you get an answer — promptly, and consistently.",
         why: [
           "Slow service is usually a capacity problem, not an attitude problem: a small team is buried in routine requests, so the important ones wait. The fix is to take the routine work off their plate. When common requests — a gate code, a balance, a copy of the rules, a status update — are handled automatically and instantly, the human team is freed to spend its time on the things that actually need judgment. Responsiveness stops depending on whether someone happens to have a free hour.",
@@ -32,6 +36,7 @@ export const GROUPS: Group[] = [
       },
       {
         title: "Simple, transparent billing",
+        icon: "billing",
         goal: "dues, statements, and payments that are plain and online — always clear what you owe and why.",
         why: [
           "Confusing bills come from systems built for the accountant, not the resident. There's no technical reason a homeowner can't see a clear running statement, understand every line, and pay in a few taps. It's a design choice, and we intend to make the resident-facing choice.",
@@ -40,6 +45,7 @@ export const GROUPS: Group[] = [
       },
       {
         title: "Financial clarity",
+        icon: "clarity",
         goal: "where the money goes and how decisions get made, out in the open.",
         why: [
           "An association's finances are its members' finances. Budgets, reserves, and spending can be presented in plain language rather than buried in a quarterly PDF. Openness isn't a feature to add — it's the default we intend to start from, because trust in an association begins with books its members can actually read.",
@@ -56,6 +62,7 @@ export const GROUPS: Group[] = [
     goals: [
       {
         title: "Lower property taxes",
+        icon: "taxes",
         goal: "protest every home's assessment each year, to keep the tax bill fair.",
         whyLabel: "Why it's possible — the scale argument",
         why: [
@@ -68,6 +75,7 @@ export const GROUPS: Group[] = [
       },
       {
         title: "Smarter preventive maintenance",
+        icon: "maintenance",
         goal: "simple sensors that catch a leak, a freeze risk, or a failing system early.",
         whyLabel: "Why it's possible — the cost-asymmetry argument",
         why: [
@@ -79,6 +87,7 @@ export const GROUPS: Group[] = [
       },
       {
         title: "Lower insurance costs",
+        icon: "insurance",
         goal: "turn a well-monitored, well-kept home into a real reduction on the insurance premium.",
         whyLabel: "Why it's possible — the risk-pricing argument",
         why: [
@@ -98,6 +107,7 @@ export const GROUPS: Group[] = [
     goals: [
       {
         title: "Better tools for your board",
+        icon: "board-tools",
         goal: "give boards a clear, single view of finances, requests, and decisions.",
         why: [
           "Board members are volunteers with day jobs. When the information they need is scattered across email threads, PDF attachments, and the management company's internal systems, good governance becomes a time sink that burns out the people willing to serve. Consolidating that into one clear view isn't a technical leap — it's a matter of building the board's experience deliberately instead of leaving it as an afterthought.",
@@ -107,6 +117,7 @@ export const GROUPS: Group[] = [
       },
       {
         title: "Technology that works",
+        icon: "technology",
         goal: "portals that load, payments that clear, requests that don't vanish.",
         why: [
           "This is the least glamorous promise and, in a way, the most important. Much of the frustration with community management is simply technology that doesn't work reliably. There's no innovation required to fix it — just the discipline to build things that function and the ownership model to keep investing in them over time. Because we intend to own these companies for the long term, we have every reason to build technology that lasts rather than technology that demos well.",
@@ -117,11 +128,30 @@ export const GROUPS: Group[] = [
   },
 ];
 
-/** A goal's one-sentence "The goal:" line, capitalised to stand alone (home cards). */
-export function goalLine(title: string): string {
+/** URL-safe anchor id for a goal title or group heading, e.g. "lower-insurance-costs". */
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/**
+ * What a home benefit card needs from its goal: the "The goal:" sentence
+ * (capitalised to stand alone), its icon, and its anchor on /working-toward.
+ * Fails the build if the title doesn't match a goal.
+ */
+export function goalCard(title: string): { goal: string; icon: IconName; slug: string } {
   for (const group of GROUPS) {
     const g = group.goals.find((x) => x.title === title);
-    if (g) return g.goal.charAt(0).toUpperCase() + g.goal.slice(1);
+    if (g) {
+      return {
+        goal: g.goal.charAt(0).toUpperCase() + g.goal.slice(1),
+        icon: g.icon,
+        slug: slugify(g.title),
+      };
+    }
   }
   throw new Error(`No goal titled "${title}"`);
 }
