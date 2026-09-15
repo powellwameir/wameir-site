@@ -10,9 +10,12 @@ import BenefitsGrid from "@/components/BenefitsGrid";
 import PullQuote from "@/components/PullQuote";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
+import { goalLine } from "@/lib/goals";
+import { SELLER_POINTS } from "@/lib/sellerPoints";
 
-// Resident / board track (§5.1) — home summary: icon + title + one payoff line.
-// Full reasoning for each lives on /working-toward (kept off the home page).
+// Resident / board track (§5.1) — home summary: icon + title + the goal sentence
+// (shared with /working-toward via lib/goals) + one payoff line. The full
+// reasoning for each stays on /working-toward.
 const TRACK: {
   head: string;
   items: { icon: IconName; title: string; pocket: string }[];
@@ -74,24 +77,10 @@ const TRACK: {
   },
 ];
 
-// Home seller teaser — image tiles (visual-first); full detail lives on /selling.
-const SELLER_TILES: { base: string; title: string; alt: string }[] = [
-  {
-    base: "/img/seller-longterm",
-    title: "Long-term ownership",
-    alt: "A home lit at dusk in a quiet neighborhood",
-  },
-  {
-    base: "/img/seller-legacy",
-    title: "Preserve your legacy",
-    alt: "An older craftsman carving a wooden panel at his workbench",
-  },
-  {
-    base: "/img/seller-local",
-    title: "Local teams stay local",
-    alt: "A couple laughing together outside their home",
-  },
-];
+const BENEFITS = TRACK.map((g) => ({
+  ...g,
+  items: g.items.map((item) => ({ ...item, goal: goalLine(item.title) })),
+}));
 
 export default function Home() {
   return (
@@ -167,7 +156,7 @@ export default function Home() {
             />
           </div>
 
-          <BenefitsGrid groups={TRACK} />
+          <BenefitsGrid groups={BENEFITS} />
         </div>
       </Section>
 
@@ -217,8 +206,8 @@ export default function Home() {
             </p>
           </div>
           <div className="tile-grid">
-            {SELLER_TILES.map((t) => (
-              <Link className="tile" href="/selling" key={t.title}>
+            {SELLER_POINTS.map((t) => (
+              <Link className="tile" href="/selling" key={t.heading}>
                 <Picture
                   base={t.base}
                   widths={[800, 1200]}
@@ -229,7 +218,8 @@ export default function Home() {
                   className="tile__pic"
                   imgClassName="tile__img"
                 />
-                <span className="tile__title">{t.title}</span>
+                <span className="tile__title">{t.heading}</span>
+                <span className="tile__body">{t.body}</span>
               </Link>
             ))}
           </div>
@@ -268,7 +258,7 @@ export default function Home() {
                 <div className="role" style={{ color: "var(--cream-70)" }}>
                   {m.role}
                 </div>
-                <p style={{ color: "#fff" }}>{m.teaserLine}</p>
+                <p style={{ color: "#fff" }}>{m.paras[0]}</p>
               </div>
             ))}
           </div>

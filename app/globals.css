@@ -582,6 +582,10 @@ p { max-width: var(--measure); }
   font-family: var(--font-display); font-size: 1.2rem; font-weight: 500;
   color: var(--navy); line-height: 1.2;
 }
+.tile__body {
+  display: block; margin-top: 6px; max-width: 38ch;
+  font-size: 1rem; line-height: 1.55; color: var(--ink-70);
+}
 @media (max-width: 880px) {
   .tile-grid { grid-template-columns: 1fr; gap: 28px; }
 }
