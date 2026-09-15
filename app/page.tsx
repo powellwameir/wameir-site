@@ -83,12 +83,12 @@ const SELLER_TILES: { base: string; title: string; alt: string }[] = [
   {
     base: "/img/seller-legacy",
     title: "Preserve your legacy",
-    alt: "A craftsperson's hands measuring a piece of woodwork",
+    alt: "An older craftsman carving a wooden panel at his workbench",
   },
   {
     base: "/img/seller-local",
     title: "Local teams stay local",
-    alt: "A neon Texas sign above a local storefront",
+    alt: "A couple laughing together outside their home",
   },
 ];
 
@@ -167,6 +167,18 @@ export default function Home() {
           </div>
 
           <BenefitsCarousel groups={TRACK} />
+
+          {/* Warm place anchor for "local, one community at a time". */}
+          <Picture
+            base="/img/community-neighborhood"
+            widths={[1000, 1600, 2000]}
+            sizes="(max-width: 880px) 100vw, 1200px"
+            alt="A tree-lined residential street at golden hour"
+            width={2000}
+            height={857}
+            className="track__banner"
+            imgClassName="track__banner-img"
+          />
         </div>
       </Section>
 

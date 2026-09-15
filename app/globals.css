@@ -471,6 +471,19 @@ p { max-width: var(--measure); }
   object-fit: cover;
   object-position: center 30%;
 }
+.track__banner {
+  display: block;
+  margin-top: 56px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.track__banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
 .track__intro { max-width: 52ch; }
 .track__intro h2 { margin-top: 12px; }
 .track__intro p { color: var(--ink-70); margin-top: 16px; }
@@ -888,6 +901,8 @@ p { max-width: var(--measure); }
   .split__label { position: static; }
   .track__header { grid-template-columns: 1fr; gap: 32px; }
   .track__photo-img { max-height: 380px; }
+  .track__banner { margin-top: 40px; }
+  .track__banner-img { aspect-ratio: 3 / 2; }
   .trio { grid-template-columns: 1fr; }
   .who-grid { grid-template-columns: 1fr; gap: 32px; }
   .invite__grid { grid-template-columns: 1fr; gap: 40px; }

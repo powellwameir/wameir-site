@@ -23,13 +23,13 @@ const SLIDES: SellerSlide[] = [
     heading: "Preserve your legacy",
     body: "We build on what already makes your company work rather than replacing it.",
     base: "/img/seller-legacy",
-    alt: "A craftsperson's hands measuring a piece of woodwork",
+    alt: "An older craftsman carving a wooden panel at his workbench",
   },
   {
     heading: "Local teams stay local",
     body: "The people and relationships that serve your communities stay right where they are.",
     base: "/img/seller-local",
-    alt: "A neon Texas sign above a local storefront",
+    alt: "A couple laughing together outside their home",
   },
 ];
 
