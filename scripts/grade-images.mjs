@@ -103,38 +103,136 @@ async function main() {
     });
   }
 
-  // 3. HEADSHOTS — crop all to an identical 4:5 head-and-shoulders frame with a
-  //    matched eye-line, then the shared grade. Uniform card treatment lives in
-  //    the layout.
+  // 3. NEIGHBORHOOD — tree-lined street at golden hour. Wide banner in the home
+  //    community section; crop biased slightly low to keep the houses in frame
+  //    and trim empty sky.
+  console.log("community (neighborhood street):");
+  {
+    const src = `${SRC}/nikola-knezevic-sDyXOlpCrAY-unsplash.jpg`;
+    const { width, height } = await sharp(src).metadata();
+    const cropH = Math.round(width / (21 / 9));
+    await exportSet({
+      src,
+      extract: { left: 0, top: Math.round((height - cropH) * 0.62), width, height: cropH },
+      aspect: 21 / 9,
+      widths: [1000, 1600, 2000],
+      outBase: "community-neighborhood",
+    });
+  }
+
+  // 4. HEADSHOTS — one consistent set. Each person is pre-cut from their original
+  //    backdrop (scripts/cutout-headshots.py -> images/cutouts), then placed on
+  //    the same navy card at the same head size and eye-line, and given the
+  //    shared grade. Uniform card chrome lives in the layout (.who-photo).
   console.log("headshots:");
-  const HEADSHOT_ASPECT = 4 / 5;
-  const HEADSHOT_WIDTHS = [560];
-  // Tuned crops (source px) so heads match in size and eye-line.
-  await exportSet({
-    src: `${SRC}/mitch-maurer-headshot.png`,
-    extract: { left: 150, top: 96, width: 500, height: 625 },
-    aspect: HEADSHOT_ASPECT,
-    widths: HEADSHOT_WIDTHS,
-    outBase: "team-mitch-maurer",
-  });
-  await exportSet({
-    src: `${SRC}/will-powell-headshot.jpg`,
-    extract: { left: 70, top: 40, width: 344, height: 430 },
-    aspect: HEADSHOT_ASPECT,
-    widths: HEADSHOT_WIDTHS,
-    outBase: "team-will-powell",
-  });
-  // Bob Green — consent confirmed by the founder. Source is low-resolution
-  // (200px), so no tight extract: cover-crop the sides to 4:5 to preserve what
-  // detail exists. A higher-res original would improve quality.
-  await exportSet({
-    src: `${SRC}/bob-green-headshot.jpg`,
-    aspect: HEADSHOT_ASPECT,
-    widths: HEADSHOT_WIDTHS,
-    outBase: "team-bob-green",
-  });
+  for (const m of HEADSHOTS) await composeHeadshot(m);
 
   console.log("\nDONE.");
+}
+
+// Headshot frame (4:5), composed at 2x then downsized to the exported width.
+const HS_W = 1120;
+const HS_H = 1400;
+const HS_OUT_W = 560;
+// Shared framing for all three. Will's source is the narrowest relative to his
+// head, so it sets the floor: below ~0.55 his shoulders no longer fill the frame
+// width.
+const HEAD_RATIO = 0.555; // head width (ear to ear) as a share of frame width
+const EYE_LINE = 0.38; // eye height as a share of frame height
+
+// Hand-measured on the cutouts (source px): eye midpoint, ear-to-ear head width.
+const HEADSHOTS = [
+  { cutout: "team-mitch-maurer", eyeX: 408, eyeY: 312, headW: 275 },
+  { cutout: "team-will-powell", eyeX: 568, eyeY: 470, headW: 598 },
+  // Bob's original is 600px, so it is upscaled ~1.7x at the exported size; a
+  // higher-res original would sharpen it.
+  { cutout: "team-bob-green", eyeX: 292, eyeY: 167, headW: 180 },
+];
+
+/** Soft gold light behind head height + navy fade at the base, as SVG. */
+const cardLight = (w, h) =>
+  Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="34%" r="58%">
+      <stop offset="0" stop-color="rgb(${GOLD.r},${GOLD.g},${GOLD.b})" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="rgb(${GOLD.r},${GOLD.g},${GOLD.b})" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="rgb(${NAVY.r},${NAVY.g},${NAVY.b})"/>
+  <rect width="${w}" height="${h}" fill="url(#g)"/>
+</svg>`);
+
+const baseFade = (w, h) =>
+  Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.86" stop-color="rgb(${NAVY.r},${NAVY.g},${NAVY.b})" stop-opacity="0"/>
+      <stop offset="1" stop-color="rgb(${NAVY.r},${NAVY.g},${NAVY.b})" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="url(#f)"/>
+</svg>`);
+
+async function composeHeadshot({ cutout, eyeX, eyeY, headW }) {
+  const src = `${SRC}/cutouts/${cutout}.png`;
+  const meta = await sharp(src).metadata();
+  const scale = (HEAD_RATIO * HS_W) / headW;
+  const sw = Math.round(meta.width * scale);
+  const sh = Math.round(meta.height * scale);
+  const top = Math.round(EYE_LINE * HS_H - eyeY * scale);
+
+  // The source must cover the frame's width and run off its bottom, or the card
+  // shows a hard cut through the shoulders. Tune HEAD_RATIO / EYE_LINE (for all
+  // three) if this trips.
+  if (sw < HS_W) {
+    throw new Error(`${cutout}: source is ${HS_W - sw}px narrower than the frame`);
+  }
+  if (top + sh < HS_H) {
+    throw new Error(`${cutout}: body ends ${HS_H - (top + sh)}px above the frame bottom`);
+  }
+  // Centre on the eyes, clamped so the source always spans the full width.
+  const left = Math.min(0, Math.max(HS_W - sw, Math.round(HS_W / 2 - eyeX * scale)));
+
+  // Scale the cutout, crop off whatever falls outside the frame, then place the
+  // visible part on the card. (Separate sharp instances: within one pipeline
+  // sharp crops before it resizes.)
+  // Feather the matte edge in proportion to the upscale, so a low-res source
+  // (Bob) doesn't show stair-stepped hair against the navy.
+  const resized = sharp(src).resize(sw, sh);
+  const rgb = await resized.clone().removeAlpha().png().toBuffer();
+  const alpha = await resized
+    .clone()
+    .extractChannel("alpha")
+    .blur(Math.max(1, scale * 0.5))
+    .png()
+    .toBuffer();
+  const scaled = await sharp(rgb)
+    .joinChannel(alpha)
+    .png()
+    .toBuffer();
+  const visTop = Math.max(0, -top);
+  const person = await sharp(scaled)
+    .extract({ left: -left, top: visTop, width: HS_W, height: Math.min(sh - visTop, HS_H - Math.max(0, top)) })
+    .png()
+    .toBuffer();
+
+  const card = await sharp(cardLight(HS_W, HS_H))
+    .composite([
+      { input: person, left: 0, top: Math.max(0, top) },
+      { input: baseFade(HS_W, HS_H) },
+    ])
+    .flatten({ background: NAVY })
+    .png()
+    .toBuffer();
+
+  const outH = Math.round(HS_OUT_W / (HS_W / HS_H));
+  for (const fmt of ["avif", "webp"]) {
+    let p = grade(sharp(card).resize(HS_OUT_W, outH), HS_OUT_W, outH);
+    p = fmt === "avif" ? p.avif({ quality: 62, effort: 4 }) : p.webp({ quality: 82 });
+    const file = `${OUT}/${cutout}-${HS_OUT_W}.${fmt}`;
+    await p.toFile(file);
+    console.log("  wrote", file, `(${HS_OUT_W}x${outH})`);
+  }
 }
 
 main().catch((e) => {
