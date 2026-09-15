@@ -2,7 +2,6 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import DualCTA from "@/components/DualCTA";
 import ContactSection from "@/components/ContactSection";
-import { type IconName } from "@/components/Icon";
 import { WeirBaseline } from "@/components/WeirLattice";
 import Picture from "@/components/Picture";
 import Headshot from "@/components/Headshot";
@@ -10,7 +9,7 @@ import BenefitsGrid from "@/components/BenefitsGrid";
 import PullQuote from "@/components/PullQuote";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
-import { goalLine } from "@/lib/goals";
+import { goalCard } from "@/lib/goals";
 import { SELLER_POINTS } from "@/lib/sellerPoints";
 
 // Resident / board track (§5.1) — home summary: icon + title + the goal sentence
@@ -18,23 +17,20 @@ import { SELLER_POINTS } from "@/lib/sellerPoints";
 // reasoning for each stays on /working-toward.
 const TRACK: {
   head: string;
-  items: { icon: IconName; title: string; pocket: string }[];
+  items: { title: string; pocket: string }[];
 }[] = [
   {
     head: "An association that's easy to live with",
     items: [
       {
-        icon: "responsive",
         title: "Reliable execution, responsive service",
         pocket: "A management office that responds.",
       },
       {
-        icon: "billing",
         title: "Simple, transparent billing",
         pocket: "Always clear what you're paying, and why.",
       },
       {
-        icon: "clarity",
         title: "Financial clarity",
         pocket: "An association you can see into.",
       },
@@ -44,17 +40,14 @@ const TRACK: {
     head: "Money back in your pocket",
     items: [
       {
-        icon: "taxes",
         title: "Lower property taxes",
         pocket: "A refund you'd never have chased yourself.",
       },
       {
-        icon: "maintenance",
         title: "Smarter preventive maintenance",
         pocket: "The repair that never has to happen.",
       },
       {
-        icon: "insurance",
         title: "Lower insurance costs",
         pocket: "Lower premiums for doing nothing extra.",
       },
@@ -64,12 +57,10 @@ const TRACK: {
     head: "Stronger communities",
     items: [
       {
-        icon: "board-tools",
         title: "Better tools for your board",
         pocket: "Board service that respects your time.",
       },
       {
-        icon: "technology",
         title: "Technology that works",
         pocket: "Software that stays out of your way.",
       },
@@ -79,7 +70,7 @@ const TRACK: {
 
 const BENEFITS = TRACK.map((g) => ({
   ...g,
-  items: g.items.map((item) => ({ ...item, goal: goalLine(item.title) })),
+  items: g.items.map((item) => ({ ...item, ...goalCard(item.title) })),
 }));
 
 export default function Home() {

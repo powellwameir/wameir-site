@@ -33,6 +33,9 @@ export default function MotionObserver() {
   useEffect(() => {
     if (!("IntersectionObserver" in window)) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Arriving at a #anchor (e.g. a home card → /working-toward#goal): keep the
+    // page static so the target is visible the moment the jump lands.
+    if (window.location.hash) return;
 
     const fold = window.innerHeight * 0.85;
     const belowFold = (el: Element) => el.getBoundingClientRect().top > fold;

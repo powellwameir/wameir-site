@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Fragment } from "react";
 import Section from "@/components/Section";
 import PullQuote from "@/components/PullQuote";
-import { GROUPS, type Goal } from "@/lib/goals";
+import Icon from "@/components/Icon";
+import { GROUPS, slugify, type Goal } from "@/lib/goals";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
 
@@ -12,28 +13,40 @@ export const metadata: Metadata = {
     "The reasoning behind each goal Wameir is working toward for its communities — mechanisms we can explain plainly, framed as intent, not results we don't have yet.",
 };
 
+/*
+ * One goal as a two-column row: the summary (icon, title, the goal, what we're
+ * building toward) stays in view on the left while the reasoning scrolls on
+ * the right. The id is the anchor the home benefit cards link to.
+ */
 function GoalBlock({ g }: { g: Goal }) {
   return (
-    <article className="goal">
-      <h3 className="goal__title">{g.title}</h3>
-      <p className="goal__goal">
-        <span className="goal__k">The goal:</span> {g.goal}
-      </p>
-      <div className="goal__block">
-        <span className="goal__label">{g.whyLabel ?? "Why it's possible"}</span>
-        {g.why.map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
+    <article className="goal" id={slugify(g.title)}>
+      <div className="goal__summary">
+        <span className="goal__icon" aria-hidden="true">
+          <Icon name={g.icon} size={26} />
+        </span>
+        <h3 className="goal__title">{g.title}</h3>
+        <p className="goal__goal">
+          <span className="goal__k">The goal:</span> {g.goal}
+        </p>
+        <p className="goal__toward">
+          <span className="goal__k">What we&apos;re building toward:</span> {g.toward}
+        </p>
       </div>
-      {g.limit && (
-        <div className="goal__block goal__block--limit">
-          <span className="goal__label">The honest limit</span>
-          <p>{g.limit}</p>
+      <div className="goal__reasoning">
+        <div className="goal__block">
+          <span className="goal__label">{g.whyLabel ?? "Why it's possible"}</span>
+          {g.why.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
-      )}
-      <p className="goal__toward">
-        <span className="goal__k">What we&apos;re building toward:</span> {g.toward}
-      </p>
+        {g.limit && (
+          <div className="goal__block goal__block--limit">
+            <span className="goal__label">The honest limit</span>
+            <p>{g.limit}</p>
+          </div>
+        )}
+      </div>
     </article>
   );
 }
@@ -76,15 +89,42 @@ export default function WorkingTowardPage() {
               Here&apos;s the thinking behind each.
             </p>
           </div>
+
+          {/* Jump links to every group and goal. */}
+          <nav className="goal-index" aria-label="Goals on this page">
+            {GROUPS.map((group) => (
+              <div key={group.n}>
+                <a className="goal-index__group" href={`#${slugify(group.head)}`}>
+                  {group.head}
+                </a>
+                <ul className="goal-index__list">
+                  {group.goals.map((g) => (
+                    <li key={g.title}>
+                      <a className="goal-index__link" href={`#${slugify(g.title)}`}>
+                        <span className="goal-index__icon" aria-hidden="true">
+                          <Icon name={g.icon} size={16} />
+                        </span>
+                        {g.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
       </Section>
 
       {GROUPS.map((group, gi) => (
         <Fragment key={group.n}>
-          <Section bg={gi % 2 === 0 ? "paper" : "cream"}>
+          <Section
+            bg={gi % 2 === 0 ? "paper" : "cream"}
+            id={slugify(group.head)}
+            className="goal-group"
+          >
             <div className="wrap">
               <div className="goal-group__head">
-                <span className="eyebrow">{group.n}</span>
+                <span className="eyebrow">{group.goals.length} goals</span>
                 <h2 className="t-h2">{group.head}</h2>
                 <p className="goal-group__intro">{group.intro}</p>
               </div>
@@ -109,23 +149,25 @@ export default function WorkingTowardPage() {
       {/* Closing */}
       <Section bg="navy" className="invite">
         <WeirWatermark className="invite__watermark" />
-        <div className="wrap goals-closing">
-          <p>
-            None of this is delivered yet — we&apos;ve been clear about that
-            throughout. What we hope this page shows is that the goals aren&apos;t
-            wishful. Each one rests on a mechanism we can explain plainly: routine
-            work automated so people can do the work that matters; per-home friction
-            removed by doing things at community scale; cost asymmetries and risk
-            pricing used in the resident&apos;s favor; and technology built by an
-            owner who plans to stay.
-          </p>
-          <p>
-            As we acquire and operate our first communities, the reasoning on this
-            page will be replaced, piece by piece, with results.{" "}
-            <span className="accent-italic">
-              We&apos;d rather earn that page than write it early.
-            </span>
-          </p>
+        <div className="wrap">
+          <div className="goals-closing">
+            <p>
+              None of this is delivered yet — we&apos;ve been clear about that
+              throughout. What we hope this page shows is that the goals aren&apos;t
+              wishful. Each one rests on a mechanism we can explain plainly: routine
+              work automated so people can do the work that matters; per-home
+              friction removed by doing things at community scale; cost asymmetries
+              and risk pricing used in the resident&apos;s favor; and technology
+              built by an owner who plans to stay.
+            </p>
+            <p>
+              As we acquire and operate our first communities, the reasoning on this
+              page will be replaced, piece by piece, with results.{" "}
+              <span className="accent-italic">
+                We&apos;d rather earn that page than write it early.
+              </span>
+            </p>
+          </div>
         </div>
       </Section>
 
