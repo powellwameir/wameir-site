@@ -2,7 +2,7 @@ import Icon, { type IconName } from "./Icon";
 
 export type BenefitGroup = {
   head: string;
-  items: { icon: IconName; title: string; pocket: string }[];
+  items: { icon: IconName; title: string; goal: string; pocket: string }[];
 };
 
 /*
@@ -23,8 +23,9 @@ export default function BenefitsGrid({ groups }: { groups: BenefitGroup[] }) {
                   <Icon name={item.icon} size={28} />
                 </span>
                 <h4 className="bcard__title">{item.title}</h4>
-                {/* Home summary stays scannable: title + one payoff line only.
-                    The full reasoning lives on the /working-toward deep-dive. */}
+                {/* Two short sentences: the goal, then the payoff. The full
+                    reasoning stays on the /working-toward deep-dive. */}
+                <p>{item.goal}</p>
                 <p className="bcard__payoff">{item.pocket}</p>
               </div>
             ))}

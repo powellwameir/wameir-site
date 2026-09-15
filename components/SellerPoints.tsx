@@ -1,11 +1,5 @@
 import Picture from "./Picture";
-
-export type SellerPoint = {
-  heading: string;
-  body: string;
-  base: string; // graded asset base, e.g. "/img/seller-longterm"
-  alt: string;
-};
+import type { SellerPoint } from "@/lib/sellerPoints";
 
 /*
  * "What you can count on" (§5.2): the three points side by side, each with its

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
-import SellerPoints, { type SellerPoint } from "@/components/SellerPoints";
+import SellerPoints from "@/components/SellerPoints";
+import { SELLER_POINTS } from "@/lib/sellerPoints";
 import PullQuote from "@/components/PullQuote";
 import ProcessDiagram from "@/components/ProcessDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
@@ -12,27 +13,6 @@ export const metadata: Metadata = {
   description:
     "Selling your management company is a big decision. Wameir is a long-term operator that invests its own capital and plans to own the businesses it acquires for the long term.",
 };
-
-const POINTS: SellerPoint[] = [
-  {
-    heading: "Long-term ownership",
-    body: "We invest our own capital and plan to own the businesses we acquire for the long term.",
-    base: "/img/seller-longterm",
-    alt: "A home lit at dusk in a quiet neighborhood",
-  },
-  {
-    heading: "Preserve your legacy",
-    body: "We build on what already makes your company work rather than replacing it.",
-    base: "/img/seller-legacy",
-    alt: "An older craftsman carving a wooden panel at his workbench",
-  },
-  {
-    heading: "Local teams stay local",
-    body: "The people and relationships that serve your communities stay right where they are.",
-    base: "/img/seller-local",
-    alt: "A couple laughing together outside their home",
-  },
-];
 
 export default function SellingPage() {
   return (
@@ -101,7 +81,7 @@ export default function SellingPage() {
             <span className="eyebrow">Why founders choose Wameir</span>
             <h2 className="t-h2">What you can count on.</h2>
           </div>
-          <SellerPoints points={POINTS} />
+          <SellerPoints points={SELLER_POINTS} />
         </div>
       </Section>
 
