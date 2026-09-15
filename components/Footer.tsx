@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Button from "./Button";
 import { WeirMark } from "./WeirLattice";
 import { DISCLAIMER, CONTACT_EMAIL, LOCATION, COPYRIGHT } from "@/lib/content";
 
@@ -14,15 +15,15 @@ const LINKS = [
 export default function Footer() {
   return (
     <footer className="footer">
-      {/* Closing CTA row — a last, low-key path forward. */}
+      {/* Closing CTA band — the page ends deliberately: statement + a confident CTA. */}
       <div className="footer__cta">
         <div className="wrap footer__cta-inner">
           <p className="footer__cta-line">
             Community management, done right — in Greater Houston.
           </p>
-          <Link className="btn btn--gold" href="/#contact">
+          <Button href="/#contact" variant="gold" arrow className="btn--lg">
             Talk to us
-          </Link>
+          </Button>
         </div>
       </div>
       <div className="wrap">

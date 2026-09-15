@@ -171,6 +171,7 @@ export default function FaqPage() {
         source="/faq"
         audience="seller"
         eyebrow="Still have questions?"
+        lead="Send us your question, and we'll answer it personally."
         heading={
           <>
             Ask us <span className="it">directly.</span>

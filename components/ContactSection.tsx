@@ -16,11 +16,13 @@ export default function ContactSection({
   source = "/",
   eyebrow = "Start a conversation",
   heading,
+  lead = "Send us a note and we'll reply personally.",
 }: {
   audience?: "seller" | "community";
   source?: string;
   eyebrow?: string;
   heading?: React.ReactNode;
+  lead?: React.ReactNode; // per-page lead line so the closing block doesn't read templated
 }) {
   return (
     <Section bg="navy" id="contact" className="invite">
@@ -52,9 +54,7 @@ export default function ContactSection({
             <ContactForm defaultAudience={audience} source={source} />
           ) : (
             <div className="contact-cta">
-              <p className="contact-cta__lead">
-                Send us a note and we&apos;ll reply personally.
-              </p>
+              <p className="contact-cta__lead">{lead}</p>
               <a
                 className="btn btn--gold"
                 href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20enquiry`}

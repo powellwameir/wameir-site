@@ -35,6 +35,10 @@
   /* Motion: one gentle ease-out for everything (no bounce, no spring). */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* One card depth for every card type (benefits, approach, selling, team, tiles). */
+  --card-border: 1px solid rgba(26, 26, 26, 0.06);
+  --card-shadow: 0 8px 30px rgba(20, 32, 54, 0.08);
+
   /* Layout */
   --content: 1120px;
   --measure: 34em; /* text blocks ~66 chars */
@@ -310,17 +314,29 @@ p { max-width: var(--measure); }
 .footer__cta { border-bottom: 1px solid var(--hairline-cream); }
 .footer__cta-inner {
   display: flex; align-items: center; justify-content: space-between;
-  gap: var(--sp-5); flex-wrap: wrap;
-  padding-block: 40px;
+  gap: var(--sp-6) var(--sp-8); flex-wrap: wrap;
+  padding-block: 72px;
 }
 .footer__cta-line {
+  position: relative;
+  padding-top: 26px;
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
   font-weight: 500;
   color: #fff;
-  max-width: 26ch;
-  line-height: 1.2;
+  max-width: 22ch;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
+.footer__cta-line::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 48px; height: 3px;
+  border-radius: 2px;
+  background: var(--gold-light);
+}
+.btn--lg { padding: 18px 34px; font-size: 1.0625rem; }
 .footer > .wrap { padding-top: 48px; padding-bottom: 40px; }
 .footer__top {
   display: flex;
@@ -384,12 +400,21 @@ p { max-width: var(--measure); }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 32, 54, 0.82) 0%,
-    rgba(20, 32, 54, 0.55) 45%,
-    rgba(20, 32, 54, 0.72) 100%
-  );
+  background:
+    /* Localized depth behind the headline + sub-line so they hold AA over the
+       busy skyline, without a heavier wash over the whole photo. */
+    radial-gradient(
+      ellipse 75% 70% at 22% 48%,
+      rgba(20, 32, 54, 0.55) 0%,
+      rgba(20, 32, 54, 0.25) 55%,
+      rgba(20, 32, 54, 0) 80%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(20, 32, 54, 0.82) 0%,
+      rgba(20, 32, 54, 0.55) 45%,
+      rgba(20, 32, 54, 0.72) 100%
+    );
 }
 .hero .wrap { position: relative; z-index: 2; }
 .hero h1 { margin-top: 22px; }
@@ -480,18 +505,16 @@ p { max-width: var(--measure); }
   object-fit: cover;
   object-position: center 30%;
 }
-.track__banner {
-  display: block;
-  margin-top: 56px;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.track__banner-img {
+/* Full-bleed image band (home): a visual break between text bands. The CSS
+   height is fixed per viewport width, so the image can't shift layout. */
+.image-band { background: var(--navy); border-top: 1px solid var(--hairline-gold); }
+.image-band__pic { display: block; }
+.image-band__img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 21 / 9;
+  height: clamp(280px, 38vw, 560px);
   object-fit: cover;
+  object-position: center 55%;
 }
 .track__intro { max-width: 52ch; }
 .track__intro h2 { margin-top: 12px; }
@@ -505,21 +528,9 @@ p { max-width: var(--measure); }
   font-size: 0.9375rem;
   max-width: 60ch;
 }
-/* ---- Benefits carousel (§5.1) — one slide per group; scroll-snap + controls ---- */
-.carousel { margin-top: 48px; }
-.carousel__viewport {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 4px;
-  scrollbar-width: none; /* Firefox */
-}
-.carousel__viewport::-webkit-scrollbar { display: none; }
-.carousel__slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
-.carousel__head {
+/* ---- Benefits grid (§5.1) — every goal visible, grouped under its header ---- */
+.benefits { margin-top: 56px; display: grid; gap: 48px; }
+.benefits__head {
   font-family: var(--font-display);
   font-size: 0.875rem;
   letter-spacing: 0.04em;
@@ -527,20 +538,18 @@ p { max-width: var(--measure); }
   font-weight: 600;
   text-transform: uppercase;
   padding-bottom: 14px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   border-bottom: 1px solid var(--hairline-ink);
 }
-.carousel__items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-}
+.benefits__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+@media (max-width: 1024px) { .benefits__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .benefits__grid { grid-template-columns: 1fr; } }
 .bcard {
-  border: 1px solid rgba(26, 26, 26, 0.06);
+  border: var(--card-border);
   border-radius: var(--radius);
   padding: 28px 24px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(20, 32, 54, 0.05), 0 10px 30px rgba(20, 32, 54, 0.07);
+  box-shadow: var(--card-shadow);
 }
 .bcard__icon {
   color: var(--gold-light);
@@ -550,7 +559,7 @@ p { max-width: var(--measure); }
   border-radius: var(--radius);
   margin-bottom: 18px;
 }
-.bcard h3 { font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1.15; }
+.bcard__title { font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1.15; }
 .bcard p { font-size: 1rem; color: var(--ink-70); line-height: 1.55; margin-top: 10px; }
 /* Trimmed home summary: title + one payoff line (depth lives on /working-toward). */
 .bcard__payoff { color: var(--gold-deep, var(--gold)); font-weight: 600; }
@@ -558,7 +567,10 @@ p { max-width: var(--measure); }
 /* ---- Image tiles (visual-first teasers, e.g. home seller block) ---- */
 .tile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
 .tile { display: block; text-decoration: none; }
-.tile__pic { display: block; border-radius: var(--radius); overflow: hidden; }
+.tile__pic {
+  display: block; border-radius: var(--radius); overflow: hidden;
+  border: var(--card-border); box-shadow: var(--card-shadow);
+}
 .tile__img {
   width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover;
   border-radius: var(--radius); display: block;
@@ -578,79 +590,25 @@ p { max-width: var(--measure); }
 }
 .pocket { display: inline-block; margin-top: 10px; font-size: 0.875rem; color: var(--gold); font-weight: 600; }
 
-.carousel__controls { display: flex; align-items: center; gap: 18px; margin-top: 32px; }
-.carousel__arrow {
-  width: 44px; height: 44px;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; line-height: 1;
-  color: var(--navy);
-  background: transparent;
-  border: 1px solid var(--hairline-gold);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-}
-.carousel__arrow:hover:not(:disabled) { background: var(--gold); color: #fff; border-color: var(--gold); }
-.carousel__arrow:disabled { opacity: 0.35; cursor: default; }
-.carousel__dots { display: flex; align-items: center; gap: 8px; }
-.carousel__dot {
-  width: 9px; height: 9px; padding: 0;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.2s ease; /* width snaps: never animate layout */
-}
-.carousel__dot.is-active { width: 26px; border-radius: 5px; background: var(--gold); }
-
-@media (prefers-reduced-motion: reduce) {
-  .carousel__viewport { scroll-behavior: auto; }
-}
-
-/* ---- Seller carousel (§5.2) — image + text per slide. Progressive enhancement:
-   stacked column by default (no JS), horizontal scroll-snap carousel once JS
-   sets data-enhanced. ---- */
-.sc { margin-top: 48px; }
-.sc__viewport { display: flex; flex-direction: column; gap: 40px; } /* no-JS: stacked */
-.sc__slide {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
-.sc__pic { display: block; }
-.sc__img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); display: block; }
-.sc__text h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 500; color: var(--navy); line-height: 1.14; }
-.sc__text p { font-size: 1.125rem; color: var(--ink-70); line-height: 1.6; margin-top: 16px; max-width: 40ch; }
-
-/* Enhanced: becomes a one-slide-at-a-time scroll-snap carousel. */
-.sc[data-enhanced="true"] .sc__viewport {
-  flex-direction: row;
-  gap: 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.sc[data-enhanced="true"] .sc__viewport::-webkit-scrollbar { display: none; }
-.sc[data-enhanced="true"] .sc__slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
-
+/* ---- Selling "What you can count on" (§5.2) — three photo cards in a row ---- */
+.points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.card.card--media { padding: 0; } /* beats .card's padding, which comes later */
+/* Clip lives on the photo wrapper so the card's hover shadow isn't cut off. */
+.card__media { display: block; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; }
+.card__media-img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.card__body { padding: 24px 28px 30px; }
 @media (max-width: 880px) {
-  .sc__slide { grid-template-columns: 1fr; gap: 24px; } /* image above text */
-}
-@media (prefers-reduced-motion: reduce) {
-  .sc[data-enhanced="true"] .sc__viewport { scroll-behavior: auto; }
+  .points { grid-template-columns: 1fr; gap: 28px; }
 }
 
 /* ---- Icon cards trio ("why founders choose Wameir", §5.2) ---- */
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
 .card {
-  border: 1px solid rgba(26, 26, 26, 0.06);
+  border: var(--card-border);
   border-radius: var(--radius);
   padding: 32px 28px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(20, 32, 54, 0.05), 0 10px 30px rgba(20, 32, 54, 0.07);
+  box-shadow: var(--card-shadow);
 }
 .card__icon {
   color: var(--gold-light);
@@ -673,6 +631,8 @@ p { max-width: var(--measure); }
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 22px;
   position: relative;
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 .who-photo svg { width: 46px; height: 46px; color: var(--gold); opacity: 0.5; }
 /* Clip lives on the picture (not .who-photo) so the hover shadow isn't cut off. */
@@ -910,8 +870,6 @@ p { max-width: var(--measure); }
   .split__label { position: static; }
   .track__header { grid-template-columns: 1fr; gap: 32px; }
   .track__photo-img { max-height: 380px; }
-  .track__banner { margin-top: 40px; }
-  .track__banner-img { aspect-ratio: 3 / 2; }
   .trio { grid-template-columns: 1fr; }
   .who-grid { grid-template-columns: 1fr; gap: 32px; }
   .invite__grid { grid-template-columns: 1fr; gap: 40px; }
@@ -925,6 +883,44 @@ p { max-width: var(--measure); }
   .wrap { padding-inline: 24px; }
   .hero { padding-top: 128px; padding-bottom: 72px; }
   .page-header { padding-top: 120px; padding-bottom: 56px; }
+  .footer__cta-inner { padding-block: 56px; }
+}
+
+/* =========================================================================
+   Pull-quote band (§4A variety device) — one existing line, set large.
+   After the responsive block so its padding wins over .section's.
+   ========================================================================= */
+.pullquote { padding-block: 128px; }
+.pullquote__figure .eyebrow { display: block; margin-bottom: 22px; }
+.pullquote__text {
+  position: relative;
+  padding-top: 32px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+.pullquote__text--lg { font-size: clamp(2rem, 4.6vw, 3.5rem); line-height: 1.12; max-width: 24ch; }
+.pullquote__text--md { font-size: clamp(1.6rem, 3.4vw, 2.5rem); line-height: 1.24; max-width: 32ch; }
+.pullquote__text::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 48px; height: 3px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+.pullquote__text .g { color: var(--gold); }
+.pullquote__after { margin-top: 28px; }
+.pullquote__after p { font-size: 1.125rem; color: var(--ink-70); max-width: 60ch; }
+.on-navy .pullquote__text { color: #fff; }
+.on-navy .pullquote__text::before { background: var(--gold-light); }
+.on-navy .pullquote__text .g { color: var(--gold-light); }
+.on-navy .pullquote__after p { color: var(--cream-70); }
+.on-navy .pullquote__after strong { color: #fff; font-weight: 600; }
+.on-navy .teaser__link { color: var(--gold-light); }
+@media (max-width: 720px) {
+  .pullquote { padding-block: 80px; }
 }
 
 /* =========================================================================
@@ -963,7 +959,6 @@ p { max-width: var(--measure); }
 .teaser__link:focus-visible { color: var(--gold-light); }
 .teaser__link:focus-visible > span[aria-hidden="true"] { transform: translateX(4px); }
 .tile:focus-visible .tile__img { transform: scale(1.02); }
-.carousel__arrow:focus-visible:not(:disabled) { background: var(--gold); color: #fff; border-color: var(--gold); }
 
 /* ---- Scroll reveal (targets marked by components/MotionObserver.tsx) ---- */
 [data-reveal] { transition: opacity 0.45s var(--ease-soft), transform 0.45s var(--ease-soft); }

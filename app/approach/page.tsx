@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import Icon, { type IconName } from "@/components/Icon";
 import { WeirWatermark } from "@/components/WeirLattice";
+import PullQuote from "@/components/PullQuote";
 
 export const metadata: Metadata = {
   title: "Our Approach",
@@ -93,26 +94,22 @@ export default function ApproachPage() {
         </div>
       </Section>
 
-      {/* How we think about it — textured navy band so the philosophy isn't floating (§4A). */}
-      <Section bg="navy" className="invite">
-        <WeirWatermark className="invite__watermark" />
-        <div className="wrap">
-          <span className="eyebrow eyebrow-gold-light">How we think about it</span>
-          <p
-            className="lead-statement"
-            style={{ color: "#fff", maxWidth: "30ch", marginTop: 18 }}
-          >
-            Strengthen the management company and you strengthen everything it
-            touches — which is why we treat it as{" "}
-            <span style={{ color: "var(--gold-light)" }}>one job, not three.</span>
-          </p>
-          <p style={{ color: "var(--cream-70)", marginTop: 24, maxWidth: "60ch" }}>
+      {/* How we think about it — the page's navy pull-quote band (§4A). */}
+      <PullQuote
+        bg="navy"
+        size="md"
+        eyebrow="How we think about it"
+        after={
+          <p>
             Communities become easier to live in, homes become more valuable to own,
             and the business itself becomes more durable. Those goals reinforce each
             other.
           </p>
-        </div>
-      </Section>
+        }
+      >
+        Strengthen the management company and you strengthen everything it touches —
+        which is why we treat it as <span className="g">one job, not three.</span>
+      </PullQuote>
 
       <Section bg="cream">
         <div className="wrap">
@@ -124,7 +121,16 @@ export default function ApproachPage() {
         </div>
       </Section>
 
-      <ContactSection source="/approach" audience="community" />
+      <ContactSection
+        source="/approach"
+        audience="community"
+        heading={
+          <>
+            Curious what this could mean for your <span className="it">community?</span>
+          </>
+        }
+        lead="Tell us about your community, and we'll reply personally."
+      />
     </>
   );
 }

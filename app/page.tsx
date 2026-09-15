@@ -6,7 +6,8 @@ import { type IconName } from "@/components/Icon";
 import { WeirBaseline } from "@/components/WeirLattice";
 import Picture from "@/components/Picture";
 import Headshot from "@/components/Headshot";
-import BenefitsCarousel from "@/components/BenefitsCarousel";
+import BenefitsGrid from "@/components/BenefitsGrid";
+import PullQuote from "@/components/PullQuote";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
 
@@ -166,42 +167,43 @@ export default function Home() {
             />
           </div>
 
-          <BenefitsCarousel groups={TRACK} />
-
-          {/* Warm place anchor for "local, one community at a time". */}
-          <Picture
-            base="/img/community-neighborhood"
-            widths={[1000, 1600, 2000]}
-            sizes="(max-width: 880px) 100vw, 1200px"
-            alt="A tree-lined residential street at golden hour"
-            width={2000}
-            height={857}
-            className="track__banner"
-            imgClassName="track__banner-img"
-          />
+          <BenefitsGrid groups={TRACK} />
         </div>
       </Section>
 
-      {/* ---- Approach teaser (paper) ---- */}
-      <Section bg="paper">
-        <div className="wrap">
-          <div className="split">
-            <div className="split__label">
-              <span className="eyebrow">Our approach</span>
-              <p className="kicker">We&apos;re operators, in it for the long term.</p>
-            </div>
-            <div className="split__body">
-              <p>
-                We buy HOA management companies with our own capital, operate them
-                ourselves, and build them for the <strong>long term</strong>.
-              </p>
-              <Link className="teaser__link" href="/approach">
-                Read our approach <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </Section>
+      {/* ---- Full-bleed place band: a visual break in the run of text bands,
+          grounding "local, one community at a time". ---- */}
+      <div className="image-band">
+        <Picture
+          base="/img/community-neighborhood"
+          widths={[1000, 1600, 2000, 2560]}
+          sizes="100vw"
+          alt="A tree-lined residential street at golden hour"
+          width={2560}
+          height={1097}
+          className="image-band__pic"
+          imgClassName="image-band__img"
+        />
+      </div>
+
+      {/* ---- Approach teaser as a navy pull-quote band (Approach-page cadence) ---- */}
+      <PullQuote
+        bg="navy"
+        eyebrow="Our approach"
+        after={
+          <>
+            <p>
+              We buy HOA management companies with our own capital, operate them
+              ourselves, and build them for the <strong>long term</strong>.
+            </p>
+            <Link className="teaser__link" href="/approach">
+              Read our approach <span aria-hidden="true">→</span>
+            </Link>
+          </>
+        }
+      >
+        We&apos;re operators, in it for the <span className="g">long term.</span>
+      </PullQuote>
 
       {/* ---- Seller teaser (cream) + Why founders choose Wameir trio ---- */}
       <Section bg="cream">

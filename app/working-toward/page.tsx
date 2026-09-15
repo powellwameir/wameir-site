@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Section from "@/components/Section";
+import PullQuote from "@/components/PullQuote";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
 
@@ -191,20 +193,30 @@ export default function WorkingTowardPage() {
       </Section>
 
       {GROUPS.map((group, gi) => (
-        <Section key={group.n} bg={gi % 2 === 0 ? "paper" : "cream"}>
-          <div className="wrap">
-            <div className="goal-group__head">
-              <span className="eyebrow">{group.n}</span>
-              <h2 className="t-h2">{group.head}</h2>
-              <p className="goal-group__intro">{group.intro}</p>
+        <Fragment key={group.n}>
+          <Section bg={gi % 2 === 0 ? "paper" : "cream"}>
+            <div className="wrap">
+              <div className="goal-group__head">
+                <span className="eyebrow">{group.n}</span>
+                <h2 className="t-h2">{group.head}</h2>
+                <p className="goal-group__intro">{group.intro}</p>
+              </div>
+              <div className="goal-list">
+                {group.goals.map((g) => (
+                  <GoalBlock key={g.title} g={g} />
+                ))}
+              </div>
             </div>
-            <div className="goal-list">
-              {group.goals.map((g) => (
-                <GoalBlock key={g.title} g={g} />
-              ))}
-            </div>
-          </div>
-        </Section>
+          </Section>
+
+          {/* The page's pull-quote: surfaced from the property-tax goal above. */}
+          {gi === 1 && (
+            <PullQuote bg="navy" size="md">
+              A refund you&apos;d never have chased yourself — because now someone
+              chases it <span className="g">for the whole community.</span>
+            </PullQuote>
+          )}
+        </Fragment>
       ))}
 
       {/* Closing */}
@@ -230,7 +242,16 @@ export default function WorkingTowardPage() {
         </div>
       </Section>
 
-      <ContactSection source="/working-toward" audience="community" />
+      <ContactSection
+        source="/working-toward"
+        audience="community"
+        heading={
+          <>
+            Want to hold us to <span className="it">these goals?</span>
+          </>
+        }
+        lead="Tell us what matters most in your community, and we'll reply personally."
+      />
     </>
   );
 }

@@ -66,6 +66,7 @@ export default function TeamPage() {
       <ContactSection
         source="/team"
         eyebrow="Get in touch"
+        lead="Send us a note — we'd like to meet you."
         heading={
           <>
             Want to <span className="it">talk?</span>
