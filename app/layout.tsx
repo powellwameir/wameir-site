@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MotionObserver from "@/components/MotionObserver";
 import "./globals.css";
 
 // Fonts self-hosted at build time via next/font (§3/§8 — no runtime CDN, automatic
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <MotionObserver />
         {/*
           Analytics (§12): privacy-friendly Cloudflare Web Analytics — no cookies,
           no PII. Enable by adding the beacon token from the Cloudflare dashboard.

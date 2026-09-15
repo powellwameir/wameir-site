@@ -122,7 +122,7 @@ export default function Home() {
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
             Modern tools. Optimized service. Elevated communities.
           </p>
-          <div className="hero__actions hero-reveal hero-reveal--3">
+          <div className="hero__actions hero-reveal hero-reveal--4">
             <DualCTA onDark />
           </div>
         </div>

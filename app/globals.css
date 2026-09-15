@@ -32,6 +32,9 @@
   /* One radius only (§4.3) */
   --radius: 6px;
 
+  /* Motion: one gentle ease-out for everything (no bounce, no spring). */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
   /* Layout */
   --content: 1120px;
   --measure: 34em; /* text blocks ~66 chars */
@@ -137,16 +140,16 @@ p { max-width: var(--measure); }
   border: 1px solid transparent;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.18s ease;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.2s var(--ease-soft);
 }
 .btn--gold { background: var(--gold-light); color: var(--navy); }
-.btn--gold:hover { background: #fff; }
+.btn--gold:is(:hover, :focus-visible) { background: #fff; }
 .btn--line-light { border-color: rgba(255, 255, 255, 0.32); color: #fff; }
-.btn--line-light:hover { border-color: var(--gold-light); color: var(--gold-light); }
+.btn--line-light:is(:hover, :focus-visible) { border-color: var(--gold-light); color: var(--gold-light); }
 .btn--line-ink { border-color: var(--hairline-ink); color: var(--navy); }
-.btn--line-ink:hover { border-color: var(--gold); color: var(--gold); }
-.btn .arrow { transition: transform 0.18s ease; }
-.btn:hover .arrow { transform: translateX(3px); }
+.btn--line-ink:is(:hover, :focus-visible) { border-color: var(--gold); color: var(--gold); }
+.btn .arrow { transition: transform 0.2s var(--ease-soft); }
+.btn:is(:hover, :focus-visible) .arrow { transform: translateX(4px); }
 
 /* Visible keyboard focus everywhere (§10 a11y) */
 :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
@@ -167,15 +170,22 @@ p { max-width: var(--measure); }
 }
 .skip-link:focus { left: 8px; top: 8px; }
 
-/* ------- Motion (§4A/§10): at most one hero load reveal, no per-section slide ------- */
-.hero-reveal { opacity: 0; transform: translateY(16px); animation: heroIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
-.hero-reveal--2 { animation-delay: 0.08s; }
-.hero-reveal--3 { animation-delay: 0.16s; }
+/* ------- Motion (§10): the hero entrance is the one on-load moment. Scroll
+   reveals + hover/focus responses live in "Motion layer" at the end of this file
+   (supersedes the earlier §4A "no per-section slide / no card hover" note). ------- */
+.hero-reveal { opacity: 0; transform: translateY(12px); animation: heroIn 0.5s var(--ease-soft) forwards; }
+.hero-reveal--2 { animation-delay: 0.1s; }
+.hero-reveal--3 { animation-delay: 0.2s; }
+.hero-reveal--4 { animation-delay: 0.3s; }
 @keyframes heroIn { to { opacity: 1; transform: none; } }
+/* Background settles once, barely perceptibly (transform only; no LCP/CLS cost). */
+.hero__bgimg { animation: heroSettle 1.2s var(--ease-soft) both; }
+@keyframes heroSettle { from { transform: scale(1.04); } to { transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero-reveal { animation: none; opacity: 1; transform: none; }
+  .hero__bgimg { animation: none; }
   * { transition-duration: 0.001ms !important; }
 }
 
@@ -189,7 +199,7 @@ p { max-width: var(--measure); }
   z-index: 50;
   background: var(--navy);
   border-bottom: 1px solid transparent;
-  transition: padding 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 .nav--scrolled {
   background: rgba(20, 32, 54, 0.97);
@@ -204,7 +214,6 @@ p { max-width: var(--measure); }
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-5);
-  transition: padding 0.3s ease;
 }
 .nav--scrolled .nav__inner { padding-block: 12px; }
 
@@ -590,7 +599,7 @@ p { max-width: var(--measure); }
   border: 1px solid var(--gold);
   background: transparent;
   cursor: pointer;
-  transition: width 0.2s ease, background 0.2s ease, border-radius 0.2s ease;
+  transition: background 0.2s ease; /* width snaps: never animate layout */
 }
 .carousel__dot.is-active { width: 26px; border-radius: 5px; background: var(--gold); }
 
@@ -664,10 +673,10 @@ p { max-width: var(--measure); }
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 22px;
   position: relative;
-  overflow: hidden;
 }
 .who-photo svg { width: 46px; height: 46px; color: var(--gold); opacity: 0.5; }
-.who-photo__pic { position: absolute; inset: 0; display: block; }
+/* Clip lives on the picture (not .who-photo) so the hover shadow isn't cut off. */
+.who-photo__pic { position: absolute; inset: 0; display: block; border-radius: inherit; overflow: hidden; }
 .who-photo__img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .who-photo__note {
   position: absolute; bottom: 10px; left: 10px; right: 10px;
@@ -916,4 +925,61 @@ p { max-width: var(--measure); }
   .wrap { padding-inline: 24px; }
   .hero { padding-top: 128px; padding-bottom: 72px; }
   .page-header { padding-top: 120px; padding-bottom: 56px; }
+}
+
+/* =========================================================================
+   Motion layer — life, not spectacle. Once, small (≤12px), short (200–450ms),
+   opacity/transform only. All of it is switched off under reduced motion
+   (last block). Kept at the end so these transitions win the cascade.
+   ========================================================================= */
+
+/* ---- Hover / focus responses ---- */
+/* Cards lift; the deeper shadow fades in on an overlay (box-shadow never animates). */
+.card, .bcard, .who-photo { position: relative; transition: transform 0.2s var(--ease-soft); }
+.card::after, .bcard::after, .who-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(20, 32, 54, 0.06), 0 18px 40px rgba(20, 32, 54, 0.14);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-soft);
+}
+.teaser__link > span[aria-hidden="true"] {
+  display: inline-block;
+  transition: transform 0.2s var(--ease-soft);
+}
+
+@media (hover: hover) {
+  .card:hover, .bcard:hover, .who-cell:hover .who-photo { transform: translateY(-4px); }
+  .card:hover::after, .bcard:hover::after, .who-cell:hover .who-photo::after { opacity: 1; }
+  .btn:hover { transform: scale(1.02); }
+  .teaser__link:hover > span[aria-hidden="true"] { transform: translateX(4px); }
+}
+
+/* Keyboard gets the same emphasis as hover (plus the gold focus outline). */
+.btn:focus-visible { transform: scale(1.02); }
+.teaser__link:focus-visible { color: var(--gold-light); }
+.teaser__link:focus-visible > span[aria-hidden="true"] { transform: translateX(4px); }
+.tile:focus-visible .tile__img { transform: scale(1.02); }
+.carousel__arrow:focus-visible:not(:disabled) { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+/* ---- Scroll reveal (targets marked by components/MotionObserver.tsx) ---- */
+[data-reveal] { transition: opacity 0.45s var(--ease-soft), transform 0.45s var(--ease-soft); }
+[data-reveal-row] > * {
+  transition: opacity 0.4s var(--ease-soft), transform 0.4s var(--ease-soft);
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+[data-reveal="pending"],
+[data-reveal-row="pending"] > * { opacity: 0; transform: translateY(12px); }
+/* A row inside a section that is itself rising only fades, so movement stays 12px. */
+[data-reveal] [data-reveal-row] > * { transform: none; }
+
+/* ---- Reduced motion: fully static, final state, no transforms ---- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal-row] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .btn, .btn .arrow, .card, .bcard, .who-photo, .tile__img,
+  .teaser__link > span[aria-hidden="true"] { transform: none !important; }
 }
