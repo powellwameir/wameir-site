@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
-import SellerCarousel, { type SellerSlide } from "@/components/SellerCarousel";
+import SellerPoints, { type SellerPoint } from "@/components/SellerPoints";
+import PullQuote from "@/components/PullQuote";
 import ProcessDiagram from "@/components/ProcessDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     "Selling your management company is a big decision. Wameir is a long-term operator that invests its own capital and plans to own the businesses it acquires for the long term.",
 };
 
-const SLIDES: SellerSlide[] = [
+const POINTS: SellerPoint[] = [
   {
     heading: "Long-term ownership",
     body: "We invest our own capital and plan to own the businesses we acquire for the long term.",
@@ -50,20 +51,13 @@ export default function SellingPage() {
         </div>
       </header>
 
-      {/* Emotional opener (§5.2) */}
-      <Section bg="cream">
-        <div className="wrap stack-lg">
-          <p className="lead-statement">
-            Selling your business is one of the biggest decisions you&apos;ll ever
-            make. It&apos;s not just about the numbers — it&apos;s about your
-            employees, your clients, your reputation, and everything you&apos;ve spent
-            years <span className="g">building.</span>
-          </p>
-          <p className="t-body text-secondary" style={{ maxWidth: "60ch" }}>
-            That&apos;s why we started Wameir.
-          </p>
-        </div>
-      </Section>
+      {/* Emotional opener (§5.2) as the page's pull-quote */}
+      <PullQuote bg="cream" size="md" after={<p>That&apos;s why we started Wameir.</p>}>
+        Selling your business is one of the biggest decisions you&apos;ll ever make.
+        It&apos;s not just about the numbers — it&apos;s about your employees, your
+        clients, your reputation, and everything you&apos;ve spent years{" "}
+        <span className="g">building.</span>
+      </PullQuote>
 
       {/* Positive operator statement (§5.2 — no fund/PE contrast, §6 rule 1) */}
       <Section bg="paper">
@@ -107,7 +101,7 @@ export default function SellingPage() {
             <span className="eyebrow">Why founders choose Wameir</span>
             <h2 className="t-h2">What you can count on.</h2>
           </div>
-          <SellerCarousel slides={SLIDES} />
+          <SellerPoints points={POINTS} />
         </div>
       </Section>
 
@@ -115,6 +109,7 @@ export default function SellingPage() {
         source="/selling"
         audience="seller"
         eyebrow="Start a confidential conversation"
+        lead="Tell us a little about your company, and we'll reply personally."
         heading={
           <>
             Let&apos;s start the <span className="it">conversation.</span>

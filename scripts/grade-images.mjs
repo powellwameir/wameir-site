@@ -115,7 +115,7 @@ async function main() {
       src,
       extract: { left: 0, top: Math.round((height - cropH) * 0.62), width, height: cropH },
       aspect: 21 / 9,
-      widths: [1000, 1600, 2000],
+      widths: [1000, 1600, 2000, 2560], // full-bleed band on the home page
       outBase: "community-neighborhood",
     });
   }

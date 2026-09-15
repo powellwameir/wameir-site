@@ -21,8 +21,8 @@ const ROWS = [
   ".tile-grid",
   ".who-grid",
   ".process",
-  ".carousel__slide:first-child .carousel__items", // visible benefits slide only
-  ".sc__slide:first-child", // seller slide: image, then text
+  ".benefits__grid", // each benefits group's cards
+  ".points", // selling "What you can count on" cards
 ].join(", ");
 const MAX_STAGGER_STEP = 4; // caps the last card's delay (4 x 70ms)
 const SETTLE_MS = 900; // longest reveal (400ms + 280ms delay) plus headroom
