@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "./Arrow";
 import Icon, { type IconName } from "./Icon";
 
 export type BenefitGroup = {
@@ -31,8 +32,8 @@ export default function BenefitsGrid({
                 <span className="bcard__icon">
                   <Icon name={item.icon} size={28} />
                 </span>
-                <span className="bcard__arrow" aria-hidden="true">
-                  →
+                <span className="bcard__arrow">
+                  <Arrow />
                 </span>
                 <h3 className="bcard__title">{item.title}</h3>
                 <p>{item.goal}</p>

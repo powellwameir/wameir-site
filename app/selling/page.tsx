@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
+import Arrow from "@/components/Arrow";
 import ContactSection from "@/components/ContactSection";
 import SellerPoints from "@/components/SellerPoints";
 import { SELLER_POINTS } from "@/lib/sellerPoints";
@@ -59,7 +60,7 @@ export default function SellingPage() {
                 exploring your options, we&apos;d welcome a confidential conversation.
               </p>
               <Link className="teaser__link" href="/faq">
-                Common questions from founders <span aria-hidden="true">→</span>
+                Common questions from founders <Arrow />
               </Link>
             </div>
           </div>
