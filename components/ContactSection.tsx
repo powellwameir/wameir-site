@@ -1,7 +1,6 @@
 import Section from "./Section";
 import ContactForm, { type Audience } from "./ContactForm";
 import Button from "./Button";
-import { WeirWatermark } from "./WeirLattice";
 import { CONTACT_EMAIL, LOCATION, SCHEDULING_URL, callLabel, schedulingHref } from "@/lib/content";
 
 // Build-time flag: show the real form only once it's enabled (privacy notice live).
@@ -10,7 +9,8 @@ const FORM_ENABLED = process.env.NEXT_PUBLIC_CONTACT_FORM_ENABLED === "true";
 
 /**
  * Closing contact band (§5A). Navy so it echoes the hero and carries the
- * weir-lattice motif through to the closing screen (§4A).
+ * weir-lattice motif through to the closing screen (§4A). Lattice only, no
+ * watermark: page headers carry the one watermark per page.
  */
 export default function ContactSection({
   audience = "other",
@@ -30,7 +30,6 @@ export default function ContactSection({
 }) {
   return (
     <Section bg="navy" id="contact" className="invite">
-      <WeirWatermark className="invite__watermark" />
       <div className="wrap">
         <div className="invite__grid">
           <div className="invite__intro">
