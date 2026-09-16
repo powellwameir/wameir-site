@@ -58,7 +58,7 @@ export default function ContactSection({
                 ctaLocation="contact"
                 {...(SCHEDULING_URL ? { target: "_blank", rel: "noopener" } : {})}
               >
-                Book a confidential 20-minute call
+                Book a 20-minute call
               </Button>
             </div>
           </div>
