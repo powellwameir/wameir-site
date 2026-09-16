@@ -47,7 +47,7 @@ export default function PrivacyPage() {
             <p>
               You can ask us at any time what information we hold about you, or ask us
               to delete it. Just email{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: "var(--gold)" }}>
+              <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: "var(--gold-deep)" }}>
                 {CONTACT_EMAIL}
               </a>
               .
