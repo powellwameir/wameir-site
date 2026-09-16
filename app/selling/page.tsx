@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Section from "@/components/Section";
 import Arrow from "@/components/Arrow";
@@ -9,11 +10,12 @@ import PullQuote from "@/components/PullQuote";
 import ProcessDiagram from "@/components/ProcessDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/selling",
   title: "Thinking About Selling",
   description:
     "Selling your management company is a big decision. Wameir is a long-term operator that invests its own capital and plans to own the businesses it acquires for the long term.",
-};
+});
 
 export default function SellingPage() {
   return (

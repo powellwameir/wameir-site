@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Section from "@/components/Section";
 import LoopGrid, { type LoopStep } from "@/components/LoopGrid";
 import LimitsBand from "@/components/LimitsBand";
@@ -7,11 +8,12 @@ import MoreGoals from "@/components/MoreGoals";
 import ScaleFunnelDiagram from "@/components/diagrams/ScaleFunnelDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/lower-taxes",
   title: "Lower Property Taxes",
   description:
     "The thinking behind a community-wide property-tax appeal: what isn't worth doing for one household becomes worth doing across hundreds. A goal Wameir is working toward, not a service running today.",
-};
+});
 
 const STEPS: LoopStep[] = [
   {

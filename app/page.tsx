@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata, SITE_DESCRIPTION } from "@/lib/seo";
 import Section from "@/components/Section";
 import DualCTA from "@/components/DualCTA";
 import ContactSection from "@/components/ContactSection";
@@ -9,6 +11,15 @@ import GoalIndex from "@/components/GoalIndex";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
 import { SELLER_POINTS } from "@/lib/sellerPoints";
+
+// Home had no metadata export and silently inherited the root default. Set it
+// explicitly so it gets a canonical and its own share card like every page.
+export const metadata: Metadata = pageMetadata({
+  path: "/",
+  title: "Wameir | Community management, done right",
+  description: SITE_DESCRIPTION,
+  absoluteTitle: true,
+});
 
 export default function Home() {
   return (

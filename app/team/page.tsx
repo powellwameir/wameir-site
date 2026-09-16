@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import Headshot from "@/components/Headshot";
 import { WeirWatermark } from "@/components/WeirLattice";
 import { TEAM } from "@/lib/team";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/team",
   title: "Our Story",
   description:
     "Experienced operators, guided by an industry veteran. Meet the people building Wameir.",
-};
+});
 
 export default function TeamPage() {
   return (

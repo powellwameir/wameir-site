@@ -4,29 +4,33 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 /*
- * Scroll-reveal motion layer. Section content fades and rises once as it enters
- * the viewport; card rows assemble left to right with a light stagger. Styles
- * live in globals.css ("Motion layer").
+ * Scroll-reveal motion layer. Card rows fade in once, left to right, as they
+ * come into view. Styles live in globals.css ("Motion layer").
  *
- * - Honors prefers-reduced-motion: does nothing at all, content stays static.
- * - Progressive: without JS (or IntersectionObserver) nothing is ever hidden.
- * - Only below-the-fold targets are marked, so nothing animates on load (the
- *   hero entrance is the one on-load moment) and anchor jumps land on content.
- * - Once, never reversed; attributes are removed after the reveal settles so
- *   elements return to their own hover transitions.
+ * Deliberately modest, because hidden content is worse than no motion:
+ * - Only card rows reveal. Headings and body text are always present at first
+ *   paint; a fast scroller never lands on an empty band.
+ * - Nothing within the first two viewports is ever hidden.
+ * - Opacity only, 200ms. No movement.
+ * - Anything the observer misses (a jump past it, a tab restored in the
+ *   background) is shown on the next scroll once it's on or above the screen.
+ *   Printing shows everything, and automated browsers (screenshots, previews,
+ *   crawlers) get no motion at all.
+ * - Honors prefers-reduced-motion and #anchor arrivals: nothing is hidden.
+ * - Progressive: without JS nothing is ever hidden. Attributes are removed
+ *   after the reveal settles so cards return to their own hover transitions.
  */
-const BLOCKS = "main .section > .wrap";
 const ROWS = [
   ".trio",
   ".tile-grid",
   ".who-grid",
   ".process",
-  ".benefits__grid", // each benefits group's cards
+  ".benefits__grid", // goal cards
   ".points", // selling "What you can count on" cards
   ".states", // the two "manager's week" cards on /approach
 ].join(", ");
-const MAX_STAGGER_STEP = 4; // caps the last card's delay (4 x 70ms)
-const SETTLE_MS = 900; // longest reveal (400ms + 280ms delay) plus headroom
+const MAX_STAGGER_STEP = 4; // caps the last card's delay (4 x 50ms)
+const SETTLE_MS = 600; // longest reveal (200ms + 200ms delay) plus headroom
 
 export default function MotionObserver() {
   const pathname = usePathname();
@@ -34,54 +38,64 @@ export default function MotionObserver() {
   useEffect(() => {
     if (!("IntersectionObserver" in window)) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    // Arriving at a #anchor (e.g. a home card → /working-toward#goal): keep the
+    if (navigator.webdriver) return;
+    // Arriving at a #anchor (e.g. an index link → /working-toward#goal): keep the
     // page static so the target is visible the moment the jump lands.
     if (window.location.hash) return;
 
-    const fold = window.innerHeight * 0.85;
-    const belowFold = (el: Element) => el.getBoundingClientRect().top > fold;
     const timers: number[] = [];
+    const pending = new Set<Element>();
+
+    const show = (el: Element) => {
+      if (!pending.delete(el)) return;
+      io.unobserve(el);
+      el.setAttribute("data-reveal-row", "shown");
+      timers.push(window.setTimeout(() => el.removeAttribute("data-reveal-row"), SETTLE_MS));
+    };
+    const showAll = () => [...pending].forEach(show);
 
     const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const el = entry.target;
-          io.unobserve(el);
-          const attr = el.hasAttribute("data-reveal-row") ? "data-reveal-row" : "data-reveal";
-          el.setAttribute(attr, "shown");
-          timers.push(window.setTimeout(() => el.removeAttribute(attr), SETTLE_MS));
-        }
-      },
-      // Fires once the element is ~15% of the viewport into view.
-      { rootMargin: "0px 0px -15% 0px" },
+      (entries) => entries.forEach((e) => e.isIntersecting && show(e.target)),
+      // Fires once the row is ~10% of the viewport into view.
+      { rootMargin: "0px 0px -10% 0px" },
     );
 
-    document.querySelectorAll(BLOCKS).forEach((el) => {
-      if (!belowFold(el)) return;
-      el.setAttribute("data-reveal", "pending");
-      io.observe(el);
-    });
+    const twoViewports = window.innerHeight * 2;
     document.querySelectorAll(ROWS).forEach((el) => {
-      if (!belowFold(el)) return;
+      if (el.getBoundingClientRect().top + window.scrollY < twoViewports) return;
       Array.from(el.children).forEach((child, i) =>
-        (child as HTMLElement).style.setProperty(
-          "--reveal-i",
-          String(Math.min(i, MAX_STAGGER_STEP)),
-        ),
+        (child as HTMLElement).style.setProperty("--reveal-i", String(Math.min(i, MAX_STAGGER_STEP))),
       );
       el.setAttribute("data-reveal-row", "pending");
+      pending.add(el);
       io.observe(el);
     });
+
+    // Fallback for rows the observer never reports: anything whose top is on or
+    // above the bottom of the screen is shown on the next scroll frame.
+    let frame = 0;
+    const sweep = () => {
+      frame = 0;
+      pending.forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) show(el);
+      });
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(sweep);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("beforeprint", showAll);
+    window.addEventListener("pageshow", sweep);
 
     return () => {
       io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("beforeprint", showAll);
+      window.removeEventListener("pageshow", sweep);
+      if (frame) window.cancelAnimationFrame(frame);
       timers.forEach((t) => window.clearTimeout(t));
       // Never leave anything hidden or mid-reveal behind (route change, remount).
-      document.querySelectorAll("[data-reveal], [data-reveal-row]").forEach((el) => {
-        el.removeAttribute("data-reveal");
-        el.removeAttribute("data-reveal-row");
-      });
+      document.querySelectorAll("[data-reveal-row]").forEach((el) => el.removeAttribute("data-reveal-row"));
     };
   }, [pathname]);
 

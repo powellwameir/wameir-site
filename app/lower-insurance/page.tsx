@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Section from "@/components/Section";
 import LoopGrid, { type LoopStep } from "@/components/LoopGrid";
 import LimitsBand from "@/components/LimitsBand";
@@ -8,11 +9,12 @@ import { goalLink } from "@/lib/goals";
 import RiskPricingDiagram from "@/components/diagrams/RiskPricingDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/lower-insurance",
   title: "Lower Insurance Costs",
   description:
     "The thinking behind lower premiums earned honestly: a monitored home is a measurably lower-risk home, and insurance is priced on risk. A goal Wameir is working toward, not a service running today.",
-};
+});
 
 const STEPS: LoopStep[] = [
   {
