@@ -11,24 +11,24 @@ export const metadata: Metadata = pageMetadata({
   path: "/approach",
   title: "Our Approach",
   description:
-    "We operate the HOA management companies we buy and build them for the long term — investing in people, technology, and relationships that compound over years.",
+    "We operate the HOA management companies we buy and build them for the long term, investing in people, technology and relationships that pay off over years.",
 });
 
 const INVEST: { icon: IconName; title: string; line: string }[] = [
   {
     icon: "local-teams",
     title: "People, first",
-    line: "Great communities are run by great local teams. Our role is to give those teams better tools, better systems, and real support — not to replace what already works. Community managers stay close to the communities they serve.",
+    line: "Local teams run good communities. We give them better tools, better systems and support, and community managers stay close to the communities they serve.",
   },
   {
     icon: "technology",
     title: "Technology that removes friction",
-    line: "We build software that makes an association faster to deal with and easier to understand — for residents, for boards, and for the people managing the day-to-day. The goal is quiet, reliable technology that does its job so no one has to think about it.",
+    line: "Software that makes an association faster to deal with and easier to understand, for residents, boards and the managers running the day-to-day. It should work well enough that nobody has to think about it.",
   },
   {
     icon: "long-term",
-    title: "Relationships over transactions",
-    line: "Every community we take on is one we expect to serve for a long time. That shapes how we treat boards, residents, and the people who built the companies we acquire.",
+    title: "Relationships that last",
+    line: "We expect to serve every community we take on for a long time, and we treat boards, residents and founders accordingly.",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function ApproachPage() {
           </h1>
           <p className="lede">
             We acquire established HOA management companies in the Houston area with
-            our own capital, and we run them ourselves.
+            our own capital, backed by friends and family, and we run them ourselves.
           </p>
         </div>
       </header>
@@ -56,21 +56,19 @@ export default function ApproachPage() {
             <div className="split__label">
               <span className="eyebrow">Why the long horizon</span>
               <p className="kicker">
-                When you plan to hold a business, you invest differently.
+                An owner who stays invests in what pays off slowly.
               </p>
             </div>
             <div className="split__body">
               <p>
-                We are not assembling a portfolio to resell. We are building companies
-                we intend to own and improve for years — which changes{" "}
+                We plan to own these companies for decades, and that shapes{" "}
                 <strong>nearly every decision we make</strong>.
               </p>
               <p>
-                That long horizon is the whole point. When you plan to hold a business,
-                you invest in the things that compound: the people who run it, the
-                service residents actually feel, and the technology that makes both
-                better over time. Rather than cut to hit a number, we would rather
-                spend to build something that is genuinely stronger a decade from now.
+                An owner who stays is the one who lives with the results. So we spend on
+                what pays off over years: the people who run the company, the service
+                residents notice, and technology that keeps improving. We set budgets for
+                the company we want to be running a decade from now.
               </p>
             </div>
           </div>
@@ -81,7 +79,7 @@ export default function ApproachPage() {
         <div className="wrap">
           <div className="track__intro">
             <span className="eyebrow">What we invest in</span>
-            <h2 className="t-h2">Where the long term actually shows up.</h2>
+            <h2 className="t-h2">Where the long term shows up.</h2>
           </div>
           <div className="trio">
             {INVEST.map((c) => (
@@ -107,22 +105,20 @@ export default function ApproachPage() {
         eyebrow="How we think about it"
         after={
           <p>
-            Communities become easier to live in, homes become more valuable to own,
-            and the business itself becomes more durable. Those goals reinforce each
-            other.
+            Communities get easier to live in, homes are better looked after, and the
+            business lasts. Each of those helps the others.
           </p>
         }
       >
-        Strengthen the management company and you strengthen everything it touches —
-        which is why we treat it as <span className="g">one job, not three.</span>
+        A stronger management company makes{" "}
+        <span className="g">everything it touches stronger.</span>
       </PullQuote>
 
       <Section bg="cream">
         <div className="wrap">
           <p className="lead-statement" style={{ maxWidth: "44ch" }}>
-            We are early in this work. What we have described here is the standard we
-            are <span className="g">building toward</span>, and the way we intend to
-            operate every company we own.
+            This is how we intend to run <span className="g">every company we own</span>,
+            and we expect to be held to it.
           </p>
         </div>
       </Section>
@@ -130,6 +126,7 @@ export default function ApproachPage() {
       <ContactSection
         source="/approach"
         audience="board"
+        intro="Want to know how we'd run a company, or what it could mean for your community? Ask us."
         heading={
           <>
             Curious what this could mean for your <span className="it">community?</span>

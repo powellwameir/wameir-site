@@ -47,9 +47,9 @@ export default function Home() {
             <br />
             <span className="accent-italic">done right.</span>
           </h1>
-          {/* TODO(§15 #10): confirm final hero supporting line. */}
+          {/* Owner-chosen (§15 #10): the original three-beat rhythm, in plainer words. */}
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
-            Modern tools. Optimized service. Elevated communities.
+            Better tools. Faster answers. Stronger communities.
           </p>
           <div className="hero__actions hero-reveal hero-reveal--4">
             <DualCTA onDark />
@@ -187,9 +187,8 @@ export default function Home() {
                 What we&apos;re working toward in every community.
               </h2>
               <p>
-                We are early, so these are goals rather than guarantees — the standard
-                we hold ourselves to. Each one has to save a household real money or
-                real effort, or it does not belong here.
+                Each goal has to save a household money or time. If it doesn&apos;t, it
+                comes off the list.
               </p>
               {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
               <p className="track__disclaimer">{DISCLAIMER}</p>

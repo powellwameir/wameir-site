@@ -17,7 +17,7 @@ export const LOCATION = "Greater Houston, Texas";
  */
 
 // TODO(owner): founder scheduling link (Calendly / Cal.com). While empty, the
-// "Book a call" buttons open an email with a call-request subject instead.
+// call buttons open an email with a call-request subject and read "Request a call".
 export const SCHEDULING_URL: string = "";
 
 // TODO(owner): company LinkedIn page URL. Hidden in the footer while empty.
@@ -33,7 +33,16 @@ export const PHONE: string = "";
 
 export const COPYRIGHT = `© 2026 ${LEGAL_ENTITY || "Wameir"}.`;
 
-/** Where the founder "Book a call" CTAs point: the scheduler, or a mailto fallback. */
+/*
+ * The call button's link and its label come from the same constant, so the label
+ * can't promise a calendar that isn't there. While SCHEDULING_URL is empty the
+ * button opens an email and says so; paste a scheduler URL and both change.
+ */
+export function callLabel(): string {
+  return SCHEDULING_URL ? "Book a 20-minute call" : "Request a call";
+}
+
+/** Where the founder call CTAs point: the scheduler, or a mailto fallback. */
 export function schedulingHref(): string {
   return (
     SCHEDULING_URL ||

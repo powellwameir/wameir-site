@@ -1,21 +1,22 @@
 /**
  * "How it works" step flow — a custom in-palette diagram (§4A technical register)
  * for the seller path. Describes the shape of the process as intent; deliberately
- * carries no timeframes or numbers (those are gated / not invented). Real text,
+ * carries no durations or numbers (those are gated, not invented); each line
+ * opens with an order cue instead (First / Next / When you're ready). Real text,
  * so it stays accessible.
  */
 const STEPS = [
-  { n: "1", title: "A conversation", line: "Confidential, and at your pace." },
+  { n: "1", title: "A conversation", line: "First. Confidential, and on your schedule." },
   {
     n: "2",
     title: "Getting to know the business",
-    line: "How it works — and who makes it work.",
+    line: "Next. How it runs, and who runs it.",
   },
-  { n: "3", title: "A fair, tailored offer", line: "Built around your goals." },
+  { n: "3", title: "A fair, tailored offer", line: "When you're ready. Built around your goals." },
   {
     n: "4",
     title: "Long-term ownership",
-    line: "We operate it ourselves, and hold it.",
+    line: "After closing. We run it ourselves, and keep it.",
   },
 ];
 

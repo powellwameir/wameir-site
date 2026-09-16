@@ -12,6 +12,7 @@ export type TeamMember = {
   kind: "Co-founder" | "Advisor";
   role: string; // full title (team page)
   paras: string[]; // full bio (team page); paras[0] also leads the home teaser
+  linkedin?: string; // personal profile, shown on /team when set
   photoBase?: string; // graded asset base, e.g. "/img/team-will-powell"
   photoConsent: boolean;
 };
@@ -23,9 +24,10 @@ export const TEAM: TeamMember[] = [
     kind: "Co-founder",
     role: "Co-Founder, Finance & Growth",
     paras: [
-      "Mitch brings experience across finance, acquisitions, and strategic growth, developed in part while helping scale one of the country's fastest-growing HOA management platforms.",
-      "He focuses on building enduring businesses — the kind that invest in their people, strengthen the communities they serve, and create lasting value for homeowners and founders alike.",
+      "Mitch is a finance executive with deep experience in acquisitions, developed in part while helping scale one of the country's fastest-growing HOA management platforms. He has led deals end to end, from the first model through diligence, closing and integration, and has served as interim CFO of a multi-market construction services company.",
+      "Earlier in his career he led budgeting and financial planning for large sales organizations and priced complex cloud and software deals for a global technology company. At Wameir he leads finance and acquisitions: how we value a company, how we close, and how the numbers get reported to the people who work there.",
     ],
+    linkedin: "https://www.linkedin.com/in/mitchell-r-maurer-8826a357/",
     photoBase: "/img/team-mitch-maurer",
     photoConsent: true,
   },
@@ -35,9 +37,10 @@ export const TEAM: TeamMember[] = [
     kind: "Co-founder",
     role: "Co-Founder, Technology & Operations",
     paras: [
-      "Will leads Wameir's technology and operations, drawing on industry-leading consulting experience to modernize how communities are managed.",
-      "His focus is making the day-to-day simpler and more transparent — a better experience for residents, boards, and the local teams doing the work.",
+      "Will is an analytics and AI consultant who has supported Fortune 100 clients as they put AI and data science to work across their operations.",
+      "He has used AI to optimize business processes and built data science models that drive sales, optimize sales budgets and streamline supply chains. At Wameir he leads technology and operations, with a simple goal: the portal loads, the payment posts, and nobody has to retype anything.",
     ],
+    linkedin: "https://www.linkedin.com/in/william-1-powell/",
     photoBase: "/img/team-will-powell",
     photoConsent: true,
   },
@@ -47,8 +50,10 @@ export const TEAM: TeamMember[] = [
     kind: "Advisor",
     role: "Strategic Advisor",
     paras: [
-      "An industry veteran with decades of experience, Bob has spent a career helping high-performing organizations grow through disciplined financial leadership and operational excellence.",
+      "Bob has spent decades as a senior finance executive, including as CFO of an international HOA management company, where he oversaw a sustained acquisition program.",
+      "He has since served as CFO of a national nonprofit and now leads mergers and acquisitions as a chief investment officer. Earlier roles include CFO of an industrial manufacturer's rail division and senior leadership at a federal banking regulator. He advises Wameir on how to buy and integrate companies well.",
     ],
+    linkedin: "https://www.linkedin.com/in/bogreen/",
     photoBase: "/img/team-bob-green",
     photoConsent: true, // consent confirmed by the founder
   },
