@@ -65,7 +65,7 @@ export default function SellingPage() {
           </div>
 
           {/* How it works — visual step-flow (no timeframes; those are gated). */}
-          <div style={{ marginTop: 72 }}>
+          <div id="how-it-works" style={{ marginTop: 72, scrollMarginTop: 112 }}>
             <span className="eyebrow" style={{ display: "block" }}>
               How it works
             </span>

@@ -8,7 +8,7 @@ export type BenefitGroup = {
 
 /*
  * Resident-benefits grid (§5.1). Every goal visible at once, grouped under its
- * header — no carousel, no JS. Each card links to its goal on /working-toward.
+ * header (omitted when `head` is empty) — no carousel, no JS. Each card links to its goal on /working-toward.
  * Each group's row picks up the scroll-reveal stagger from MotionObserver
  * (.benefits__grid).
  */
@@ -17,7 +17,7 @@ export default function BenefitsGrid({ groups }: { groups: BenefitGroup[] }) {
     <div className="benefits">
       {groups.map((g) => (
         <div className="benefits__group" key={g.head}>
-          <h3 className="benefits__head">{g.head}</h3>
+          {g.head && <h3 className="benefits__head">{g.head}</h3>}
           <div className="benefits__grid">
             {g.items.map((item) => (
               <Link

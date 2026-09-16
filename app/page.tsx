@@ -12,32 +12,16 @@ import { TEAM } from "@/lib/team";
 import { goalCard } from "@/lib/goals";
 import { SELLER_POINTS } from "@/lib/sellerPoints";
 
-// Resident / board track (§5.1) — home summary: icon + title + the goal sentence
-// (shared with /working-toward via lib/goals) + one payoff line. The full
-// reasoning for each stays on /working-toward.
+// Communities teaser — the three money-back goals, each with its own deep page.
+// Icon + title + the goal sentence (shared with /working-toward via lib/goals)
+// + one payoff line. The other goals and the full reasoning stay on
+// /working-toward. No group heading: the teaser's own h2 introduces them.
 const TRACK: {
   head: string;
   items: { title: string; pocket: string }[];
 }[] = [
   {
-    head: "An association that's easy to live with",
-    items: [
-      {
-        title: "Reliable execution, responsive service",
-        pocket: "A management office that responds.",
-      },
-      {
-        title: "Simple, transparent billing",
-        pocket: "Always clear what you're paying, and why.",
-      },
-      {
-        title: "Financial clarity",
-        pocket: "An association you can see into.",
-      },
-    ],
-  },
-  {
-    head: "Money back in your pocket",
+    head: "",
     items: [
       {
         title: "Lower property taxes",
@@ -50,19 +34,6 @@ const TRACK: {
       {
         title: "Lower insurance costs",
         pocket: "Lower premiums for doing nothing extra.",
-      },
-    ],
-  },
-  {
-    head: "Stronger communities",
-    items: [
-      {
-        title: "Better tools for your board",
-        pocket: "Board service that respects your time.",
-      },
-      {
-        title: "Technology that works",
-        pocket: "Software that stays out of your way.",
       },
     ],
   },
@@ -114,78 +85,8 @@ export default function Home() {
         <WeirBaseline />
       </div>
 
-      {/* ---- Resident / board track (cream) — icons replace 01–06 ---- */}
-      <Section bg="cream" id="communities">
-        <div className="wrap">
-          <div className="track__header">
-            <div className="track__intro">
-              <span className="eyebrow">For your community</span>
-              <h2 className="t-h2">
-                What we&apos;re working toward in every community.
-              </h2>
-              <p>
-                We are early, so these are goals rather than guarantees — the standard
-                we hold ourselves to. Each one has to save a household real money or
-                real effort, or it does not belong here.
-              </p>
-              {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
-              <p className="track__disclaimer">{DISCLAIMER}</p>
-              <Link className="teaser__link" href="/working-toward">
-                The thinking behind these <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-            {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
-            <Picture
-              base="/img/community-parent-child"
-              widths={[640, 960, 1280]}
-              sizes="(max-width: 880px) 100vw, 42vw"
-              alt="A parent carrying their young child through a Houston neighborhood"
-              width={1280}
-              height={1920}
-              className="track__photo"
-              imgClassName="track__photo-img"
-            />
-          </div>
-
-          <BenefitsGrid groups={BENEFITS} />
-        </div>
-      </Section>
-
-      {/* ---- Full-bleed place band: a visual break in the run of text bands,
-          grounding "local, one community at a time". ---- */}
-      <div className="image-band">
-        <Picture
-          base="/img/community-neighborhood"
-          widths={[1000, 1600, 2000, 2560]}
-          sizes="100vw"
-          alt="A tree-lined residential street at golden hour"
-          width={2560}
-          height={1097}
-          className="image-band__pic"
-          imgClassName="image-band__img"
-        />
-      </div>
-
-      {/* ---- Approach teaser as a navy pull-quote band (Approach-page cadence) ---- */}
-      <PullQuote
-        bg="navy"
-        eyebrow="Our approach"
-        after={
-          <>
-            <p>
-              We buy HOA management companies with our own capital, operate them
-              ourselves, and build them for the <strong>long term</strong>.
-            </p>
-            <Link className="teaser__link" href="/approach">
-              Read our approach <span aria-hidden="true">→</span>
-            </Link>
-          </>
-        }
-      >
-        We&apos;re operators, in it for the <span className="g">long term.</span>
-      </PullQuote>
-
-      {/* ---- Seller teaser (cream) + Why founders choose Wameir trio ---- */}
+      {/* ---- Seller teaser (cream) + Why founders choose Wameir trio. Leads the
+          page: founders are the visitors who can act today. ---- */}
       <Section bg="cream">
         <div className="wrap">
           <div className="track__intro">
@@ -222,6 +123,40 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* ---- Approach teaser as a navy pull-quote band (Approach-page cadence) ---- */}
+      <PullQuote
+        bg="navy"
+        eyebrow="Our approach"
+        after={
+          <>
+            <p>
+              We buy HOA management companies with our own capital, operate them
+              ourselves, and build them for the <strong>long term</strong>.
+            </p>
+            <Link className="teaser__link" href="/approach">
+              Read our approach <span aria-hidden="true">→</span>
+            </Link>
+          </>
+        }
+      >
+        We&apos;re operators, in it for the <span className="g">long term.</span>
+      </PullQuote>
+
+      {/* ---- Full-bleed place band: separates the navy pull quote from the navy
+          team band, grounding "local, one community at a time". ---- */}
+      <div className="image-band">
+        <Picture
+          base="/img/community-neighborhood"
+          widths={[1000, 1600, 2000, 2560]}
+          sizes="100vw"
+          alt="A tree-lined residential street at golden hour"
+          width={2560}
+          height={1097}
+          className="image-band__pic"
+          imgClassName="image-band__img"
+        />
+      </div>
+
       {/* ---- Who's behind it teaser (navy) ---- */}
       <Section bg="navy">
         <div className="wrap">
@@ -256,6 +191,49 @@ export default function Home() {
           <div style={{ marginTop: 40 }}>
             <Link className="btn btn--line-light" href="/team">
               Meet the team
+            </Link>
+          </div>
+        </div>
+      </Section>
+
+      {/* ---- Communities teaser (cream): three of the goals, one disclaimer. The
+          full set lives on /working-toward. ---- */}
+      <Section bg="cream" id="communities">
+        <div className="wrap">
+          <div className="track__header">
+            <div className="track__intro">
+              <span className="eyebrow">For the communities we&apos;ll serve</span>
+              <h2 className="t-h2">
+                What we&apos;re working toward in every community.
+              </h2>
+              <p>
+                We are early, so these are goals rather than guarantees — the standard
+                we hold ourselves to. Each one has to save a household real money or
+                real effort, or it does not belong here.
+              </p>
+              {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
+              <p className="track__disclaimer">{DISCLAIMER}</p>
+              <Link className="teaser__link" href="/working-toward">
+                The thinking behind these <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+            {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
+            <Picture
+              base="/img/community-parent-child"
+              widths={[640, 960, 1280]}
+              sizes="(max-width: 880px) 100vw, 42vw"
+              alt="A parent carrying their young child through a Houston neighborhood"
+              width={1280}
+              height={1920}
+              className="track__photo"
+              imgClassName="track__photo-img"
+            />
+          </div>
+
+          <BenefitsGrid groups={BENEFITS} />
+          <div style={{ marginTop: 40 }}>
+            <Link className="btn btn--line-ink" href="/working-toward">
+              See all eight goals
             </Link>
           </div>
         </div>
