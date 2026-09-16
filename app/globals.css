@@ -590,6 +590,9 @@ p { max-width: var(--measure); }
    three-card grid. The old two-column step left a lone card beside an empty
    slot at 641-1024px. */
 .benefits__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+/* A two-card row (the goal-page "more goals" band) pairs up instead of leaving
+   an empty third slot. Declared before the breakpoint so it still stacks. */
+.benefits__grid--two { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 880px) { .benefits__grid { grid-template-columns: 1fr; } }
 .bcard {
   border: var(--card-border);
@@ -869,6 +872,37 @@ p { max-width: var(--measure); }
 }
 .goal-index__group:is(:hover, :focus-visible) { color: var(--gold-deep); }
 .goal-index__link:is(:hover, :focus-visible) { color: var(--navy); }
+/* Marks the goals with a page of their own. The eyebrow label style, so the site
+   still carries two label styles, not three. */
+.goal-index__tag {
+  margin-left: 8px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold-deep);
+  white-space: nowrap;
+}
+.goal-index { scroll-margin-top: 112px; }
+.goal-group__back { margin-top: 32px; }
+
+/* The goal-page card in a goal's summary column. */
+.goal__deep { margin-top: 24px; padding: 20px 56px 20px 22px; }
+.goal__deep .bcard__arrow { top: 22px; right: 22px; }
+.goal__deep .goal-index__tag { display: block; margin: 0 0 6px; }
+.goal__deep-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+/* "More goals" band on each goal page. */
+.more-goals .benefits { margin-top: 28px; }
+.more-goals .teaser__link { margin-top: 32px; }
+
 .goal-index__icon {
   flex: none;
   width: 28px; height: 28px;
@@ -910,7 +944,7 @@ p { max-width: var(--measure); }
   .goal { grid-template-columns: 1fr; gap: 22px; padding: 40px 0; scroll-margin-top: 96px; }
   .goal__summary { position: static; }
   .goal-group { scroll-margin-top: 96px; }
-  .goal-index { grid-template-columns: 1fr; gap: 28px; }
+  .goal-index { grid-template-columns: 1fr; gap: 28px; scroll-margin-top: 96px; }
 }
 .goal__title {
   font-family: var(--font-display);

@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Section from "@/components/Section";
 import Icon from "@/components/Icon";
+import GoalIndex from "@/components/GoalIndex";
 import DayInCommunitySection from "@/components/DayInCommunitySection";
 import AlwaysOnSection from "@/components/AlwaysOnSection";
 import { GROUPS, slugify, type Goal } from "@/lib/goals";
@@ -41,10 +42,16 @@ function GoalBlock({ g }: { g: Goal }) {
         <p className="goal__toward">
           <span className="goal__k">What we&apos;re building toward:</span> {g.toward}
         </p>
-        {/* The goals with a page of their own: the mechanism, argued in full. */}
+        {/* The goals with a page of their own: the mechanism, argued in full.
+            A card rather than a text link, so it isn't lost at the end of the
+            summary. */}
         {g.link && (
-          <Link className="teaser__link" href={g.link.href}>
-            {g.link.label} <span aria-hidden="true">→</span>
+          <Link className="bcard bcard--link goal__deep" href={g.link.href}>
+            <span className="bcard__arrow" aria-hidden="true">
+              →
+            </span>
+            <span className="goal-index__tag">Full write-up</span>
+            <span className="goal__deep-title">{g.link.label}</span>
           </Link>
         )}
       </div>
@@ -106,27 +113,7 @@ export default function WorkingTowardPage() {
           </div>
 
           {/* Jump links to every group and goal. */}
-          <nav className="goal-index" aria-label="Goals on this page">
-            {GROUPS.map((group) => (
-              <div key={group.n}>
-                <a className="goal-index__group" href={`#${slugify(group.head)}`}>
-                  {group.head}
-                </a>
-                <ul className="goal-index__list">
-                  {group.goals.map((g) => (
-                    <li key={g.title}>
-                      <a className="goal-index__link" href={`#${slugify(g.title)}`}>
-                        <span className="goal-index__icon" aria-hidden="true">
-                          <Icon name={g.icon} size={16} />
-                        </span>
-                        {g.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </nav>
+          <GoalIndex variant="page" />
         </div>
       </Section>
 
@@ -144,6 +131,10 @@ export default function WorkingTowardPage() {
                   <GoalBlock key={g.title} g={g} />
                 ))}
               </div>
+              {/* The index is several screens up by the end of a group. */}
+              <a className="teaser__link goal-group__back" href="#all-goals">
+                Back to all goals <span aria-hidden="true">↑</span>
+              </a>
             </div>
           </Section>
 

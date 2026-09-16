@@ -3,6 +3,8 @@ import Section from "@/components/Section";
 import LoopGrid, { type LoopStep } from "@/components/LoopGrid";
 import LimitsBand from "@/components/LimitsBand";
 import ContactSection from "@/components/ContactSection";
+import MoreGoals from "@/components/MoreGoals";
+import { goalLink } from "@/lib/goals";
 import RiskPricingDiagram from "@/components/diagrams/RiskPricingDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
@@ -18,6 +20,8 @@ const STEPS: LoopStep[] = [
     icon: "shield-check",
     title: "Reduce the real risk",
     body: "The same monitoring that catches leaks and failures early makes a home measurably less likely to file the claims insurers care most about — water, freeze, and electrical.",
+    // The monitoring is what earns the lower rate, so the dependency is linked.
+    link: goalLink("Smarter preventive maintenance"),
   },
   {
     n: "02 · Show",
@@ -109,6 +113,8 @@ export default function LowerInsurancePage() {
         better rate. Monitoring reduces risk; it doesn&apos;t remove it. This is a goal
         we&apos;re working toward, not a service running today.
       </LimitsBand>
+
+      <MoreGoals current="/lower-insurance" />
 
       <ContactSection
         source="/lower-insurance"

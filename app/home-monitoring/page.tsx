@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import LoopGrid, { type LoopStep } from "@/components/LoopGrid";
 import LimitsBand from "@/components/LimitsBand";
 import ContactSection from "@/components/ContactSection";
+import MoreGoals from "@/components/MoreGoals";
 import Icon, { type IconName } from "@/components/Icon";
 import HouseSectionDiagram from "@/components/diagrams/HouseSectionDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
@@ -139,6 +140,8 @@ export default function HomeMonitoringPage() {
         you and help you make good decisions, not to watch over you. Like everything
         here, this is what we&apos;re building toward, not a service running today.
       </LimitsBand>
+
+      <MoreGoals current="/home-monitoring" />
 
       <ContactSection
         source="/home-monitoring"

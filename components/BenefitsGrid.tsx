@@ -3,39 +3,40 @@ import Icon, { type IconName } from "./Icon";
 
 export type BenefitGroup = {
   head: string;
-  items: { icon: IconName; title: string; goal: string; pocket: string; slug: string }[];
+  items: { icon: IconName; title: string; goal: string; pocket?: string; href: string }[];
 };
 
 /*
- * Resident-benefits grid (§5.1). Every goal visible at once, grouped under its
- * header (omitted when `head` is empty) — no carousel, no JS. Each card links to its goal on /working-toward.
- * Each group's row picks up the scroll-reveal stagger from MotionObserver
- * (.benefits__grid).
+ * Goal cards (§5.1), grouped under an optional header (omitted when `head` is
+ * empty). No carousel, no JS. Each card links to `href`: a goal's own page, or
+ * its row on /working-toward. `cols={2}` lays a two-card row out as a pair
+ * rather than leaving an empty third slot. Each row picks up the scroll-reveal
+ * stagger from MotionObserver (.benefits__grid).
  */
-export default function BenefitsGrid({ groups }: { groups: BenefitGroup[] }) {
+export default function BenefitsGrid({
+  groups,
+  cols = 3,
+}: {
+  groups: BenefitGroup[];
+  cols?: 2 | 3;
+}) {
   return (
     <div className="benefits">
       {groups.map((g) => (
         <div className="benefits__group" key={g.head}>
           {g.head && <h3 className="benefits__head">{g.head}</h3>}
-          <div className="benefits__grid">
+          <div className={`benefits__grid${cols === 2 ? " benefits__grid--two" : ""}`}>
             {g.items.map((item) => (
-              <Link
-                className="bcard bcard--link"
-                href={`/working-toward#${item.slug}`}
-                key={item.title}
-              >
+              <Link className="bcard bcard--link" href={item.href} key={item.title}>
                 <span className="bcard__icon">
                   <Icon name={item.icon} size={28} />
                 </span>
                 <span className="bcard__arrow" aria-hidden="true">
                   →
                 </span>
-                <h4 className="bcard__title">{item.title}</h4>
-                {/* Two short sentences: the goal, then the payoff. The full
-                    reasoning is one click away on /working-toward. */}
+                <h3 className="bcard__title">{item.title}</h3>
                 <p>{item.goal}</p>
-                <p className="bcard__payoff">{item.pocket}</p>
+                {item.pocket && <p className="bcard__payoff">{item.pocket}</p>}
               </Link>
             ))}
           </div>
