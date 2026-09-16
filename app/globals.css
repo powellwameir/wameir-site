@@ -946,7 +946,6 @@ p { max-width: var(--measure); }
   line-height: 1.15;
 }
 .goal__goal { font-size: 1.125rem; color: var(--ink); margin-top: 14px; }
-.goal__k { font-weight: 600; color: var(--navy); }
 .goal__block { margin-top: 22px; }
 .goal__block p { color: var(--ink-70); margin-top: 10px; }
 .goal__label {
@@ -962,12 +961,14 @@ p { max-width: var(--measure); }
   padding-left: 18px;
   border-left: 2px solid var(--hairline-gold);
 }
+/* The payoff line: set apart by weight and gold, the same treatment as the
+   payoff on goal cards, so it reads as the outcome without a label. */
 .goal__toward {
-  margin-top: 22px;
+  margin-top: 16px;
   font-size: 1.0625rem;
-  color: var(--navy);
+  font-weight: 600;
+  color: var(--gold-deep);
 }
-.goal__toward .goal__k { color: var(--gold-deep, var(--gold)); }
 
 .goals-closing { max-width: 60ch; }
 .goals-closing p { color: var(--cream-70); font-size: 1.125rem; line-height: 1.6; }

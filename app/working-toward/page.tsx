@@ -26,10 +26,15 @@ export const metadata: Metadata = pageMetadata({
  */
 const GROUP_BG = ["paper", "cream", "paper"] as const;
 
+/** The goal sentences are written to follow a label; start them with a capital. */
+const sentence = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+
 /*
  * One goal as a two-column row: the summary (icon, title, the goal, what we're
  * building toward) stays in view on the left while the reasoning scrolls on
- * the right. The id is the anchor the home benefit cards link to.
+ * the right. No "The goal:" / "What we're building toward:" labels: the goal
+ * reads as the lead sentence and the payoff line is set apart by its type.
+ * The id is the anchor the goal index links to.
  */
 function GoalBlock({ g }: { g: Goal }) {
   return (
@@ -39,12 +44,8 @@ function GoalBlock({ g }: { g: Goal }) {
           <Icon name={g.icon} size={26} />
         </span>
         <h3 className="goal__title">{g.title}</h3>
-        <p className="goal__goal">
-          <span className="goal__k">The goal:</span> {g.goal}
-        </p>
-        <p className="goal__toward">
-          <span className="goal__k">What we&apos;re building toward:</span> {g.toward}
-        </p>
+        <p className="goal__goal">{sentence(g.goal)}</p>
+        <p className="goal__toward">{sentence(g.toward)}</p>
         {/* The goals with a page of their own: the mechanism, argued in full.
             A card rather than a text link, so it isn't lost at the end of the
             summary. */}
