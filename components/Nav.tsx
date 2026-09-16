@@ -7,6 +7,7 @@ import { WeirMark } from "./WeirLattice";
 
 const LINKS = [
   { href: "/", label: "Home" },
+  { href: "/working-toward", label: "Communities" },
   { href: "/selling", label: "Selling" },
   { href: "/approach", label: "Approach" },
   { href: "/team", label: "Team" },

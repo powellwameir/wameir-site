@@ -21,7 +21,27 @@ export type IconName =
   // seller promises ("why founders choose Wameir")
   | "long-term"
   | "legacy"
-  | "local-teams";
+  | "local-teams"
+  // vision sections & deep-dive pages (§5.1)
+  | "clock"
+  | "chat-lines"
+  | "mail-x"
+  | "doc-alert"
+  | "doc-check"
+  | "doc-search"
+  | "doc-file"
+  | "alert-triangle"
+  | "list-status"
+  | "droplet-check"
+  | "droplet-watch"
+  | "shield-check"
+  | "chart-up"
+  | "card-down"
+  | "home-record"
+  | "thermometer"
+  | "bolt"
+  | "foundation"
+  | "dispatch";
 
 const PATHS: Record<IconName, React.ReactNode> = {
   responsive: <path d="M4 5h16v10H8l-4 4V5z" />,
@@ -65,6 +85,112 @@ const PATHS: Record<IconName, React.ReactNode> = {
     <>
       <path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z" />
       <circle cx="12" cy="9" r="2.5" />
+    </>
+  ),
+  /* Vision sections & deep-dive pages. The specs' gold check-marks inherit
+     currentColor here instead of carrying a hard-coded hex. */
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </>
+  ),
+  "chat-lines": (
+    <>
+      <path d="M4 5h16v11H8l-4 4z" />
+      <path d="M9 10h6M9 13h4" />
+    </>
+  ),
+  "mail-x": (
+    <>
+      <path d="M4 6h16v12H4z" />
+      <path d="M4 7l8 6 8-6" />
+      <path d="M15 17l4 4M19 17l-4 4" />
+    </>
+  ),
+  "doc-alert": (
+    <>
+      <path d="M4 5h16v14H4z" />
+      <path d="M8 10h8M8 14h5" />
+      <path d="M17 3v4M15 5h4" />
+    </>
+  ),
+  "doc-check": (
+    <>
+      <path d="M4 5h16v14H4z" />
+      <path d="M8 10h8M8 14h8" />
+      <path d="M15.5 17.5l2 2 3.5-3.5" />
+    </>
+  ),
+  "doc-search": (
+    <>
+      <path d="M4 5h16v14H4z" />
+      <path d="M8 10h8M8 14h5" />
+      <circle cx="17" cy="15" r="3" />
+      <path d="M19 17l2 2" />
+    </>
+  ),
+  "doc-file": (
+    <>
+      <path d="M6 3h9l3 3v15H6z" />
+      <path d="M9 12h6M9 16h6" />
+    </>
+  ),
+  "alert-triangle": (
+    <>
+      <path d="M12 3l9 16H3z" />
+      <path d="M12 9v5M12 17h.01" />
+    </>
+  ),
+  "list-status": (
+    <>
+      <path d="M4 6h16M4 12h16M4 18h10" />
+      <circle cx="19" cy="18" r="2" />
+    </>
+  ),
+  "droplet-check": (
+    <>
+      <path d="M12 3s6 5 6 10a6 6 0 0 1-12 0c0-5 6-10 6-10z" />
+      <path d="M9.5 13.5l1.8 1.8 3.2-3.3" />
+    </>
+  ),
+  "droplet-watch": (
+    <>
+      <path d="M12 4s7 4 7 9a7 7 0 0 1-14 0c0-5 7-9 7-9z" />
+      <circle cx="12" cy="13" r="2.5" />
+    </>
+  ),
+  "shield-check": (
+    <>
+      <path d="M12 3s7 4 7 9a7 7 0 0 1-14 0c0-5 7-9 7-9z" />
+      <path d="M9 12l2 2 4-4" />
+    </>
+  ),
+  "chart-up": <path d="M4 19V5M4 19h16M8 15l4-5 3 3 4-6" />,
+  "card-down": (
+    <>
+      <rect x="4" y="6" width="16" height="13" rx="2" />
+      <path d="M4 10h16M9 15l3 3 3-3" />
+    </>
+  ),
+  "home-record": (
+    <>
+      <path d="M4 9l8-5 8 5v10H4z" />
+      <path d="M9 19v-6h6v6" />
+    </>
+  ),
+  thermometer: (
+    <>
+      <path d="M12 4v8M12 12a4 4 0 1 0 4 4" />
+      <circle cx="12" cy="16" r="4" />
+    </>
+  ),
+  bolt: <path d="M13 3l-7 10h5l-1 8 7-11h-5z" />,
+  foundation: <path d="M4 18h16M6 18V9M10 18V9M14 18V9M18 18V9M4 9l8-5 8 5" />,
+  dispatch: (
+    <>
+      <path d="M12 3v6M12 3l3 3M12 3l-3 3" />
+      <rect x="4" y="12" width="16" height="8" rx="2" />
     </>
   ),
 };

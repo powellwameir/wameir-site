@@ -23,6 +23,7 @@ const ROWS = [
   ".process",
   ".benefits__grid", // each benefits group's cards
   ".points", // selling "What you can count on" cards
+  ".states", // the two "manager's week" cards on /approach
 ].join(", ");
 const MAX_STAGGER_STEP = 4; // caps the last card's delay (4 x 70ms)
 const SETTLE_MS = 900; // longest reveal (400ms + 280ms delay) plus headroom

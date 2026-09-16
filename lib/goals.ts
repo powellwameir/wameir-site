@@ -13,6 +13,8 @@ export type Goal = {
   why: string[];
   limit?: string;
   toward: string;
+  /** Goals with a deep-dive page of their own link to it from the goal row. */
+  link?: { href: string; label: string };
 };
 
 export type Group = { n: string; head: string; intro: string; goals: Goal[] };
@@ -72,6 +74,7 @@ export const GROUPS: Group[] = [
           "Not every appeal succeeds, and no one can promise a specific reduction — assessments and outcomes vary. What we can commit to is that the appeal actually gets filed, every year, for every home that wants it. The value is in doing the thing that otherwise doesn't get done.",
         toward:
           "a refund you'd never have chased yourself — because now someone chases it for the whole community.",
+        link: { href: "/lower-taxes", label: "How the appeal would work" },
       },
       {
         title: "Smarter preventive maintenance",
@@ -84,6 +87,7 @@ export const GROUPS: Group[] = [
         limit:
           "Sensors reduce risk; they don't eliminate it, and they only help with what they can detect. This is about shifting the odds, not a guarantee against every failure.",
         toward: "the repair that never has to happen.",
+        link: { href: "/home-monitoring", label: "How early warning works" },
       },
       {
         title: "Lower insurance costs",
@@ -96,6 +100,7 @@ export const GROUPS: Group[] = [
         limit:
           "This is the goal that depends most on parties outside our control — insurers, underwriting, and regulation. It's a real mechanism, but the size and availability of any discount is not something we can promise in advance. We'll be straight about what's achievable as we build it.",
         toward: "lower premiums for doing nothing extra.",
+        link: { href: "/lower-insurance", label: "How lower premiums would be earned" },
       },
     ],
   },

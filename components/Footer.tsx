@@ -5,6 +5,10 @@ import { DISCLAIMER, CONTACT_EMAIL, LOCATION, COPYRIGHT } from "@/lib/content";
 
 const LINKS = [
   { href: "/", label: "Home" },
+  { href: "/working-toward", label: "Communities" },
+  { href: "/lower-taxes", label: "Lower taxes" },
+  { href: "/lower-insurance", label: "Lower insurance" },
+  { href: "/home-monitoring", label: "Home monitoring" },
   { href: "/selling", label: "Selling" },
   { href: "/approach", label: "Approach" },
   { href: "/team", label: "Team" },
