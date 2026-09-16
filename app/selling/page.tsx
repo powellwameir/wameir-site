@@ -59,8 +59,8 @@ export default function SellingPage() {
             </div>
             <div className="split__body">
               <p>
-                We buy with our own capital, run every company ourselves, and plan to own
-                it for a long time. What already makes your company work stays. What we
+                We buy with our own capital, backed by friends and family, and run every
+                company ourselves. We plan to own each one for a long time. What already makes your company work stays. What we
                 add is support behind your team: <strong>better systems</strong> for
                 billing, portals and reporting.
               </p>

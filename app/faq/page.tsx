@@ -28,8 +28,8 @@ const FAQS: QA[] = [
     q: "Where does your funding come from?",
     a: (
       <p>
-        Our own capital. Every acquisition is funded with our own money, and we buy
-        each company to own and run it for the long term.
+        Our own capital, backed by friends and family who believe in what we&apos;re
+        building. We buy each company to own and run it for the long term.
       </p>
     ),
   },

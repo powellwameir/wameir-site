@@ -45,7 +45,7 @@ export default function ApproachPage() {
           </h1>
           <p className="lede">
             We acquire established HOA management companies in the Houston area with
-            our own capital, and we run them ourselves.
+            our own capital, backed by friends and family, and we run them ourselves.
           </p>
         </div>
       </header>
