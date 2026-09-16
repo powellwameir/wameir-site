@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import Headshot from "@/components/Headshot";
@@ -13,6 +14,22 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Experienced operators, guided by an industry veteran. Meet the people building Wameir.",
 });
+
+/*
+ * Person structured data for each team member. Deliberately minimal, matching
+ * the bios: name, Wameir role and personal LinkedIn only. No past employers,
+ * credentials or figures, and no photos, so nothing is asserted beyond the page.
+ */
+const PEOPLE = {
+  "@context": "https://schema.org",
+  "@graph": TEAM.map((m) => ({
+    "@type": "Person",
+    name: m.name,
+    jobTitle: m.role,
+    worksFor: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    ...(m.linkedin ? { sameAs: [m.linkedin] } : {}),
+  })),
+};
 
 export default function TeamPage() {
   return (
@@ -73,6 +90,8 @@ export default function TeamPage() {
           </p>
         </div>
       </Section>
+
+      <JsonLd data={PEOPLE} />
 
       <ContactSection
         source="/team"
