@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/home-monitoring",
   title: "Smarter Preventive Maintenance",
   description:
-    "The long-term vision for home monitoring: a home that keeps its own records, watches its own vital signs, and helps you act before small problems become big ones. A goal Wameir is working toward, not a service running today.",
+    "Smarter preventive maintenance: a home that keeps its own records, watches its own vital signs, and helps you act before small problems become big ones. A goal Wameir is working toward, not a service running today.",
 });
 
 const STEPS: LoopStep[] = [
@@ -21,22 +21,22 @@ const STEPS: LoopStep[] = [
     n: "01 · Know",
     icon: "home-record",
     title: "Your home, on the record",
-    body: "Every major system — roof, HVAC, water heater, plumbing, foundation — with its age and expected life, in one place. The manual the house never came with.",
-    example: "“Your water heater is 11 years old — near the end of its typical life.”",
+    body: "Every major system (roof, HVAC, water heater, plumbing, foundation) with its age and expected life, in one place. The manual the house never came with.",
+    example: "“Your water heater is nearing the end of its typical life.”",
   },
   {
     n: "02 · Watch",
     icon: "droplet-watch",
-    title: "Quiet monitoring",
-    body: "Simple sensors keep an eye on the things that cause the worst damage — water, humidity, temperature, electrical — and alert you the moment something's off.",
-    example: "“Moisture detected under the kitchen sink — 2:14 AM.”",
+    title: "Monitoring in the background",
+    body: "Simple sensors watch the things that cause the worst damage (water, humidity, temperature, electrical) and alert you the moment something's off.",
+    example: "“Moisture detected under the kitchen sink.”",
   },
   {
     n: "03 · Act",
     icon: "dispatch",
     title: "The right help, with context",
-    body: "When something needs a professional, you see who's genuinely suited to your home and problem — with fair-price guidance up front, before you make a single call.",
-    example: "“3 plumbers who know 1970s pier-and-beam homes in your area.”",
+    body: "When something needs a professional, you see who's suited to your home and problem, with fair-price guidance up front, before you make a single call.",
+    example: "“Plumbers near you who know pier-and-beam homes.”",
   },
 ];
 
@@ -45,7 +45,7 @@ const WATCHLIST: { icon: IconName; label: string; detail: string }[] = [
     icon: "maintenance",
     label: "Water & leaks",
     detail:
-      "Under sinks, near the heater, behind the washer — the top cause of home claims.",
+      "Under sinks, near the heater, behind the washer: among the most common causes of home insurance claims.",
   },
   {
     icon: "thermometer",
@@ -55,12 +55,12 @@ const WATCHLIST: { icon: IconName; label: string; detail: string }[] = [
   {
     icon: "bolt",
     label: "Electrical faults",
-    detail: "Arc faults and failing wiring — quiet warning signs before a fire.",
+    detail: "Arc faults and failing wiring: early warning signs before a fire.",
   },
   {
     icon: "foundation",
     label: "Foundation & soil",
-    detail: "Houston's clay soil moves — early signs before cracks become structural.",
+    detail: "Houston's clay soil moves. Catch the early signs before cracks become structural.",
   },
 ];
 
@@ -75,14 +75,14 @@ export default function HomeMonitoringPage() {
             A home that <span className="accent-italic">looks after itself.</span>
           </h1>
           <p className="lede">
-            Owning a home means inheriting a complex machine with no manual — systems you
-            can&apos;t see, problems you find too late, and repairs you can&apos;t judge.
+            Owning a home means inheriting a complex machine with no manual: systems you
+            can&apos;t see, problems found too late, repairs you can&apos;t judge.
             Our aim is to change that: a home that keeps its own records, watches its own
             vital signs, and helps you act before small problems become big ones.
           </p>
           <p className="track__disclaimer track__disclaimer--sm">
             Wameir is early-stage. This describes what we&apos;re working toward for the
-            communities we serve — a goal, not a service running today.
+            communities we serve. It&apos;s a goal, not a service running today.
           </p>
         </div>
       </header>
@@ -94,8 +94,8 @@ export default function HomeMonitoringPage() {
             steps={STEPS}
             closer={
               <>
-                Know the home, watch the home, act early — so the expensive surprise{" "}
-                <span className="g">becomes the small fix that never grew.</span>
+                Know the home, watch it, act early, and the expensive surprise{" "}
+                <span className="g">stays a small fix.</span>
               </>
             }
           />
@@ -112,8 +112,8 @@ export default function HomeMonitoringPage() {
               </h2>
               <p className="vsplit__body">
                 Most catastrophic home damage starts small and silent. These are the
-                things worth watching — the ones where a few dollars of warning prevents
-                thousands in repair.
+                things worth watching: the ones where a small warning prevents a large
+                repair.
               </p>
               <ul className="watchlist">
                 {WATCHLIST.map((w) => (
@@ -136,9 +136,9 @@ export default function HomeMonitoringPage() {
         </div>
       </Section>
 
-      <LimitsBand heading="What this is — and isn't">
+      <LimitsBand heading="What this is, and isn't">
         Monitoring reduces risk; it doesn&apos;t remove it, and it only helps with what
-        it can detect. Your home&apos;s information is yours — the point is to protect
+        it can detect. Your home&apos;s information is yours. The point is to protect
         you and help you make good decisions, not to watch over you. Like everything
         here, this is what we&apos;re building toward, not a service running today.
       </LimitsBand>
@@ -148,6 +148,7 @@ export default function HomeMonitoringPage() {
       <ContactSection
         source="/home-monitoring"
         audience="resident"
+        intro="Tell us about your community, and which of these goals matters most to it."
         heading={
           <>
             Want this for your <span className="it">community?</span>

@@ -16,7 +16,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/working-toward",
   title: "For Communities: What We're Working Toward",
   description:
-    "The reasoning behind each goal Wameir is working toward for its communities — mechanisms we can explain plainly, framed as intent, not results we don't have yet.",
+    "The reasoning behind each goal Wameir is working toward for its communities: mechanisms we can explain plainly, described as goals, not services running today.",
 });
 
 /*
@@ -86,9 +86,8 @@ export default function WorkingTowardPage() {
           <p className="lede">
             We are early. Wameir has not yet acquired its first company, so
             everything on this page is a goal, not a service running today. We are
-            writing it down anyway, because we think the <em>reasoning</em> behind a
-            promise matters as much as the promise — and because we want to be held
-            to it.
+            writing it down anyway, because the <em>reasoning</em> behind a promise
+            matters as much as the promise, and because we want to be held to it.
           </p>
         </div>
       </header>
@@ -97,15 +96,14 @@ export default function WorkingTowardPage() {
       <Section bg="cream">
         <div className="wrap">
           <p className="lead-statement" style={{ maxWidth: "30ch" }}>
-            Every benefit has to save a household real money or real effort, or it{" "}
-            <span className="g">does not belong here.</span>
+            Every benefit has to save a household money or effort, or it{" "}
+            <span className="g">doesn&apos;t belong here.</span>
           </p>
           <div className="goals-intro">
             <p>
-              Not a nice-to-have, not a talking point — a real, measurable
-              improvement in the life of someone who lives in one of these
-              communities. If we can&apos;t explain plainly why something works, we
-              won&apos;t build it.
+              It has to be a measurable improvement for someone who lives in one of
+              these communities. If we can&apos;t explain plainly why something works,
+              we won&apos;t build it.
             </p>
             <p>
               The goals fall into three groups: an association that&apos;s easy to
@@ -153,13 +151,12 @@ export default function WorkingTowardPage() {
         <div className="wrap">
           <div className="goals-closing">
             <p>
-              None of this is delivered yet — we&apos;ve been clear about that
-              throughout. What we hope this page shows is that the goals aren&apos;t
-              wishful. Each one rests on a mechanism we can explain plainly: routine
-              work automated so people can do the work that matters; per-home
-              friction removed by doing things at community scale; cost asymmetries
-              and risk pricing used in the resident&apos;s favor; and technology
-              built by an owner who plans to stay.
+              None of this is delivered yet. What we hope this page shows is that each
+              goal rests on a mechanism we can explain plainly: routine work automated
+              so people can do the work that matters, per-home friction removed by
+              working at community scale, cost asymmetries and risk pricing used in the
+              resident&apos;s favor, and technology built by an owner who plans to
+              stay.
             </p>
             <p>
               As we acquire and operate our first communities, the reasoning on this
@@ -175,6 +172,7 @@ export default function WorkingTowardPage() {
       <ContactSection
         source="/working-toward"
         audience="board"
+        intro="On a board? Tell us what you'd fix first. Answers like that shape what we build."
         heading={
           <>
             Want to hold us to <span className="it">these goals?</span>

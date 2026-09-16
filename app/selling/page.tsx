@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/selling",
   title: "Thinking About Selling",
   description:
-    "Selling your management company is a big decision. Wameir is a long-term operator that invests its own capital and plans to own the businesses it acquires for the long term.",
+    "Selling your management company is a big decision. Wameir buys with its own capital, runs what it buys, and plans to own it for the long term.",
 });
 
 export default function SellingPage() {
@@ -35,11 +35,18 @@ export default function SellingPage() {
       </header>
 
       {/* Emotional opener (§5.2) as the page's pull-quote */}
-      <PullQuote bg="cream" size="md" after={<p>That&apos;s why we started Wameir.</p>}>
-        Selling your business is one of the biggest decisions you&apos;ll ever make.
-        It&apos;s not just about the numbers — it&apos;s about your employees, your
-        clients, your reputation, and everything you&apos;ve spent years{" "}
-        <span className="g">building.</span>
+      <PullQuote
+        bg="cream"
+        size="md"
+        after={
+          <p>
+            That&apos;s why we started Wameir: to be a buyer founders are comfortable
+            handing them to.
+          </p>
+        }
+      >
+        Selling your company means handing over your employees, your clients and{" "}
+        <span className="g">your name.</span>
       </PullQuote>
 
       {/* Positive operator statement (§5.2 — no fund/PE contrast, §6 rule 1) */}
@@ -48,18 +55,18 @@ export default function SellingPage() {
           <div className="split">
             <div className="split__label">
               <span className="eyebrow">How we buy</span>
-              <p className="kicker">We&apos;re operators, not just owners.</p>
+              <p className="kicker">We run what we buy.</p>
             </div>
             <div className="split__body">
               <p>
-                We invest our own capital, operate every business we acquire, and plan
-                to own them for the long term. Our goal isn&apos;t to change what makes
-                your company successful — it&apos;s to give it the resources to become{" "}
-                <strong>even stronger</strong>.
+                We buy with our own capital, run every company ourselves, and plan to own
+                it for a long time. What already makes your company work stays. What we
+                add is support behind your team: <strong>better systems</strong> for
+                billing, portals and reporting.
               </p>
               <p>
-                Whether you&apos;re ready to retire, looking for a partner, or simply
-                exploring your options, we&apos;d welcome a confidential conversation.
+                Some founders want to retire soon. Others want to stay on for a while.
+                Either works, and the first conversation is confidential.
               </p>
               <Link className="teaser__link" href="/faq">
                 Common questions from founders <Arrow />
@@ -92,6 +99,7 @@ export default function SellingPage() {
         source="/selling"
         audience="founder"
         eyebrow="Start a confidential conversation"
+        intro="If a sale is somewhere on your horizon, now is a good time to talk. What you tell us stays confidential."
         lead="Tell us a little about your company, and we'll reply personally."
         heading={
           <>

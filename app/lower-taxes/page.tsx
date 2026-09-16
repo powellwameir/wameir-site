@@ -20,13 +20,13 @@ const STEPS: LoopStep[] = [
     n: "01 · Review",
     icon: "doc-search",
     title: "Check every assessment",
-    body: "Each home's assessed value is compared against genuinely comparable properties nearby — the same evidence an appraisal district uses, gathered once for the whole community.",
+    body: "Each home's assessed value is compared with similar properties nearby, using the same kind of evidence an appraisal district uses, gathered once for the whole community.",
   },
   {
     n: "02 · File",
     icon: "doc-file",
     title: "Protest on your behalf",
-    body: "For every enrolled home, the appeal is prepared and filed the same way, on time, every year — the deadline never missed, the paperwork never skipped.",
+    body: "For every enrolled home, the appeal is prepared and filed the same way and on time, every year.",
   },
   {
     n: "03 · Repeat",
@@ -48,14 +48,13 @@ export default function LowerTaxesPage() {
             <span className="accent-italic">done for the whole community.</span>
           </h1>
           <p className="lede">
-            Every year, homes across a community are over-assessed and quietly overpay.
-            The fix — protesting the assessment — is something almost any homeowner is
-            entitled to do, and almost no one does. Our aim is to change that by doing it
-            for everyone, at once.
+            Every year, some homes in a community are over-assessed, and their owners pay
+            the higher bill. Almost any homeowner can protest an assessment, and almost
+            no one does. Our aim is to do it for everyone, at once.
           </p>
           <p className="track__disclaimer track__disclaimer--sm">
-            Wameir is early-stage. This explains the thinking behind the goal — how a
-            community-wide tax-appeal effort would work — not a service running today.
+            Wameir is early-stage. This explains how a community-wide tax appeal would
+            work. It&apos;s a goal, not a service running today.
           </p>
         </div>
       </header>
@@ -67,7 +66,7 @@ export default function LowerTaxesPage() {
             steps={STEPS}
             closer={
               <>
-                The appeal that finally gets filed —{" "}
+                The appeal gets filed{" "}
                 <span className="g">for every home, every year.</span>
               </>
             }
@@ -82,10 +81,10 @@ export default function LowerTaxesPage() {
               <span className="eyebrow">Why it works</span>
               <h2 className="vsplit__title">The scale argument</h2>
               <p className="vsplit__body">
-                Any homeowner can protest their assessment. Almost none do — for a single
-                household, gathering comparable-value evidence, learning the process, and
-                meeting the deadline rarely feels worth it against an uncertain result.
-                So most people simply pay whatever number arrives.
+                Any homeowner can protest their assessment. Almost none do. For a single
+                household, gathering comparable-value evidence, learning the process and
+                meeting the deadline rarely feels worth it against an uncertain result,
+                so most people pay whatever number arrives.
               </p>
               <p className="vsplit__body">
                 Across a whole community, that math inverts. The same appeal becomes{" "}
@@ -106,9 +105,9 @@ export default function LowerTaxesPage() {
       </Section>
 
       <LimitsBand heading="What we can and can't promise">
-        Not every appeal succeeds, and no one can promise a specific reduction —
+        Not every appeal succeeds, and no one can promise a specific reduction;
         assessments and outcomes vary from home to home and year to year. What a
-        community-wide effort can commit to is that the appeal actually gets filed,
+        community-wide effort can commit to is that the appeal gets filed,
         correctly and on time, for every home that wants it. The value is in reliably
         doing the thing that otherwise doesn&apos;t get done. This is a goal we&apos;re
         working toward, not a service running today.
@@ -119,6 +118,7 @@ export default function LowerTaxesPage() {
       <ContactSection
         source="/lower-taxes"
         audience="resident"
+        intro="Tell us about your community, and which of these goals matters most to it."
         heading={
           <>
             Want this for your <span className="it">community?</span>

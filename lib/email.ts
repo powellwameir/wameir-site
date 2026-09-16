@@ -1,7 +1,7 @@
 import type { Lead } from "./db";
 
 /**
- * Transactional "new enquiry" notification via the Resend HTTP API (§5A).
+ * Transactional "new inquiry" notification via the Resend HTTP API (§5A).
  * HTTP-only (fetch) so it works on the edge runtime — never SMTP/Nodemailer.
  * Lead PII stays server-side: it goes only into this email to the team, never
  * into logs, analytics, or the client (§14).
@@ -20,7 +20,7 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
     resident: "Resident",
     other: "General",
   }[lead.audience];
-  const subject = `New ${label} enquiry — ${lead.name}`;
+  const subject = `New ${label} inquiry: ${lead.name}`;
   const lines = [
     `Audience: ${lead.audience}`,
     `Name:     ${lead.name}`,

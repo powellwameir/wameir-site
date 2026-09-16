@@ -47,9 +47,11 @@ export default function Home() {
             <br />
             <span className="accent-italic">done right.</span>
           </h1>
-          {/* TODO(§15 #10): confirm final hero supporting line. */}
+          {/* Owner to confirm (§15 #10). Says what Wameir does, in progressive tense:
+              no acquisition has closed yet. */}
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
-            Modern tools. Optimized service. Elevated communities.
+            We&apos;re buying HOA management companies in Greater Houston with our own
+            capital, and we&apos;ll run them ourselves.
           </p>
           <div className="hero__actions hero-reveal hero-reveal--4">
             <DualCTA onDark />
@@ -187,9 +189,8 @@ export default function Home() {
                 What we&apos;re working toward in every community.
               </h2>
               <p>
-                We are early, so these are goals rather than guarantees — the standard
-                we hold ourselves to. Each one has to save a household real money or
-                real effort, or it does not belong here.
+                Each goal has to save a household money or time. If it doesn&apos;t, it
+                comes off the list.
               </p>
               {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
               <p className="track__disclaimer">{DISCLAIMER}</p>

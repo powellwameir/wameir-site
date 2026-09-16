@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             <p>
               When our contact form goes live, it will collect only what we need — your
               name, company, email, an optional phone number, and your message. We will
-              use that information solely to respond to your enquiry, store it securely
+              use that information solely to respond to your inquiry, store it securely
               with access limited to Wameir&apos;s founders, and never sell it or share
               it with third parties for their own use.
             </p>

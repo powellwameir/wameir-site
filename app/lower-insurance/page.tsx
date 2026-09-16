@@ -20,8 +20,8 @@ const STEPS: LoopStep[] = [
   {
     n: "01 · Protect",
     icon: "shield-check",
-    title: "Reduce the real risk",
-    body: "The same monitoring that catches leaks and failures early makes a home measurably less likely to file the claims insurers care most about — water, freeze, and electrical.",
+    title: "Reduce the risk itself",
+    body: "The same monitoring that catches leaks and failures early makes a home measurably less likely to file the claims insurers care most about: water, freeze and electrical.",
     // The monitoring is what earns the lower rate, so the dependency is linked.
     link: goalLink("Smarter preventive maintenance"),
   },
@@ -29,13 +29,13 @@ const STEPS: LoopStep[] = [
     n: "02 · Show",
     icon: "chart-up",
     title: "Prove it, in the home's record",
-    body: "A home that's actively watched and well-maintained has something most don't: evidence. That documented, lower-risk profile is what makes a better rate defensible rather than hopeful.",
+    body: "A home that's actively watched and well-maintained has something most don't: evidence. That documented, lower-risk profile is what makes a better rate defensible.",
   },
   {
     n: "03 · Save",
     icon: "card-down",
     title: "See it on the bill",
-    body: "Our aim is to connect that lower risk to the coverage, so the savings show up where you can feel them — the premium — instead of staying a nice idea in principle.",
+    body: "Our aim is to connect that lower risk to the coverage, so the savings show up where you can feel them: on the premium.",
   },
 ];
 
@@ -51,14 +51,13 @@ export default function LowerInsurancePage() {
             <span className="accent-italic">earned by a safer home.</span>
           </h1>
           <p className="lede">
-            Insurance is one of the fastest-rising costs of owning a home. Our aim is to
-            help bring it down the honest way — not with a coupon, but by making each
-            home genuinely less risky to insure, and making sure that lower risk is
-            recognized.
+            Insurance is one of the biggest costs of owning a home, and it keeps rising.
+            Our aim is to bring it down by making each home less risky to insure, and
+            making sure insurers recognize the lower risk.
           </p>
           <p className="track__disclaimer track__disclaimer--sm">
-            Wameir is early-stage. This explains the thinking behind the goal — how lower
-            premiums would be earned — not a service running today.
+            Wameir is early-stage. This explains how lower premiums would be earned.
+            It&apos;s a goal, not a service running today.
           </p>
         </div>
       </header>
@@ -70,8 +69,8 @@ export default function LowerInsurancePage() {
             steps={STEPS}
             closer={
               <>
-                A safer home should be a cheaper home to insure —{" "}
-                <span className="g">and we want to make that real.</span>
+                A safer home should be{" "}
+                <span className="g">a cheaper home to insure.</span>
               </>
             }
           />
@@ -85,16 +84,14 @@ export default function LowerInsurancePage() {
               <span className="eyebrow">Why it works</span>
               <h2 className="vsplit__title">The risk-pricing argument</h2>
               <p className="vsplit__body">
-                Insurance is priced on risk — that&apos;s the whole logic the industry
-                already runs on. The failures that drive the most home claims are exactly
-                the ones a monitored, well-kept home catches early: water, freeze,
+                Insurance is priced on risk. Many of the costliest home claims start with
+                failures a monitored, well-kept home catches early: water, freeze and
                 electrical.
               </p>
               <p className="vsplit__body">
-                So a home that&apos;s actively watched is, measurably,{" "}
-                <strong>a lower-risk home</strong> — and lower risk is the one thing
-                insurers reliably reward. The opportunity isn&apos;t to argue for a
-                discount; it&apos;s to make the reduced risk visible so the price can
+                So a home that&apos;s watched is measurably{" "}
+                <strong>a lower-risk home</strong>, and lower risk is what insurers price
+                for. The opportunity is to make that reduced risk visible so the price can
                 follow it down.
               </p>
               <p className="vsplit__payoff">
@@ -111,7 +108,7 @@ export default function LowerInsurancePage() {
       <LimitsBand heading="What we can and can't promise">
         Any discount depends on insurers, coverage, and factors outside our control, so
         we can&apos;t promise a specific number in advance. What we can do is make a home
-        genuinely lower-risk and make that reduction visible — the honest basis for a
+        lower-risk and make that reduction visible, which is the honest basis for a
         better rate. Monitoring reduces risk; it doesn&apos;t remove it. This is a goal
         we&apos;re working toward, not a service running today.
       </LimitsBand>
@@ -121,6 +118,7 @@ export default function LowerInsurancePage() {
       <ContactSection
         source="/lower-insurance"
         audience="resident"
+        intro="Tell us about your community, and which of these goals matters most to it."
         heading={
           <>
             Want this for your <span className="it">community?</span>

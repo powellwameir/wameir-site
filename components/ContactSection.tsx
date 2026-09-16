@@ -2,7 +2,7 @@ import Section from "./Section";
 import ContactForm, { type Audience } from "./ContactForm";
 import Button from "./Button";
 import { WeirWatermark } from "./WeirLattice";
-import { CONTACT_EMAIL, LOCATION, SCHEDULING_URL, schedulingHref } from "@/lib/content";
+import { CONTACT_EMAIL, LOCATION, SCHEDULING_URL, callLabel, schedulingHref } from "@/lib/content";
 
 // Build-time flag: show the real form only once it's enabled (privacy notice live).
 // Until then we show a clean "email us" CTA instead of a form that can't submit.
@@ -17,12 +17,15 @@ export default function ContactSection({
   source = "/",
   eyebrow = "Start a conversation",
   heading,
+  intro = "Whether you're thinking about selling or asking about your community, we'd like to hear from you. We move at your pace, and the conversation stays confidential.",
   lead = "Send us a note and we'll reply personally.",
 }: {
   audience?: Audience;
   source?: string;
   eyebrow?: string;
   heading?: React.ReactNode;
+  /** Opening paragraph, set per page so the closing band doesn't repeat verbatim. */
+  intro?: React.ReactNode;
   lead?: React.ReactNode; // per-page lead line so the closing block doesn't read templated
 }) {
   return (
@@ -39,11 +42,7 @@ export default function ContactSection({
                 </>
               )}
             </h2>
-            <p>
-              Whether you&apos;re exploring a sale or asking about your community,
-              we&apos;d welcome the conversation. We move at your pace and keep it
-              confidential.
-            </p>
+            <p>{intro}</p>
             <p className="mt-sm" style={{ color: "var(--cream-70)", fontSize: "0.9375rem" }}>
               {LOCATION} &middot;{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: "var(--gold-light)" }}>
@@ -60,7 +59,7 @@ export default function ContactSection({
                 ctaLocation="contact"
                 {...(SCHEDULING_URL ? { target: "_blank", rel: "noopener" } : {})}
               >
-                Book a confidential 20-minute call
+                {callLabel()}
               </Button>
             </div>
           </div>
@@ -73,12 +72,12 @@ export default function ContactSection({
                 className="btn btn--gold"
                 data-cta="email"
                 data-cta-location="contact"
-                href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20enquiry`}
+                href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20inquiry`}
               >
                 Email {CONTACT_EMAIL}
               </a>
               <p className="contact-cta__note">
-                Every message is read by a founder — and kept confidential.
+                Every message is read by a founder and kept confidential.
               </p>
             </div>
           )}

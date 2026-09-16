@@ -18,7 +18,7 @@ export const SELLER_POINTS: SellerPoint[] = [
   },
   {
     heading: "Preserve your legacy",
-    body: "We build on what already makes your company work rather than replacing it.",
+    body: "We build on what already makes your company work.",
     base: "/img/seller-legacy",
     alt: "An older craftsman carving a wooden panel at his workbench",
   },
