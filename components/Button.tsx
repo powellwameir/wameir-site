@@ -31,15 +31,28 @@ export default function Button({
   arrow = false,
   children,
   className,
+  id,
+  target,
+  rel,
+  cta,
+  ctaLocation,
 }: {
   href: string;
   variant?: Variant;
   arrow?: boolean;
   children: React.ReactNode;
   className?: string;
+  id?: string;
+  target?: string;
+  rel?: string;
+  /** Stable analytics hook, rendered as data-cta (no tracking attached here). */
+  cta?: string;
+  /** Where on the page the CTA sits, rendered as data-cta-location. */
+  ctaLocation?: string;
 }) {
   const cls = `btn btn--${variant}${className ? ` ${className}` : ""}`;
   const isInternal = href.startsWith("/") && !href.startsWith("//");
+  const hooks = { id, "data-cta": cta, "data-cta-location": ctaLocation };
   const content = (
     <>
       {children}
@@ -49,13 +62,13 @@ export default function Button({
 
   if (isInternal) {
     return (
-      <Link href={href} className={cls}>
+      <Link href={href} className={cls} target={target} rel={rel} {...hooks}>
         {content}
       </Link>
     );
   }
   return (
-    <a href={href} className={cls}>
+    <a href={href} className={cls} target={target} rel={rel} {...hooks}>
       {content}
     </a>
   );

@@ -10,4 +10,33 @@ export const DISCLAIMER =
 
 export const CONTACT_EMAIL = "hello@wameir.com";
 export const LOCATION = "Greater Houston, Texas";
-export const COPYRIGHT = "© 2026 Wameir.";
+
+/*
+ * Owner-supplied contact signals. Each is a PLACEHOLDER until filled in; empty
+ * values degrade gracefully rather than publishing a guessed or dead link.
+ */
+
+// TODO(owner): founder scheduling link (Calendly / Cal.com). While empty, the
+// "Book a call" buttons open an email with a call-request subject instead.
+export const SCHEDULING_URL: string = "";
+
+// TODO(owner): company LinkedIn page URL. Hidden in the footer while empty.
+export const LINKEDIN_URL: string = "";
+
+// TODO(owner): registered legal entity name (e.g. "Wameir … LLC"). While empty
+// the copyright line reads "© 2026 Wameir."
+export const LEGAL_ENTITY: string = "";
+
+// TODO(owner): public phone number, display format (e.g. "(713) 555-0100").
+// Hidden in the footer while empty.
+export const PHONE: string = "";
+
+export const COPYRIGHT = `© 2026 ${LEGAL_ENTITY || "Wameir"}.`;
+
+/** Where the founder "Book a call" CTAs point: the scheduler, or a mailto fallback. */
+export function schedulingHref(): string {
+  return (
+    SCHEDULING_URL ||
+    `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Confidential call request")}`
+  );
+}

@@ -21,6 +21,8 @@ type Payload = {
   turnstileToken?: string;
 };
 
+const AUDIENCES = ["founder", "board", "resident", "other"] as const;
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function json(body: unknown, status = 200) {
@@ -44,7 +46,9 @@ export async function POST(req: Request) {
   }
 
   // 2. Re-validate server-side.
-  const audience = body.audience === "community" ? "community" : "seller";
+  const audience: Lead["audience"] = AUDIENCES.includes(body.audience as Lead["audience"])
+    ? (body.audience as Lead["audience"])
+    : "other";
   const name = (body.name || "").trim();
   const email = (body.email || "").trim();
   const message = (body.message || "").trim();

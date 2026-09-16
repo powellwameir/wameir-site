@@ -142,7 +142,7 @@ export default function HomeMonitoringPage() {
 
       <ContactSection
         source="/home-monitoring"
-        audience="community"
+        audience="resident"
         heading={
           <>
             Want this for your <span className="it">community?</span>

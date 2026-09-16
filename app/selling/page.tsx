@@ -87,7 +87,7 @@ export default function SellingPage() {
 
       <ContactSection
         source="/selling"
-        audience="seller"
+        audience="founder"
         eyebrow="Start a confidential conversation"
         lead="Tell us a little about your company, and we'll reply personally."
         heading={

@@ -65,6 +65,7 @@ export default function TeamPage() {
 
       <ContactSection
         source="/team"
+        audience="founder"
         eyebrow="Get in touch"
         lead="Send us a note — we'd like to meet you."
         heading={

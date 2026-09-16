@@ -5,7 +5,7 @@ import { neon } from "@neondatabase/serverless";
  * Cloudflare Workers edge runtime (no node:net TCP driver). One row per enquiry.
  */
 export type Lead = {
-  audience: "seller" | "community";
+  audience: "founder" | "board" | "resident" | "other";
   name: string;
   company?: string;
   email: string;

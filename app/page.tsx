@@ -262,7 +262,7 @@ export default function Home() {
       </Section>
 
       {/* ---- Contact (navy, echoes hero) ---- */}
-      <ContactSection source="/" />
+      <ContactSection source="/" audience="founder" />
     </>
   );
 }

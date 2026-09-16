@@ -14,7 +14,12 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
   const to = process.env.LEADS_NOTIFY_TO || "hello@wameir.com";
   if (!apiKey || !from) throw new Error("Email is not configured");
 
-  const label = lead.audience === "seller" ? "Seller" : "Community";
+  const label = {
+    founder: "Founder",
+    board: "Board",
+    resident: "Resident",
+    other: "General",
+  }[lead.audience];
   const subject = `New ${label} enquiry — ${lead.name}`;
   const lines = [
     `Audience: ${lead.audience}`,

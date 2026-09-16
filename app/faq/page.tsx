@@ -169,7 +169,7 @@ export default function FaqPage() {
 
       <ContactSection
         source="/faq"
-        audience="seller"
+        audience="founder"
         eyebrow="Still have questions?"
         lead="Send us your question, and we'll answer it personally."
         heading={
