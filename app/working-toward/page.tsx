@@ -60,14 +60,13 @@ function GoalBlock({ g }: { g: Goal }) {
       </div>
       <div className="goal__reasoning">
         <div className="goal__block">
-          <span className="goal__label">{g.whyLabel ?? "Why it's possible"}</span>
           {g.why.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
         {g.limit && (
           <div className="goal__block goal__block--limit">
-            <span className="goal__label">The honest limit</span>
+            {/* The limit is set apart by its rule, not a label. */}
             <p>{g.limit}</p>
           </div>
         )}

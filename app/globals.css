@@ -112,6 +112,17 @@ p { max-width: var(--measure); }
 
 /* ------- Sections: every section declares an explicit background (§9) ------- */
 .section { padding-block: 96px; }              /* 96px desktop */
+/* Rhythm follows content: a band built around a grid or a two-column argument
+   gets more room; a single statement or a short link row gets less, so short
+   bands don't feel padded and long ones don't run together. Pull quotes and the
+   limits band keep their own deliberate padding. */
+.section:has(.trio, .tile-grid, .who-grid, .points, .states, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson) {
+  padding-block: 112px;
+}
+.section.more-goals,
+.section:has(> .wrap > .lead-statement:only-child) {
+  padding-block: 80px;
+}
 .section--navy  { background: var(--navy);    color: #fff; }
 .section--navy-90 { background: var(--navy-90); color: #fff; }
 .section--cream { background: var(--cream);   color: var(--ink); }
@@ -948,15 +959,7 @@ p { max-width: var(--measure); }
 .goal__goal { font-size: 1.125rem; color: var(--ink); margin-top: 14px; }
 .goal__block { margin-top: 22px; }
 .goal__block p { color: var(--ink-70); margin-top: 10px; }
-.goal__label {
-  display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--gold-deep);
-}
-.goal__block--limit .goal__label { color: var(--ink-70); }
+.goal__block p:first-child { margin-top: 0; }
 .goal__block--limit {
   padding-left: 18px;
   border-left: 2px solid var(--hairline-gold);
@@ -1034,6 +1037,13 @@ p { max-width: var(--measure); }
    ========================================================================= */
 @media (max-width: 720px) {
   .section { padding-block: 64px; } /* 64px mobile */
+  .section:has(.trio, .tile-grid, .who-grid, .points, .states, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson) {
+    padding-block: 72px;
+  }
+  .section.more-goals,
+  .section:has(> .wrap > .lead-statement:only-child) {
+    padding-block: 56px;
+  }
   .wrap { padding-inline: 24px; }
   .hero { padding-top: 128px; padding-bottom: 72px; }
   .page-header { padding-top: 120px; padding-bottom: 56px; }

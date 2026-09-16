@@ -9,7 +9,6 @@ export type Goal = {
   title: string;
   icon: IconName; // same icon on the home card and the /working-toward row
   goal: string;
-  whyLabel?: string;
   why: string[];
   limit?: string;
   toward: string;
@@ -69,7 +68,6 @@ export const GROUPS: Group[] = [
         title: "Lower property taxes",
         icon: "taxes",
         goal: "protest every home's assessment each year, to keep the tax bill fair.",
-        whyLabel: "The scale argument",
         why: [
           "Any homeowner can protest their own property assessment. Almost none do, because for a single household the effort, the paperwork, and the know-how rarely feel worth it against an uncertain outcome. That per-home friction is exactly what disappears at community scale. When the same appeal process runs across hundreds of homes as a standardized, repeatable operation, the cost per home falls dramatically and the expertise is applied once and reused. The individual homeowner was leaving money on the table because chasing it alone wasn't worth the effort. Doing it together makes it worth it.",
         ],
@@ -83,7 +81,6 @@ export const GROUPS: Group[] = [
         title: "Smarter preventive maintenance",
         icon: "maintenance",
         goal: "simple sensors that catch a leak, a freeze risk, or a failing system early.",
-        whyLabel: "The cost-asymmetry argument",
         why: [
           "The economics of home damage are lopsided. A slow leak caught at the supply line is a small part and an afternoon. The same leak found after it has run behind a wall for a week is a flooded floor, ruined finishes, an insurance claim, and weeks of disruption. Low-cost sensors use that asymmetry. They only need to raise the alarm before a small problem becomes an expensive one. Spread across a community, the math is simple: a modest, predictable cost against a few avoided catastrophes.",
         ],
@@ -96,7 +93,6 @@ export const GROUPS: Group[] = [
         title: "Lower insurance costs",
         icon: "insurance",
         goal: "turn a well-monitored, well-kept home into a lower insurance premium.",
-        whyLabel: "The risk-pricing argument",
         why: [
           "Insurance is priced on risk. A home monitored for the failures behind many claims, such as water and freeze, is measurably a lower-risk home. The logic that a lower-risk home should cost less to insure is the same logic the insurance industry already runs on. Our aim is to make that connection explicit: pair the monitoring with the coverage so the reduced risk shows up where a homeowner can feel it, on the bill.",
         ],
