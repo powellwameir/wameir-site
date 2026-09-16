@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
+import JsonLd from "@/components/JsonLd";
+import { isValidElement, type ReactNode } from "react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/faq",
   title: "FAQ",
   description:
     "Common questions from founders considering a sale, and how Wameir thinks about them.",
-};
+});
 
 type QA = {
   q: string;
@@ -136,6 +140,28 @@ const FAQS: QA[] = [
   },
 ];
 
+/** Plain text of an answer, for structured data (the page renders the JSX). */
+function textOf(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(textOf).join("");
+  if (isValidElement<{ children?: ReactNode }>(node)) return textOf(node.props.children);
+  return "";
+}
+
+// Only the questions the page shows: gated answers (counsel review pending)
+// are placeholders and stay out of search results too.
+const PUBLISHED = FAQS.filter((item) => !item.gated);
+
+const FAQ_PAGE = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: PUBLISHED.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: textOf(item.a).replace(/\s+/g, " ").trim() },
+  })),
+};
+
 export default function FaqPage() {
   return (
     <>
@@ -157,7 +183,7 @@ export default function FaqPage() {
           <div className="faq">
             {/* Only render questions with real answers. Gated ones (legal review
                 pending) stay in the data and return once they're answered. */}
-            {FAQS.filter((item) => !item.gated).map((item) => (
+            {PUBLISHED.map((item) => (
               <details key={item.q}>
                 <summary>{item.q}</summary>
                 <div className="faq__body">{item.a}</div>
@@ -166,6 +192,8 @@ export default function FaqPage() {
           </div>
         </div>
       </Section>
+
+      <JsonLd data={FAQ_PAGE} />
 
       <ContactSection
         source="/faq"

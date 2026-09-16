@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import Icon, { type IconName } from "@/components/Icon";
@@ -6,11 +7,12 @@ import { WeirWatermark } from "@/components/WeirLattice";
 import PullQuote from "@/components/PullQuote";
 import ManagerTimeSection from "@/components/ManagerTimeSection";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/approach",
   title: "Our Approach",
   description:
     "We operate the HOA management companies we buy and build them for the long term — investing in people, technology, and relationships that compound over years.",
-};
+});
 
 const INVEST: { icon: IconName; title: string; line: string }[] = [
   {

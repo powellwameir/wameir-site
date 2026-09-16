@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Section from "@/components/Section";
 import LoopGrid, { type LoopStep } from "@/components/LoopGrid";
 import LimitsBand from "@/components/LimitsBand";
@@ -8,11 +9,12 @@ import Icon, { type IconName } from "@/components/Icon";
 import HouseSectionDiagram from "@/components/diagrams/HouseSectionDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/home-monitoring",
   title: "Smarter Preventive Maintenance",
   description:
     "The long-term vision for home monitoring: a home that keeps its own records, watches its own vital signs, and helps you act before small problems become big ones. A goal Wameir is working toward, not a service running today.",
-};
+});
 
 const STEPS: LoopStep[] = [
   {

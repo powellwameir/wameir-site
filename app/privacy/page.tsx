@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Section from "@/components/Section";
 import { WeirWatermark } from "@/components/WeirLattice";
 import { CONTACT_EMAIL } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Privacy Notice",
-  description: "How Wameir collects, uses, and protects the information you share.",
+  ...pageMetadata({
+    path: "/privacy",
+    title: "Privacy Notice",
+    description:
+      "How Wameir collects, uses, and protects the information you share.",
+  }),
   robots: { index: false }, // placeholder — do not index until counsel-reviewed
 };
 

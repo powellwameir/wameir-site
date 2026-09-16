@@ -1406,20 +1406,20 @@ p { max-width: var(--measure); }
 .teaser__link:focus-visible .arrow--up { transform: translateY(-4px); }
 .tile:focus-visible .tile__img { transform: scale(1.02); }
 
-/* ---- Scroll reveal (targets marked by components/MotionObserver.tsx) ---- */
-[data-reveal] { transition: opacity 0.45s var(--ease-soft), transform 0.45s var(--ease-soft); }
+/* ---- Scroll reveal (card rows marked by components/MotionObserver.tsx) ----
+   Opacity only, 200ms, light stagger. Only below the first two viewports. */
 [data-reveal-row] > * {
-  transition: opacity 0.4s var(--ease-soft), transform 0.4s var(--ease-soft);
-  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+  transition: opacity 0.2s var(--ease-soft);
+  transition-delay: calc(var(--reveal-i, 0) * 50ms);
 }
-[data-reveal="pending"],
-[data-reveal-row="pending"] > * { opacity: 0; transform: translateY(12px); }
-/* A row inside a section that is itself rising only fades, so movement stays 12px. */
-[data-reveal] [data-reveal-row] > * { transform: none; }
+[data-reveal-row="pending"] > * { opacity: 0; }
+/* Printed pages show everything, whatever the reveal state. */
+@media print {
+  [data-reveal-row] > * { opacity: 1 !important; transition: none !important; }
+}
 
 /* ---- Reduced motion: fully static, final state, no transforms ---- */
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal],
   [data-reveal-row] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
   .btn, .btn .arrow, .card, .bcard, .bcard__arrow, .who-photo, .tile__img,
   .teaser__link .arrow, .tile__title .arrow { transform: none !important; }

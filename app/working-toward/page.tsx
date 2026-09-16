@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Fragment } from "react";
 import Link from "next/link";
 import Section from "@/components/Section";
@@ -11,11 +12,12 @@ import { GROUPS, slugify, type Goal } from "@/lib/goals";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/working-toward",
   title: "For Communities: What We're Working Toward",
   description:
     "The reasoning behind each goal Wameir is working toward for its communities — mechanisms we can explain plainly, framed as intent, not results we don't have yet.",
-};
+});
 
 /*
  * Band colours per goal group. Set explicitly rather than alternating, so the
