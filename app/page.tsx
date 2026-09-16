@@ -47,11 +47,9 @@ export default function Home() {
             <br />
             <span className="accent-italic">done right.</span>
           </h1>
-          {/* Owner to confirm (§15 #10). Says what Wameir does, in progressive tense:
-              no acquisition has closed yet. */}
+          {/* Owner-chosen (§15 #10): the original three-beat rhythm, in plainer words. */}
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
-            We&apos;re buying HOA management companies in Greater Houston with our own
-            capital, and we&apos;ll run them ourselves.
+            Better tools. Faster answers. Stronger communities.
           </p>
           <div className="hero__actions hero-reveal hero-reveal--4">
             <DualCTA onDark />
