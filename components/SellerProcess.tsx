@@ -5,7 +5,8 @@ import VisionIntro from "./VisionIntro";
  * The selling process, in detail (/selling #how-it-works). Rebuilt from the
  * standalone visual spec (reference_material/wameir-seller-process-detailed.html)
  * on the site's tokens: one radius, one card depth, the existing label and
- * disclaimer styles. The copy is the spec's, verbatim.
+ * disclaimer styles. The copy is the spec's, edited to the site's house style (no em dashes, no
+ * "not X" contrasts, no serial comma).
  *
  * Five stages, each a node on a gold rail beside a card: timing, two detail
  * columns and a reassurance line. The overview strip above repeats the stage
@@ -37,7 +38,7 @@ const STAGES: Stage[] = [
   {
     title: "A first conversation",
     when: "At your pace · no commitment",
-    lead: "You reach out, or we're introduced. This first step is just a conversation — a chance to get a feel for each other and for whether there's a fit. Nothing is decided, and nothing is expected.",
+    lead: "You reach out, or we're introduced. This first step is a conversation, a chance to get a feel for each other and for whether there's a fit. Nothing is decided, and nothing is expected.",
     icon: (
       <>
         <path d="M4 5h16v11H8l-4 4z" />
@@ -65,7 +66,7 @@ const STAGES: Stage[] = [
   {
     title: "Getting to know the business",
     when: "Usually 2–4 weeks",
-    lead: "A few conversations and a look at the numbers — enough to understand how the company runs and who makes it run. We're not hunting for what to cut; we're learning what makes it work, so we can keep it working.",
+    lead: "A few conversations and a look at the numbers, enough to understand how the company runs and who makes it run. We want to learn what makes it work, so we can keep it working.",
     icon: (
       <>
         <circle cx="11" cy="11" r="7" />
@@ -102,7 +103,7 @@ const STAGES: Stage[] = [
   {
     title: "A fair, tailored offer",
     when: "A written offer, built around you",
-    lead: "A clear written offer, shaped around what you told us you want — a clean exit, a transition period, or a continuing role. We walk you through how we arrived at it, plainly.",
+    lead: "A clear written offer, shaped around what you told us you want: a clean exit, a transition period or a continuing role. We walk you through how we arrived at it, plainly.",
     icon: (
       <>
         <path d="M6 3h9l3 3v15H6z" />
@@ -121,13 +122,13 @@ const STAGES: Stage[] = [
       {
         head: "How a deal can be structured",
         items: [
-          "Cash at close, plus a seller note — so we stay partners through the transition",
+          "Cash at close, plus a seller note, so we stay partners through the transition",
           "Room to stay invested in the community's continued success",
-          "Shaped around your goals, not a fixed template",
+          "Shaped around your goals",
         ],
       },
     ],
-    reassure: "No exploding deadlines and no pressure. You take the time you need to decide.",
+    reassure: "You take the time you need to decide, with no pressure and no deadline.",
     reassureIcon: (
       <>
         <path d="M12 8v8M8 12h8" />
@@ -137,8 +138,8 @@ const STAGES: Stage[] = [
   },
   {
     title: "The transition",
-    when: "Your people stay — that's the point",
-    lead: "The managers and staff who know your communities stay right where they are. We add support, tools, and capital behind them — we don't replace the relationships that made the company worth buying.",
+    when: "Your people stay. That's the point.",
+    lead: "The managers and staff who know your communities stay right where they are. We add support, tools and capital behind them, and keep the relationships that made the company worth buying.",
     icon: (
       <>
         <path d="M4 20v-1a5 5 0 0 1 10 0v1" />
@@ -166,7 +167,7 @@ const STAGES: Stage[] = [
       },
     ],
     reassure:
-      "Your role in the transition is yours to choose — full handoff, a set period, or staying on.",
+      "Your role in the transition is yours to choose: a full handoff, a set period or staying on.",
     reassureIcon: (
       <>
         <path d="M3 21h18M6 21V10l6-4 6 4v11" />
@@ -176,8 +177,8 @@ const STAGES: Stage[] = [
   },
   {
     title: "Long-term ownership",
-    when: "We operate it, and hold it",
-    lead: "We run the company ourselves and plan to own it for years — not to flip it. What you built keeps its name, its people, and its place in the community, and gets the investment to become stronger over time.",
+    when: "We operate it and hold it",
+    lead: "We run the company ourselves and plan to own it for years. What you built keeps its name, its people and its place in the community, and gets the investment to become stronger over time.",
     icon: (
       <>
         <path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2" />
@@ -189,19 +190,19 @@ const STAGES: Stage[] = [
         head: "What this means",
         items: [
           "We're owner-operators, here to stay",
-          "Decisions made for the long term, not a quick resale",
+          "Decisions made for the long term",
           "Your legacy continues, with more behind it",
         ],
       },
       {
         head: "Your part, if you want one",
         items: [
-          "Stay involved, advise, or step away entirely",
+          "Stay involved, advise or step away entirely",
           "A seller note keeps you invested in how the community does next",
         ],
       },
     ],
-    reassure: "You built it. We'll keep building it — for the long haul.",
+    reassure: "You built it. We'll keep building it for the long haul.",
     reassureIcon: SHIELD,
   },
 ];
@@ -224,8 +225,8 @@ export default function SellerProcess() {
       <div className="wrap">
         <VisionIntro
           eyebrow="Thinking about selling?"
-          lede="The hardest part of selling is not knowing how it goes. So here's the entire path in detail — what happens at each stage, what we'll ask of you, how long it takes, and what stays protected throughout."
-          note="Wameir is early-stage. This is how we intend to work with every owner — the standard we're holding ourselves to."
+          lede="The hardest part of selling is not knowing how it goes. So here's the entire path in detail: what happens at each stage, what we'll ask of you, how long it takes and what stays protected throughout."
+          note="Wameir is early-stage. This is how we intend to work with every owner, and the standard we're holding ourselves to."
         >
           The whole process, <span className="g">start to finish.</span>
         </VisionIntro>
@@ -280,11 +281,11 @@ export default function SellerProcess() {
 
         <div className="sp-promise">
           <h3>
-            Ready when you are — <span className="g">even if that&apos;s a year out.</span>
+            Ready when you are, <span className="g">even if that&apos;s a year out.</span>
           </h3>
           <p>
             A first conversation costs nothing and commits you to nothing. Every message is
-            read by a founder, and kept confidential.
+            read by a founder and kept confidential.
           </p>
         </div>
       </div>

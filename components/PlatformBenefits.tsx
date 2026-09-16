@@ -4,7 +4,8 @@ import VisionIntro from "./VisionIntro";
 /*
  * The technology behind it (/approach). Rebuilt from the standalone visual spec
  * (reference_material/wameir-platform-benefit.html) on the site's tokens. The
- * copy is the spec's, verbatim.
+ * copy is the spec's, edited to the site's house style (no em dashes, no
+ * "not X" contrasts, no intensifiers, no serial comma).
  *
  * The spec drew the whole diagram as one fixed-size SVG, which shrinks its
  * smallest text to a few pixels on a phone and hides every "You get:" line from
@@ -24,7 +25,7 @@ const MODULES: { title: string; what: string; get: React.ReactNode; hero?: boole
     what: "Reads your community's own rules, bylaws & CC&Rs.",
     get: (
       <>
-        You get: every answer follows <em>your</em> rules — never a generic script.
+        You get: every answer follows <em>your</em> rules.
       </>
     ),
     hero: true,
@@ -32,7 +33,7 @@ const MODULES: { title: string; what: string; get: React.ReactNode; hero?: boole
   {
     title: "Workflow engine",
     what: "Handles the routine paperwork end to end.",
-    get: "You get: your local team spends time on people, not forms.",
+    get: "You get: your local team spends its time on people.",
   },
   {
     title: "Grounded answers",
@@ -64,18 +65,18 @@ export default function PlatformBenefits() {
         <VisionIntro
           onDark
           eyebrow="The technology behind it"
-          lede="You never see the software — you feel it. Here's what runs quietly underneath, and what each piece actually does for the people who live and work in your community."
+          lede="The software stays in the background, and you feel the difference. Here's what runs underneath, and what each piece does for the people who live and work in your community."
         >
           How the tech becomes a community that <span className="g">just works.</span>
         </VisionIntro>
 
         <figure
           className="platform"
-          aria-label="Three layers: how you reach us, the engine Wameir builds, and the day-to-day system of record. Each labeled with the benefit it delivers to residents, boards, and local teams."
+          aria-label="Three layers: how you reach us, the engine Wameir builds, and the day-to-day system of record. Each labeled with the benefit it delivers to residents, boards and local teams."
         >
           <div className="pf-tier pf-tier--light">
             <h3 className="pf-tier__title">How you reach us</h3>
-            <p className="pf-tier__sub">Portal, phone, text — whenever works for you, day or night.</p>
+            <p className="pf-tier__sub">Portal, phone or text, whenever works for you, day or night.</p>
             <ul className="pf-chips pf-chips--breathe">
               {REACH.map((c, i) => (
                 <li key={c} style={{ "--i": i } as React.CSSProperties}>
@@ -92,8 +93,8 @@ export default function PlatformBenefits() {
               <div>
                 <h3 className="pf-tier__title">What we build ourselves</h3>
                 <p className="pf-tier__sub">
-                  So your community gets answers, not runaround — and your local team gets
-                  its time back.
+                  So your community gets clear answers, and your local team gets its time
+                  back.
                 </p>
               </div>
               <span className="pf-badge">Built by Wameir</span>
@@ -121,7 +122,7 @@ export default function PlatformBenefits() {
           <div className="pf-tier pf-tier--light">
             <h3 className="pf-tier__title">The day-to-day, kept straight</h3>
             <p className="pf-tier__sub">
-              Your dues, your requests, your documents — accurate and in order.
+              Your dues, requests and documents, accurate and in order.
             </p>
             <div className="pf-record">
               <ul className="pf-chips">
@@ -129,15 +130,16 @@ export default function PlatformBenefits() {
                   <li key={c}>{c}</li>
                 ))}
               </ul>
-              <p className="pf-record__note">built on trusted, proven systems.</p>
+              <p className="pf-record__note">Built on trusted, proven systems.</p>
             </div>
           </div>
         </figure>
 
         <p className="track__disclaimer track__disclaimer--sm pf-foot">
-          The technology is only worth building if you can feel it — faster answers, a team
-          with more time for people, and a community that runs the way it should. Wameir is
-          early-stage; this is what we&apos;re building toward.
+          The technology is worth building when you can feel it: faster answers, a team with
+          more time for people and a community that runs the way it should. Wameir is
+          early-stage. This is what we&apos;re building toward. It&apos;s not a service
+          running today.
         </p>
       </div>
     </Section>
