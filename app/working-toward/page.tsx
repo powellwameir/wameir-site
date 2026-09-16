@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
 import Section from "@/components/Section";
-import PullQuote from "@/components/PullQuote";
 import Icon from "@/components/Icon";
+import DayInCommunitySection from "@/components/DayInCommunitySection";
+import MoneyBackSection from "@/components/MoneyBackSection";
+import AlwaysOnSection from "@/components/AlwaysOnSection";
 import { GROUPS, slugify, type Goal } from "@/lib/goals";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
@@ -12,6 +14,13 @@ export const metadata: Metadata = {
   description:
     "The reasoning behind each goal Wameir is working toward for its communities — mechanisms we can explain plainly, framed as intent, not results we don't have yet.",
 };
+
+/*
+ * Band colours per goal group. Set explicitly rather than alternating, because
+ * a vision section now sits after each group and no two bands of the same
+ * colour should meet.
+ */
+const GROUP_BG = ["paper", "cream", "cream"] as const;
 
 /*
  * One goal as a two-column row: the summary (icon, title, the goal, what we're
@@ -117,11 +126,7 @@ export default function WorkingTowardPage() {
 
       {GROUPS.map((group, gi) => (
         <Fragment key={group.n}>
-          <Section
-            bg={gi % 2 === 0 ? "paper" : "cream"}
-            id={slugify(group.head)}
-            className="goal-group"
-          >
+          <Section bg={GROUP_BG[gi]} id={slugify(group.head)} className="goal-group">
             <div className="wrap">
               <div className="goal-group__head">
                 <span className="eyebrow">{group.goals.length} goals</span>
@@ -136,13 +141,11 @@ export default function WorkingTowardPage() {
             </div>
           </Section>
 
-          {/* The page's pull-quote: surfaced from the property-tax goal above. */}
-          {gi === 1 && (
-            <PullQuote bg="navy" size="md">
-              A refund you&apos;d never have chased yourself — because now someone
-              chases it <span className="g">for the whole community.</span>
-            </PullQuote>
-          )}
+          {/* Each group is followed by the vision section that shows it, so the
+              page alternates argument and picture rather than running as prose. */}
+          {gi === 0 && <DayInCommunitySection />}
+          {gi === 1 && <MoneyBackSection />}
+          {gi === 2 && <AlwaysOnSection />}
         </Fragment>
       ))}
 

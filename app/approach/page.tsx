@@ -4,6 +4,7 @@ import ContactSection from "@/components/ContactSection";
 import Icon, { type IconName } from "@/components/Icon";
 import { WeirWatermark } from "@/components/WeirLattice";
 import PullQuote from "@/components/PullQuote";
+import ManagerTimeSection from "@/components/ManagerTimeSection";
 
 export const metadata: Metadata = {
   title: "Our Approach",
@@ -93,6 +94,9 @@ export default function ApproachPage() {
           </div>
         </div>
       </Section>
+
+      {/* What the automation is for — the manager's week, before and after. */}
+      <ManagerTimeSection />
 
       {/* How we think about it — the page's navy pull-quote band (§4A). */}
       <PullQuote

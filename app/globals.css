@@ -16,6 +16,7 @@
   --paper: #FBFAF6;       /* alternate light band */
   --ink: #1A1A1A;         /* body text on light */
   --ink-70: #4A4A4A;      /* secondary text on light */
+  --ink-45: #6B6459;      /* tertiary: captions, diagram labels, honest-limit notes */
   --cream-70: #CFCABD;    /* secondary text on navy */
   --hairline-gold: rgba(168, 133, 74, 0.40); /* 1px gold @40% */
   --hairline-ink: rgba(26, 26, 26, 0.12);    /* ink @12% on light */
@@ -988,6 +989,301 @@ p { max-width: var(--measure); }
 .on-navy .teaser__link { color: var(--gold-light); }
 @media (max-width: 720px) {
   .pullquote { padding-block: 80px; }
+}
+
+/* =========================================================================
+   Vision sections & deep-dive pages (§5.1) — rebuilt from the standalone
+   design specs. The specs re-declared the whole design system; here they
+   inherit it: one radius, one card depth, the site's lattice bands. Placed
+   after the responsive block so these paddings win, before the Motion layer
+   so that still comes last.
+   ========================================================================= */
+
+/* ---- Shared: intro, goalnote, centred closer ---- */
+.vsec-intro { max-width: 62ch; }
+.vsec-intro .eyebrow { display: block; margin-bottom: 16px; }
+.vsec-title { max-width: 18ch; }
+.vsec-title .g,
+.vsec-closer .g { font-style: italic; color: var(--gold); }
+.on-navy .vsec-title .g,
+.on-navy .vsec-closer .g { color: var(--gold-light); }
+.vsec-intro__lede { margin-top: 20px; color: var(--ink-70); max-width: 60ch; }
+.on-navy .vsec-intro__lede { color: var(--cream-70); }
+/* The early-stage note: the existing disclaimer block, set quieter. */
+.track__disclaimer--sm {
+  margin-top: 16px;
+  padding: 0 0 0 14px;
+  border-left-width: 2px;
+  background: none;
+  font-size: 0.875rem;
+  color: var(--ink-45);
+}
+.on-navy .track__disclaimer,
+.page-header .track__disclaimer { background: none; color: var(--cream-70); }
+.page-header .track__disclaimer { margin-top: 20px; }
+.vsplit .eyebrow { display: block; margin-bottom: 16px; }
+.vsec-closer {
+  margin: 40px auto 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  line-height: 1.35;
+  color: var(--navy);
+  max-width: 48ch;
+}
+.on-navy .vsec-closer { color: var(--cream); }
+.vsec-subnote {
+  margin: 16px auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--ink-45);
+  max-width: 52ch;
+}
+/* An eyebrow that is also the section's real heading, so the h3s beneath it
+   aren't orphaned. Looks identical; only the element changes. */
+.eyebrow--heading { font-family: var(--font-body); letter-spacing: 0.08em; }
+
+/* ---- Diagram ink: colour lives here, geometry stays in the JSX ---- */
+.dg { width: 100%; height: auto; overflow: visible; }
+.dg-ink { stroke: var(--navy); }
+.dg-accent { stroke: var(--gold); }
+.dg-accent-l { stroke: var(--gold-light); }
+.dg-mute { stroke: var(--cream-70); }
+.dg-rule { stroke: var(--hairline-ink); }
+.dg-faint { stroke: var(--ink-45); opacity: 0.6; }
+.dg-face { fill: var(--cream); stroke: var(--gold); }
+.dg-paper { fill: var(--paper); stroke: var(--gold); }
+.dg-fill-ink { fill: var(--navy); }
+.dg-fill-accent { fill: var(--gold); }
+.dg-fill-light { fill: var(--gold-light); }
+.dg-fill-mute { fill: var(--cream-70); }
+.dg-fill-rule { fill: var(--hairline-ink); }
+.dg-body { fill: var(--paper); stroke: var(--navy); }
+.dg-check-light { stroke: #fff; }
+.dg-ring { stroke: rgba(201, 168, 95, 0.25); }
+.dg-face-navy { fill: var(--navy-90); stroke: rgba(201, 168, 95, 0.18); }
+.dg-tick { stroke: rgba(244, 241, 233, 0.35); }
+.dg-dot { fill: var(--navy); stroke: var(--gold-light); }
+.dg-center { fill: var(--navy); stroke: rgba(201, 168, 95, 0.4); }
+.dg-title-light { font-family: var(--font-display); font-weight: 600; fill: var(--cream); }
+.dg-kicker { font-family: var(--font-body); fill: var(--gold-light); letter-spacing: 0.1em; }
+.dg-label { font-family: var(--font-body); font-size: 9px; fill: var(--ink-45); }
+.dg-cap { font-family: var(--font-body); font-size: 8.5px; fill: var(--ink-45); }
+.dg-title { font-family: var(--font-display); font-weight: 600; fill: var(--navy); }
+.dg-vs { font-family: var(--font-display); font-style: italic; fill: var(--gold); }
+.on-navy .dg-label,
+.on-navy .dg-cap { fill: var(--cream-70); }
+
+/* ---- "A day in a community": the before / after ledger ---- */
+.ledger {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(201, 168, 95, 0.25);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+}
+.ledger__col--before { background: rgba(255, 255, 255, 0.015); }
+.ledger__col--after { background: rgba(201, 168, 95, 0.06); }
+.ledger__head { padding: 22px 28px 18px; border-bottom: 1px solid rgba(201, 168, 95, 0.18); }
+.ledger__tag {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+  color: var(--cream-70);
+}
+.ledger__col--after .ledger__tag { color: var(--gold-light); }
+.ledger__h { font-size: 1.35rem; font-weight: 600; line-height: 1.15; color: var(--cream); }
+.ledger__col--after .ledger__h { color: #fff; }
+.ledger__row {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(201, 168, 95, 0.1);
+}
+.ledger__row:last-child { border-bottom: none; }
+.ledger__ic {
+  flex: 0 0 40px; width: 40px; height: 40px;
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+  color: var(--cream-70);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ledger__col--after .ledger__ic {
+  color: var(--gold-light);
+  background: var(--navy-90);
+  border-color: rgba(201, 168, 95, 0.35);
+}
+.ledger__time {
+  margin-bottom: 8px;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--cream-70); opacity: 0.7;
+}
+.ledger__col--after .ledger__time { color: var(--gold); opacity: 1; }
+.ledger__t { margin-bottom: 3px; font-size: 0.98rem; font-weight: 600; color: var(--cream); max-width: none; }
+.ledger__col--after .ledger__t { color: #fff; }
+.ledger__s { font-size: 0.9rem; color: var(--cream-70); max-width: none; }
+
+/* ---- "Where a manager's time goes": two state cards with a split bar ---- */
+.states { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 56px; align-items: stretch; }
+.card--state { display: flex; flex-direction: column; }
+.card--state-aim { border-color: rgba(168, 133, 74, 0.4); }
+.state-tag {
+  margin-bottom: 4px;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+  color: var(--ink-45);
+}
+.card--state-aim .state-tag { color: var(--gold); }
+.state-h { margin-bottom: 22px; font-size: 1.4rem; font-weight: 600; line-height: 1.15; color: var(--navy); }
+.bar {
+  display: flex; height: 26px; margin-bottom: 22px;
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid rgba(20, 32, 54, 0.08);
+}
+.seg { height: 100%; }
+.seg--busywork { background: repeating-linear-gradient(45deg, #C9C6BE 0 7px, #BEBBB2 7px 14px); }
+.seg--busywork-aim { background: repeating-linear-gradient(45deg, #D8D5CC 0 7px, #CFCCC2 7px 14px); }
+.seg--people { background: var(--navy); }
+.seg--people-aim { background: linear-gradient(90deg, var(--navy), var(--navy-90)); }
+.legend { display: flex; flex-direction: column; gap: 14px; }
+.legend__row { display: flex; gap: 12px; align-items: flex-start; }
+.legend__sw { flex: 0 0 14px; width: 14px; height: 14px; border-radius: 3px; margin-top: 4px; }
+.sw--busywork { background: repeating-linear-gradient(45deg, #C9C6BE 0 4px, #BEBBB2 4px 8px); }
+.sw--people { background: var(--navy); }
+.legend__text { margin: 0; font-size: 0.92rem; max-width: none; }
+.legend__text strong { display: block; margin-bottom: 1px; color: var(--ink); font-weight: 600; }
+.legend__text span { color: var(--ink-70); }
+.legend__pct {
+  margin-left: auto; padding-left: 12px;
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--navy);
+}
+.card--state-aim .legend__pct { color: var(--gold); }
+.card__note {
+  margin-top: auto; padding-top: 20px;
+  border-top: 1px solid var(--hairline-ink);
+  font-size: 0.9rem; color: var(--ink-70); max-width: none;
+}
+.card--state-aim .card__note { color: var(--navy); }
+
+/* ---- "Always on": text beside the 24-hour dial ---- */
+.alwayson { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.icon-list { list-style: none; }
+.icon-list li {
+  display: flex; gap: 12px; align-items: flex-start;
+  margin-bottom: 14px; font-size: 0.96rem; color: var(--cream);
+}
+.icon-list li > span:first-child { flex: 0 0 20px; color: var(--gold-light); margin-top: 3px; }
+.dialwrap { display: flex; align-items: center; justify-content: center; }
+.dialwrap .dg { max-width: 360px; }
+
+/* ---- The three-step "loop" band (deep pages) ---- */
+.loop {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  margin-top: 52px;
+  background: var(--hairline-gold);
+  border: 1px solid var(--hairline-gold);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.loop__step { background: var(--navy); padding: 28px 24px; display: flex; flex-direction: column; }
+.loop__n {
+  margin-bottom: 14px;
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em;
+  color: var(--gold-light);
+}
+.loop__ic {
+  width: 44px; height: 44px; margin-bottom: 16px;
+  border-radius: var(--radius);
+  background: var(--navy-90);
+  border: 1px solid rgba(201, 168, 95, 0.35);
+  color: var(--gold-light);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.loop__step h3 { margin-bottom: 8px; font-size: 1.25rem; font-weight: 600; color: #fff; line-height: 1.15; }
+.loop__step p { font-size: 0.92rem; color: var(--cream-70); max-width: none; }
+.loop__ex {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid rgba(201, 168, 95, 0.15);
+  font-size: 0.85rem; font-style: italic; color: var(--gold-light);
+}
+
+/* ---- "Why it works": prose beside a diagram ---- */
+.vsplit { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.vsplit__title { margin-bottom: 16px; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.1; color: var(--navy); max-width: 18ch; }
+.vsplit__body { margin-bottom: 16px; font-size: 1rem; color: var(--ink-70); max-width: 48ch; }
+.vsplit__body strong { color: var(--ink); }
+.vsplit__payoff {
+  margin-top: 8px; padding-top: 16px;
+  border-top: 1px solid var(--hairline-ink);
+  font-family: var(--font-display); font-style: italic; font-size: 1.1rem;
+  color: var(--navy); max-width: 42ch;
+}
+.vsplit__vis { display: flex; align-items: center; justify-content: center; }
+.vsplit__vis .dg { max-width: 460px; }
+
+/* What the sensors watch — icon rows on a light band. */
+.watchlist { list-style: none; display: grid; gap: 14px; }
+.watchlist li { display: flex; gap: 14px; align-items: flex-start; }
+.watchlist__ic {
+  flex: 0 0 38px; width: 38px; height: 38px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  border: 1px solid var(--hairline-ink);
+  color: var(--gold);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.watchlist__t strong { display: block; font-size: 0.95rem; color: var(--ink); font-weight: 600; }
+.watchlist__t span { font-size: 0.88rem; color: var(--ink-70); }
+
+/* ---- "Being straight with you": the honest-limits band ---- */
+.limits { padding-block: 56px 72px; }
+.limits .eyebrow { display: block; margin-bottom: 16px; }
+.limits__title { margin-bottom: 12px; font-size: 1.15rem; font-weight: 600; color: #fff; }
+.limits__body {
+  font-size: 0.9rem; color: var(--cream-70); max-width: 66ch;
+  padding-left: 14px; border-left: 2px solid var(--gold);
+}
+
+/* ---- Money-back mechanisms: the compact 3-up ---- */
+.card--flow { display: flex; flex-direction: column; }
+.card__kicker {
+  margin-bottom: 8px;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+  color: var(--gold);
+}
+.card--flow h3 { line-height: 1.15; }
+.card__arg { margin-bottom: 22px; font-size: 0.82rem; font-style: italic; color: var(--ink-45); }
+.card__dia { height: 150px; margin-bottom: 22px; display: flex; align-items: center; justify-content: center; }
+.card__dia .dg { height: 100%; }
+.card__exp { font-size: 0.92rem; color: var(--ink-70); }
+.card__exp strong { color: var(--ink); font-weight: 600; }
+.card__foot {
+  margin-top: auto; padding-top: 18px;
+  border-top: 1px solid var(--hairline-ink);
+  font-family: var(--font-display); font-style: italic; font-size: 0.9rem; color: var(--navy);
+}
+.card__foot + .teaser__link { margin-top: 10px; font-size: 0.9375rem; }
+.mb-closer { margin-top: 44px; font-size: 0.9rem; color: var(--ink-45); max-width: 70ch; }
+.mb-closer strong { color: var(--ink-70); font-weight: 600; }
+
+/* ---- Responsive: the site's own two stack points ---- */
+@media (max-width: 880px) {
+  .loop { grid-template-columns: 1fr; }
+  .vsplit { grid-template-columns: 1fr; gap: 32px; }
+  .alwayson { grid-template-columns: 1fr; gap: 40px; }
+  .states { grid-template-columns: 1fr; gap: 20px; }
+  /* Lead with the picture once the columns stack; nothing in it is focusable. */
+  .vsplit__vis, .dialwrap { order: -1; }
+  .dialwrap .dg { max-width: 280px; }
+}
+@media (max-width: 720px) {
+  .ledger { grid-template-columns: 1fr; }
+  .ledger__col--before { border-bottom: 1px solid rgba(201, 168, 95, 0.25); }
+  .ledger__row { padding: 18px 20px; }
+  .ledger__head { padding: 20px 20px 16px; }
+  .limits { padding-block: 48px 56px; }
 }
 
 /* =========================================================================
