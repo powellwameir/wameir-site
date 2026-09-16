@@ -37,10 +37,9 @@ const FAQS: QA[] = [
     q: "What kind of companies do you buy?",
     a: (
       <p>
-        Established HOA management companies, primarily in the Greater Houston area,
-        with strong local teams and reputations worth building on. We look for
-        businesses that are already good at what they do, and our aim is to make them
-        stronger.
+        HOA management companies in Greater Houston. We look for established
+        businesses with strong local teams and reputations worth building on, and our
+        aim is to make them stronger.
       </p>
     ),
   },
@@ -48,10 +47,10 @@ const FAQS: QA[] = [
     q: "What happens to my employees and community managers?",
     a: (
       <p>
-        They stay, and we invest in them. The local teams and relationships are what
-        make a management company work, so keeping them in place is the point. We give
-        those teams better tools, systems and support, and the people closest to the
-        communities stay closest to them.
+        They stay, and we invest in them. Your community managers and staff are the
+        reason boards and residents trust your company, so keeping them is the plan.
+        We give them better tools, systems and support, and the people who know each
+        community keep looking after it.
       </p>
     ),
   },
@@ -82,10 +81,11 @@ const FAQS: QA[] = [
     q: "What happens to me after the sale?",
     a: (
       <p>
-        That is your decision. Some founders are ready to step back and retire;
-        others want to stay involved for a while to help with the transition, or
-        longer. We build the arrangement around what you want, with no single
-        expectation you have to fit.
+        We expect you to step back gradually. You stay involved through a transition
+        period, introducing us to your boards and handing over relationships and
+        day-to-day decisions at a pace that protects the business. Over time your role
+        gets lighter until you&apos;re ready to step away. How long that takes, and what
+        your role looks like along the way, is something we work out together.
       </p>
     ),
   },
@@ -106,9 +106,9 @@ const FAQS: QA[] = [
     q: "Is this confidential?",
     a: (
       <p>
-        Yes. A founder exploring a sale rarely wants it known, and we treat that
-        seriously: every conversation and every document you share is kept strictly
-        confidential, from the first call onward.
+        Yes. Every conversation and every document you share stays confidential, from
+        the first call onward. Your employees, boards and clients won&apos;t hear about
+        it from us.
       </p>
     ),
   },
