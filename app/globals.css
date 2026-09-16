@@ -12,6 +12,11 @@
   --navy-90: #1B2A44;     /* lifted dark band for adjacent dark sections */
   --gold: #A8854A;        /* accents, rules, icon strokes, marks */
   --gold-light: #C9A85F;  /* hover / lighter accent */
+  /* Gold that passes AA as text on light grounds: 5.31:1 on cream, where --gold
+     manages only 3.04:1 and --gold-light 2.01:1. Use it for any gold text on
+     cream/paper/white; --gold stays for hairlines, rules, icon strokes and
+     display-size accents, and --gold-light stays for everything on navy. */
+  --gold-deep: #7A5F2E;
   --cream: #F4F1E9;       /* primary light section bg */
   --paper: #FBFAF6;       /* alternate light band */
   --ink: #1A1A1A;         /* body text on light */
@@ -75,16 +80,27 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
 .t-body   { font-size: 1.0625rem; line-height: 1.6; }
 .t-small  { font-size: 0.875rem; font-weight: 500; line-height: 1.4; }
 
-/* Eyebrow — ALL-CAPS labels, gold, sparingly (max 3/page) */
+/* Eyebrow — ALL-CAPS labels, gold, sparingly (max 3/page). One of only two
+   label styles on the site; the other is .benefits__head, the same label with a
+   rule under it for group level. */
 .eyebrow {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--gold-deep);
 }
+/* Dark bands keep the lighter gold: it passes comfortably on navy, and navy is
+   the one ground --gold-deep would fail against. .page-header, .hero and
+   .footer are not <Section>s, so they don't get .on-navy automatically. */
+.on-navy .eyebrow,
+.page-header .eyebrow,
+.hero .eyebrow,
+.footer .eyebrow { color: var(--gold-light); }
 
-/* The one signature italic-gold accent (once or twice per page max) */
+/* The signature italic-gold accent. Scope: the h1 on a page, and at most one
+   pull quote. Headings below h1 stay plain — when every heading ends in an
+   italic gold phrase the device stops meaning anything. */
 .accent-italic { font-style: italic; font-weight: 600; color: var(--gold-light); }
 
 /* ------- Layout helpers ------- */
@@ -152,7 +168,7 @@ p { max-width: var(--measure); }
 .btn--line-light { border-color: rgba(255, 255, 255, 0.32); color: #fff; }
 .btn--line-light:is(:hover, :focus-visible) { border-color: var(--gold-light); color: var(--gold-light); }
 .btn--line-ink { border-color: var(--hairline-ink); color: var(--navy); }
-.btn--line-ink:is(:hover, :focus-visible) { border-color: var(--gold); color: var(--gold); }
+.btn--line-ink:is(:hover, :focus-visible) { border-color: var(--gold); color: var(--gold-deep); }
 .btn .arrow { transition: transform 0.2s var(--ease-soft); }
 .btn:is(:hover, :focus-visible) .arrow { transform: translateX(4px); }
 
@@ -481,7 +497,7 @@ p { max-width: var(--measure); }
   line-height: 1.3;
 }
 .on-navy .split__label .kicker { color: #fff; }
-.split__body p { font-size: 1.125rem; margin-bottom: 20px; max-width: 56ch; }
+.split__body p { font-size: 1.125rem; margin-bottom: 20px; max-width: var(--measure); }
 .split__body p:last-child { margin-bottom: 0; }
 .split__body strong { font-weight: 600; color: var(--navy); }
 .on-navy .split__body strong { color: #fff; }
@@ -527,15 +543,16 @@ p { max-width: var(--measure); }
   background: var(--paper);
   color: var(--ink-70);
   font-size: 0.9375rem;
-  max-width: 60ch;
+  max-width: var(--measure);
 }
 /* ---- Benefits grid (§5.1) — every goal visible, grouped under its header ---- */
 .benefits { margin-top: 56px; display: grid; gap: 48px; }
+/* Group-level label: the eyebrow style with a rule under it. Same family, size
+   and tracking as .eyebrow so the site carries two label styles, not three. */
 .benefits__head {
-  font-family: var(--font-display);
-  font-size: 0.875rem;
-  letter-spacing: 0.04em;
-  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
   font-weight: 600;
   text-transform: uppercase;
   padding-bottom: 14px;
@@ -560,7 +577,9 @@ p { max-width: var(--measure); }
   border-radius: var(--radius);
   margin-bottom: 18px;
 }
-.bcard__title { font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1.15; }
+/* Fraunces, like every other card title on the site — the serif is the voice of
+   headings, and it keeps the goal grid from reading as a SaaS feature list. */
+.bcard__title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1.15; }
 .bcard p { font-size: 1rem; color: var(--ink-70); line-height: 1.55; margin-top: 10px; }
 /* Trimmed home summary: title + one payoff line (depth lives on /working-toward). */
 .bcard__payoff { color: var(--gold-deep, var(--gold)); font-weight: 600; }
@@ -593,7 +612,7 @@ p { max-width: var(--measure); }
 @media (prefers-reduced-motion: reduce) {
   .tile:hover .tile__img { transform: none; }
 }
-.pocket { display: inline-block; margin-top: 10px; font-size: 0.875rem; color: var(--gold); font-weight: 600; }
+.pocket { display: inline-block; margin-top: 10px; font-size: 0.875rem; color: var(--gold-deep); font-weight: 600; }
 
 /* ---- Selling "What you can count on" (§5.2) — three photo cards in a row ---- */
 .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
@@ -650,9 +669,12 @@ p { max-width: var(--measure); }
 }
 .who-cell .mono {
   font-family: var(--font-display);
-  font-size: 0.8125rem; letter-spacing: 0.06em; color: var(--gold);
+  font-size: 0.8125rem; letter-spacing: 0.06em; color: var(--gold-deep);
   font-weight: 600; text-transform: uppercase;
 }
+/* The who-grid runs on cream (/team) and on navy (home), so this label is one
+   of the few that has to follow its ground. */
+.on-navy .who-cell .mono { color: var(--gold-light); }
 .who-cell h3 { font-size: 1.5rem; font-weight: 500; color: var(--navy); margin: 12px 0 4px; }
 .who-cell .role { font-size: 0.9375rem; color: var(--ink-70); margin-bottom: 14px; }
 .who-cell p { font-size: 1rem; color: var(--ink); line-height: 1.6; }
@@ -661,7 +683,7 @@ p { max-width: var(--measure); }
 .gated {
   display: inline-block;
   font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
-  color: var(--gold);
+  color: var(--gold-deep);
   border: 1px dashed var(--hairline-gold);
   border-radius: 4px;
   padding: 3px 8px;
@@ -671,10 +693,12 @@ p { max-width: var(--measure); }
 /* ---- Teaser row (label + link) ---- */
 .teaser__link {
   display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 18px; font-weight: 600; color: var(--gold);
+  margin-top: 18px; font-weight: 600; color: var(--gold-deep);
   text-decoration: none;
 }
-.teaser__link:hover { color: var(--gold-light); }
+/* Hover darkens rather than lightening: --gold-light on cream is 2.01:1, so the
+   old hover made a wayfinding link less readable the moment you reached it. */
+.teaser__link:hover { color: var(--navy); }
 
 /* ---- FAQ accordion (native details/summary, works without JS) ---- */
 .faq { max-width: 52em; margin-top: 40px; }
@@ -708,7 +732,9 @@ p { max-width: var(--measure); }
   opacity: 0.1; z-index: 0; pointer-events: none;
 }
 .invite .wrap { position: relative; z-index: 1; }
-.invite h2 .it { font-style: italic; color: var(--gold-light); }
+/* The closing band's h2 appears on every page, so its italic gold was the
+   single most repeated instance of the device. Plain. */
+.invite h2 .it { font-style: normal; color: inherit; }
 .invite__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .invite__intro p { color: var(--cream-70); margin-top: 20px; font-size: 1.125rem; max-width: 44ch; }
 
@@ -779,7 +805,7 @@ p { max-width: var(--measure); }
 }
 
 /* ---- "What we're working toward" deep-dive page ---- */
-.goals-intro { margin-top: 28px; max-width: 62ch; }
+.goals-intro { margin-top: 28px; max-width: var(--measure); }
 .goals-intro p { font-size: 1.125rem; color: var(--ink-70); margin-top: 16px; }
 
 /* Goal index: jump links to every group and goal (no new copy). */
@@ -810,7 +836,7 @@ p { max-width: var(--measure); }
   text-decoration: none;
   transition: color 0.18s ease;
 }
-.goal-index__group:is(:hover, :focus-visible) { color: var(--gold); }
+.goal-index__group:is(:hover, :focus-visible) { color: var(--gold-deep); }
 .goal-index__link:is(:hover, :focus-visible) { color: var(--navy); }
 .goal-index__icon {
   flex: none;
@@ -848,7 +874,7 @@ p { max-width: var(--measure); }
   margin-bottom: 18px;
 }
 .goal__reasoning > .goal__block:first-child { margin-top: 0; }
-.goal__reasoning p { max-width: 62ch; }
+.goal__reasoning p { max-width: var(--measure); }
 @media (max-width: 880px) {
   .goal { grid-template-columns: 1fr; gap: 22px; padding: 40px 0; scroll-margin-top: 96px; }
   .goal__summary { position: static; }
@@ -872,7 +898,7 @@ p { max-width: var(--measure); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--gold-deep);
 }
 .goal__block--limit .goal__label { color: var(--ink-70); }
 .goal__block--limit {
@@ -980,13 +1006,14 @@ p { max-width: var(--measure); }
 }
 .pullquote__text .g { color: var(--gold); }
 .pullquote__after { margin-top: 28px; }
-.pullquote__after p { font-size: 1.125rem; color: var(--ink-70); max-width: 60ch; }
+.pullquote__after p { font-size: 1.125rem; color: var(--ink-70); max-width: var(--measure); }
 .on-navy .pullquote__text { color: #fff; }
 .on-navy .pullquote__text::before { background: var(--gold-light); }
 .on-navy .pullquote__text .g { color: var(--gold-light); }
 .on-navy .pullquote__after p { color: var(--cream-70); }
 .on-navy .pullquote__after strong { color: #fff; font-weight: 600; }
 .on-navy .teaser__link { color: var(--gold-light); }
+.on-navy .teaser__link:hover { color: #fff; }
 @media (max-width: 720px) {
   .pullquote { padding-block: 80px; }
 }
@@ -1003,11 +1030,13 @@ p { max-width: var(--measure); }
 .vsec-intro { max-width: 62ch; }
 .vsec-intro .eyebrow { display: block; margin-bottom: 16px; }
 .vsec-title { max-width: 18ch; }
-.vsec-title .g,
-.vsec-closer .g { font-style: italic; color: var(--gold); }
-.on-navy .vsec-title .g,
+/* These titles are h2s, so they stay plain — the italic gold belongs to the h1
+   and one pull quote per page. The closer is a paragraph, so it keeps the gold
+   key phrase, upright, in the AA-safe gold. */
+.vsec-title .g { font-style: normal; color: inherit; }
+.vsec-closer .g { color: var(--gold-deep); }
 .on-navy .vsec-closer .g { color: var(--gold-light); }
-.vsec-intro__lede { margin-top: 20px; color: var(--ink-70); max-width: 60ch; }
+.vsec-intro__lede { margin-top: 20px; color: var(--ink-70); max-width: var(--measure); }
 .on-navy .vsec-intro__lede { color: var(--cream-70); }
 /* The early-stage note: the existing disclaimer block, set quieter. */
 .track__disclaimer--sm {
@@ -1134,7 +1163,7 @@ p { max-width: var(--measure); }
   font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
   color: var(--ink-45);
 }
-.card--state-aim .state-tag { color: var(--gold); }
+.card--state-aim .state-tag { color: var(--gold-deep); }
 .state-h { margin-bottom: 22px; font-size: 1.4rem; font-weight: 600; line-height: 1.15; color: var(--navy); }
 .bar {
   display: flex; height: 26px; margin-bottom: 22px;
@@ -1158,7 +1187,7 @@ p { max-width: var(--measure); }
   margin-left: auto; padding-left: 12px;
   font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--navy);
 }
-.card--state-aim .legend__pct { color: var(--gold); }
+.card--state-aim .legend__pct { color: var(--gold-deep); }
 .card__note {
   margin-top: auto; padding-top: 20px;
   border-top: 1px solid var(--hairline-ink);
@@ -1241,7 +1270,7 @@ p { max-width: var(--measure); }
 .limits .eyebrow { display: block; margin-bottom: 16px; }
 .limits__title { margin-bottom: 12px; font-size: 1.15rem; font-weight: 600; color: #fff; }
 .limits__body {
-  font-size: 0.9rem; color: var(--cream-70); max-width: 66ch;
+  font-size: 0.9rem; color: var(--cream-70); max-width: var(--measure);
   padding-left: 14px; border-left: 2px solid var(--gold);
 }
 
@@ -1292,7 +1321,7 @@ p { max-width: var(--measure); }
   position: absolute;
   top: 26px; right: 24px;
   font-size: 1.15rem; line-height: 1;
-  color: var(--gold);
+  color: var(--gold-deep);
   transition: transform 0.2s var(--ease-soft);
 }
 .bcard--link:focus-visible { transform: translateY(-4px); }
@@ -1311,7 +1340,8 @@ p { max-width: var(--measure); }
 
 /* Keyboard gets the same emphasis as hover (plus the gold focus outline). */
 .btn:focus-visible { transform: scale(1.02); }
-.teaser__link:focus-visible { color: var(--gold-light); }
+.teaser__link:focus-visible { color: var(--navy); }
+.on-navy .teaser__link:focus-visible { color: #fff; }
 .teaser__link:focus-visible > span[aria-hidden="true"] { transform: translateX(4px); }
 .tile:focus-visible .tile__img { transform: scale(1.02); }
 
