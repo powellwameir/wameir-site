@@ -232,7 +232,7 @@ p { max-width: var(--measure); }
 
 /* =========================================================================
    Nav (shared, §2/§3) — persistent, solid navy so it reads on every band.
-   Collapses to a menu at 960px and below.
+   Collapses to a menu at 880px and below.
    ========================================================================= */
 .nav {
   position: fixed;
@@ -315,7 +315,14 @@ p { max-width: var(--measure); }
 
 /* The full bar needs ~935px on one line (six links and the button). Below
    that, labels wrapped and the bar grew to ~105px, so collapse earlier. */
-@media (max-width: 960px) {
+/* Between tablet and desktop the full nav still fits once its gaps tighten, so
+   a landscape tablet keeps the real links and the menu button waits for 880px. */
+@media (max-width: 1040px) {
+  .nav__inner { padding-inline: 24px; }
+  .nav__menu { gap: var(--sp-5); }
+  .nav__links { gap: var(--sp-4); }
+}
+@media (max-width: 880px) {
   .nav__toggle { display: flex; }
   .nav[data-open="true"] .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav[data-open="true"] .nav__toggle span:nth-child(2) { opacity: 0; }
@@ -904,7 +911,8 @@ p { max-width: var(--measure); }
 
 /* "More goals" band on each goal page. */
 .more-goals .benefits { margin-top: 28px; }
-.more-goals .teaser__link { margin-top: 32px; }
+.more-goals .teaser__link,
+.teaser__link--after { margin-top: 32px; }
 
 .goal-index__icon {
   flex: none;
@@ -987,7 +995,9 @@ p { max-width: var(--measure); }
   .split { grid-template-columns: 1fr; gap: 28px; }
   .split__label { position: static; }
   .track__header { grid-template-columns: 1fr; gap: 32px; }
-  .track__photo-img { max-height: 380px; }
+  /* Stacked, the portrait pushed the goal index a screen down: a short
+     landscape crop keeps the photo without the scroll. */
+  .track__photo-img { max-height: 260px; object-position: center 35%; }
   .trio { grid-template-columns: 1fr; }
   .who-grid { grid-template-columns: 1fr; gap: 32px; }
   /* One column: a full-width 4:5 portrait ran ~1000px tall per person. */
@@ -1128,8 +1138,8 @@ p { max-width: var(--measure); }
 .dg-center { fill: var(--navy); stroke: rgba(201, 168, 95, 0.4); }
 .dg-title-light { font-family: var(--font-display); font-weight: 600; fill: var(--cream); }
 .dg-kicker { font-family: var(--font-body); fill: var(--gold-light); letter-spacing: 0.1em; }
-.dg-label { font-family: var(--font-body); font-size: 9px; fill: var(--ink-45); }
-.dg-cap { font-family: var(--font-body); font-size: 8.5px; fill: var(--ink-45); }
+.dg-label { font-family: var(--font-body); font-size: 9px; fill: var(--ink-70); }
+.dg-cap { font-family: var(--font-body); font-size: 8.5px; fill: var(--ink-70); }
 .dg-title { font-family: var(--font-display); font-weight: 600; fill: var(--navy); }
 .on-navy .dg-label,
 .on-navy .dg-cap { fill: var(--cream-70); }

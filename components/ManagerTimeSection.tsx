@@ -73,7 +73,6 @@ export default function ManagerTimeSection() {
         <VisionIntro
           eyebrow="What automation is for"
           lede="Good community managers leave when too much of the day is data entry, chasing paperwork and retyping the same answers. When the routine handles itself, the people who serve your community get their time back for the work only a person can do."
-          note="Wameir is early-stage. This is how we intend to run every company we take on: community managers stay, and their time shifts."
         >
           We take the busywork off people, so they can{" "}
           <span className="g">be there for your community.</span>

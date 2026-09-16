@@ -109,8 +109,7 @@ export default function LowerInsurancePage() {
         Any discount depends on insurers, coverage, and factors outside our control, so
         we can&apos;t promise a specific number in advance. What we can do is make a home
         lower-risk and make that reduction visible, which is the honest basis for a
-        better rate. Monitoring reduces risk; it doesn&apos;t remove it. This is a goal
-        we&apos;re working toward, not a service running today.
+        better rate. Monitoring reduces risk; it doesn&apos;t remove it.
       </LimitsBand>
 
       <MoreGoals current="/lower-insurance" />

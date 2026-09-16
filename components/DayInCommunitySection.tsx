@@ -104,7 +104,6 @@ export default function DayInCommunitySection() {
           eyebrow="The vision"
           onDark
           lede="Most of what makes an HOA frustrating is small, daily friction: the email that sits for a week, the bill no one can explain, the problem found too late. Here's the same day, run the way we think it should be."
-          note="Wameir is early-stage. This is the standard we're working toward for every community we take on. It's not a service running today."
         >
           A day in a community <span className="g">we&apos;re building toward.</span>
         </VisionIntro>

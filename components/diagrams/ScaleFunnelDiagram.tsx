@@ -11,8 +11,9 @@ export default function ScaleFunnelDiagram() {
       fill="none"
       role="img"
       focusable="false"
-      aria-label="One home rarely appeals because of the effort barrier — evidence, process and deadline; a whole community funnels into one appeal, run for all, with the evidence gathered once."
+      aria-label="One home rarely appeals because of the effort barrier: evidence, process and deadline. A whole community funnels into one appeal, run for all, with the evidence gathered once."
     >
+      <title>One home rarely appeals because of the effort barrier: evidence, process and deadline. A whole community funnels into one appeal, run for all, with the evidence gathered once.</title>
       {/* the lone home, stopped by the barrier */}
       <g transform="translate(16,44)">
         <g className="dg-faint" strokeWidth={1.8}>

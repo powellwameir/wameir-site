@@ -12,6 +12,7 @@ export default function ClockDialDiagram() {
       focusable="false"
       aria-label="A 24-hour dial, noon at the top and midnight at the bottom, showing questions answered around the clock."
     >
+      <title>A 24-hour dial, noon at the top and midnight at the bottom, showing questions answered around the clock.</title>
       <circle className="dg-ring" cx="130" cy="130" r="112" strokeWidth={1.5} />
       <circle
         className="dg-accent"

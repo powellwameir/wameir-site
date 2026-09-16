@@ -139,8 +139,7 @@ export default function HomeMonitoringPage() {
       <LimitsBand heading="What this is, and isn't">
         Monitoring reduces risk; it doesn&apos;t remove it, and it only helps with what
         it can detect. Your home&apos;s information is yours. The point is to protect
-        you and help you make good decisions, not to watch over you. Like everything
-        here, this is what we&apos;re building toward, not a service running today.
+        you and help you make good decisions, not to watch over you.
       </LimitsBand>
 
       <MoreGoals current="/home-monitoring" />

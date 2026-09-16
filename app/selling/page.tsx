@@ -60,13 +60,13 @@ export default function SellingPage() {
             <div className="split__body">
               <p>
                 We buy with our own capital, backed by friends and family, and run every
-                company ourselves. We plan to own each one for a long time. What already makes your company work stays. What we
+                company ourselves. What already makes your company work stays. What we
                 add is support behind your team: <strong>better systems</strong> for
                 billing, portals and reporting.
               </p>
               <p>
                 Some founders want to retire soon. Others want to stay on for a while.
-                Either works, and the first conversation is confidential.
+                Either works.
               </p>
               <Link className="teaser__link" href="/faq">
                 Common questions from founders <Arrow />
@@ -94,8 +94,7 @@ export default function SellingPage() {
       <ContactSection
         source="/selling"
         audience="founder"
-        eyebrow="Start a confidential conversation"
-        intro="If a sale is somewhere on your horizon, now is a good time to talk. What you tell us stays confidential."
+        intro="If a sale is somewhere on your horizon, now is a good time to talk."
         lead="Tell us a little about your company, and we'll reply personally."
         heading={
           <>

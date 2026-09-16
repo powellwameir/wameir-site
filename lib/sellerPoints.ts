@@ -12,7 +12,7 @@ export type SellerPoint = {
 export const SELLER_POINTS: SellerPoint[] = [
   {
     heading: "Long-term ownership",
-    body: "We invest our own capital and plan to own the businesses we acquire for the long term.",
+    body: "We invest our own capital and keep the businesses we acquire.",
     base: "/img/seller-longterm",
     alt: "A home lit at dusk in a quiet neighborhood",
   },
