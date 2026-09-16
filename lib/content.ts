@@ -40,3 +40,12 @@ export function schedulingHref(): string {
     `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Confidential call request")}`
   );
 }
+
+/**
+ * Copy that depends on facts we don't have yet carries a `[FILL: …]` marker and
+ * stays off the page until the marker is replaced. Search the repo for "[FILL"
+ * to find every one.
+ */
+export function isFilled(text: string): boolean {
+  return !text.includes("[FILL");
+}

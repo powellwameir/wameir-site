@@ -20,7 +20,7 @@ export async function sendLeadNotification(lead: Lead): Promise<void> {
     resident: "Resident",
     other: "General",
   }[lead.audience];
-  const subject = `New ${label} enquiry — ${lead.name}`;
+  const subject = `New ${label} inquiry — ${lead.name}`;
   const lines = [
     `Audience: ${lead.audience}`,
     `Name:     ${lead.name}`,

@@ -12,7 +12,7 @@ import { WeirWatermark } from "@/components/WeirLattice";
 export const metadata: Metadata = {
   title: "What We're Working Toward",
   description:
-    "The reasoning behind each goal Wameir is working toward for its communities — mechanisms we can explain plainly, framed as intent, not results we don't have yet.",
+    "The reasoning behind each goal Wameir is working toward for its communities: mechanisms we can explain plainly, framed as intent, not results we don't have yet.",
 };
 
 /*
@@ -78,7 +78,7 @@ export default function WorkingTowardPage() {
             We are early. Wameir has not yet acquired its first company, so
             everything on this page is a goal, not a service running today. We are
             writing it down anyway, because we think the <em>reasoning</em> behind a
-            promise matters as much as the promise — and because we want to be held
+            promise matters as much as the promise, and because we want to be held
             to it.
           </p>
         </div>
@@ -93,14 +93,14 @@ export default function WorkingTowardPage() {
           </p>
           <div className="goals-intro">
             <p>
-              Not a nice-to-have, not a talking point — a real, measurable
+              Not a nice-to-have, not a talking point: a real, measurable
               improvement in the life of someone who lives in one of these
               communities. If we can&apos;t explain plainly why something works, we
               won&apos;t build it.
             </p>
             <p>
               The goals fall into three groups: an association that&apos;s easy to
-              live with, money back in your pocket, and stronger communities.
+              live with, fewer surprises and lower bills, and stronger communities.
               Here&apos;s the thinking behind each.
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function WorkingTowardPage() {
         <div className="wrap">
           <div className="goals-closing">
             <p>
-              None of this is delivered yet — we&apos;ve been clear about that
+              None of this is delivered yet; we&apos;ve been clear about that
               throughout. What we hope this page shows is that the goals aren&apos;t
               wishful. Each one rests on a mechanism we can explain plainly: routine
               work automated so people can do the work that matters; per-home
@@ -188,6 +188,7 @@ export default function WorkingTowardPage() {
           </>
         }
         lead="Tell us what matters most in your community, and we'll reply personally."
+        body="On a board, or living in a managed community? Tell us what would make the biggest difference, and we'll build with it in mind."
       />
     </>
   );

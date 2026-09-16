@@ -18,21 +18,21 @@ const STEPS: LoopStep[] = [
     n: "01 · Know",
     icon: "home-record",
     title: "Your home, on the record",
-    body: "Every major system — roof, HVAC, water heater, plumbing, foundation — with its age and expected life, in one place. The manual the house never came with.",
+    body: "Every major system (roof, HVAC, water heater, plumbing, foundation) with its age and expected life, in one place. The manual the house never came with.",
     example: "“Your water heater is 11 years old — near the end of its typical life.”",
   },
   {
     n: "02 · Watch",
     icon: "droplet-watch",
     title: "Quiet monitoring",
-    body: "Simple sensors keep an eye on the things that cause the worst damage — water, humidity, temperature, electrical — and alert you the moment something's off.",
+    body: "Simple sensors keep an eye on the things that cause the worst damage (water, humidity, temperature, electrical) and alert you the moment something's off.",
     example: "“Moisture detected under the kitchen sink — 2:14 AM.”",
   },
   {
     n: "03 · Act",
     icon: "dispatch",
     title: "The right help, with context",
-    body: "When something needs a professional, you see who's genuinely suited to your home and problem — with fair-price guidance up front, before you make a single call.",
+    body: "When something needs a professional, you see who's suited to your home and problem, with fair-price guidance up front, before you make a single call.",
     example: "“3 plumbers who know 1970s pier-and-beam homes in your area.”",
   },
 ];
@@ -42,7 +42,7 @@ const WATCHLIST: { icon: IconName; label: string; detail: string }[] = [
     icon: "maintenance",
     label: "Water & leaks",
     detail:
-      "Under sinks, near the heater, behind the washer — the top cause of home claims.",
+      "Under sinks, near the heater, behind the washer: the top cause of home claims.",
   },
   {
     icon: "thermometer",
@@ -52,12 +52,12 @@ const WATCHLIST: { icon: IconName; label: string; detail: string }[] = [
   {
     icon: "bolt",
     label: "Electrical faults",
-    detail: "Arc faults and failing wiring — quiet warning signs before a fire.",
+    detail: "Arc faults and failing wiring: quiet warning signs before a fire.",
   },
   {
     icon: "foundation",
     label: "Foundation & soil",
-    detail: "Houston's clay soil moves — early signs before cracks become structural.",
+    detail: "Houston's clay soil moves: early signs before cracks become structural.",
   },
 ];
 
@@ -72,14 +72,14 @@ export default function HomeMonitoringPage() {
             A home that <span className="accent-italic">looks after itself.</span>
           </h1>
           <p className="lede">
-            Owning a home means inheriting a complex machine with no manual — systems you
+            Owning a home means inheriting a complex machine with no manual: systems you
             can&apos;t see, problems you find too late, and repairs you can&apos;t judge.
             Our aim is to change that: a home that keeps its own records, watches its own
             vital signs, and helps you act before small problems become big ones.
           </p>
           <p className="track__disclaimer track__disclaimer--sm">
             Wameir is early-stage. This describes what we&apos;re working toward for the
-            communities we serve — a goal, not a service running today.
+            communities we serve. It&apos;s a goal, not a service running today.
           </p>
         </div>
       </header>
@@ -91,7 +91,7 @@ export default function HomeMonitoringPage() {
             steps={STEPS}
             closer={
               <>
-                Know the home, watch the home, act early — so the expensive surprise{" "}
+                Know the home, watch the home, act early, so the expensive surprise{" "}
                 <span className="g">becomes the small fix that never grew.</span>
               </>
             }
@@ -109,7 +109,7 @@ export default function HomeMonitoringPage() {
               </h2>
               <p className="vsplit__body">
                 Most catastrophic home damage starts small and silent. These are the
-                things worth watching — the ones where a few dollars of warning prevents
+                things worth watching: the ones where a few dollars of warning prevents
                 thousands in repair.
               </p>
               <ul className="watchlist">
@@ -149,6 +149,7 @@ export default function HomeMonitoringPage() {
           </>
         }
         lead="Tell us about your community, and we'll reply personally."
+        body="Live in a managed community? Tell us which of these would matter most where you live."
       />
     </>
   );

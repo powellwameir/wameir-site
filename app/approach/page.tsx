@@ -9,19 +9,19 @@ import ManagerTimeSection from "@/components/ManagerTimeSection";
 export const metadata: Metadata = {
   title: "Our Approach",
   description:
-    "We operate the HOA management companies we buy and build them for the long term — investing in people, technology, and relationships that compound over years.",
+    "We operate the HOA management companies we buy and plan to keep them, investing in the people, technology, and relationships that compound over years.",
 };
 
 const INVEST: { icon: IconName; title: string; line: string }[] = [
   {
     icon: "local-teams",
     title: "People, first",
-    line: "Great communities are run by great local teams. Our role is to give those teams better tools, better systems, and real support — not to replace what already works. Community managers stay close to the communities they serve.",
+    line: "Great communities are run by great local teams. Our role is to give those teams better tools, better systems, and real support, not to replace what already works. Community managers stay close to the communities they serve.",
   },
   {
     icon: "technology",
     title: "Technology that removes friction",
-    line: "We build software that makes an association faster to deal with and easier to understand — for residents, for boards, and for the people managing the day-to-day. The goal is quiet, reliable technology that does its job so no one has to think about it.",
+    line: "We build software that makes an association faster to deal with and easier to understand: for residents, for boards, and for the people managing the day-to-day. The goal is quiet, reliable technology that does its job so no one has to think about it.",
   },
   {
     icon: "long-term",
@@ -60,15 +60,15 @@ export default function ApproachPage() {
             <div className="split__body">
               <p>
                 We are not assembling a portfolio to resell. We are building companies
-                we intend to own and improve for years — which changes{" "}
+                we intend to own and improve for years, which changes{" "}
                 <strong>nearly every decision we make</strong>.
               </p>
               <p>
                 That long horizon is the whole point. When you plan to hold a business,
                 you invest in the things that compound: the people who run it, the
-                service residents actually feel, and the technology that makes both
-                better over time. Rather than cut to hit a number, we would rather
-                spend to build something that is genuinely stronger a decade from now.
+                service residents feel, and the technology that makes both better
+                over time. Rather than cut to hit a number, we would rather spend to
+                build something that is stronger a decade from now.
               </p>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function ApproachPage() {
         <div className="wrap">
           <div className="track__intro">
             <span className="eyebrow">What we invest in</span>
-            <h2 className="t-h2">Where the long term actually shows up.</h2>
+            <h2 className="t-h2">Where the long view shows up.</h2>
           </div>
           <div className="trio">
             {INVEST.map((c) => (
@@ -104,23 +104,28 @@ export default function ApproachPage() {
         size="md"
         eyebrow="How we think about it"
         after={
-          <p>
-            Communities become easier to live in, homes become more valuable to own,
-            and the business itself becomes more durable. Those goals reinforce each
-            other.
-          </p>
+          <>
+            <p>
+              Strengthen the management company and you strengthen everything it
+              touches.
+            </p>
+            <p>
+              Communities become easier to live in, homes become more valuable to
+              own, and the business itself becomes more durable. Those goals
+              reinforce each other.
+            </p>
+          </>
         }
       >
-        Strengthen the management company and you strengthen everything it touches —
-        which is why we treat it as <span className="g">one job, not three.</span>
+        One job, <span className="g">not three.</span>
       </PullQuote>
 
       <Section bg="cream">
         <div className="wrap">
           <p className="lead-statement" style={{ maxWidth: "44ch" }}>
-            We are early in this work. What we have described here is the standard we
-            are <span className="g">building toward</span>, and the way we intend to
-            operate every company we own.
+            Better tools for the people doing the work, and an owner who stays to keep
+            improving them. That is the <span className="g">whole approach</span>, in
+            every company we run.
           </p>
         </div>
       </Section>
@@ -134,6 +139,7 @@ export default function ApproachPage() {
           </>
         }
         lead="Tell us about your community, and we'll reply personally."
+        body="If this sounds like what your community needs, tell us about it. We'll say plainly what we can and can't do yet."
       />
     </>
   );

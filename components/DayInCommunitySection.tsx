@@ -32,7 +32,7 @@ const USUAL: Row[] = [
     icon: "clock",
     time: "Whenever",
     title: "You never quite know where things stand",
-    line: "Requests, decisions, money — all a little opaque, all a little slow.",
+    line: "Requests, decisions, money: all a little opaque, all a little slow.",
   },
 ];
 
@@ -41,7 +41,7 @@ const OURS: Row[] = [
     icon: "chat-lines",
     time: "In seconds",
     title: "You ask about a gate code",
-    line: "You get the answer right away, day or night — and a real person for anything that actually needs one.",
+    line: "You get the answer right away, day or night, and a real person for anything that needs one.",
   },
   {
     icon: "doc-check",
@@ -53,13 +53,13 @@ const OURS: Row[] = [
     icon: "droplet-check",
     time: "Early",
     title: "A sensor catches the leak",
-    line: "A small alert while it's still a $40 part — the flood, the claim, the disruption never happen.",
+    line: "A small alert while it's still a $40 part. The flood, the claim, and the disruption never happen.",
   },
   {
     icon: "list-status",
     time: "Always",
     title: "You can see where things stand",
-    line: "Requests, decisions, and the books — open and current. An association you can trust.",
+    line: "Requests, decisions, and the books, open and current. An association you can trust.",
   },
 ];
 
@@ -103,8 +103,8 @@ export default function DayInCommunitySection() {
         <VisionIntro
           eyebrow="The vision"
           onDark
-          lede="Most of what makes an HOA frustrating is small, daily friction — the email that sits for a week, the bill no one can explain, the problem found too late. Here's the same day, run the way we think it should be."
-          note="Wameir is early-stage. This is the standard we're working toward for every community we take on — not a service running today."
+          lede="Most of what makes an HOA frustrating is small, daily friction: the email that sits for a week, the bill no one can explain, the problem found too late. Here's the same day, run the way we think it should be."
+          note="Wameir is early-stage. This is the standard we're working toward for every community we take on, not a service running today."
         >
           A day in a community <span className="g">we&apos;re building toward.</span>
         </VisionIntro>

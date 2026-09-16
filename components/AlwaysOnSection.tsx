@@ -10,9 +10,9 @@ import ClockDialDiagram from "./diagrams/ClockDialDiagram";
 const POINTS: { icon: IconName; line: string }[] = [
   {
     icon: "chat-lines",
-    line: "Your balance, your documents, your request status — on demand.",
+    line: "Your balance, your documents, your request status, on demand.",
   },
-  { icon: "clock", line: "Day or night, weekday or weekend — no waiting for Monday." },
+  { icon: "clock", line: "Day or night, weekday or weekend. No waiting for Monday." },
   {
     icon: "droplet-watch",
     line: "A person, with full context, for anything that needs judgment.",
@@ -31,9 +31,9 @@ export default function AlwaysOnSection() {
             </h2>
             <p className="vsec-intro__lede">
               The routine questions don&apos;t wait for office hours, so the answers
-              shouldn&apos;t either. A balance, a gate code, a rule you forgot — handled
+              shouldn&apos;t either. A balance, a gate code, a rule you forgot: handled
               the moment you ask, at any hour. And a real person for anything that
-              actually needs one.
+              needs one.
             </p>
             <ul className="icon-list">
               {POINTS.map((p) => (
@@ -47,7 +47,7 @@ export default function AlwaysOnSection() {
             </ul>
             <p className="track__disclaimer track__disclaimer--sm">
               Wameir is early-stage. This is the standard we&apos;re building toward for
-              every community — not a service running today.
+              every community, not a service running today.
             </p>
           </div>
 

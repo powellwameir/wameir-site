@@ -18,12 +18,14 @@ export default function ContactSection({
   eyebrow = "Start a conversation",
   heading,
   lead = "Send us a note and we'll reply personally.",
+  body = "Selling a company, serving on a board, or just curious what we're building? Start with a note.",
 }: {
   audience?: Audience;
   source?: string;
   eyebrow?: string;
   heading?: React.ReactNode;
   lead?: React.ReactNode; // per-page lead line so the closing block doesn't read templated
+  body?: React.ReactNode; // per-page paragraph under the heading, for the same reason
 }) {
   return (
     <Section bg="navy" id="contact" className="invite">
@@ -39,11 +41,7 @@ export default function ContactSection({
                 </>
               )}
             </h2>
-            <p>
-              Whether you&apos;re exploring a sale or asking about your community,
-              we&apos;d welcome the conversation. We move at your pace and keep it
-              confidential.
-            </p>
+            <p>{body}</p>
             <p className="mt-sm" style={{ color: "var(--cream-70)", fontSize: "0.9375rem" }}>
               {LOCATION} &middot;{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: "var(--gold-light)" }}>
@@ -73,7 +71,7 @@ export default function ContactSection({
                 className="btn btn--gold"
                 data-cta="email"
                 data-cta-location="contact"
-                href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20enquiry`}
+                href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20inquiry`}
               >
                 Email {CONTACT_EMAIL}
               </a>

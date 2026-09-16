@@ -8,11 +8,11 @@ import Headshot from "@/components/Headshot";
 import BenefitsGrid from "@/components/BenefitsGrid";
 import PullQuote from "@/components/PullQuote";
 import { DISCLAIMER } from "@/lib/content";
-import { TEAM } from "@/lib/team";
+import { TEAM, TEAM_HEADLINE } from "@/lib/team";
 import { goalCard } from "@/lib/goals";
 import { SELLER_POINTS } from "@/lib/sellerPoints";
 
-// Communities teaser — the three money-back goals, each with its own deep page.
+// Communities teaser — the three lower-bills goals, each with its own deep page.
 // Icon + title + the goal sentence (shared with /working-toward via lib/goals)
 // + one payoff line. The other goals and the full reasoning stay on
 // /working-toward. No group heading: the teaser's own h2 introduces them.
@@ -63,16 +63,16 @@ export default function Home() {
         <div className="hero__scrim" aria-hidden="true" />
         <div className="wrap">
           <p className="eyebrow eyebrow-gold-light hero-reveal">
-            Wameir &middot; Greater Houston
+            Greater Houston
           </p>
           <h1 className="t-hero hero-reveal hero-reveal--2">
             Community management,
             <br />
             <span className="accent-italic">done right.</span>
           </h1>
-          {/* TODO(§15 #10): confirm final hero supporting line. */}
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
-            Modern tools. Optimized service. Elevated communities.
+            We buy Houston HOA management companies with our own money and run them
+            ourselves, for the long haul.
           </p>
           <div className="hero__actions hero-reveal hero-reveal--4">
             <DualCTA onDark />
@@ -111,7 +111,7 @@ export default function Home() {
                   imgClassName="tile__img"
                 />
                 <span className="tile__title">{t.heading}</span>
-                <span className="tile__body">{t.body}</span>
+                <span className="tile__body">{t.teaser}</span>
               </Link>
             ))}
           </div>
@@ -130,8 +130,8 @@ export default function Home() {
         after={
           <>
             <p>
-              We buy HOA management companies with our own capital, operate them
-              ourselves, and build them for the <strong>long term</strong>.
+              We buy HOA management companies, run them ourselves, and{" "}
+              <strong>keep them</strong>.
             </p>
             <Link className="teaser__link" href="/approach">
               Read our approach <span aria-hidden="true">→</span>
@@ -164,14 +164,13 @@ export default function Home() {
             <div className="split__label">
               <span className="eyebrow eyebrow-gold-light">Who&apos;s behind it</span>
               <p className="kicker">
-                Experienced operators, guided by an industry veteran.
+                {TEAM_HEADLINE.lead} {TEAM_HEADLINE.accent}
               </p>
             </div>
             <div className="split__body">
               <p style={{ color: "var(--cream-70)" }}>
-                We started Wameir because we believe community management can be
-                better. We&apos;re putting our own capital in, and we&apos;re here to
-                run these companies for the long term.
+                The people you talk to about a sale are the people who would run
+                your company afterward.
               </p>
             </div>
           </div>
@@ -184,7 +183,7 @@ export default function Home() {
                 <div className="role" style={{ color: "var(--cream-70)" }}>
                   {m.role}
                 </div>
-                <p style={{ color: "#fff" }}>{m.paras[0]}</p>
+                <p style={{ color: "#fff" }}>{m.teaser}</p>
               </div>
             ))}
           </div>
@@ -207,9 +206,9 @@ export default function Home() {
                 What we&apos;re working toward in every community.
               </h2>
               <p>
-                We are early, so these are goals rather than guarantees — the standard
-                we hold ourselves to. Each one has to save a household real money or
-                real effort, or it does not belong here.
+                Every goal here has to save a household real money or real effort, or
+                it doesn&apos;t belong on the list. This is the standard we&apos;re
+                building each company to.
               </p>
               {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
               <p className="track__disclaimer">{DISCLAIMER}</p>

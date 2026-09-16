@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     template: "%s | Wameir",
   },
   description:
-    "Wameir acquires exceptional HOA management companies in Greater Houston and invests in modern technology, stronger teams, and better operations.",
+    "Wameir buys established HOA management companies in Greater Houston and runs them for the long haul, keeping local teams and giving them better tools.",
   openGraph: {
     type: "website",
     siteName: "Wameir",
     title: "Wameir | Community management, done right",
     description:
-      "We acquire exceptional HOA management companies and invest in modern technology, stronger teams, and better operations.",
+      "We buy established HOA management companies in Greater Houston and run them for the long haul, keeping local teams and giving them better tools.",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Wameir" }],
   },
   twitter: {

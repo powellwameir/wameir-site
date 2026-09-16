@@ -38,7 +38,7 @@ const STATES: State[] = [
         pct: "~30%",
       },
     ],
-    note: "The people you rely on spend most of their day on work you never see — and none of it is why they got into this.",
+    note: "The people you rely on spend most of their day on work you never see, and none of it is why they got into this.",
   },
   {
     tag: "What we're building toward",
@@ -62,7 +62,7 @@ const STATES: State[] = [
         pct: "~30%",
       },
     ],
-    note: "Same team, same local faces — freed to spend their day on your community instead of its paperwork.",
+    note: "Same team, same local faces, freed to spend their day on your community instead of its paperwork.",
   },
 ];
 
@@ -71,9 +71,9 @@ export default function ManagerTimeSection() {
     <Section bg="cream">
       <div className="wrap">
         <VisionIntro
-          eyebrow="What automation is really for"
-          lede="Good community managers don't leave because the work is hard — they leave because too much of the day is data entry, chasing paperwork, and re-typing the same answers. When the routine handles itself, the people who serve your community get their time back for the part only a person can do."
-          note="Wameir is early-stage. This is how we intend to run every company we take on — community managers stay; their time shifts."
+          eyebrow="What automation is for"
+          lede="Good community managers don't leave because the work is hard. They leave because too much of the day is data entry, chasing paperwork, and re-typing the same answers. When the routine handles itself, the people who serve your community get their time back for the part only a person can do."
+          note="Wameir is early-stage. This is how we intend to run every company we take on. Community managers stay; their time shifts."
         >
           We take the busywork off people, so they can{" "}
           <span className="g">be there for your community.</span>
