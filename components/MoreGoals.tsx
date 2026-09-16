@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "./Arrow";
 import Section from "./Section";
 import BenefitsGrid from "./BenefitsGrid";
 import { GROUPS } from "@/lib/goals";
@@ -31,7 +32,7 @@ export default function MoreGoals({ current }: { current: string }) {
         <h2 className="eyebrow eyebrow--heading">{group.head}</h2>
         <BenefitsGrid groups={[{ head: "", items }]} cols={2} />
         <Link className="teaser__link" href="/working-toward">
-          See all eight goals <span aria-hidden="true">→</span>
+          See all eight goals <Arrow />
         </Link>
       </div>
     </Section>

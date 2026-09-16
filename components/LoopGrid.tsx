@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "./Arrow";
 import Icon, { type IconName } from "./Icon";
 
 export type LoopStep = {
@@ -44,7 +45,7 @@ export default function LoopGrid({
             {s.example && <p className="loop__ex">{s.example}</p>}
             {s.link && (
               <Link className="teaser__link" href={s.link.href}>
-                {s.link.label} <span aria-hidden="true">→</span>
+                {s.link.label} <Arrow />
               </Link>
             )}
           </div>

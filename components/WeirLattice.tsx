@@ -1,9 +1,10 @@
 /*
  * The Wameir weir-lattice mark — the signature graphic (§4A).
- * Two interlocking gold polylines (the W/M lattice). Used three ways:
+ * Two interlocking gold polylines (the W/M lattice). Used two ways, plus the
+ * lattice background tile (public/lattice*.svg):
  *  - <WeirMark>       small logo lockup in nav/footer
- *  - <WeirWatermark>  oversized, low-opacity (≤8%) hero/section watermark
- *  - <WeirBaseline>   the thin single-stroke lattice divider between bands
+ *  - <WeirWatermark>  oversized, low-opacity section watermark
+ * Every chevron keeps the mark's angle: never stretch these non-uniformly.
  *
  * TODO(§8, blocking #7): replace with the clean vector weir logo once supplied.
  * This inline SVG is the interim brand graphic — fully in-repo, no CDN.
@@ -81,31 +82,6 @@ export function WeirWatermark({
         strokeWidth="8"
         strokeLinecap="round"
         strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-/**
- * Thin single-stroke lattice used as a section divider baseline (§4A dividers).
- * Renders full-bleed; give it a wrapping element with the band background.
- */
-export function WeirBaseline({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 1200 80"
-      preserveAspectRatio="none"
-      className={className}
-      aria-hidden="true"
-      focusable="false"
-      style={{ display: "block", width: "100%", height: "100%" }}
-    >
-      <path
-        d="M0,40 L100,72 L200,8 L300,72 L400,8 L500,72 L600,8 L700,72 L800,8 L900,72 L1000,8 L1100,72 L1200,40"
-        fill="none"
-        stroke="#A8854A"
-        strokeWidth="2"
-        opacity="0.45"
       />
     </svg>
   );

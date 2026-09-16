@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Section from "@/components/Section";
 import Icon from "@/components/Icon";
+import Arrow from "@/components/Arrow";
 import GoalIndex from "@/components/GoalIndex";
 import DayInCommunitySection from "@/components/DayInCommunitySection";
 import AlwaysOnSection from "@/components/AlwaysOnSection";
@@ -47,8 +48,8 @@ function GoalBlock({ g }: { g: Goal }) {
             summary. */}
         {g.link && (
           <Link className="bcard bcard--link goal__deep" href={g.link.href}>
-            <span className="bcard__arrow" aria-hidden="true">
-              →
+            <span className="bcard__arrow">
+              <Arrow />
             </span>
             <span className="goal__deep-title">Read the full write-up</span>
           </Link>
@@ -132,7 +133,7 @@ export default function WorkingTowardPage() {
               </div>
               {/* The index is several screens up by the end of a group. */}
               <a className="teaser__link goal-group__back" href="#all-goals">
-                Back to all goals <span aria-hidden="true">↑</span>
+                Back to all goals <Arrow direction="up" />
               </a>
             </div>
           </Section>

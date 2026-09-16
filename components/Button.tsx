@@ -1,24 +1,7 @@
 import Link from "next/link";
+import Arrow from "./Arrow";
 
 type Variant = "gold" | "line-light" | "line-ink";
-
-const ArrowRight = () => (
-  <svg
-    className="arrow"
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
-);
 
 /**
  * Shared CTA button (§4.1 colour rules). CTA copy must be active and say what
@@ -56,7 +39,7 @@ export default function Button({
   const content = (
     <>
       {children}
-      {arrow && <ArrowRight />}
+      {arrow && <Arrow />}
     </>
   );
 

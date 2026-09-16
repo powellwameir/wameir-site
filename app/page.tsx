@@ -2,8 +2,8 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import DualCTA from "@/components/DualCTA";
 import ContactSection from "@/components/ContactSection";
-import { WeirBaseline } from "@/components/WeirLattice";
 import Picture from "@/components/Picture";
+import Arrow from "@/components/Arrow";
 import Headshot from "@/components/Headshot";
 import GoalIndex from "@/components/GoalIndex";
 import { DISCLAIMER } from "@/lib/content";
@@ -46,11 +46,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Branded transition out of the hero (§4A weir-lattice divider). */}
-      <div className="hero-baseline" aria-hidden="true">
-        <WeirBaseline />
-      </div>
-
       {/* ---- Seller teaser (cream) + Why founders choose Wameir trio. Leads the
           page: founders are the visitors who can act today. ---- */}
       <Section bg="cream">
@@ -76,7 +71,9 @@ export default function Home() {
                   className="tile__pic"
                   imgClassName="tile__img"
                 />
-                <span className="tile__title">{t.heading}</span>
+                <span className="tile__title">
+                  {t.heading} <Arrow />
+                </span>
                 <span className="tile__body">{t.body}</span>
               </Link>
             ))}
@@ -118,7 +115,7 @@ export default function Home() {
                 ourselves, and build them for the <strong>long term</strong>.
               </p>
               <Link className="teaser__link" href="/approach">
-                Read our approach <span aria-hidden="true">→</span>
+                Read our approach <Arrow />
               </Link>
             </div>
           </figure>
@@ -186,7 +183,7 @@ export default function Home() {
               {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
               <p className="track__disclaimer">{DISCLAIMER}</p>
               <Link className="teaser__link" href="/working-toward">
-                The thinking behind these <span aria-hidden="true">→</span>
+                The thinking behind these <Arrow />
               </Link>
             </div>
             {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
