@@ -5,13 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { WeirMark } from "./WeirLattice";
 
+// Founder pages first, together; the community cluster last, labelled for its
+// audience. "For communities" is the cluster's one name on every surface.
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/working-toward", label: "Communities" },
   { href: "/selling", label: "Selling" },
   { href: "/approach", label: "Approach" },
   { href: "/team", label: "Team" },
   { href: "/faq", label: "FAQ" },
+  { href: "/working-toward", label: "For communities" },
 ];
 
 export default function Nav() {
@@ -69,11 +71,10 @@ export default function Nav() {
               );
             })}
           </ul>
-          {/* Dual CTA (§5.1 fork) — both paths reachable from the bar / menu. */}
+          {/* One button: the founder action. The community path is the nav item
+              beside it; a second button with a near-identical label went to a
+              different page. */}
           <div className="nav__cta">
-            <Link className="btn btn--line-light nav__cta-line" href="/#communities">
-              For your community
-            </Link>
             <Link className="btn btn--gold" href="/selling">
               Sell your company
             </Link>

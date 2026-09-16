@@ -212,7 +212,7 @@ p { max-width: var(--measure); }
 
 /* =========================================================================
    Nav (shared, §2/§3) — persistent, solid navy so it reads on every band.
-   Collapses to a menu under 720px.
+   Collapses to a menu at 960px and below.
    ========================================================================= */
 .nav {
   position: fixed;
@@ -256,6 +256,10 @@ p { max-width: var(--measure); }
 .nav__menu { display: flex; align-items: center; gap: var(--sp-7); }
 .nav__links { display: flex; align-items: center; gap: var(--sp-5); list-style: none; }
 .nav__link {
+  /* 10px each side gives a 44px target, level with the CTA button so the bar
+     doesn't grow. The gap between links is margin, not target. */
+  display: inline-block;
+  padding-block: 10px;
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--cream-70);
@@ -272,8 +276,8 @@ p { max-width: var(--measure); }
   display: none;
   flex-direction: column;
   gap: 5px;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
   background: transparent;
@@ -289,7 +293,9 @@ p { max-width: var(--measure); }
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-@media (max-width: 720px) {
+/* The full bar needs ~935px on one line (six links and the button). Below
+   that, labels wrapped and the bar grew to ~105px, so collapse earlier. */
+@media (max-width: 960px) {
   .nav__toggle { display: flex; }
   .nav[data-open="true"] .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav[data-open="true"] .nav__toggle span:nth-child(2) { opacity: 0; }
@@ -311,7 +317,7 @@ p { max-width: var(--measure); }
   }
   .nav[data-open="true"] .nav__menu { display: flex; }
   .nav__links { flex-direction: column; align-items: stretch; gap: var(--sp-2); }
-  .nav__link { padding-block: 10px; font-size: 1.0625rem; }
+  .nav__link { padding-block: 12px; font-size: 1.0625rem; }
   .nav__cta { flex-direction: column; align-items: stretch; }
   .nav__cta .btn { justify-content: center; padding-block: 14px; }
 }
@@ -320,40 +326,12 @@ p { max-width: var(--measure); }
    Footer (shared, §2) — repeats nav + contact + disclaimer.
    ========================================================================= */
 .footer {
+  /* No lattice: the mark is a pair of chevrons, and the lattice behind it read
+     as extra strokes of the logo. The deeper navy separates the footer alone. */
   background-color: #0F1929;
-  background-image: url("/lattice.svg");
-  background-repeat: repeat;
-  background-size: 240px auto;
   color: #828DA1;
   border-top: 1px solid var(--hairline-gold);
 }
-/* Closing CTA row above the footer link area. */
-.footer__cta { border-bottom: 1px solid var(--hairline-cream); }
-.footer__cta-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--sp-6) var(--sp-8); flex-wrap: wrap;
-  padding-block: 72px;
-}
-.footer__cta-line {
-  position: relative;
-  padding-top: 26px;
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
-  font-weight: 500;
-  color: #fff;
-  max-width: 22ch;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-}
-.footer__cta-line::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 48px; height: 3px;
-  border-radius: 2px;
-  background: var(--gold-light);
-}
-.btn--lg { padding: 18px 34px; font-size: 1.0625rem; }
 .footer > .wrap { padding-top: 48px; padding-bottom: 40px; }
 .footer__top {
   display: flex;
@@ -363,7 +341,7 @@ p { max-width: var(--measure); }
   padding-bottom: var(--sp-6);
   border-bottom: 1px solid var(--hairline-cream);
 }
-.footer__brand { display: flex; align-items: center; gap: 12px; }
+.footer__brand { display: flex; align-items: center; gap: 12px; align-self: flex-start; text-decoration: none; }
 .footer__brand b {
   font-family: var(--font-display);
   font-size: 1.25rem;
@@ -371,8 +349,11 @@ p { max-width: var(--measure); }
   font-weight: 600;
   letter-spacing: 0.04em;
 }
-.footer__nav { display: flex; flex-wrap: wrap; gap: var(--sp-5); }
+/* Links grouped by audience: two labelled columns. */
+.footer__nav { display: flex; flex-wrap: wrap; gap: var(--sp-5) var(--sp-8); }
+.footer__col ul { list-style: none; display: grid; gap: 8px; margin-top: 14px; }
 .footer__nav a { font-size: 0.9375rem; color: var(--cream-70); text-decoration: none; }
+.footer__contact .eyebrow { margin-bottom: 14px; }
 .footer__nav a:hover { color: #fff; }
 .footer__contact { font-size: 0.9375rem; line-height: 1.8; }
 .footer__contact a { color: var(--gold-light); text-decoration: none; }
@@ -382,8 +363,9 @@ p { max-width: var(--measure); }
   flex-wrap: wrap;
   gap: var(--sp-4);
   padding-top: var(--sp-5);
+  /* Inherits the footer's #828DA1 (5.20:1 on #0F1929). The old #586475 was
+     2.94:1, failing AA on every page on the line that carries the disclaimer. */
   font-size: 0.8125rem;
-  color: #586475;
 }
 .footer__bottom .disc { max-width: 62ch; }
 .footer__bottom a { color: inherit; text-decoration: underline; }
@@ -889,7 +871,6 @@ p { max-width: var(--measure); }
 /* The goal-page card in a goal's summary column. */
 .goal__deep { margin-top: 24px; padding: 20px 56px 20px 22px; }
 .goal__deep .bcard__arrow { top: 22px; right: 22px; }
-.goal__deep .goal-index__tag { display: block; margin: 0 0 6px; }
 .goal__deep-title {
   display: block;
   font-family: var(--font-display);
@@ -1042,7 +1023,6 @@ p { max-width: var(--measure); }
   .wrap { padding-inline: 24px; }
   .hero { padding-top: 128px; padding-bottom: 72px; }
   .page-header { padding-top: 120px; padding-bottom: 56px; }
-  .footer__cta-inner { padding-block: 56px; }
 }
 
 /* =========================================================================

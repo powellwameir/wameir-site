@@ -174,7 +174,7 @@ export default function Home() {
         <div className="wrap">
           <div className="track__header">
             <div className="track__intro">
-              <span className="eyebrow">For the communities we&apos;ll serve</span>
+              <span className="eyebrow">For communities</span>
               <h2 className="t-h2">
                 What we&apos;re working toward in every community.
               </h2>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Button from "./Button";
 import { WeirMark } from "./WeirLattice";
 import {
   DISCLAIMER,
@@ -8,60 +7,58 @@ import {
   COPYRIGHT,
   PHONE,
   LINKEDIN_URL,
-  SCHEDULING_URL,
-  schedulingHref,
 } from "@/lib/content";
+import { GROUPS } from "@/lib/goals";
 
-const LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/working-toward", label: "Communities" },
-  { href: "/lower-taxes", label: "Lower taxes" },
-  { href: "/lower-insurance", label: "Lower insurance" },
-  { href: "/home-monitoring", label: "Home monitoring" },
+/*
+ * Footer link groups, by audience. Founder links use the nav's own labels; the
+ * community group lists every goal with a page of its own, named exactly as
+ * its goal, read from lib/goals so a new goal page appears here automatically.
+ */
+const FOUNDER_LINKS = [
   { href: "/selling", label: "Selling" },
   { href: "/approach", label: "Approach" },
   { href: "/team", label: "Team" },
   { href: "/faq", label: "FAQ" },
-  { href: "/privacy", label: "Privacy" },
 ];
+
+const COMMUNITY_LINKS = [
+  { href: "/working-toward", label: "All eight goals" },
+  ...GROUPS.flatMap((group) =>
+    group.goals.flatMap((g) => (g.link ? [{ href: g.link.href, label: g.title }] : [])),
+  ),
+];
+
+function LinkGroup({ label, links }: { label: string; links: { href: string; label: string }[] }) {
+  return (
+    <div className="footer__col">
+      <p className="eyebrow">{label}</p>
+      <ul>
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href}>{l.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function Footer() {
   return (
     <footer className="footer">
-      {/* Closing band — every page already ends with the contact section, so this
-          offers the one thing that section doesn't lead with: a founder call. */}
-      <div className="footer__cta">
-        <div className="wrap footer__cta-inner">
-          <p className="footer__cta-line">
-            Community management, done right — in Greater Houston.
-          </p>
-          <Button
-            href={schedulingHref()}
-            variant="gold"
-            arrow
-            className="btn--lg"
-            cta="book-call"
-            ctaLocation="footer"
-            {...(SCHEDULING_URL ? { target: "_blank", rel: "noopener" } : {})}
-          >
-            Book a confidential call
-          </Button>
-        </div>
-      </div>
       <div className="wrap">
         <div className="footer__top">
-          <div className="footer__brand">
+          <Link className="footer__brand" href="/" aria-label="Wameir — home">
             <WeirMark size={34} />
             <b>WAMEIR</b>
-          </div>
+          </Link>
           <nav className="footer__nav" aria-label="Footer">
-            {LINKS.map((l) => (
-              <Link key={l.href} href={l.href}>
-                {l.label}
-              </Link>
-            ))}
+            <LinkGroup label="For founders" links={FOUNDER_LINKS} />
+            <LinkGroup label="For communities" links={COMMUNITY_LINKS} />
           </nav>
           <div className="footer__contact">
+            <p className="eyebrow">Wameir</p>
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             {PHONE && (
               <>
@@ -82,7 +79,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <span>{COPYRIGHT}</span>
+          <span>
+            {COPYRIGHT} <Link href="/privacy">Privacy</Link>
+          </span>
           {/* Early-stage disclaimer — verbatim (§7). */}
           <span className="disc">{DISCLAIMER}</span>
         </div>
