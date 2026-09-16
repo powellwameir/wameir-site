@@ -48,7 +48,6 @@ export const TEAM: TeamMember[] = [
     role: "Strategic Advisor",
     paras: [
       "An industry veteran with decades of experience, Bob has spent a career helping high-performing organizations grow through disciplined financial leadership and operational excellence.",
-      "He is Mitch's longtime mentor and a guide to how we build.",
     ],
     photoBase: "/img/team-bob-green",
     photoConsent: true, // consent confirmed by the founder
