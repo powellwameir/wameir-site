@@ -1,7 +1,8 @@
 import Section from "./Section";
-import ContactForm from "./ContactForm";
+import ContactForm, { type Audience } from "./ContactForm";
+import Button from "./Button";
 import { WeirWatermark } from "./WeirLattice";
-import { CONTACT_EMAIL, LOCATION } from "@/lib/content";
+import { CONTACT_EMAIL, LOCATION, SCHEDULING_URL, schedulingHref } from "@/lib/content";
 
 // Build-time flag: show the real form only once it's enabled (privacy notice live).
 // Until then we show a clean "email us" CTA instead of a form that can't submit.
@@ -12,13 +13,13 @@ const FORM_ENABLED = process.env.NEXT_PUBLIC_CONTACT_FORM_ENABLED === "true";
  * weir-lattice motif through to the closing screen (§4A).
  */
 export default function ContactSection({
-  audience = "seller",
+  audience = "other",
   source = "/",
   eyebrow = "Start a conversation",
   heading,
   lead = "Send us a note and we'll reply personally.",
 }: {
-  audience?: "seller" | "community";
+  audience?: Audience;
   source?: string;
   eyebrow?: string;
   heading?: React.ReactNode;
@@ -49,6 +50,19 @@ export default function ContactSection({
                 {CONTACT_EMAIL}
               </a>
             </p>
+            {/* Founder fast-path: a confidential call, alongside the form/email. */}
+            <div className="invite__call">
+              <Button
+                href={schedulingHref()}
+                variant="line-light"
+                arrow
+                cta="book-call"
+                ctaLocation="contact"
+                {...(SCHEDULING_URL ? { target: "_blank", rel: "noopener" } : {})}
+              >
+                Book a confidential 20-minute call
+              </Button>
+            </div>
           </div>
           {FORM_ENABLED ? (
             <ContactForm defaultAudience={audience} source={source} />
@@ -57,6 +71,8 @@ export default function ContactSection({
               <p className="contact-cta__lead">{lead}</p>
               <a
                 className="btn btn--gold"
+                data-cta="email"
+                data-cta-location="contact"
                 href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20enquiry`}
               >
                 Email {CONTACT_EMAIL}

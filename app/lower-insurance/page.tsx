@@ -112,7 +112,7 @@ export default function LowerInsurancePage() {
 
       <ContactSection
         source="/lower-insurance"
-        audience="community"
+        audience="resident"
         heading={
           <>
             Want this for your <span className="it">community?</span>

@@ -127,7 +127,7 @@ export default function ApproachPage() {
 
       <ContactSection
         source="/approach"
-        audience="community"
+        audience="board"
         heading={
           <>
             Curious what this could mean for your <span className="it">community?</span>

@@ -786,6 +786,8 @@ p { max-width: var(--measure); }
 .form__fallback { font-size: 0.875rem; color: var(--cream-70); }
 .form__fallback a, .form__error a, .form__success-body a { color: var(--gold-light); }
 .form__error { color: #E7B4A0; font-size: 0.9375rem; margin-top: 4px; }
+.form__trust { margin-top: 18px; font-size: 0.875rem; color: var(--cream-70); }
+.invite__call { margin-top: 28px; }
 .form__success-title { font-family: var(--font-display); font-size: 1.5rem; color: #fff; }
 .form__success-body { color: var(--cream-70); margin-top: 12px; }
 

@@ -4,7 +4,16 @@ import { useState } from "react";
 import Script from "next/script";
 import { CONTACT_EMAIL } from "@/lib/content";
 
-type Audience = "seller" | "community";
+export type Audience = "founder" | "board" | "resident" | "other";
+
+// One-question triage so replies reach the right founder.
+const AUDIENCES: { value: Audience; label: string }[] = [
+  { value: "founder", label: "I'm a founder" },
+  { value: "board", label: "On a board" },
+  { value: "resident", label: "A resident" },
+  { value: "other", label: "Other" },
+];
+
 type Status = "idle" | "submitting" | "success" | "error";
 
 const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
@@ -18,7 +27,7 @@ const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
  * the mailto is always shown alongside as the graceful fallback.
  */
 export default function ContactForm({
-  defaultAudience = "seller",
+  defaultAudience = "other",
   source = "/",
 }: {
   defaultAudience?: Audience;
@@ -27,6 +36,7 @@ export default function ContactForm({
   const [audience, setAudience] = useState<Audience>(defaultAudience);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
+  const showsCompany = audience === "founder" || audience === "board";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,7 +48,7 @@ export default function ContactForm({
     const payload = {
       audience,
       name: String(fd.get("name") || ""),
-      company: String(fd.get("company") || ""),
+      company: showsCompany ? String(fd.get("company") || "") : "",
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
       message: String(fd.get("message") || ""),
@@ -69,7 +79,7 @@ export default function ContactForm({
 
   if (status === "success") {
     return (
-      <div className="form" role="status">
+      <div className="form" id="contact-form" data-status={status} role="status">
         <p className="form__success-title">Thank you — we have your note.</p>
         <p className="form__success-body">
           We read every message ourselves and will reply personally. If it&apos;s
@@ -81,7 +91,13 @@ export default function ContactForm({
   }
 
   return (
-    <form className="form" onSubmit={onSubmit} noValidate>
+    <form
+      className="form"
+      id="contact-form"
+      data-status={status}
+      onSubmit={onSubmit}
+      noValidate
+    >
       {SITE_KEY && (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
@@ -90,23 +106,18 @@ export default function ContactForm({
         />
       )}
 
-      <div className="form__audience" role="group" aria-label="I am">
-        <button
-          type="button"
-          className={`form__seg${audience === "seller" ? " is-active" : ""}`}
-          aria-pressed={audience === "seller"}
-          onClick={() => setAudience("seller")}
-        >
-          Selling my company
-        </button>
-        <button
-          type="button"
-          className={`form__seg${audience === "community" ? " is-active" : ""}`}
-          aria-pressed={audience === "community"}
-          onClick={() => setAudience("community")}
-        >
-          Asking about my community
-        </button>
+      <div className="form__audience" role="group" aria-label="I'm…">
+        {AUDIENCES.map((a) => (
+          <button
+            key={a.value}
+            type="button"
+            className={`form__seg${audience === a.value ? " is-active" : ""}`}
+            aria-pressed={audience === a.value}
+            onClick={() => setAudience(a.value)}
+          >
+            {a.label}
+          </button>
+        ))}
       </div>
 
       <div className="form__row">
@@ -114,7 +125,7 @@ export default function ContactForm({
           <span>Name</span>
           <input name="name" type="text" autoComplete="name" required />
         </label>
-        {audience === "seller" && (
+        {showsCompany && (
           <label className="form__field">
             <span>Company</span>
             <input name="company" type="text" autoComplete="organization" />
@@ -168,6 +179,7 @@ export default function ContactForm({
         <button
           type="submit"
           className="btn btn--gold"
+          data-cta="contact-submit"
           disabled={status === "submitting"}
         >
           {status === "submitting" ? "Sending…" : "Send your message"}
@@ -176,6 +188,9 @@ export default function ContactForm({
           or email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </span>
       </div>
+      <p className="form__trust">
+        Every message is read by a founder — and kept confidential.
+      </p>
     </form>
   );
 }

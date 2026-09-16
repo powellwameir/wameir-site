@@ -181,7 +181,7 @@ export default function WorkingTowardPage() {
 
       <ContactSection
         source="/working-toward"
-        audience="community"
+        audience="board"
         heading={
           <>
             Want to hold us to <span className="it">these goals?</span>
