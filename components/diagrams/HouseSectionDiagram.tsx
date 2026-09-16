@@ -11,8 +11,9 @@ export default function HouseSectionDiagram() {
       fill="none"
       role="img"
       focusable="false"
-      aria-label="A home with monitored points: water under the sink and near the heater, temperature and humidity inside, electrical at the panel, and soil at the foundation."
+      aria-label="A home with monitored points: water under the sink and near the heater, temperature and humidity inside, electrical at the panel and soil at the foundation."
     >
+      <title>A home with monitored points: water under the sink and near the heater, temperature and humidity inside, electrical at the panel and soil at the foundation.</title>
       <rect className="dg-fill-rule" x="20" y="286" width="360" height="10" rx="3" />
 
       <path className="dg-ink" d="M60 150 L200 60 L340 150" strokeWidth={2.5} />

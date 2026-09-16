@@ -190,7 +190,6 @@ const STAGES: Stage[] = [
         head: "What this means",
         items: [
           "We're owner-operators, here to stay",
-          "Decisions made for the long term",
           "Your legacy continues, with more behind it",
         ],
       },
@@ -202,7 +201,7 @@ const STAGES: Stage[] = [
         ],
       },
     ],
-    reassure: "You built it. We'll keep building it for the long haul.",
+    reassure: "You built it. We'll keep building it.",
     reassureIcon: SHIELD,
   },
 ];
@@ -285,7 +284,7 @@ export default function SellerProcess() {
           </h3>
           <p>
             A first conversation costs nothing and commits you to nothing. Every message is
-            read by a founder and kept confidential.
+            read by a founder.
           </p>
         </div>
       </div>

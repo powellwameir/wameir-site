@@ -10,8 +10,9 @@ export default function RiskPricingDiagram() {
       fill="none"
       role="img"
       focusable="false"
-      aria-label="A monitored home leads to lower measured risk, which leads to your premium — and it should follow it down."
+      aria-label="A monitored home leads to lower measured risk, which leads to your premium, and it should follow it down."
     >
+      <title>A monitored home leads to lower measured risk, which leads to your premium, and it should follow it down.</title>
       {/* a monitored home */}
       <g transform="translate(14,95)">
         <g className="dg-ink" strokeWidth={1.8}>

@@ -109,8 +109,7 @@ export default function LowerTaxesPage() {
         assessments and outcomes vary from home to home and year to year. What a
         community-wide effort can commit to is that the appeal gets filed,
         correctly and on time, for every home that wants it. The value is in reliably
-        doing the thing that otherwise doesn&apos;t get done. This is a goal we&apos;re
-        working toward, not a service running today.
+        doing the thing that otherwise doesn&apos;t get done.
       </LimitsBand>
 
       <MoreGoals current="/lower-taxes" />

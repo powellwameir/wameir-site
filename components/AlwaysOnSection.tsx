@@ -45,10 +45,6 @@ export default function AlwaysOnSection() {
                 </li>
               ))}
             </ul>
-            <p className="track__disclaimer track__disclaimer--sm">
-              Wameir is early-stage. This is the standard we&apos;re building toward for
-              every community. It&apos;s not a service running today.
-            </p>
           </div>
 
           <div className="dialwrap">

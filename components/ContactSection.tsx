@@ -17,7 +17,7 @@ export default function ContactSection({
   source = "/",
   eyebrow = "Start a conversation",
   heading,
-  intro = "Whether you're thinking about selling or asking about your community, we'd like to hear from you. We move at your pace, and the conversation stays confidential.",
+  intro = "Whether you're thinking about selling or asking about your community, we'd like to hear from you. We move at your pace.",
   lead = "Send us a note and we'll reply personally.",
 }: {
   audience?: Audience;

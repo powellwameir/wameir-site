@@ -40,7 +40,7 @@ export default function Home() {
         <div className="hero__scrim" aria-hidden="true" />
         <div className="wrap">
           <p className="eyebrow eyebrow-gold-light hero-reveal">
-            Wameir &middot; Greater Houston
+            Greater Houston
           </p>
           <h1 className="t-hero hero-reveal hero-reveal--2">
             Community management,
@@ -122,8 +122,8 @@ export default function Home() {
             </blockquote>
             <div className="pullquote__after">
               <p>
-                We buy HOA management companies with our own capital, operate them
-                ourselves, and build them for the <strong>long term</strong>.
+                We buy HOA management companies with our own capital and operate them
+                ourselves.
               </p>
               <Link className="teaser__link" href="/approach">
                 Read our approach <Arrow />
@@ -150,8 +150,7 @@ export default function Home() {
             <div className="split__body">
               <p>
                 We started Wameir because we believe community management can be
-                better. We&apos;re putting our own capital in, and we&apos;re here to
-                run these companies for the long term.
+                better, and we run the companies we buy ourselves.
               </p>
             </div>
           </div>
@@ -192,9 +191,6 @@ export default function Home() {
               </p>
               {/* Early-stage disclaimer, prominent (§6 rule 2, §7 verbatim). */}
               <p className="track__disclaimer">{DISCLAIMER}</p>
-              <Link className="teaser__link" href="/working-toward">
-                The thinking behind these <Arrow />
-              </Link>
             </div>
             {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
             <Picture
@@ -210,11 +206,9 @@ export default function Home() {
           </div>
 
           <GoalIndex variant="home" />
-          <div style={{ marginTop: 40 }}>
-            <Link className="btn btn--line-ink" href="/working-toward">
-              See all eight goals
-            </Link>
-          </div>
+          <Link className="teaser__link teaser__link--after" href="/working-toward">
+            Read the thinking behind each <Arrow />
+          </Link>
         </div>
       </Section>
 
