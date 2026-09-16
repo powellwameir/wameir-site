@@ -17,12 +17,9 @@ export const metadata: Metadata = pageMetadata({
 type QA = {
   q: string;
   a: React.ReactNode;
-  gated?: boolean; // ⚠️ attorney review / real numbers needed before publishing
 };
 
-// Seller-FAQ (§5.5 / §15 draft list). Legal/valuation answers are phrased as
-// "how we think about it," never a number or a promise — and are marked as
-// placeholders pending attorney review (blocking #3) or real numbers (#9).
+// Founders considering a sale (§5.5).
 const FAQS: QA[] = [
   {
     q: "Where does your funding come from?",
@@ -55,29 +52,6 @@ const FAQS: QA[] = [
     ),
   },
   {
-    q: "Do you buy the whole company?",
-    gated: true,
-    a: (
-      <p>
-        How we think about it: every situation is different, and the right structure
-        depends on what the founder wants and what keeps the business strong. We will
-        walk through the options together.{" "}
-        <em>Full answer pending counsel review.</em>
-      </p>
-    ),
-  },
-  {
-    q: "What do your deal structures look like?",
-    gated: true,
-    a: (
-      <p>
-        How we think about it: we design each arrangement around the founder&apos;s
-        goals and the continued health of the business, rather than fitting everyone
-        to a single template. <em>Full answer pending counsel review.</em>
-      </p>
-    ),
-  },
-  {
     q: "What happens to me after the sale?",
     a: (
       <p>
@@ -90,40 +64,12 @@ const FAQS: QA[] = [
     ),
   },
   {
-    q: "How long does the process take?",
-    gated: true,
-    a: (
-      <p>
-        We move at your pace and keep the process straightforward and confidential.{" "}
-        <em>
-          A typical timeframe will be added here once we can state it from
-          experience.
-        </em>
-      </p>
-    ),
-  },
-  {
     q: "Is this confidential?",
     a: (
       <p>
         Yes. Every conversation and every document you share stays confidential, from
         the first call onward. Your employees, boards and clients won&apos;t hear about
         it from us.
-      </p>
-    ),
-  },
-  {
-    q: "What is my company worth?",
-    gated: true,
-    a: (
-      <p>
-        How we think about it: value depends on the specifics of your business, and
-        we will not attach a number to it before we understand it properly. The
-        honest answer is that it is worth having the conversation.{" "}
-        <em>
-          Full answer pending counsel review — we will not quote a figure or make a
-          promise here.
-        </em>
       </p>
     ),
   },
@@ -199,10 +145,7 @@ function textOf(node: ReactNode): string {
   return "";
 }
 
-// Only the questions the page shows: gated answers (counsel review pending)
-// are placeholders and stay out of search results too.
-const FOUNDER_PUBLISHED = FAQS.filter((item) => !item.gated);
-const PUBLISHED = [...FOUNDER_PUBLISHED, ...BOARD_FAQS];
+const PUBLISHED = [...FAQS, ...BOARD_FAQS];
 
 const FAQ_PAGE = {
   "@context": "https://schema.org",
@@ -232,10 +175,8 @@ export default function FaqPage() {
       {/* Quiet by design (§4A) — the accordion structure is the visual. */}
       <Section bg="paper">
         <div className="wrap">
-          {/* Only questions with real answers render. Gated ones (legal review
-              pending) stay in the data and return once they're answered. */}
           {[
-            { label: "From founders", items: FOUNDER_PUBLISHED },
+            { label: "From founders", items: FAQS },
             { label: "From boards and residents", items: BOARD_FAQS },
           ].map((group, i) => (
             <div key={group.label} style={{ marginTop: i === 0 ? 0 : 56 }}>
