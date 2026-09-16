@@ -6,7 +6,6 @@ import { WeirBaseline } from "@/components/WeirLattice";
 import Picture from "@/components/Picture";
 import Headshot from "@/components/Headshot";
 import BenefitsGrid from "@/components/BenefitsGrid";
-import PullQuote from "@/components/PullQuote";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
 import { goalCard } from "@/lib/goals";
@@ -123,28 +122,12 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ---- Approach teaser as a navy pull-quote band (Approach-page cadence) ---- */}
-      <PullQuote
-        bg="navy"
-        eyebrow="Our approach"
-        after={
-          <>
-            <p>
-              We buy HOA management companies with our own capital, operate them
-              ourselves, and build them for the <strong>long term</strong>.
-            </p>
-            <Link className="teaser__link" href="/approach">
-              Read our approach <span aria-hidden="true">→</span>
-            </Link>
-          </>
-        }
-      >
-        We&apos;re operators, in it for the <span className="g">long term.</span>
-      </PullQuote>
-
-      {/* ---- Full-bleed place band: separates the navy pull quote from the navy
-          team band, grounding "local, one community at a time". ---- */}
-      <div className="image-band">
+      {/* ---- Approach teaser, set on the place band: the street grounds "local,
+          one community at a time" while the quote gives the photo something to
+          say. Previously these were two separate navy bands, one of them silent.
+          The figure mirrors PullQuote's structure on purpose, so the existing
+          .on-navy .pullquote__* rules style it with no new CSS. ---- */}
+      <Section bg="navy" padded={false} className="image-band">
         <Picture
           base="/img/community-neighborhood"
           widths={[1000, 1600, 2000, 2560]}
@@ -155,20 +138,42 @@ export default function Home() {
           className="image-band__pic"
           imgClassName="image-band__img"
         />
-      </div>
+        <div className="image-band__scrim" aria-hidden="true" />
+        <div className="wrap">
+          <figure className="pullquote__figure">
+            <figcaption className="eyebrow eyebrow-gold-light">Our approach</figcaption>
+            <blockquote className="pullquote__text pullquote__text--md">
+              We&apos;re operators, in it for the <span className="g">long term.</span>
+            </blockquote>
+            <div className="pullquote__after">
+              <p>
+                We buy HOA management companies with our own capital, operate them
+                ourselves, and build them for the <strong>long term</strong>.
+              </p>
+              <Link className="teaser__link" href="/approach">
+                Read our approach <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </figure>
+        </div>
+      </Section>
 
-      {/* ---- Who's behind it teaser (navy) ---- */}
-      <Section bg="navy">
+      {/* ---- Who's behind it teaser (cream) — light, so the page stops running
+          navy from the approach band all the way into the footer. The portraits
+          keep their navy cards, exactly as /team does. The .who-cell and .split
+          rules already default correctly on a light ground, so the dark-ground
+          inline colours are simply gone rather than replaced. ---- */}
+      <Section bg="cream">
         <div className="wrap">
           <div className="split">
             <div className="split__label">
-              <span className="eyebrow eyebrow-gold-light">Who&apos;s behind it</span>
+              <span className="eyebrow">Who&apos;s behind it</span>
               <p className="kicker">
                 Experienced operators, guided by an industry veteran.
               </p>
             </div>
             <div className="split__body">
-              <p style={{ color: "var(--cream-70)" }}>
+              <p>
                 We started Wameir because we believe community management can be
                 better. We&apos;re putting our own capital in, and we&apos;re here to
                 run these companies for the long term.
@@ -180,16 +185,14 @@ export default function Home() {
               <div className="who-cell" key={m.key}>
                 <Headshot member={m} />
                 <div className="mono">{m.kind}</div>
-                <h3 style={{ color: "#fff" }}>{m.name}</h3>
-                <div className="role" style={{ color: "var(--cream-70)" }}>
-                  {m.role}
-                </div>
-                <p style={{ color: "#fff" }}>{m.paras[0]}</p>
+                <h3>{m.name}</h3>
+                <div className="role">{m.role}</div>
+                <p>{m.paras[0]}</p>
               </div>
             ))}
           </div>
           <div style={{ marginTop: 40 }}>
-            <Link className="btn btn--line-light" href="/team">
+            <Link className="btn btn--line-ink" href="/team">
               Meet the team
             </Link>
           </div>
@@ -198,7 +201,7 @@ export default function Home() {
 
       {/* ---- Communities teaser (cream): three of the goals, one disclaimer. The
           full set lives on /working-toward. ---- */}
-      <Section bg="cream" id="communities">
+      <Section bg="paper" id="communities">
         <div className="wrap">
           <div className="track__header">
             <div className="track__intro">

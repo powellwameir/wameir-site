@@ -522,17 +522,44 @@ p { max-width: var(--measure); }
   object-fit: cover;
   object-position: center 30%;
 }
-/* Full-bleed image band (home): a visual break between text bands. The CSS
-   height is fixed per viewport width, so the image can't shift layout. */
-.image-band { background: var(--navy); border-top: 1px solid var(--hairline-gold); }
-.image-band__pic { display: block; }
+/* Full-bleed place band (home): a photo that carries a message, built on the
+   same layering as .hero — image, scrim, then content. Height comes from the
+   content plus padding and the image is absolutely positioned, so the band
+   can't shift layout. Background, lattice and the gold seam come from
+   .section--navy, since this renders through <Section padded={false}>. */
+.image-band { position: relative; overflow: hidden; padding-block: clamp(72px, 9vw, 120px); }
+.image-band__pic { position: absolute; inset: 0; z-index: 0; display: block; }
 .image-band__img {
   display: block;
   width: 100%;
-  height: clamp(280px, 38vw, 560px);
+  height: 100%;
   object-fit: cover;
   object-position: center 55%;
 }
+/* The text sits over a photograph, so the scrim is sized for the worst case:
+   combined alpha reaches ~0.78-0.82 behind the quote, which keeps white text
+   above 4.5:1 even against a pure-white pixel (0.60 alpha would fail at 4.33).
+   Explicit rgba — unaffected by device dark mode. */
+.image-band__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(
+      ellipse 85% 80% at 22% 50%,
+      rgba(20, 32, 54, 0.60) 0%,
+      rgba(20, 32, 54, 0.38) 60%,
+      rgba(20, 32, 54, 0.10) 85%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(20, 32, 54, 0.62) 0%,
+      rgba(20, 32, 54, 0.55) 50%,
+      rgba(20, 32, 54, 0.66) 100%
+    );
+}
+.image-band .wrap { position: relative; z-index: 2; }
+.image-band .pullquote__after { margin-top: 24px; }
 .track__intro { max-width: 52ch; }
 .track__intro h2 { margin-top: 12px; }
 .track__intro p { color: var(--ink-70); margin-top: 16px; }
@@ -559,9 +586,11 @@ p { max-width: var(--measure); }
   margin-bottom: 24px;
   border-bottom: 1px solid var(--hairline-ink);
 }
+/* Three across, then straight to one — matching .trio, the site's other
+   three-card grid. The old two-column step left a lone card beside an empty
+   slot at 641-1024px. */
 .benefits__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-@media (max-width: 1024px) { .benefits__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .benefits__grid { grid-template-columns: 1fr; } }
+@media (max-width: 880px) { .benefits__grid { grid-template-columns: 1fr; } }
 .bcard {
   border: var(--card-border);
   border-radius: var(--radius);
