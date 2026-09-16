@@ -24,7 +24,8 @@ const ROWS = [
   ".trio",
   ".tile-grid",
   ".who-grid",
-  ".process",
+  ".sp-stage", // /selling process: each stage's node, then its card
+  ".pf-modules", // /approach platform: the four things we build
   ".benefits__grid", // goal cards
   ".points", // selling "What you can count on" cards
   ".states", // the two "manager's week" cards on /approach
