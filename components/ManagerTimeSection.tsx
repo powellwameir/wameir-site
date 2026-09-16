@@ -1,16 +1,16 @@
 import Section from "./Section";
 import VisionIntro from "./VisionIntro";
+import ManagerWeekDiagram from "./diagrams/ManagerWeekDiagram";
 
 /*
  * "Where a manager's time goes" (§5.1) — what the automation is actually for.
- * The split bar is drawn in CSS, not SVG; the legend beneath states both
- * categories and both shares in text, so the bar itself is decorative.
+ * One SVG shows both weeks side by side (ManagerWeekDiagram, reusable on
+ * other pages); the cards beneath carry the detail of each in text.
  */
 type State = {
   tag: string;
   head: string;
   aim?: boolean;
-  segments: { className: string; width: string }[];
   legend: { swatch: "busywork" | "people"; label: string; detail: string; pct: string }[];
   note: string;
 };
@@ -19,10 +19,6 @@ const STATES: State[] = [
   {
     tag: "A typical week today",
     head: "A manager's week",
-    segments: [
-      { className: "seg--busywork", width: "70%" },
-      { className: "seg--people", width: "30%" },
-    ],
     legend: [
       {
         swatch: "busywork",
@@ -44,10 +40,6 @@ const STATES: State[] = [
     tag: "What we're building toward",
     head: "The same manager's week",
     aim: true,
-    segments: [
-      { className: "seg--busywork-aim", width: "30%" },
-      { className: "seg--people-aim", width: "70%" },
-    ],
     legend: [
       {
         swatch: "people",
@@ -78,6 +70,10 @@ export default function ManagerTimeSection() {
           <span className="g">be there for your community.</span>
         </VisionIntro>
 
+        <figure className="card mweek">
+          <ManagerWeekDiagram />
+        </figure>
+
         <div className="states">
           {STATES.map((s) => (
             <div
@@ -86,16 +82,6 @@ export default function ManagerTimeSection() {
             >
               <p className="state-tag">{s.tag}</p>
               <h3 className="state-h">{s.head}</h3>
-              {/* Decorative: the legend below carries the same information. */}
-              <div className="bar" aria-hidden="true">
-                {s.segments.map((seg) => (
-                  <div
-                    className={`seg ${seg.className}`}
-                    style={{ width: seg.width }}
-                    key={seg.className}
-                  />
-                ))}
-              </div>
               <div className="legend">
                 {s.legend.map((l) => (
                   <div className="legend__row" key={l.label}>
