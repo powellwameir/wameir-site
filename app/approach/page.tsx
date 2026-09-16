@@ -6,6 +6,7 @@ import Icon, { type IconName } from "@/components/Icon";
 import { WeirWatermark } from "@/components/WeirLattice";
 import PullQuote from "@/components/PullQuote";
 import ManagerTimeSection from "@/components/ManagerTimeSection";
+import PlatformBenefits from "@/components/PlatformBenefits";
 
 export const metadata: Metadata = pageMetadata({
   path: "/approach",
@@ -94,6 +95,11 @@ export default function ApproachPage() {
           </div>
         </div>
       </Section>
+
+      {/* The technology behind it: each piece of the platform and what it does
+          for residents, boards and local teams. Navy, between the paper and
+          cream bands. */}
+      <PlatformBenefits />
 
       {/* What the automation is for — the manager's week, before and after. */}
       <ManagerTimeSection />

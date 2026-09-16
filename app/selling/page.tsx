@@ -7,7 +7,7 @@ import ContactSection from "@/components/ContactSection";
 import SellerPoints from "@/components/SellerPoints";
 import { SELLER_POINTS } from "@/lib/sellerPoints";
 import PullQuote from "@/components/PullQuote";
-import ProcessDiagram from "@/components/ProcessDiagram";
+import SellerProcess from "@/components/SellerProcess";
 import { WeirWatermark } from "@/components/WeirLattice";
 
 export const metadata: Metadata = pageMetadata({
@@ -73,19 +73,15 @@ export default function SellingPage() {
               </Link>
             </div>
           </div>
-
-          {/* How it works — visual step-flow (no timeframes; those are gated). */}
-          <div id="how-it-works" style={{ marginTop: 72, scrollMarginTop: 112 }}>
-            <span className="eyebrow" style={{ display: "block" }}>
-              How it works
-            </span>
-            <ProcessDiagram />
-          </div>
         </div>
       </Section>
 
-      {/* Why founders choose Wameir — three icon cards (§5.2) */}
-      <Section bg="cream">
+      {/* How it works: the whole process, stage by stage (#how-it-works). */}
+      <SellerProcess />
+
+      {/* Why founders choose Wameir — three icon cards (§5.2). Paper, so it
+          alternates with the cream process band above. */}
+      <Section bg="paper">
         <div className="wrap">
           <div className="track__intro">
             <span className="eyebrow">Why founders choose Wameir</span>
