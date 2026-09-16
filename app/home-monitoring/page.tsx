@@ -9,7 +9,7 @@ import HouseSectionDiagram from "@/components/diagrams/HouseSectionDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
 export const metadata: Metadata = {
-  title: "A Home That Looks After Itself",
+  title: "Smarter Preventive Maintenance",
   description:
     "The long-term vision for home monitoring: a home that keeps its own records, watches its own vital signs, and helps you act before small problems become big ones. A goal Wameir is working toward, not a service running today.",
 };
@@ -68,7 +68,7 @@ export default function HomeMonitoringPage() {
       <header className="page-header">
         <WeirWatermark className="page-header__watermark" />
         <div className="wrap">
-          <span className="eyebrow eyebrow-gold-light">The long-term vision</span>
+          <span className="eyebrow eyebrow-gold-light">Money back in your pocket</span>
           <h1 className="font-display">
             A home that <span className="accent-italic">looks after itself.</span>
           </h1>

@@ -11,7 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
 
 export const metadata: Metadata = {
-  title: "What We're Working Toward",
+  title: "For Communities: What We're Working Toward",
   description:
     "The reasoning behind each goal Wameir is working toward for its communities — mechanisms we can explain plainly, framed as intent, not results we don't have yet.",
 };
@@ -50,8 +50,7 @@ function GoalBlock({ g }: { g: Goal }) {
             <span className="bcard__arrow" aria-hidden="true">
               →
             </span>
-            <span className="goal-index__tag">Full write-up</span>
-            <span className="goal__deep-title">{g.link.label}</span>
+            <span className="goal__deep-title">Read the full write-up</span>
           </Link>
         )}
       </div>
@@ -79,7 +78,7 @@ export default function WorkingTowardPage() {
       <header className="page-header">
         <WeirWatermark className="page-header__watermark" />
         <div className="wrap">
-          <span className="eyebrow eyebrow-gold-light">For your community</span>
+          <span className="eyebrow eyebrow-gold-light">For communities</span>
           <h1 className="font-display">What we&apos;re working toward</h1>
           <p className="lede">
             We are early. Wameir has not yet acquired its first company, so
