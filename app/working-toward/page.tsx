@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
+import Link from "next/link";
 import Section from "@/components/Section";
 import Icon from "@/components/Icon";
 import DayInCommunitySection from "@/components/DayInCommunitySection";
-import MoneyBackSection from "@/components/MoneyBackSection";
 import AlwaysOnSection from "@/components/AlwaysOnSection";
 import { GROUPS, slugify, type Goal } from "@/lib/goals";
 import ContactSection from "@/components/ContactSection";
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
 };
 
 /*
- * Band colours per goal group. Set explicitly rather than alternating, because
- * a vision section now sits after each group and no two bands of the same
- * colour should meet.
+ * Band colours per goal group. Set explicitly rather than alternating, so the
+ * vision sections sitting between groups never leave two bands of the same
+ * colour touching.
  */
-const GROUP_BG = ["paper", "cream", "cream"] as const;
+const GROUP_BG = ["paper", "cream", "paper"] as const;
 
 /*
  * One goal as a two-column row: the summary (icon, title, the goal, what we're
@@ -41,6 +41,12 @@ function GoalBlock({ g }: { g: Goal }) {
         <p className="goal__toward">
           <span className="goal__k">What we&apos;re building toward:</span> {g.toward}
         </p>
+        {/* The goals with a page of their own: the mechanism, argued in full. */}
+        {g.link && (
+          <Link className="teaser__link" href={g.link.href}>
+            {g.link.label} <span aria-hidden="true">→</span>
+          </Link>
+        )}
       </div>
       <div className="goal__reasoning">
         <div className="goal__block">
@@ -144,7 +150,6 @@ export default function WorkingTowardPage() {
           {/* Each group is followed by the vision section that shows it, so the
               page alternates argument and picture rather than running as prose. */}
           {gi === 0 && <DayInCommunitySection />}
-          {gi === 1 && <MoneyBackSection />}
           {gi === 2 && <AlwaysOnSection />}
         </Fragment>
       ))}
