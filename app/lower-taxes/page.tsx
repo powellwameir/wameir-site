@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import LoopGrid, { type LoopStep } from "@/components/LoopGrid";
 import LimitsBand from "@/components/LimitsBand";
 import ContactSection from "@/components/ContactSection";
+import MoreGoals from "@/components/MoreGoals";
 import ScaleFunnelDiagram from "@/components/diagrams/ScaleFunnelDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
 
@@ -110,6 +111,8 @@ export default function LowerTaxesPage() {
         doing the thing that otherwise doesn&apos;t get done. This is a goal we&apos;re
         working toward, not a service running today.
       </LimitsBand>
+
+      <MoreGoals current="/lower-taxes" />
 
       <ContactSection
         source="/lower-taxes"

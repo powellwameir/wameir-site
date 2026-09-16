@@ -13,7 +13,8 @@ export default function LimitsBand({
   heading: string;
   children: React.ReactNode;
 }) {
-  // navy-90: the contact band that follows is navy, so the two read as a pair.
+  // navy-90: dark, like the contact band that closes the page. The light
+  // "more goals" band sits between them, so the two never touch.
   return (
     <Section bg="navy-90" className="limits">
       <div className="wrap">

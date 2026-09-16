@@ -1,6 +1,6 @@
 /*
  * The goals Wameir is working toward (§5.1): the single source for the
- * /working-toward deep-dive and the home benefit cards. Framed as intent,
+ * /working-toward deep-dive, the goal index, and the goal-page cross-links. Framed as intent,
  * not results.
  */
 import type { IconName } from "@/components/Icon";
@@ -143,20 +143,14 @@ export function slugify(text: string): string {
 }
 
 /**
- * What a home benefit card needs from its goal: the "The goal:" sentence
- * (capitalised to stand alone), its icon, and its anchor on /working-toward.
- * Fails the build if the title doesn't match a goal.
+ * The page-of-its-own link for a goal, looked up by title so a cross-link
+ * elsewhere can't drift from the goal's own label. Fails the build if the goal
+ * doesn't exist or has no page.
  */
-export function goalCard(title: string): { goal: string; icon: IconName; slug: string } {
+export function goalLink(title: string): { href: string; label: string } {
   for (const group of GROUPS) {
     const g = group.goals.find((x) => x.title === title);
-    if (g) {
-      return {
-        goal: g.goal.charAt(0).toUpperCase() + g.goal.slice(1),
-        icon: g.icon,
-        slug: slugify(g.title),
-      };
-    }
+    if (g?.link) return g.link;
   }
-  throw new Error(`No goal titled "${title}"`);
+  throw new Error(`No goal page for "${title}"`);
 }

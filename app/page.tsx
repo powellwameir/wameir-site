@@ -5,43 +5,10 @@ import ContactSection from "@/components/ContactSection";
 import { WeirBaseline } from "@/components/WeirLattice";
 import Picture from "@/components/Picture";
 import Headshot from "@/components/Headshot";
-import BenefitsGrid from "@/components/BenefitsGrid";
+import GoalIndex from "@/components/GoalIndex";
 import { DISCLAIMER } from "@/lib/content";
 import { TEAM } from "@/lib/team";
-import { goalCard } from "@/lib/goals";
 import { SELLER_POINTS } from "@/lib/sellerPoints";
-
-// Communities teaser — the three money-back goals, each with its own deep page.
-// Icon + title + the goal sentence (shared with /working-toward via lib/goals)
-// + one payoff line. The other goals and the full reasoning stay on
-// /working-toward. No group heading: the teaser's own h2 introduces them.
-const TRACK: {
-  head: string;
-  items: { title: string; pocket: string }[];
-}[] = [
-  {
-    head: "",
-    items: [
-      {
-        title: "Lower property taxes",
-        pocket: "A refund you'd never have chased yourself.",
-      },
-      {
-        title: "Smarter preventive maintenance",
-        pocket: "The repair that never has to happen.",
-      },
-      {
-        title: "Lower insurance costs",
-        pocket: "Lower premiums for doing nothing extra.",
-      },
-    ],
-  },
-];
-
-const BENEFITS = TRACK.map((g) => ({
-  ...g,
-  items: g.items.map((item) => ({ ...item, ...goalCard(item.title) })),
-}));
 
 export default function Home() {
   return (
@@ -199,8 +166,10 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ---- Communities teaser (cream): three of the goals, one disclaimer. The
-          full set lives on /working-toward. ---- */}
+      {/* ---- Communities teaser (paper): all eight goals as the compact index,
+          one disclaimer. Replaces three large cards, which hid the five goals a
+          board asks about first. The three goals with a page of their own link
+          straight to it; the reasoning for the rest lives on /working-toward. ---- */}
       <Section bg="paper" id="communities">
         <div className="wrap">
           <div className="track__header">
@@ -233,7 +202,7 @@ export default function Home() {
             />
           </div>
 
-          <BenefitsGrid groups={BENEFITS} />
+          <GoalIndex variant="home" />
           <div style={{ marginTop: 40 }}>
             <Link className="btn btn--line-ink" href="/working-toward">
               See all eight goals

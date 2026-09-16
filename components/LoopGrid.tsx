@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Icon, { type IconName } from "./Icon";
 
 export type LoopStep = {
@@ -7,6 +8,8 @@ export type LoopStep = {
   body: string;
   /** Optional concrete example, shown under a hairline (monitoring page). */
   example?: string;
+  /** Optional link to a related page the step depends on. */
+  link?: { href: string; label: string };
 };
 
 /**
@@ -39,6 +42,11 @@ export default function LoopGrid({
             <h3>{s.title}</h3>
             <p>{s.body}</p>
             {s.example && <p className="loop__ex">{s.example}</p>}
+            {s.link && (
+              <Link className="teaser__link" href={s.link.href}>
+                {s.link.label} <span aria-hidden="true">→</span>
+              </Link>
+            )}
           </div>
         ))}
       </div>
