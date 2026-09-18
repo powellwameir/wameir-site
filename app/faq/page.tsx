@@ -203,7 +203,6 @@ export default function FaqPage() {
         audience="founder"
         eyebrow="Still have questions?"
         intro="If your question isn't here, send it. We'll answer, and we may add it to this page."
-        lead="Send us your question, and we'll answer it personally."
         heading={
           <>
             Ask us <span className="it">directly.</span>

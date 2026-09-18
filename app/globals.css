@@ -780,6 +780,13 @@ p { max-width: var(--measure); }
 .invite h2 .it { font-style: normal; color: inherit; }
 .invite__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .invite__intro p { color: var(--cream-70); margin-top: 20px; font-size: 1.125rem; max-width: 44ch; }
+/* Until the contact form is enabled there is no second column to hold: the
+   band is one column of eyebrow, H2, one paragraph, one button. */
+.invite__grid--single { grid-template-columns: 1fr; }
+.invite__grid--single .invite__intro h2 { max-width: 24ch; }
+/* Sized for two buttons side by side; ships with one until the scheduler
+   exists (see ContactSection). */
+.invite__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
 
 /* ---- Contact form (§5A) — styled for the navy contact band ---- */
 .form { max-width: 34em; }
@@ -830,20 +837,8 @@ p { max-width: var(--measure); }
 .form__fallback a, .form__error a, .form__success-body a { color: var(--gold-light); }
 .form__error { color: #E7B4A0; font-size: 0.9375rem; margin-top: 4px; }
 .form__trust { margin-top: 18px; font-size: 0.875rem; color: var(--cream-70); }
-.invite__call { margin-top: 28px; }
 .form__success-title { font-family: var(--font-display); font-size: 1.5rem; color: #fff; }
 .form__success-body { color: var(--cream-70); margin-top: 12px; }
-
-/* Email-CTA shown in place of the form until it's enabled (§5A launch gate). */
-.contact-cta {
-  border: 1px solid var(--hairline-gold);
-  border-radius: var(--radius);
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.03);
-}
-.contact-cta__lead { font-family: var(--font-display); font-size: 1.5rem; color: #fff; line-height: 1.2; }
-.contact-cta .btn { margin-top: 20px; }
-.contact-cta__note { margin-top: 18px; font-size: 0.875rem; color: var(--cream-70); }
 
 @media (max-width: 560px) {
   .form__row { grid-template-columns: 1fr; }

@@ -138,7 +138,6 @@ export default function ApproachPage() {
             Curious what this could mean for your <span className="it">community?</span>
           </>
         }
-        lead="Tell us about your community, and we'll reply personally."
       />
     </>
   );

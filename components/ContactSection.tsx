@@ -1,7 +1,7 @@
 import Section from "./Section";
 import ContactForm, { type Audience } from "./ContactForm";
 import Button from "./Button";
-import { CONTACT_EMAIL, LOCATION, SCHEDULING_URL, callLabel, schedulingHref } from "@/lib/content";
+import { CONTACT_EMAIL } from "@/lib/content";
 
 // Build-time flag: show the real form only once it's enabled (privacy notice live).
 // Until then we show a clean "email us" CTA instead of a form that can't submit.
@@ -11,6 +11,11 @@ const FORM_ENABLED = process.env.NEXT_PUBLIC_CONTACT_FORM_ENABLED === "true";
  * Closing contact band (§5A). Navy so it echoes the hero and carries the
  * weir-lattice motif through to the closing screen (§4A). Lattice only, no
  * watermark: page headers carry the one watermark per page.
+ *
+ * Structure is deliberately flat — eyebrow, H2, ONE paragraph, ONE button.
+ * It previously ran two paragraphs, two buttons pointing at the same mailto,
+ * and a reassurance callout, all saying "contact us" (audit v5, A-1/A-2/A-3).
+ * The location line lives in the footer only.
  */
 export default function ContactSection({
   audience = "other",
@@ -18,20 +23,18 @@ export default function ContactSection({
   eyebrow = "Start a conversation",
   heading,
   intro = "Whether you're thinking about selling or asking about your community, we'd like to hear from you. We move at your pace.",
-  lead = "Send us a note and we'll reply personally.",
 }: {
   audience?: Audience;
   source?: string;
   eyebrow?: string;
   heading?: React.ReactNode;
-  /** Opening paragraph, set per page so the closing band doesn't repeat verbatim. */
+  /** The band's only paragraph, set per page so it doesn't read templated. */
   intro?: React.ReactNode;
-  lead?: React.ReactNode; // per-page lead line so the closing block doesn't read templated
 }) {
   return (
     <Section bg="navy" id="contact" className="invite">
       <div className="wrap">
-        <div className="invite__grid">
+        <div className={`invite__grid${FORM_ENABLED ? "" : " invite__grid--single"}`}>
           <div className="invite__intro">
             <span className="eyebrow eyebrow-gold-light">{eyebrow}</span>
             <h2 className="t-h2" style={{ marginTop: 16 }}>
@@ -42,44 +45,27 @@ export default function ContactSection({
               )}
             </h2>
             <p>{intro}</p>
-            <p className="mt-sm" style={{ color: "var(--cream-70)", fontSize: "0.9375rem" }}>
-              {LOCATION} &middot;{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: "var(--gold-light)" }}>
-                {CONTACT_EMAIL}
-              </a>
-            </p>
-            {/* Founder fast-path: a confidential call, alongside the form/email. */}
-            <div className="invite__call">
+            <div className="invite__actions">
               <Button
-                href={schedulingHref()}
-                variant="line-light"
+                href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20inquiry`}
+                variant="gold"
                 arrow
-                cta="book-call"
+                cta="email"
                 ctaLocation="contact"
-                {...(SCHEDULING_URL ? { target: "_blank", rel: "noopener" } : {})}
               >
-                {callLabel()}
+                Email us
               </Button>
+              {/*
+                Second button goes here once a real scheduler exists: a
+                "Request a call" Button, variant="line-light", cta="book-call",
+                href={schedulingHref()} with a label from callLabel() (both in
+                lib/content, waiting on SCHEDULING_URL). Until then one button,
+                because two labels for the same mailto is one action wearing
+                two hats.
+              */}
             </div>
           </div>
-          {FORM_ENABLED ? (
-            <ContactForm defaultAudience={audience} source={source} />
-          ) : (
-            <div className="contact-cta">
-              <p className="contact-cta__lead">{lead}</p>
-              <a
-                className="btn btn--gold"
-                data-cta="email"
-                data-cta-location="contact"
-                href={`mailto:${CONTACT_EMAIL}?subject=Wameir%20inquiry`}
-              >
-                Email {CONTACT_EMAIL}
-              </a>
-              <p className="contact-cta__note">
-                Every message is read by a founder and kept confidential.
-              </p>
-            </div>
-          )}
+          {FORM_ENABLED && <ContactForm defaultAudience={audience} source={source} />}
         </div>
       </div>
     </Section>

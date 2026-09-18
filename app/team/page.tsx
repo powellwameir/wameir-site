@@ -98,7 +98,6 @@ export default function TeamPage() {
         audience="founder"
         eyebrow="Get in touch"
         intro="Send a note. One of us will write back personally."
-        lead="Send us a note. We'd like to meet you."
         heading={
           <>
             Want to <span className="it">talk?</span>
