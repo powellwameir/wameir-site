@@ -74,9 +74,13 @@ export default function Home() {
               what happens to it next, we should talk.
             </p>
           </div>
+          {/* These three tiles used to land on /selling's "What you can count
+              on" band, which repeated them verbatim. That band is gone (D-9);
+              the five-stage process is what actually answers them, so that is
+              where they point. */}
           <div className="tile-grid">
             {SELLER_POINTS.map((t) => (
-              <Link className="tile" href="/selling" key={t.heading}>
+              <Link className="tile" href="/selling#how-it-works" key={t.heading}>
                 <Picture
                   base={t.base}
                   widths={[800, 1200]}
