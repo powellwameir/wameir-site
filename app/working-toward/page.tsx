@@ -178,7 +178,6 @@ export default function WorkingTowardPage() {
             Want to hold us to <span className="it">these goals?</span>
           </>
         }
-        lead="Tell us what matters most in your community, and we'll reply personally."
       />
     </>
   );

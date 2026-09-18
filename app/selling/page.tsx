@@ -95,7 +95,6 @@ export default function SellingPage() {
         source="/selling"
         audience="founder"
         intro="If a sale is somewhere on your horizon, now is a good time to talk."
-        lead="Tell us a little about your company, and we'll reply personally."
         heading={
           <>
             Let&apos;s start the <span className="it">conversation.</span>

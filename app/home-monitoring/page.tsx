@@ -153,7 +153,6 @@ export default function HomeMonitoringPage() {
             Want this for your <span className="it">community?</span>
           </>
         }
-        lead="Tell us about your community, and we'll reply personally."
       />
     </>
   );
