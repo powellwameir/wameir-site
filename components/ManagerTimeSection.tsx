@@ -64,6 +64,7 @@ export default function ManagerTimeSection() {
       <div className="wrap">
         <VisionIntro
           eyebrow="What automation is for"
+          long
           lede="Good community managers leave when too much of the day is data entry, chasing paperwork and retyping the same answers. When the routine handles itself, the people who serve your community get their time back for the work only a person can do."
         >
           We take the busywork off people, so they can{" "}

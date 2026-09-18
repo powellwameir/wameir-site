@@ -54,7 +54,7 @@ function GoalBlock({ g }: { g: Goal }) {
             <span className="bcard__arrow">
               <Arrow />
             </span>
-            <span className="goal__deep-title">Read the full write-up</span>
+            <span className="goal__deep-title">How it would work</span>
           </Link>
         )}
       </div>
@@ -122,7 +122,6 @@ export default function WorkingTowardPage() {
           <Section bg={GROUP_BG[gi]} id={slugify(group.head)} className="goal-group">
             <div className="wrap">
               <div className="goal-group__head">
-                <span className="eyebrow">{group.goals.length} goals</span>
                 <h2 className="t-h2">{group.head}</h2>
                 <p className="goal-group__intro">{group.intro}</p>
               </div>
@@ -160,10 +159,8 @@ export default function WorkingTowardPage() {
             </p>
             <p>
               As we acquire and operate our first communities, the reasoning on this
-              page will be replaced, piece by piece, with results.{" "}
-              <span className="accent-italic">
-                We&apos;d rather earn that page than write it early.
-              </span>
+              page will be replaced, piece by piece, with results. We&apos;d rather
+              earn that page than write it early.
             </p>
           </div>
         </div>

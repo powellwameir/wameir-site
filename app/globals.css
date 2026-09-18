@@ -80,9 +80,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
 .t-body   { font-size: 1.0625rem; line-height: 1.6; }
 .t-small  { font-size: 0.875rem; font-weight: 500; line-height: 1.4; }
 
-/* Eyebrow — ALL-CAPS labels, gold, sparingly (max 3/page). One of only two
-   label styles on the site; the other is .benefits__head, the same label with a
-   rule under it for group level. */
+/* Eyebrow: ALL-CAPS gold label, used only directly above a display heading
+   (h1/h2). It is never a heading itself and never a count; group headings use
+   .group-head. */
 .eyebrow {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
@@ -98,17 +98,38 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
 .hero .eyebrow,
 .footer .eyebrow { color: var(--gold-light); }
 
-/* The signature italic-gold accent. Scope: the h1 on a page, and at most one
-   pull quote. Headings below h1 stay plain — when every heading ends in an
+/* The signature italic-gold accent. H1 only, at most one per page, on the
+   object of the promise ("done right", "building it"), never on a person or a
+   qualifier. Everything below the h1 stays plain: when every heading ends in an
    italic gold phrase the device stops meaning anything. */
 .accent-italic { font-style: italic; font-weight: 600; color: var(--gold-light); }
+
+/* Group heading: names a group of items inside a section (FAQ groups, a deep
+   dive's steps, the goals in a group). Fraunces at 24-28px, replacing the old
+   eyebrow-as-heading. */
+.group-head {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--navy);
+}
+.on-navy .group-head { color: #fff; }
+
+/* An h2 over ~8 words: one size step down and a wider cap, so it wraps to two
+   or three lines instead of four or five. */
+.t-h2.t-h2--long { font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.18; max-width: 26ch; }
 
 /* ------- Layout helpers ------- */
 .wrap { max-width: var(--content); margin-inline: auto; padding-inline: 40px; }
 .measure { max-width: var(--measure); }
 
-/* Left-aligned throughout (§4.3) */
-p { max-width: var(--measure); }
+/* Left-aligned throughout (§4.3). Every paragraph in main holds the body
+   measure. The exceptions are deliberate: display-type paragraphs
+   (.lead-statement, .pullquote__text, .vsec-closer, .kicker) set their own ch
+   caps, and small card cells (.ledger__*, .legend__text, .loop__step p) use
+   max-width: none because their cells are already narrower than the measure. */
+main p { max-width: var(--measure); }
 
 /* ------- Sections: every section declares an explicit background (§9) ------- */
 .section { padding-block: 96px; }              /* 96px desktop */
@@ -706,15 +727,7 @@ p { max-width: var(--measure); }
   font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--cream-70); text-align: center;
 }
-.who-cell .mono {
-  font-family: var(--font-display);
-  font-size: 0.8125rem; letter-spacing: 0.06em; color: var(--gold-deep);
-  font-weight: 600; text-transform: uppercase;
-}
-/* The who-grid runs on cream (/team) and on navy (home), so this label is one
-   of the few that has to follow its ground. */
-.on-navy .who-cell .mono { color: var(--gold-light); }
-.who-cell h3 { font-size: 1.5rem; font-weight: 500; color: var(--navy); margin: 12px 0 4px; }
+.who-cell h3 { font-size: 1.5rem; font-weight: 500; color: var(--navy); margin: 0 0 4px; }
 .who-cell .role { font-size: 0.9375rem; color: var(--ink-70); margin-bottom: 14px; }
 .who-cell p { font-size: 1rem; color: var(--ink); line-height: 1.6; }
 
@@ -763,6 +776,9 @@ p { max-width: var(--measure); }
 .faq .faq__body { padding: 0 44px 24px 0; color: var(--ink-70); }
 .faq .faq__body p { margin-bottom: 12px; }
 .faq .faq__body p:last-child { margin-bottom: 0; }
+/* Inline links in an answer keep the arrow on the line. */
+.faq__body a .arrow { display: inline-block; vertical-align: -0.15em; margin-left: 5px; }
+.faq__body a { white-space: nowrap; }
 
 /* ---- Contact / invite band (navy) ---- */
 .invite { position: relative; overflow: hidden; }
@@ -845,7 +861,7 @@ p { max-width: var(--measure); }
 }
 
 /* ---- "What we're working toward" deep-dive page ---- */
-.goals-intro { margin-top: 28px; max-width: var(--measure); }
+.goals-intro { margin-top: 28px; }
 .goals-intro p { font-size: 1.125rem; color: var(--ink-70); margin-top: 16px; }
 
 /* Goal index: jump links to every group and goal (no new copy). */
@@ -878,17 +894,8 @@ p { max-width: var(--measure); }
 }
 .goal-index__group:is(:hover, :focus-visible) { color: var(--gold-deep); }
 .goal-index__link:is(:hover, :focus-visible) { color: var(--navy); }
-/* Marks the goals with a page of their own. The eyebrow label style, so the site
-   still carries two label styles, not three. */
-.goal-index__tag {
-  margin-left: 8px;
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--gold-deep);
-  white-space: nowrap;
-}
+/* Marks the goals with a page of their own: the arrow alone, after the name. */
+.goal-index__link .arrow { flex: none; color: var(--gold-deep); }
 .goal-index { scroll-margin-top: 112px; }
 .goal-group__back { margin-top: 32px; }
 
@@ -967,19 +974,20 @@ p { max-width: var(--measure); }
   padding-left: 18px;
   border-left: 2px solid var(--hairline-gold);
 }
-/* The payoff line: set apart by weight and gold, the same treatment as the
-   payoff on goal cards, so it reads as the outcome without a label. */
+/* The payoff line: an italic serif line, the same treatment as .vsplit__payoff,
+   so it reads as the outcome without a label. Not bold gold: that is the link
+   style. */
 .goal__toward {
   margin-top: 16px;
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: var(--gold-deep);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--navy);
 }
 
 .goals-closing { max-width: 60ch; }
 .goals-closing p { color: var(--cream-70); font-size: 1.125rem; line-height: 1.6; }
 .goals-closing p + p { margin-top: 18px; }
-.goals-closing .accent-italic { color: var(--gold-light); }
 
 /* Utility */
 .stack-lg > * + * { margin-top: 24px; }
@@ -1064,11 +1072,11 @@ p { max-width: var(--measure); }
    ========================================================================= */
 
 /* ---- Shared: intro, goalnote, centred closer ---- */
-.vsec-intro { max-width: 62ch; }
+.vsec-intro { max-width: 62ch; } /* wide enough for the h2; its lede holds the measure */
 .vsec-intro .eyebrow { display: block; margin-bottom: 16px; }
 .vsec-title { max-width: 18ch; }
-/* These titles are h2s, so they stay plain — the italic gold belongs to the h1
-   and one pull quote per page. The closer is a paragraph, so it keeps the gold
+/* These titles are h2s, so they stay plain: the italic gold belongs to the h1
+   alone. The closer is a paragraph, so it keeps the gold
    key phrase, upright, in the AA-safe gold. */
 .vsec-title .g { font-style: normal; color: inherit; }
 .vsec-closer .g { color: var(--gold-deep); }
@@ -1105,9 +1113,6 @@ p { max-width: var(--measure); }
   color: var(--ink-45);
   max-width: 52ch;
 }
-/* An eyebrow that is also the section's real heading, so the h3s beneath it
-   aren't orphaned. Looks identical; only the element changes. */
-.eyebrow--heading { font-family: var(--font-body); letter-spacing: 0.08em; }
 
 /* ---- Diagram ink: colour lives here, geometry stays in the JSX ---- */
 .dg { width: 100%; height: auto; overflow: visible; }
@@ -1453,7 +1458,7 @@ p { max-width: var(--measure); }
   letter-spacing: 0.03em;
   white-space: nowrap;
 }
-.sp-lead { max-width: 62ch; margin-top: 10px; font-size: 1rem; color: var(--ink-70); }
+.sp-lead { max-width: var(--measure); margin-top: 10px; font-size: 1rem; color: var(--ink-70); }
 .sp-cols {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1487,7 +1492,7 @@ p { max-width: var(--measure); }
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  max-width: none;
+  max-width: var(--measure);
   margin-top: 16px;
   padding: 10px 14px;
   border-left: 3px solid var(--gold);
@@ -1510,7 +1515,7 @@ p { max-width: var(--measure); }
 }
 .sp-promise h3 { font-size: clamp(1.3rem, 2.4vw, 1.8rem); font-weight: 600; line-height: 1.2; }
 .sp-promise h3 .g { color: var(--gold-light); }
-.sp-promise p { max-width: 56ch; margin-top: 10px; color: var(--cream-70); }
+.sp-promise p { max-width: var(--measure); margin-top: 10px; color: var(--cream-70); }
 
 @media (max-width: 720px) {
   .sp-strip, .sp-rail { display: none; }
@@ -1544,14 +1549,14 @@ p { max-width: var(--measure); }
   color: #fff;
 }
 .pf-tier__title { font-size: 1.25rem; font-weight: 600; line-height: 1.2; }
+/* Plain body text: bold gold is reserved for links. */
 .pf-tier__sub {
-  max-width: 62ch;
+  max-width: var(--measure);
   margin-top: 6px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--gold-deep);
+  font-size: 0.9375rem;
+  color: var(--ink-70);
 }
-.pf-tier--core .pf-tier__sub { color: var(--gold-light); }
+.pf-tier--core .pf-tier__sub { color: var(--cream-70); }
 .pf-tier__head {
   display: flex;
   flex-wrap: wrap;
@@ -1691,7 +1696,7 @@ p { max-width: var(--measure); }
   background: var(--gold-light);
   opacity: 0;
 }
-.pf-foot { margin-top: 28px; max-width: 64ch; }
+.pf-foot { margin-top: 28px; }
 
 @media (max-width: 880px) {
   .pf-modules { grid-template-columns: 1fr 1fr; }

@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
 import JsonLd from "@/components/JsonLd";
+import Arrow from "@/components/Arrow";
 import { isValidElement, type ReactNode } from "react";
 
 export const metadata: Metadata = pageMetadata({
@@ -96,7 +97,7 @@ const BOARD_FAQS: QA[] = [
       <p>
         No. Wameir hasn&apos;t acquired its first company yet, so the goals on this
         site describe what we&apos;re working toward, not services running today.{" "}
-        <Link href="/working-toward">See all eight goals</Link>.
+        <Link href="/working-toward">See all eight goals<Arrow /></Link>
       </p>
     ),
   },
@@ -107,7 +108,7 @@ const BOARD_FAQS: QA[] = [
         No one can. Not every appeal succeeds, and assessments and outcomes vary from
         home to home and year to year. What a community-wide effort can commit to is
         that the appeal gets filed, correctly and on time, for every home that wants
-        it. <Link href="/lower-taxes">Lower property taxes: the full write-up</Link>.
+        it. <Link href="/lower-taxes">How it would work<Arrow /></Link>
       </p>
     ),
   },
@@ -118,9 +119,8 @@ const BOARD_FAQS: QA[] = [
         It reduces risk; it doesn&apos;t remove it, and it only helps with what it can
         detect. Your home&apos;s information stays yours.{" "}
         <Link href="/home-monitoring">
-          Smarter preventive maintenance: the full write-up
+          How it would work<Arrow />
         </Link>
-        .
       </p>
     ),
   },
@@ -131,7 +131,7 @@ const BOARD_FAQS: QA[] = [
         We can&apos;t promise a specific number. Any discount depends on insurers,
         coverage and factors outside our control. What we can do is make a home
         lower-risk and make that reduction visible, which is the honest basis for a
-        better rate. <Link href="/lower-insurance">Lower insurance costs: the full write-up</Link>.
+        better rate. <Link href="/lower-insurance">How it would work<Arrow /></Link>
       </p>
     ),
   },
@@ -180,9 +180,8 @@ export default function FaqPage() {
             { label: "From boards and residents", items: BOARD_FAQS },
           ].map((group, i) => (
             <div key={group.label} style={{ marginTop: i === 0 ? 0 : 56 }}>
-              <h2 className="eyebrow eyebrow--heading" style={{ display: "block", marginBottom: 16 }}>
-                {group.label}
-              </h2>
+              <h2 className="group-head">{group.label}</h2>
+              {/* One-line intro under each group: copy from prompt F. */}
               <div className="faq">
                 {group.items.map((item) => (
                   <details key={item.q}>

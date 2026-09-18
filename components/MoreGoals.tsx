@@ -45,7 +45,7 @@ export default function MoreGoals({ current }: { current: string }) {
     <Section bg="paper" className="more-goals">
       <JsonLd data={breadcrumbs} />
       <div className="wrap">
-        <h2 className="eyebrow eyebrow--heading">{group.head}</h2>
+        <h2 className="group-head">{group.head}</h2>
         <BenefitsGrid groups={[{ head: "", items }]} cols={2} />
         <Link className="teaser__link" href="/working-toward">
           See all eight goals <Arrow />

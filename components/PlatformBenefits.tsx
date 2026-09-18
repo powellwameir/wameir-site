@@ -65,6 +65,7 @@ export default function PlatformBenefits() {
         <VisionIntro
           onDark
           eyebrow="The technology behind it"
+          long
           lede="The software stays in the background, and you feel the difference. Here's what runs underneath, and what each piece does for the people who live and work in your community."
         >
           How the tech becomes a community that <span className="g">just works.</span>
