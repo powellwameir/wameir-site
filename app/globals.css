@@ -127,7 +127,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
 /* Left-aligned throughout (§4.3). Every paragraph in main holds the body
    measure. The exceptions are deliberate: display-type paragraphs
    (.lead-statement, .pullquote__text, .vsec-closer, .kicker) set their own ch
-   caps, and small card cells (.ledger__*, .legend__text, .loop__step p) use
+   caps, and small card cells (.ledger__*, .loop__step p) use
    max-width: none because their cells are already narrower than the measure. */
 main p { max-width: var(--measure); }
 
@@ -137,7 +137,7 @@ main p { max-width: var(--measure); }
    gets more room; a single statement or a short link row gets less, so short
    bands don't feel padded and long ones don't run together. Pull quotes and the
    limits band keep their own deliberate padding. */
-.section:has(.trio, .tile-grid, .who-grid, .points, .states, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
+.section:has(.trio, .tile-grid, .who-grid, .points, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
   padding-block: 112px;
 }
 .section.more-goals,
@@ -1013,7 +1013,7 @@ main p { max-width: var(--measure); }
    ========================================================================= */
 @media (max-width: 720px) {
   .section { padding-block: 64px; } /* 64px mobile */
-  .section:has(.trio, .tile-grid, .who-grid, .points, .states, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
+  .section:has(.trio, .tile-grid, .who-grid, .points, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
     padding-block: 72px;
   }
   .section.more-goals,
@@ -1196,48 +1196,32 @@ main p { max-width: var(--measure); }
 .ledger__col--after .ledger__t { color: #fff; }
 .ledger__s { font-size: 0.9rem; color: var(--cream-70); max-width: none; }
 
-/* ---- "Where a manager's time goes": two state cards with a split bar ---- */
-.states { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px; align-items: stretch; }
-.card--state { display: flex; flex-direction: column; }
-/* The one card that keeps a border: it marks the aim, not a separation. */
-.card--state-aim { border: 1px solid rgba(168, 133, 74, 0.4); }
-.state-tag {
-  margin-bottom: 4px;
+/* ---- "Where the time goes" (/approach): one card, two bars ---- */
+.week { max-width: 640px; margin: 48px 0 0; padding: 32px; }
+.week__row + .week__row { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--hairline-ink); }
+.week .week__tag {
+  margin: 0;
   font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
-  color: var(--ink-45);
+  color: var(--ink-70);
 }
-.card--state-aim .state-tag { color: var(--gold-deep); }
-.state-h { margin-bottom: 22px; font-size: 1.4rem; font-weight: 600; line-height: 1.15; color: var(--navy); }
-/* The week itself, as one SVG above the cards. Hatch shades are the ones the
-   CSS bar used, so the card swatches still match. */
-.mweek { max-width: 584px; margin: 56px 0 0; padding: 32px; }
-.mweek .dg { display: block; }
-.mw-hatch-a { fill: #C9C6BE; }
-.mw-hatch-b { fill: #BEBBB2; }
-.mw-tag { font-family: var(--font-body); font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; fill: var(--ink-70); }
-.mw-tag--aim { fill: var(--gold-deep); }
-.mw-pct { font-family: var(--font-display); font-size: 15px; font-weight: 600; fill: var(--navy); }
-.mw-pct--light { fill: var(--cream); }
-.mw-key { font-family: var(--font-body); font-size: 10.5px; fill: var(--ink-70); }
-.legend { display: flex; flex-direction: column; gap: 14px; }
-.legend__row { display: flex; gap: 12px; align-items: flex-start; }
-.legend__sw { flex: 0 0 14px; width: 14px; height: 14px; border-radius: 3px; margin-top: 4px; }
-.sw--busywork { background: repeating-linear-gradient(45deg, #C9C6BE 0 4px, #BEBBB2 4px 8px); }
-.sw--people { background: var(--navy); }
-.legend__text { margin: 0; font-size: 0.92rem; max-width: none; }
-.legend__text strong { display: block; margin-bottom: 1px; color: var(--ink); font-weight: 600; }
-.legend__text span { color: var(--ink-70); }
-.legend__pct {
-  margin-left: auto; padding-left: 12px;
-  font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--navy);
+.week .week__row--aim .week__tag { color: var(--gold-deep); }
+.week .week__names {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px;
+  margin-top: 8px; font-size: 0.9375rem; color: var(--ink);
 }
-.card--state-aim .legend__pct { color: var(--gold-deep); }
-.card__note {
-  margin-top: auto; padding-top: 20px;
-  border-top: 1px solid var(--hairline-ink);
-  font-size: 0.9rem; color: var(--ink-70); max-width: none;
-}
-.card--state-aim .card__note { color: var(--navy); }
+.week__name { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.week__sep { color: var(--ink-45); }
+@media (max-width: 560px) { .week__sep { display: none; } .week .week__names { flex-direction: column; align-items: flex-start; } }
+.week__sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+.week__bar { display: flex; height: 28px; margin-top: 12px; border-radius: var(--radius); overflow: hidden; }
+.week__seg { display: block; }
+/* Hatched grey for routine, navy for time with people: the same two fills as
+   the old diagram, so the reading of the colours carries over. */
+.week__sw--routine, .week__seg--routine { background: repeating-linear-gradient(45deg, #C9C6BE 0 4px, #BEBBB2 4px 8px); }
+.week__sw--people, .week__seg--people { background: var(--navy); }
+.week .week__note { margin-top: 14px; font-size: 0.9375rem; color: var(--ink-70); }
+.week .week__row--aim .week__note { color: var(--navy); }
+.week .week__cap { margin-top: 28px; font-size: 0.875rem; color: var(--ink-45); }
 
 /* ---- "Always on": text beside the 24-hour dial ---- */
 .alwayson { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -1323,15 +1307,9 @@ main p { max-width: var(--measure); }
   .loop { grid-template-columns: 1fr; }
   .vsplit { grid-template-columns: 1fr; gap: 32px; }
   .alwayson { grid-template-columns: 1fr; gap: 40px; }
-  .states { grid-template-columns: 1fr; gap: 20px; }
-  .mweek { padding: 20px 16px; }
 }
-/* On a phone the drawing scales below 0.8x, so its type steps up to stay legible. */
 @media (max-width: 560px) {
-  .mweek { padding: 16px 12px; }
-  .mw-tag { font-size: 13px; }
-  .mw-pct { font-size: 18px; }
-  .mw-key { font-size: 13px; }
+  .week { padding: 22px 18px; }
   /* Lead with the picture once the columns stack; nothing in it is focusable. */
   .vsplit__vis, .dialwrap { order: -1; }
   .dialwrap .dg { max-width: 280px; }
@@ -1539,188 +1517,26 @@ main p { max-width: var(--measure); }
   .sp-promise { padding: 28px 22px; }
 }
 
-/* ---- Platform benefits (/approach "The technology behind it") ---- */
-.platform { margin-top: 48px; }
-.pf-tier {
-  position: relative;
-  padding: 28px 28px 28px 40px;
-  border-radius: var(--radius);
-  box-shadow: var(--card-shadow);
-}
-/* Gold edge on every tier. */
-.pf-tier::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 6px;
-  border-radius: var(--radius) 0 0 var(--radius);
-  background: linear-gradient(var(--gold), var(--gold-light));
-}
-.pf-tier--light { background: var(--paper); color: var(--navy); }
-.pf-tier--core {
-  background: var(--navy-90);
-  border: 1px solid var(--hairline-cream);
-  color: #fff;
-}
-.pf-tier__title { font-size: 1.25rem; font-weight: 600; line-height: 1.2; }
-/* Plain body text: bold gold is reserved for links. */
-.pf-tier__sub {
-  max-width: var(--measure);
-  margin-top: 6px;
-  font-size: 0.9375rem;
-  color: var(--ink-70);
-}
-.pf-tier--core .pf-tier__sub { color: var(--cream-70); }
-.pf-tier__head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px 24px;
-}
-.pf-badge {
-  padding: 4px 14px;
-  border: 1px solid var(--gold);
-  border-radius: var(--radius);
-  color: var(--gold-light);
-  font-size: 0.75rem;
-  white-space: nowrap;
-}
-
-.pf-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+/* ---- Platform benefits (/approach "The technology behind it") ----
+   Three layers as three cards of one style on one ground. No connector: they
+   are layers, not steps. */
+.platform { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; align-items: stretch; }
+.pf-card h3 { margin-bottom: 10px; }
+.pf-card p + p, .pf-chips + p { margin-top: 14px; }
+.pf-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .pf-chips li {
-  padding: 5px 14px;
+  padding: 4px 12px;
   border: 1px solid var(--hairline-ink);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--paper);
   font-size: 0.8125rem;
   color: var(--navy);
 }
-.pf-record { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; }
-.pf-record__note { margin-top: 18px; font-size: 0.8125rem; color: var(--ink-70); }
-
-/* Connector between tiers: a dashed gold line with packets flowing down. */
-.pf-link {
-  position: relative;
-  width: 12px; height: 56px;
-  margin-inline: auto;
-  overflow: hidden;
-}
-.pf-link::before {
-  content: "";
-  position: absolute;
-  left: 5px; top: -20px; bottom: 0;
-  width: 2px;
-  background: repeating-linear-gradient(var(--gold-light) 0 4px, transparent 4px 10px);
-}
-.pf-packet {
-  position: absolute;
-  left: 2px; top: 24px;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--gold-light);
-}
-/* Static: one packet resting mid-line. The second only exists while moving. */
-.pf-packet--2 { display: none; }
-
-/* The four things we build, joined by a dashed wire behind them. */
-.pf-modwrap { position: relative; margin-top: 24px; }
-.pf-wire {
-  position: absolute;
-  left: 0; right: 0; top: 50%;
-  height: 2px;
-  overflow: hidden;
-  opacity: 0.55;
-}
-.pf-wire::before {
-  content: "";
-  position: absolute;
-  left: -20px; right: 0; top: 0; bottom: 0;
-  background: repeating-linear-gradient(90deg, var(--gold) 0 4px, transparent 4px 10px);
-}
-.pf-modules {
-  position: relative;
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 16px;
-}
-.pf-module {
-  position: relative;
-  padding: 20px 18px;
-  border: 1px solid var(--hairline-cream);
-  border-radius: var(--radius);
-  background: var(--navy);
-}
-/* The hero module is its own stacking context, with its face on a pseudo-element,
-   so the glow always sits behind the face but in front of the tier, including
-   mid-reveal when opacity would otherwise re-stack it. */
-.pf-module--hero { isolation: isolate; border-color: transparent; background: none; }
-.pf-module--hero::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  border: 1.5px solid var(--gold-light);
-  border-radius: var(--radius);
-  background: var(--navy);
-}
-.pf-module h4 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  font-weight: 600;
-  line-height: 1.2;
-  color: #fff;
-}
-.pf-module--hero h4 { color: var(--gold-light); }
-.pf-module__what { margin-top: 10px; font-size: 0.875rem; line-height: 1.5; color: var(--cream-70); }
-.pf-module__get {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--hairline-cream);
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.5;
-  color: #fff;
-}
-.pf-glow {
-  position: absolute;
-  inset: -36px -44px;
-  z-index: -2;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(201, 168, 95, 0.55), rgba(201, 168, 95, 0));
-  opacity: 0.6;
-  pointer-events: none;
-}
-.pf-ping {
-  position: relative;
-  flex: none;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--gold-light);
-}
-.pf-ping::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--gold-light);
-  opacity: 0;
-}
-.pf-foot { margin-top: 28px; }
-
+.pf-build { list-style: none; display: grid; gap: 14px; margin-top: 4px; font-size: 1rem; color: var(--ink-70); }
+.pf-build strong { color: var(--navy); font-weight: 600; }
+.pf-foot { margin-top: 32px; font-size: 1.125rem; color: var(--ink-70); }
 @media (max-width: 880px) {
-  .pf-modules { grid-template-columns: 1fr 1fr; }
-  .pf-module--hero { grid-column: 1 / -1; }
-  .pf-wire { display: none; }
-}
-@media (max-width: 560px) {
-  .pf-tier { padding: 22px 18px 22px 28px; }
-  .pf-modules { grid-template-columns: 1fr; }
-  .pf-glow { inset: -24px -12px; }
+  .platform { grid-template-columns: 1fr; }
 }
 
 /* =========================================================================
@@ -1790,32 +1606,15 @@ main p { max-width: var(--measure); }
   [data-reveal-row] > * { opacity: 1 !important; transition: none !important; }
 }
 
-/* ---- Ambient loops on the two process graphics (SellerProcess, PlatformBenefits).
+/* ---- Ambient loop on the seller process graphic (SellerProcess).
    Opacity and transform only. Declared for no-preference, so under reduced
    motion they never start and every element sits in its readable static state. */
 @media (prefers-reduced-motion: no-preference) {
   .sp-node svg { animation: spPulse 3.6s ease-in-out infinite; }
-  .pf-link::before { animation: pfDashDown 2.4s linear infinite; }
-  .pf-wire::before { animation: pfDashAcross 2.4s linear infinite; }
-  .pf-packet { animation: pfFlow 3.2s linear infinite; }
-  .pf-packet--2 { display: block; animation-delay: 2.1s; }
-  .pf-glow { animation: pfGlow 3.4s ease-in-out infinite; }
-  .pf-ping::after { animation: pfPing 2.8s ease-out infinite; }
-  .pf-chips--breathe li { animation: pfBreathe 4s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 0.5s); }
 }
 @keyframes spPulse { 0%, 100% { opacity: 0.85; } 50% { opacity: 1; } }
-@keyframes pfDashDown { to { transform: translateY(20px); } }
-@keyframes pfDashAcross { to { transform: translateX(20px); } }
-@keyframes pfFlow {
-  0% { transform: translateY(-24px); opacity: 0; }
-  12%, 88% { opacity: 1; }
-  100% { transform: translateY(24px); opacity: 0; }
-}
-@keyframes pfGlow { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.9; } }
-@keyframes pfPing { 0% { transform: scale(0.6); opacity: 0.8; } 70%, 100% { transform: scale(2.4); opacity: 0; } }
-@keyframes pfBreathe { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; } }
 @media print {
-  .sp-node svg, .pf-link::before, .pf-wire::before, .pf-packet, .pf-glow, .pf-ping::after, .pf-chips--breathe li { animation: none !important; }
+  .sp-node svg { animation: none !important; }
 }
 
 /* ---- Reduced motion: fully static, final state, no transforms ---- */
