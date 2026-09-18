@@ -4,8 +4,6 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import Arrow from "@/components/Arrow";
 import ContactSection from "@/components/ContactSection";
-import SellerPoints from "@/components/SellerPoints";
-import { SELLER_POINTS } from "@/lib/sellerPoints";
 import PullQuote from "@/components/PullQuote";
 import SellerProcess from "@/components/SellerProcess";
 import { WeirWatermark } from "@/components/WeirLattice";
@@ -53,9 +51,16 @@ export default function SellingPage() {
       <Section bg="paper">
         <div className="wrap">
           <div className="split">
+            {/* The label and the line under it used to be a <span> and a <p>,
+                so the section had no heading at all and the two ran together
+                as one string ("How we buyWe run what we buy."). The line is
+                now the real <h2>; the label is marked presentational so it
+                isn't read as part of it. */}
             <div className="split__label">
-              <span className="eyebrow">How we buy</span>
-              <p className="kicker">We run what we buy.</p>
+              <span className="eyebrow" aria-hidden="true">
+                How we buy
+              </span>
+              <h2 className="kicker">We run what we buy.</h2>
             </div>
             <div className="split__body">
               <p>
@@ -79,17 +84,11 @@ export default function SellingPage() {
       {/* How it works: the whole process, stage by stage (#how-it-works). */}
       <SellerProcess />
 
-      {/* Why founders choose Wameir — three icon cards (§5.2). Paper, so it
-          alternates with the cream process band above. */}
-      <Section bg="paper">
-        <div className="wrap">
-          <div className="track__intro">
-            <span className="eyebrow">Why founders choose Wameir</span>
-            <h2 className="t-h2">What you can count on.</h2>
-          </div>
-          <SellerPoints points={SELLER_POINTS} />
-        </div>
-      </Section>
+      {/* Audit v5 D-9: the "Why founders choose Wameir / What you can count on"
+          band was cut. Its three cards (Owners who stay, Preserve your legacy,
+          Local teams stay local) repeated the Home tiles word for word, and sat
+          immediately after the five-stage process that already covers all three
+          in far more detail. Home's tiles now link to #how-it-works. */}
 
       <ContactSection
         source="/selling"

@@ -1420,9 +1420,14 @@ main p { max-width: var(--measure); }
   box-shadow: var(--card-shadow);
 }
 .sp-node svg { width: 34px; height: 34px; stroke: var(--gold); fill: none; }
+/* The badge sat at the node's top right, the same corner several of the stage
+   glyphs draw into (step 5's arrowhead reaches it), so the two collided at some
+   sizes. Its own corner, clear of the 34px glyph, with a ring of the band's
+   background so it reads as a separate mark rather than a dent in the circle. */
 .sp-num {
   position: absolute;
-  top: -6px; right: -6px;
+  top: -8px; left: -8px;
+  box-shadow: 0 0 0 3px var(--cream);
   width: 26px; height: 26px;
   display: flex; align-items: center; justify-content: center;
   border: 1px solid var(--gold);
@@ -1488,6 +1493,15 @@ main p { max-width: var(--measure); }
 .sp-cols li svg,
 .sp-reassure svg { flex: none; stroke: var(--gold); fill: none; }
 .sp-cols li svg { width: 15px; height: 15px; margin-top: 4px; }
+/* Content that is neither "what happens" nor "what we need": how we value a
+   company, how the money works. Prose, so the card keeps one label pair. */
+.sp-extra {
+  max-width: var(--measure);
+  margin-top: 14px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-70);
+}
 .sp-reassure {
   display: flex;
   gap: 10px;

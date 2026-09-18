@@ -18,14 +18,26 @@ import VisionIntro from "./VisionIntro";
 
 type Stage = {
   title: string;
-  when: string;
+  /** Only set where there is a real duration to give. The pill used to carry
+   *  slogans on four of the five stages (audit v5 D-4); rather than invent
+   *  timings we don't stand behind, the stages without one now have no pill. */
+  when?: string;
   lead: string;
   icon: React.ReactNode;
+  /** Every stage uses the same two labels (D-3). The page previously ran eight
+   *  different label pairs across five cards, which read as eight ideas. */
   cols: [Col, Col];
+  /** Content that isn't "what happens" or "what we need" — how we value a
+   *  company, how the money works, what changes in a transition. Prose, so we
+   *  don't reintroduce a label pair per card. */
+  extra?: string[];
   reassure: string;
   reassureIcon: React.ReactNode;
 };
 type Col = { head: string; items: string[] };
+
+const HAPPENS = "What happens";
+const NEEDED = "What we need from you";
 
 const SHIELD = (
   <>
@@ -37,7 +49,6 @@ const SHIELD = (
 const STAGES: Stage[] = [
   {
     title: "A first conversation",
-    when: "At your pace · no commitment",
     lead: "You reach out, or we're introduced. This first step is a conversation, a chance to get a feel for each other and for whether there's a fit. Nothing is decided, and nothing is expected.",
     icon: (
       <>
@@ -47,7 +58,7 @@ const STAGES: Stage[] = [
     ),
     cols: [
       {
-        head: "What happens",
+        head: HAPPENS,
         items: [
           "An informal call or meeting, whenever suits you",
           "We share who we are and how we work",
@@ -55,7 +66,7 @@ const STAGES: Stage[] = [
         ],
       },
       {
-        head: "What we'll need from you",
+        head: NEEDED,
         items: ["Nothing but a willingness to talk", "No documents, no financials yet"],
       },
     ],
@@ -75,7 +86,7 @@ const STAGES: Stage[] = [
     ),
     cols: [
       {
-        head: "What happens",
+        head: HAPPENS,
         items: [
           "We review financials and key contracts, privately",
           "We learn the team, the communities, the systems",
@@ -83,10 +94,10 @@ const STAGES: Stage[] = [
         ],
       },
       {
-        head: "What we'll need from you",
+        head: NEEDED,
         items: [
           "Financial statements and a contract overview",
-          "Honest context on how the business runs",
+          "A straight account of how the business runs",
           "A confidentiality agreement before anything sensitive is shared",
         ],
       },
@@ -102,7 +113,6 @@ const STAGES: Stage[] = [
   },
   {
     title: "A fair, tailored offer",
-    when: "A written offer, built around you",
     lead: "A clear written offer, shaped around what you told us you want: a clean exit, a transition period or a continuing role. We walk you through how we arrived at it, plainly.",
     icon: (
       <>
@@ -112,20 +122,24 @@ const STAGES: Stage[] = [
     ),
     cols: [
       {
-        head: "How we think about value",
+        head: HAPPENS,
         items: [
-          "Your recurring revenue and the doors you manage",
-          "Board relationships and the strength of your contracts",
-          "A steady team and clean books are worth more to us",
+          "You get the offer in writing",
+          "We walk you through how we got to the number",
+          "You take it to your own lawyer and accountant",
         ],
       },
       {
-        head: "How a deal can be structured",
+        head: NEEDED,
         items: [
-          "Cash at close, plus part of the price paid over time, so we both have a stake in how it goes",
-          "Room to stay invested in the community's continued success",
+          "Nothing new; we work from what you have already shared",
+          "Time to read it and talk it over",
         ],
       },
+    ],
+    extra: [
+      "What we look at when we put a number on it: your recurring revenue and the doors you manage, board relationships and the strength of your contracts, and a steady team and clean books.",
+      "How the money usually works: most of the price at closing, the rest paid over the next year or two, so we both have a stake in how the handover goes. You can keep a share if you want one.",
     ],
     reassure: "You take the time you need to decide, with no pressure and no deadline.",
     reassureIcon: (
@@ -137,7 +151,6 @@ const STAGES: Stage[] = [
   },
   {
     title: "The transition",
-    when: "Your people stay. That's the point.",
     lead: "The managers and staff who know your communities stay right where they are. We add support, tools and money behind them, and keep the relationships that made the company worth buying.",
     icon: (
       <>
@@ -149,21 +162,24 @@ const STAGES: Stage[] = [
     ),
     cols: [
       {
-        head: "What stays the same",
+        head: HAPPENS,
         items: [
-          "The local team and the faces boards know",
-          "Your company's name and identity in the community",
-          "The service your clients rely on",
+          "Your managers and staff stay where they are",
+          "We put support, tools and money behind them",
+          "We keep the relationships that made the company worth buying",
         ],
       },
       {
-        head: "What gets better",
+        head: NEEDED,
         items: [
-          "Better tools, so the team spends time on people",
-          "Back-office support run once, for everyone",
-          "Money behind investments you couldn't make alone",
+          "Introductions to your boards, at a pace you set",
+          "Time with your team, so we learn how things actually run",
         ],
       },
+    ],
+    extra: [
+      "What stays the same: the local team and the faces boards know, your company's name and identity in the community, and the service your clients rely on.",
+      "What gets better: tools that give the team its time back, back-office support run once for everyone, and money for the investments you couldn't make alone.",
     ],
     reassure:
       "Your role in the transition is yours to choose: a full handoff, a set period or staying on.",
@@ -176,7 +192,6 @@ const STAGES: Stage[] = [
   },
   {
     title: "We stay",
-    when: "We run it, and we keep it",
     lead: "We run the company ourselves and plan to own it for years. What you built keeps its name, its people and its place in the community, and gets the investment to become stronger over time.",
     icon: (
       <>
@@ -186,21 +201,21 @@ const STAGES: Stage[] = [
     ),
     cols: [
       {
-        head: "What this means",
+        head: HAPPENS,
         items: [
-          "We run the company ourselves, and we are here to stay",
+          "We run it, and we're staying",
           "Your legacy continues, with more behind it",
         ],
       },
       {
-        head: "Your part, if you want one",
-        items: [
-          "Stay involved, advise or step away entirely",
-          "Part of the price paid over time keeps you invested in how the community does next",
-        ],
+        head: NEEDED,
+        items: ["Nothing. The company is ours to run now"],
       },
     ],
-    reassure: "You built it. We'll keep building it.",
+    extra: [
+      "If you want a part in it, you can stay involved, advise, or step away entirely. The rest of the price, paid over the next year or two, keeps you invested in how the community does either way.",
+    ],
+    reassure: "We plan to still be running it in ten years.",
     reassureIcon: SHIELD,
   },
 ];
@@ -222,7 +237,7 @@ export default function SellerProcess() {
     <Section bg="cream" id="how-it-works" className="sp">
       <div className="wrap">
         <VisionIntro
-          eyebrow="Thinking about selling?"
+          eyebrow="The process"
           lede="The hardest part of selling is not knowing how it goes. So here's the entire path in detail: what happens at each stage, what we'll ask of you, how long it takes and what stays protected throughout."
           note="Wameir is early-stage. This is how we intend to work with every owner, and the standard we're holding ourselves to."
         >
@@ -250,7 +265,7 @@ export default function SellerProcess() {
               <article className="sp-card">
                 <div className="sp-card__head">
                   <h3>{s.title}</h3>
-                  <span className="sp-when">{s.when}</span>
+                  {s.when && <span className="sp-when">{s.when}</span>}
                 </div>
                 <p className="sp-lead">{s.lead}</p>
                 <div className="sp-cols">
@@ -268,6 +283,11 @@ export default function SellerProcess() {
                     </div>
                   ))}
                 </div>
+                {s.extra?.map((para) => (
+                  <p className="sp-extra" key={para}>
+                    {para}
+                  </p>
+                ))}
                 <p className="sp-reassure">
                   <Svg>{s.reassureIcon}</Svg>
                   <span>{s.reassure}</span>
@@ -282,8 +302,7 @@ export default function SellerProcess() {
             Ready when you are, <span className="g">even if that&apos;s a year out.</span>
           </h3>
           <p>
-            A first conversation costs nothing and commits you to nothing. Every message is
-            read by a founder.
+            A first conversation costs nothing and commits you to nothing.
           </p>
         </div>
       </div>
