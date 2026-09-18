@@ -27,7 +27,6 @@ const ROWS = [
   ".sp-stage", // /selling process: each stage's node, then its card
   ".platform", // /approach: the three technology layers
   ".benefits__grid", // goal cards
-  ".points", // selling "What you can count on" cards
 ].join(", ");
 const MAX_STAGGER_STEP = 4; // caps the last card's delay (4 x 50ms)
 const SETTLE_MS = 600; // longest reveal (200ms + 200ms delay) plus headroom
