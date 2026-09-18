@@ -2,10 +2,17 @@
  * Team roster — single source of truth for both the /team page (full bios) and
  * the home "who's behind it" teaser (first bio sentence).
  *
- * BIOS CONTAIN [FILL: ...] PLACEHOLDERS (audit v5 F-2). They are rendered with
- * a dashed warning chip so they cannot ship unnoticed, and `npm run check:fills`
- * fails while any remain. Replace them with real facts from the owner; do not
- * guess. Grep: [FILL:
+ * Bios are cut to the HOA credential (audit v5 F-2). Specifics we don't have
+ * were written as [FILL: ...] placeholders and then STRIPPED rather than
+ * guessed, so every sentence here is true but less specific than it could be.
+ * To put the detail back, ask the owner for:
+ *   Mitch  the HOA platform's name, years there, how many companies folded in
+ *   Will   years as a consultant, the firm, one concrete project and its result
+ *   Bob    how many companies he bought and combined, over how long, and how
+ *          long he has been Mitch's mentor
+ * Re-add them as [FILL: ...] while drafting: they render as a dashed warning
+ * chip (components/FillText.tsx) and `npm run check:fills` fails while any
+ * remain, so a placeholder cannot reach production unnoticed.
  *
  * `photoConsent` is the consent gate (§15 #2). When false, the layout renders a
  * neutral placeholder and never publishes the person's photo — flip to true only
@@ -29,7 +36,7 @@ export const TEAM: TeamMember[] = [
     kind: "Co-founder",
     role: "Co-Founder, Finance & Growth",
     paras: [
-      "Mitch helped scale [FILL: platform name], one of the country's fastest-growing HOA management platforms, over [FILL: N] years, folding in [FILL: N] management companies along the way. He has led deals end to end, from the first model through diligence and closing, and has served as interim CFO of a multi-market construction services company.",
+      "Mitch helped scale one of the country's fastest-growing HOA management platforms. He has led deals end to end, from the first model through diligence and closing, and has served as interim CFO of a multi-market construction services company.",
       "At Wameir he handles the money side: what a company is worth, how the purchase closes, and how the numbers get reported back to the people who work there.",
     ],
     linkedin: "https://www.linkedin.com/in/mitchell-r-maurer-8826a357/",
@@ -42,7 +49,7 @@ export const TEAM: TeamMember[] = [
     kind: "Co-founder",
     role: "Co-Founder, Technology & Operations",
     paras: [
-      "Will spent [FILL: N] years as a consultant at [FILL: firm name], building data and AI systems for Fortune 100 companies. [FILL: one concrete project, one sentence: what he built and what it changed.]",
+      "Will is a consultant who builds data and AI systems for Fortune 100 companies.",
       "At Wameir he leads technology and operations, with a simple goal: the portal loads, the payment posts, and nobody has to retype anything.",
     ],
     linkedin: "https://www.linkedin.com/in/william-1-powell/",
@@ -55,8 +62,8 @@ export const TEAM: TeamMember[] = [
     kind: "Advisor",
     role: "Strategic Advisor",
     paras: [
-      "Bob was CFO of an international HOA management company, where he bought and combined [FILL: N] management companies over [FILL: N] years.",
-      "He has since served as CFO of a national nonprofit and now runs mergers and acquisitions as a chief investment officer. He has been Mitch's mentor for [FILL: N] years, and he advises Wameir on how to buy a company without breaking it.",
+      "Bob was CFO of an international HOA management company, where he oversaw a sustained programme of buying and combining management companies.",
+      "He has since served as CFO of a national nonprofit and now runs mergers and acquisitions as a chief investment officer. He is Mitch's mentor, and he advises Wameir on how to buy a company without breaking it.",
     ],
     linkedin: "https://www.linkedin.com/in/bogreen/",
     photoBase: "/img/team-bob-green",
