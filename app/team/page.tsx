@@ -4,6 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import Section from "@/components/Section";
 import ContactSection from "@/components/ContactSection";
 import Headshot from "@/components/Headshot";
+import FillText from "@/components/FillText";
 import Arrow from "@/components/Arrow";
 import { WeirWatermark } from "@/components/WeirLattice";
 import { TEAM } from "@/lib/team";
@@ -37,15 +38,14 @@ export default function TeamPage() {
       <header className="page-header">
         <WeirWatermark className="page-header__watermark" />
         <div className="wrap">
-          <span className="eyebrow eyebrow-gold-light">Two founders and an advisor</span>
+          <span className="eyebrow eyebrow-gold-light">Who&apos;s behind it</span>
           <h1 className="font-display">
-            The people who will run your company.
+            Two founders, and the advisor who taught one of them the business.
           </h1>
           <p className="lede">
             We started Wameir because we think community management can be better,
             and the way to show it is to own the work ourselves. We put in our own
-            money, keep the experienced local teams, and give them better technology
-            and operations. We plan to stay for decades.
+            money, keep the local teams, and stay.
           </p>
         </div>
       </header>
@@ -63,7 +63,7 @@ export default function TeamPage() {
                 <div className="role">{m.role}</div>
                 {m.paras.map((p, i) => (
                   <p key={i} style={{ marginTop: i === 0 ? 0 : 12 }}>
-                    {p}
+                    <FillText text={p} />
                   </p>
                 ))}
                 {m.linkedin && (
@@ -80,12 +80,6 @@ export default function TeamPage() {
               </article>
             ))}
           </div>
-          <p className="lead-statement" style={{ marginTop: 64, maxWidth: "42ch" }}>
-            We&apos;re putting our own money into this, and we plan to run these
-            companies for a <span className="g">long time.</span> If that&apos;s the
-            owner you&apos;d want for your company or your community, we&apos;d like to
-            talk.
-          </p>
         </div>
       </Section>
 
@@ -95,7 +89,7 @@ export default function TeamPage() {
         source="/team"
         audience="founder"
         eyebrow="Get in touch"
-        intro="Send a note. One of us will write back personally."
+        intro="Send a note. One of us will write back."
         heading={
           <>
             Want to <span className="it">talk?</span>

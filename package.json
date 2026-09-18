@@ -1,7 +1,7 @@
 {
   "name": "wameir-web",
   "version": "2.0.0",
-  "description": "Wameir marketing site — Next.js (App Router) on Cloudflare Pages",
+  "description": "Wameir marketing site \u2014 Next.js (App Router) on Cloudflare Pages",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,8 @@
     "purge": "node scripts/purge-cache.mjs",
     "cf:build": "opennextjs-cloudflare build",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "check:fills": "node scripts/check-fills.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
