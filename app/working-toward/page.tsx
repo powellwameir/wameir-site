@@ -84,7 +84,7 @@ export default function WorkingTowardPage() {
           <span className="eyebrow eyebrow-gold-light">For communities</span>
           <h1 className="font-display">What we&apos;re working toward</h1>
           <p className="lede">
-            We are early. Wameir has not yet acquired its first company, so
+            We are early. Wameir has not yet bought its first company, so
             everything on this page is a goal, not a service running today. We are
             writing it down anyway, because the <em>reasoning</em> behind a promise
             matters as much as the promise, and because we want to be held to it.
@@ -158,7 +158,7 @@ export default function WorkingTowardPage() {
               stay.
             </p>
             <p>
-              As we acquire and operate our first communities, the reasoning on this
+              As we buy and run our first communities, the reasoning on this
               page will be replaced, piece by piece, with results. We&apos;d rather
               earn that page than write it early.
             </p>

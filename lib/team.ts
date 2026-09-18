@@ -51,7 +51,7 @@ export const TEAM: TeamMember[] = [
     role: "Strategic Advisor",
     paras: [
       "Bob has spent decades as a senior finance executive, including as CFO of an international HOA management company, where he oversaw a sustained acquisition program.",
-      "He has since served as CFO of a national nonprofit and now leads mergers and acquisitions as a chief investment officer. Earlier roles include CFO of an industrial manufacturer's rail division and senior leadership at a federal banking regulator. He advises Wameir on how to buy and integrate companies well.",
+      "He has since served as CFO of a national nonprofit and now leads mergers and acquisitions as a chief investment officer. Earlier roles include CFO of an industrial manufacturer's rail division and senior leadership at a federal banking regulator. He advises Wameir on how to buy companies and bring them in without breaking what works.",
     ],
     linkedin: "https://www.linkedin.com/in/bogreen/",
     photoBase: "/img/team-bob-green",

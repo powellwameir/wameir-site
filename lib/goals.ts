@@ -124,7 +124,7 @@ export const GROUPS: Group[] = [
         icon: "technology",
         goal: "portals that load, payments that clear, requests that don't vanish.",
         why: [
-          "This is the least glamorous goal and, in a way, the most important. Much of the frustration with community management is technology that doesn't work reliably. Fixing it takes discipline: building things that work, and an owner who keeps investing in them. Because we intend to own these companies for the long term, we have every reason to build technology that lasts.",
+          "This is the least glamorous goal and the most important. Much of the frustration with community management is technology that doesn't work reliably. Fixing it takes discipline: building things that work, and an owner who keeps investing in them. Because we intend to own these companies for decades, we have every reason to build technology that lasts.",
         ],
         toward: "software that stays out of your way.",
       },

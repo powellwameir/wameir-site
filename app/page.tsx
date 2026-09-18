@@ -47,9 +47,14 @@ export default function Home() {
             <br />
             <span className="accent-italic">done right.</span>
           </h1>
-          {/* Owner-chosen (§15 #10): the original three-beat rhythm, in plainer words. */}
+          {/* Audit v5 (G-10) replaced the owner-chosen three-beat line ("Better
+              tools. Faster answers. Stronger communities.") with a plain
+              statement of what Wameir does. FLAGGED FOR THE OWNER: the rhythm
+              was a deliberate choice (§15 #10), but it never said what the
+              company is, and the hero is where a seller decides to keep reading. */}
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
-            Better tools. Faster answers. Stronger communities.
+            We buy HOA management companies in Greater Houston with our own money,
+            and we run them ourselves.
           </p>
           <div className="hero__actions hero-reveal hero-reveal--4">
             <DualCTA onDark />
@@ -118,12 +123,15 @@ export default function Home() {
           <figure className="pullquote__figure">
             <figcaption className="eyebrow eyebrow-gold-light">Our approach</figcaption>
             <blockquote className="pullquote__text pullquote__text--md">
-              We&apos;re operators, in it for the <span className="g">long term.</span>
+              We run what we buy, and <span className="g">we&apos;re not leaving.</span>
             </blockquote>
             <div className="pullquote__after">
+              {/* The hero now states what we buy and with whose money, so this
+                  band says what that ownership changes instead of repeating it.
+                  Deliberately not the same sentence as /approach's opening. */}
               <p>
-                We buy HOA management companies with our own capital and operate them
-                ourselves.
+                Which is why we spend on the things that take years to show up:
+                the team, the service, the software.
               </p>
               <Link className="teaser__link" href="/approach">
                 Read our approach <Arrow />
@@ -144,7 +152,7 @@ export default function Home() {
             <div className="split__label">
               <span className="eyebrow">Who&apos;s behind it</span>
               <p className="kicker">
-                Experienced operators, guided by an industry veteran.
+                Two founders and an advisor who has done this before.
               </p>
             </div>
             <div className="split__body">
