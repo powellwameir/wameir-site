@@ -115,6 +115,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing:
   color: var(--navy);
 }
 .on-navy .group-head { color: #fff; }
+/* One line under a group heading saying what that half of the page is for. */
+.group-intro { margin-top: 8px; max-width: var(--measure); color: var(--ink-70); }
 
 /* An h2 over ~8 words: one size step down and a wider cap, so it wraps to two
    or three lines instead of four or five. */
@@ -708,7 +710,12 @@ main p { max-width: var(--measure); }
 
 /* ---- Team / who's-behind-it ---- */
 .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
-.who-cell { }
+/* A column, so the LinkedIn link sits on the cell's baseline whatever the bio
+   length. The three bios are written to a similar length (F-2), but a column
+   that only lines up when the copy happens to match will drift on the next
+   edit. */
+.who-cell { display: flex; flex-direction: column; align-items: flex-start; }
+.who-cell .teaser__link { margin-top: auto; padding-top: 16px; }
 .who-photo {
   aspect-ratio: 4 / 5;
   background: var(--navy);
@@ -740,6 +747,19 @@ main p { max-width: var(--measure); }
   border-radius: 4px;
   padding: 3px 8px;
   margin-bottom: 12px;
+}
+
+/* An unfilled [FILL: ...] placeholder (audit v5 F-2). Borrows the .gated chip
+   so a bio missing a real fact is impossible to miss on a preview. Nothing
+   should reach production wearing this; `npm run check:fills` is the gate. */
+.fill {
+  background: none;
+  color: var(--gold-deep);
+  border: 1px dashed var(--hairline-gold);
+  border-radius: 4px;
+  padding: 0 5px;
+  font-size: 0.9em;
+  font-style: italic;
 }
 
 /* ---- Teaser row (label + link) ---- */

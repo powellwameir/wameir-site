@@ -26,8 +26,8 @@ const FAQS: QA[] = [
     q: "Where does your funding come from?",
     a: (
       <p>
-        Our own money, and money from people who know us, not a fund. We buy each
-        company to own and run it ourselves, for years.
+        Our own money, plus money from people who know us. There&apos;s no fund and
+        no fund timeline, so nobody upstream can make us sell.
       </p>
     ),
   },
@@ -56,11 +56,9 @@ const FAQS: QA[] = [
     q: "What happens to me after the sale?",
     a: (
       <p>
-        We expect you to step back gradually. You stay involved through a transition
-        period, introducing us to your boards and handing over relationships and
-        day-to-day decisions at a pace that protects the business. Over time your role
-        gets lighter until you&apos;re ready to step away. How long that takes, and what
-        your role looks like along the way, is something we work out together.
+        That&apos;s up to you. Most owners stay through a handover, introducing us to
+        boards and passing over the day-to-day at a pace that protects the business;
+        some step away sooner, and some stay for years.
       </p>
     ),
   },
@@ -75,7 +73,7 @@ const FAQS: QA[] = [
     ),
   },
   {
-    q: "Will my company be folded into another one?",
+    q: "Will you merge us into something else?",
     a: (
       <p>
         Where shared tools or support help your team, we bring them in. Where your
@@ -174,13 +172,26 @@ export default function FaqPage() {
       {/* Quiet by design (§4A) — the accordion structure is the visual. */}
       <Section bg="paper">
         <div className="wrap">
+          {/* The two groups were 12px gold eyebrows: the only structure across
+              fourteen identical accordion rows, and too small to do that job.
+              They address the reader directly now, each with a line saying what
+              its half is for (F-6). */}
           {[
-            { label: "From founders", items: FAQS },
-            { label: "From boards and residents", items: BOARD_FAQS },
+            {
+              label: "If you own a management company",
+              intro:
+                "The questions we get in a first call, answered the way we'd answer them on the phone.",
+              items: FAQS,
+            },
+            {
+              label: "If you're on a board, or live in a managed community",
+              intro: "What we'd change, what we can't promise, and what's true today.",
+              items: BOARD_FAQS,
+            },
           ].map((group, i) => (
             <div key={group.label} style={{ marginTop: i === 0 ? 0 : 56 }}>
               <h2 className="group-head">{group.label}</h2>
-              {/* One-line intro under each group: copy from prompt F. */}
+              <p className="group-intro">{group.intro}</p>
               <div className="faq">
                 {group.items.map((item) => (
                   <details key={item.q}>
