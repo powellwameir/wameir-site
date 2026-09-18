@@ -745,8 +745,12 @@ main p { max-width: var(--measure); }
    length. The three bios are written to a similar length (F-2), but a column
    that only lines up when the copy happens to match will drift on the next
    edit. */
-.who-cell { display: flex; flex-direction: column; align-items: flex-start; }
-.who-cell .teaser__link { margin-top: auto; padding-top: 16px; }
+/* A column, so the LinkedIn link sits on the cell's baseline whatever the bio
+   length. Items must STRETCH: .who-photo sizes itself from the column width
+   via aspect-ratio, so align-items:flex-start collapsed it to 0x0 and the
+   headshots vanished. Only the link opts out, so it stays link-width. */
+.who-cell { display: flex; flex-direction: column; }
+.who-cell .teaser__link { margin-top: auto; padding-top: 16px; align-self: flex-start; }
 .who-photo {
   aspect-ratio: 4 / 5;
   background: var(--navy);
