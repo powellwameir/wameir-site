@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Icon from "./Icon";
+import Arrow from "./Arrow";
 import { GROUPS, slugify } from "@/lib/goals";
 
 /*
@@ -11,8 +12,8 @@ import { GROUPS, slugify } from "@/lib/goals";
  * - "home": cross-page links. Goals with a page of their own link straight to
  *   it; the rest go to their row on /working-toward.
  *
- * Goals with a page of their own carry a "Full write-up" tag in both variants,
- * so a reader can see which links go deeper than a summary.
+ * Goals with a page of their own end in an arrow in both variants, so a reader
+ * can see which links go deeper than a summary.
  */
 export default function GoalIndex({ variant }: { variant: "page" | "home" }) {
   const onPage = variant === "page";
@@ -43,10 +44,8 @@ export default function GoalIndex({ variant }: { variant: "page" | "home" }) {
                     <span className="goal-index__icon" aria-hidden="true">
                       <Icon name={g.icon} size={16} />
                     </span>
-                    <span>
-                      {g.title}
-                      {g.link && <span className="goal-index__tag">Full write-up</span>}
-                    </span>
+                    <span>{g.title}</span>
+                    {g.link && <Arrow />}
                   </>
                 );
                 return (

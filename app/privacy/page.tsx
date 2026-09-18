@@ -35,7 +35,7 @@ export default function PrivacyPage() {
 
       <Section bg="paper">
         <div className="wrap">
-          <div className="split__body" style={{ maxWidth: "64ch" }}>
+          <div className="split__body">
             <p>
               Wameir is an early-stage company. Today, the primary way you share
               information with us is by emailing us directly — if you write to us, we

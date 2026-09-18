@@ -41,8 +41,7 @@ export default function ApproachPage() {
         <div className="wrap">
           <span className="eyebrow eyebrow-gold-light">Our approach</span>
           <h1 className="font-display">
-            We operate what we buy, and we build{" "}
-            <span className="accent-italic">for the long term.</span>
+            We operate what we buy, and we build for the long term.
           </h1>
           <p className="lede">
             We acquire established HOA management companies in the Houston area with

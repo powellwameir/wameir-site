@@ -11,6 +11,7 @@ export default function VisionIntro({
   lede,
   note,
   className,
+  long = false,
 }: {
   eyebrow?: string;
   as?: "h1" | "h2";
@@ -19,13 +20,15 @@ export default function VisionIntro({
   lede?: React.ReactNode;
   note?: React.ReactNode;
   className?: string;
+  /** Headline over ~8 words: one size step down so it doesn't wrap to 4-5 lines. */
+  long?: boolean;
 }) {
   return (
     <div className={["vsec-intro", className].filter(Boolean).join(" ")}>
       {eyebrow && (
         <span className={`eyebrow${onDark ? " eyebrow-gold-light" : ""}`}>{eyebrow}</span>
       )}
-      <Heading className="t-h2 vsec-title">{children}</Heading>
+      <Heading className={`t-h2 vsec-title${long ? " t-h2--long" : ""}`}>{children}</Heading>
       {lede && <p className="vsec-intro__lede">{lede}</p>}
       {note && <p className="track__disclaimer track__disclaimer--sm">{note}</p>}
     </div>

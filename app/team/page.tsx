@@ -39,8 +39,7 @@ export default function TeamPage() {
         <div className="wrap">
           <span className="eyebrow eyebrow-gold-light">Team</span>
           <h1 className="font-display">
-            Experienced operators, guided by an{" "}
-            <span className="accent-italic">industry veteran.</span>
+            Experienced operators, guided by an industry veteran.
           </h1>
           <p className="lede">
             We started Wameir because we think community management can be better,
@@ -60,7 +59,6 @@ export default function TeamPage() {
                 {!m.photoConsent && (
                   <span className="gated">⚠ Pending consent</span>
                 )}
-                <div className="mono">{m.kind}</div>
                 <h3>{m.name}</h3>
                 <div className="role">{m.role}</div>
                 {m.paras.map((p, i) => (

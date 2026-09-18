@@ -158,7 +158,6 @@ export default function Home() {
             {TEAM.map((m) => (
               <div className="who-cell" key={m.key}>
                 <Headshot member={m} />
-                <div className="mono">{m.kind}</div>
                 <h3>{m.name}</h3>
                 <div className="role">{m.role}</div>
                 <p>{m.paras[0]}</p>
@@ -207,7 +206,7 @@ export default function Home() {
 
           <GoalIndex variant="home" />
           <Link className="teaser__link teaser__link--after" href="/working-toward">
-            Read the thinking behind each <Arrow />
+            See all eight goals <Arrow />
           </Link>
         </div>
       </Section>

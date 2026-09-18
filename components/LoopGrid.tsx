@@ -18,7 +18,7 @@ export type LoopStep = {
  * grid gap is the divider — the gold shows through from the grid's background,
  * so the cells carry no borders of their own.
  *
- * `label` is the band's real heading, styled as an eyebrow so the three step
+ * `label` is the band's real heading (a group heading), so the three step
  * headings beneath it aren't orphaned in the outline.
  */
 export default function LoopGrid({
@@ -32,7 +32,7 @@ export default function LoopGrid({
 }) {
   return (
     <>
-      <h2 className="eyebrow eyebrow-gold-light eyebrow--heading">{label}</h2>
+      <h2 className="group-head">{label}</h2>
       <div className="loop">
         {steps.map((s) => (
           <div className="loop__step" key={s.n}>
