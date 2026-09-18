@@ -490,6 +490,35 @@ main p { max-width: var(--measure); }
 .page-header .wrap { position: relative; z-index: 1; }
 .page-header h1 { margin-top: 16px; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.05; }
 .page-header .lede { margin-top: 22px; font-size: 1.25rem; color: var(--cream-70); max-width: 52ch; }
+/* A plain subhead under the h1 (Fraunces, not a second h1). */
+.page-header__sub {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  line-height: 1.2;
+  color: var(--cream);
+}
+/* The early-stage status: one line in the header, said once per page. */
+.status-strip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 8px 14px;
+  border: 1px solid var(--hairline-cream);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--cream-70);
+}
+.status-strip strong { color: var(--cream); font-weight: 600; }
+.status-strip__dot {
+  flex: none;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
 
 /* ---- Lead statement (big Fraunces line) ---- */
 .lead-statement {
@@ -899,17 +928,8 @@ main p { max-width: var(--measure); }
 .goal-index { scroll-margin-top: 112px; }
 .goal-group__back { margin-top: 32px; }
 
-/* The goal-page card in a goal's summary column. */
-.goal__deep { margin-top: 24px; padding: 20px 56px 20px 22px; }
-.goal__deep .bcard__arrow { top: 22px; right: 22px; }
-.goal__deep-title {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 500;
-  line-height: 1.25;
-  color: var(--navy);
-}
+/* A goal with a page of its own ends on the link to it, after its limit. */
+.goal__more { margin-top: 20px; }
 
 /* "More goals" band on each goal page. */
 .more-goals .benefits { margin-top: 28px; }
@@ -984,10 +1004,6 @@ main p { max-width: var(--measure); }
   font-size: 1.1rem;
   color: var(--navy);
 }
-
-.goals-closing { max-width: 60ch; }
-.goals-closing p { color: var(--cream-70); font-size: 1.125rem; line-height: 1.6; }
-.goals-closing p + p { margin-top: 18px; }
 
 /* Utility */
 .stack-lg > * + * { margin-top: 24px; }
@@ -1186,12 +1202,17 @@ main p { max-width: var(--measure); }
   background: var(--navy-90);
   border-color: rgba(201, 168, 95, 0.35);
 }
+/* The time tag: one style in both columns, so neither side's timing reads as
+   more important than the other's. */
 .ledger__time {
+  display: inline-block;
   margin-bottom: 8px;
+  padding: 2px 8px;
+  border: 1px solid rgba(244, 241, 233, 0.22);
+  border-radius: var(--radius);
   font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
-  color: var(--cream-70); opacity: 0.7;
+  color: var(--cream);
 }
-.ledger__col--after .ledger__time { color: var(--gold); opacity: 1; }
 .ledger__t { margin-bottom: 3px; font-size: 0.98rem; font-weight: 600; color: var(--cream); max-width: none; }
 .ledger__col--after .ledger__t { color: #fff; }
 .ledger__s { font-size: 0.9rem; color: var(--cream-70); max-width: none; }

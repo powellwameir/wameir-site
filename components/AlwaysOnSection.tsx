@@ -3,9 +3,9 @@ import Icon, { type IconName } from "./Icon";
 import ClockDialDiagram from "./diagrams/ClockDialDiagram";
 
 /*
- * "Always on" (§5.1) — the routine answered at any hour, with a person for
- * anything that needs judgment. navy-90 so the closing navy band that follows
- * reads as its pair rather than a repeat.
+ * "Always on" (§5.1): the routine answered at any hour, with a person for
+ * anything that needs judgment. On /working-toward it follows the first goal
+ * group, as "You get an answer" in practice.
  */
 const POINTS: { icon: IconName; line: string }[] = [
   {
