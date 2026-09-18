@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/approach",
   title: "Our Approach",
   description:
-    "We operate the HOA management companies we buy and build them for the long term, investing in people, technology and relationships that pay off over years.",
+    "We run the HOA management companies we buy and plan to keep them, investing in people, technology and relationships that pay off over years.",
 });
 
 const INVEST: { icon: IconName; title: string; line: string }[] = [
@@ -29,7 +29,7 @@ const INVEST: { icon: IconName; title: string; line: string }[] = [
   {
     icon: "long-term",
     title: "Relationships that last",
-    line: "We expect to serve every community we take on for a long time, and we treat boards, residents and founders accordingly.",
+    line: "We expect to serve every community we take on for a long time, and we treat boards, residents and founders like people we will still be working with in ten years.",
   },
 ];
 
@@ -41,11 +41,11 @@ export default function ApproachPage() {
         <div className="wrap">
           <span className="eyebrow eyebrow-gold-light">Our approach</span>
           <h1 className="font-display">
-            We operate what we buy, and we build for the long term.
+            We run what we buy, and we plan to keep it.
           </h1>
           <p className="lede">
-            We acquire established HOA management companies in the Houston area with
-            our own capital, backed by friends and family, and we run them ourselves.
+            We buy established HOA management companies around Houston, and we run
+            them ourselves.
           </p>
         </div>
       </header>
@@ -54,7 +54,7 @@ export default function ApproachPage() {
         <div className="wrap">
           <div className="split">
             <div className="split__label">
-              <span className="eyebrow">Why the long horizon</span>
+              <span className="eyebrow">Why we are not leaving</span>
               <p className="kicker">
                 An owner who stays invests in what pays off slowly.
               </p>
@@ -79,7 +79,7 @@ export default function ApproachPage() {
         <div className="wrap">
           <div className="track__intro">
             <span className="eyebrow">What we invest in</span>
-            <h2 className="t-h2">Where the long term shows up.</h2>
+            <h2 className="t-h2">Where staying changes what we do.</h2>
           </div>
           <div className="trio">
             {INVEST.map((c) => (

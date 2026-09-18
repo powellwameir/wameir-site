@@ -11,7 +11,7 @@ export const SITE_URL = "https://wameir.com";
 export const SITE_NAME = "Wameir";
 /** The site description: root default, share cards, Home, Organization data. */
 export const SITE_DESCRIPTION =
-  "Wameir is buying HOA management companies in Greater Houston with its own capital, and investing in their local teams, modern technology and better operations.";
+  "Wameir is buying HOA management companies in Greater Houston with its own money, and investing in their local teams, modern technology and better operations.";
 const OG_IMAGE = { url: "/og.png", width: 1200, height: 630, alt: "Wameir" };
 
 export function pageMetadata({

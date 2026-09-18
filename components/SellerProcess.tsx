@@ -122,9 +122,8 @@ const STAGES: Stage[] = [
       {
         head: "How a deal can be structured",
         items: [
-          "Cash at close, plus a seller note, so we stay partners through the transition",
+          "Cash at close, plus part of the price paid over time, so we both have a stake in how it goes",
           "Room to stay invested in the community's continued success",
-          "Shaped around your goals",
         ],
       },
     ],
@@ -139,7 +138,7 @@ const STAGES: Stage[] = [
   {
     title: "The transition",
     when: "Your people stay. That's the point.",
-    lead: "The managers and staff who know your communities stay right where they are. We add support, tools and capital behind them, and keep the relationships that made the company worth buying.",
+    lead: "The managers and staff who know your communities stay right where they are. We add support, tools and money behind them, and keep the relationships that made the company worth buying.",
     icon: (
       <>
         <path d="M4 20v-1a5 5 0 0 1 10 0v1" />
@@ -162,7 +161,7 @@ const STAGES: Stage[] = [
         items: [
           "Better tools, so the team spends time on people",
           "Back-office support run once, for everyone",
-          "Capital behind investments you couldn't make alone",
+          "Money behind investments you couldn't make alone",
         ],
       },
     ],
@@ -176,8 +175,8 @@ const STAGES: Stage[] = [
     ),
   },
   {
-    title: "Long-term ownership",
-    when: "We operate it and hold it",
+    title: "We stay",
+    when: "We run it, and we keep it",
     lead: "We run the company ourselves and plan to own it for years. What you built keeps its name, its people and its place in the community, and gets the investment to become stronger over time.",
     icon: (
       <>
@@ -189,7 +188,7 @@ const STAGES: Stage[] = [
       {
         head: "What this means",
         items: [
-          "We're owner-operators, here to stay",
+          "We run the company ourselves, and we are here to stay",
           "Your legacy continues, with more behind it",
         ],
       },
@@ -197,7 +196,7 @@ const STAGES: Stage[] = [
         head: "Your part, if you want one",
         items: [
           "Stay involved, advise or step away entirely",
-          "A seller note keeps you invested in how the community does next",
+          "Part of the price paid over time keeps you invested in how the community does next",
         ],
       },
     ],
@@ -206,7 +205,7 @@ const STAGES: Stage[] = [
   },
 ];
 
-const STRIP = ["Conversation", "Getting to know it", "The offer", "Transition", "Long-term ownership"];
+const STRIP = ["Conversation", "Getting to know it", "The offer", "Transition", "We stay"];
 
 function Svg({ children, width = 1.6 }: { children: React.ReactNode; width?: number }) {
   return (

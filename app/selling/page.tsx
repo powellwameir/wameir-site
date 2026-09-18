@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/selling",
   title: "Thinking About Selling",
   description:
-    "Selling your management company is a big decision. Wameir buys with its own capital, runs what it buys, and plans to own it for the long term.",
+    "Selling your management company is a big decision. Wameir buys with its own money, runs what it buys, and plans to keep it.",
 });
 
 export default function SellingPage() {
@@ -28,8 +28,8 @@ export default function SellingPage() {
             You built it. We&apos;ll keep <span className="accent-italic">building it.</span>
           </h1>
           <p className="lede">
-            A confidential conversation with operators who plan to own what they buy
-            for the long term.
+            A private conversation with two people who&apos;ll run your company
+            themselves and keep it.
           </p>
         </div>
       </header>
@@ -49,7 +49,7 @@ export default function SellingPage() {
         <span className="g">your name.</span>
       </PullQuote>
 
-      {/* Positive operator statement (§5.2 — no fund/PE contrast, §6 rule 1) */}
+      {/* Positive statement of how we buy (§5.2 — no fund/PE contrast, §6 rule 1) */}
       <Section bg="paper">
         <div className="wrap">
           <div className="split">
@@ -59,8 +59,8 @@ export default function SellingPage() {
             </div>
             <div className="split__body">
               <p>
-                We buy with our own capital, backed by friends and family, and run every
-                company ourselves. What already makes your company work stays. What we
+                We buy with our own money and money from people who know us, and we
+                run every company ourselves. What already makes your company work stays. What we
                 add is support behind your team: <strong>better systems</strong> for
                 billing, portals and reporting.
               </p>

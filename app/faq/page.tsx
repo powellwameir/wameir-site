@@ -26,8 +26,8 @@ const FAQS: QA[] = [
     q: "Where does your funding come from?",
     a: (
       <p>
-        Our own capital, backed by friends and family who believe in what we&apos;re
-        building. We buy each company to own and run it for the long term.
+        Our own money, and money from people who know us, not a fund. We buy each
+        company to own and run it ourselves, for years.
       </p>
     ),
   },
@@ -75,7 +75,7 @@ const FAQS: QA[] = [
     ),
   },
   {
-    q: "Will my company be integrated with others?",
+    q: "Will my company be folded into another one?",
     a: (
       <p>
         Where shared tools or support help your team, we bring them in. Where your
@@ -95,7 +95,7 @@ const BOARD_FAQS: QA[] = [
     q: "Is any of this running in our community today?",
     a: (
       <p>
-        No. Wameir hasn&apos;t acquired its first company yet, so the goals on this
+        No. Wameir hasn&apos;t bought its first company yet, so the goals on this
         site describe what we&apos;re working toward, not services running today.{" "}
         <Link href="/working-toward">See all eight goals<Arrow /></Link>
       </p>
@@ -163,11 +163,10 @@ export default function FaqPage() {
       <header className="page-header">
         <WeirWatermark className="page-header__watermark" />
         <div className="wrap">
-          <span className="eyebrow eyebrow-gold-light">FAQ</span>
+          <span className="eyebrow eyebrow-gold-light">For founders, boards and residents</span>
           <h1 className="font-display">Questions we hear.</h1>
           <p className="lede">
-            From founders thinking about a sale, and from boards and residents asking
-            what we&apos;d change.
+            Short answers. Where we can&apos;t promise something, we say so.
           </p>
         </div>
       </header>
