@@ -4,6 +4,8 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import Arrow from "@/components/Arrow";
 import ContactSection from "@/components/ContactSection";
+import SellerPoints from "@/components/SellerPoints";
+import { SELLER_POINTS } from "@/lib/sellerPoints";
 import PullQuote from "@/components/PullQuote";
 import SellerProcess from "@/components/SellerProcess";
 import { WeirWatermark } from "@/components/WeirLattice";
@@ -84,11 +86,24 @@ export default function SellingPage() {
       {/* How it works: the whole process, stage by stage (#how-it-works). */}
       <SellerProcess />
 
-      {/* Audit v5 D-9: the "Why founders choose Wameir / What you can count on"
-          band was cut. Its three cards (Owners who stay, Preserve your legacy,
-          Local teams stay local) repeated the Home tiles word for word, and sat
-          immediately after the five-stage process that already covers all three
-          in far more detail. Home's tiles now link to #how-it-works. */}
+      {/* Why founders choose Wameir — three photo cards (§5.2). Paper, so it
+          alternates with the cream process band above.
+
+          Audit v5 D-9 cut this band: its three cards repeat the Home tiles word
+          for word, and they sit after the process that covers all three in more
+          detail. Restored by request, because cutting it left /selling with no
+          photographs at all. The duplication D-9 named is real and unresolved;
+          the fix is to give these cards seller-specific copy, not to delete the
+          only images on the page. */}
+      <Section bg="paper">
+        <div className="wrap">
+          <div className="track__intro">
+            <span className="eyebrow">Why founders choose Wameir</span>
+            <h2 className="t-h2">What you can count on.</h2>
+          </div>
+          <SellerPoints points={SELLER_POINTS} />
+        </div>
+      </Section>
 
       <ContactSection
         source="/selling"
