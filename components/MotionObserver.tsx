@@ -25,10 +25,9 @@ const ROWS = [
   ".tile-grid",
   ".who-grid",
   ".sp-stage", // /selling process: each stage's node, then its card
-  ".pf-modules", // /approach platform: the four things we build
+  ".platform", // /approach: the three technology layers
   ".benefits__grid", // goal cards
   ".points", // selling "What you can count on" cards
-  ".states", // the two "manager's week" cards on /approach
 ].join(", ");
 const MAX_STAGGER_STEP = 4; // caps the last card's delay (4 x 50ms)
 const SETTLE_MS = 600; // longest reveal (200ms + 200ms delay) plus headroom

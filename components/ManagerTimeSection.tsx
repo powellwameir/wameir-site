@@ -1,59 +1,29 @@
 import Section from "./Section";
 import VisionIntro from "./VisionIntro";
-import ManagerWeekDiagram from "./diagrams/ManagerWeekDiagram";
 
 /*
- * "Where a manager's time goes" (§5.1) — what the automation is actually for.
- * One SVG shows both weeks side by side (ManagerWeekDiagram, reusable on
- * other pages); the cards beneath carry the detail of each in text.
+ * "Where the time goes" (/approach): what the automation is for, as one card.
+ * Two bars, today and what we're building toward, each with its label, its two
+ * segment names and one human line; one caption for the card (audit v5, E-5).
+ * Plain HTML, so the shares are real text rather than an image label.
  */
-type State = {
+type Week = {
   tag: string;
-  head: string;
   aim?: boolean;
-  legend: { swatch: "busywork" | "people"; label: string; detail: string; pct: string }[];
+  routine: number;
   note: string;
 };
 
-const STATES: State[] = [
+const WEEKS: Week[] = [
   {
     tag: "A typical week today",
-    head: "A manager's week",
-    legend: [
-      {
-        swatch: "busywork",
-        label: "Routine & paperwork",
-        detail:
-          "Posting payments, chasing documents, re-typing the same answers, manual reports.",
-        pct: "~70%",
-      },
-      {
-        swatch: "people",
-        label: "Time with the community",
-        detail: "Boards, residents, judgment, the relationships.",
-        pct: "~30%",
-      },
-    ],
+    routine: 70,
     note: "The people you rely on spend most of their day on work you never see. None of it is why they got into this.",
   },
   {
     tag: "What we're building toward",
-    head: "The same manager's week",
     aim: true,
-    legend: [
-      {
-        swatch: "people",
-        label: "Time with the community",
-        detail: "More presence, faster answers, attention where judgment matters.",
-        pct: "~70%",
-      },
-      {
-        swatch: "busywork",
-        label: "The exceptions only people should handle",
-        detail: "The routine runs itself and flags the few things that need a human.",
-        pct: "~30%",
-      },
-    ],
+    routine: 30,
     note: "Same team, same local faces, with their day spent on your community.",
   },
 ];
@@ -63,51 +33,38 @@ export default function ManagerTimeSection() {
     <Section bg="cream">
       <div className="wrap">
         <VisionIntro
-          eyebrow="What automation is for"
-          long
-          lede="Good community managers leave when too much of the day is data entry, chasing paperwork and retyping the same answers. When the routine handles itself, the people who serve your community get their time back for the work only a person can do."
+          eyebrow="Where the time goes"
+          lede="We take the busywork off people so they can be there for your community. Good managers leave when too much of the day is data entry, chasing paperwork and retyping the same answers."
         >
-          We take the busywork off people, so they can{" "}
-          <span className="g">be there for your community.</span>
+          Busywork off the manager&apos;s desk.
         </VisionIntro>
 
-        <figure className="card mweek">
-          <ManagerWeekDiagram />
-        </figure>
-
-        <div className="states">
-          {STATES.map((s) => (
-            <div
-              className={`card card--state${s.aim ? " card--state-aim" : ""}`}
-              key={s.head}
-            >
-              <p className="state-tag">{s.tag}</p>
-              <h3 className="state-h">{s.head}</h3>
-              <div className="legend">
-                {s.legend.map((l) => (
-                  <div className="legend__row" key={l.label}>
-                    <span className={`legend__sw sw--${l.swatch}`} aria-hidden="true" />
-                    <p className="legend__text">
-                      <strong>{l.label}</strong>
-                      <span>{l.detail}</span>
-                    </p>
-                    <span className="legend__pct">{l.pct}</span>
-                  </div>
-                ))}
+        <figure className="card week">
+          {WEEKS.map((w) => (
+            <div className={`week__row${w.aim ? " week__row--aim" : ""}`} key={w.tag}>
+              <p className="week__tag">{w.tag}</p>
+              <p className="week__names">
+                <span className="week__name">
+                  <span className="week__sw week__sw--routine" aria-hidden="true" />
+                  Routine &amp; paperwork ~{w.routine}%
+                </span>
+                <span className="week__sep" aria-hidden="true">
+                  ·
+                </span>
+                <span className="week__name">
+                  <span className="week__sw week__sw--people" aria-hidden="true" />
+                  Time with the community ~{100 - w.routine}%
+                </span>
+              </p>
+              <div className="week__bar" aria-hidden="true">
+                <span className="week__seg week__seg--routine" style={{ flexBasis: `${w.routine}%` }} />
+                <span className="week__seg week__seg--people" style={{ flexBasis: `${100 - w.routine}%` }} />
               </div>
-              <p className="card__note">{s.note}</p>
+              <p className="week__note">{w.note}</p>
             </div>
           ))}
-        </div>
-
-        <p className="vsec-closer">
-          Automation here is for{" "}
-          <span className="g">giving the people you already trust their time back.</span>
-        </p>
-        <p className="vsec-subnote">
-          The shares shown are illustrative. The community managers who know your
-          neighborhood stay where they are; what changes is how they spend their day.
-        </p>
+          <figcaption className="week__cap">Illustrative. Same managers; different day.</figcaption>
+        </figure>
       </div>
     </Section>
   );
