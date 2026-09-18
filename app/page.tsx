@@ -153,11 +153,16 @@ export default function Home() {
       <Section bg="cream">
         <div className="wrap">
           <div className="split">
+            {/* The same .kicker slot is an <h2> on /selling and /approach.
+                Here it was a <p>, which left the three member names below
+                hanging under the seller band's heading instead of their own. */}
             <div className="split__label">
-              <span className="eyebrow">Who&apos;s behind it</span>
-              <p className="kicker">
+              <span className="eyebrow" aria-hidden="true">
+                Who&apos;s behind it
+              </span>
+              <h2 className="kicker">
                 Two founders and an advisor who has done this before.
-              </p>
+              </h2>
             </div>
             <div className="split__body">
               <p>

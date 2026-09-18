@@ -139,7 +139,7 @@ main p { max-width: var(--measure); }
    gets more room; a single statement or a short link row gets less, so short
    bands don't feel padded and long ones don't run together. Pull quotes and the
    limits band keep their own deliberate padding. */
-.section:has(.trio, .tile-grid, .who-grid, .points, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
+.section:has(.trio, .tile-grid, .who-grid, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
   padding-block: 112px;
 }
 .section.more-goals,
@@ -709,16 +709,8 @@ main p { max-width: var(--measure); }
 }
 .pocket { display: inline-block; margin-top: 10px; font-size: 0.875rem; color: var(--gold-deep); font-weight: 600; }
 
-/* ---- Selling "What you can count on" (§5.2) — three photo cards in a row ---- */
-.points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-.card.card--media { padding: 0; } /* beats .card's padding, which comes later */
-/* Clip lives on the photo wrapper so the card's hover shadow isn't cut off. */
-.card__media { display: block; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; }
-.card__media-img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
-.card__body { padding: 24px 28px 30px; }
-@media (max-width: 880px) {
-  .points { grid-template-columns: 1fr; gap: 28px; }
-}
+/* The selling "What you can count on" band (.points, .card--media, .card__media,
+   .card__media-img, .card__body) was cut in audit v5 D-9; its rules went with it. */
 
 /* ---- Icon cards trio ("why founders choose Wameir", §5.2) ---- */
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
@@ -769,6 +761,10 @@ main p { max-width: var(--measure); }
   font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--cream-70); text-align: center;
 }
+/* The member name is an h2 on /team (the people are the page's sections) and
+   an h3 in Home's teaser (it sits under that band's own heading). Same look
+   either way — the level is about the outline, not the type. */
+.who-cell h2,
 .who-cell h3 { font-size: 1.5rem; font-weight: 500; color: var(--navy); margin: 0 0 4px; }
 .who-cell .role { font-size: 0.9375rem; color: var(--ink-70); margin-bottom: 14px; }
 .who-cell p { font-size: 1rem; color: var(--ink); line-height: 1.6; }
@@ -1055,7 +1051,7 @@ main p { max-width: var(--measure); }
    ========================================================================= */
 @media (max-width: 720px) {
   .section { padding-block: 64px; } /* 64px mobile */
-  .section:has(.trio, .tile-grid, .who-grid, .points, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
+  .section:has(.trio, .tile-grid, .who-grid, .ledger, .loop, .goal-list, .goal-index, .vsplit, .alwayson, .sp-stages, .platform) {
     padding-block: 72px;
   }
   .section.more-goals,

@@ -59,7 +59,11 @@ export default function TeamPage() {
                 {!m.photoConsent && (
                   <span className="gated">⚠ Pending consent</span>
                 )}
-                <h3>{m.name}</h3>
+                {/* h2, not h3: on /team the three people ARE the page's
+                    sections, and the H1 is the only heading above them, so an
+                    h3 here skipped a level. On Home the same cell stays an h3,
+                    because there it sits under the teaser's own h2. */}
+                <h2>{m.name}</h2>
                 <div className="role">{m.role}</div>
                 {m.paras.map((p, i) => (
                   <p key={i} style={{ marginTop: i === 0 ? 0 : 12 }}>
