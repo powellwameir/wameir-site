@@ -1,5 +1,6 @@
 import Section from "./Section";
 import VisionIntro from "./VisionIntro";
+import StatusStrip from "./StatusStrip";
 
 /*
  * The selling process, in detail (/selling #how-it-works). Rebuilt from the
@@ -238,11 +239,17 @@ export default function SellerProcess() {
       <div className="wrap">
         <VisionIntro
           eyebrow="The process"
-          lede="The hardest part of selling is not knowing how it goes. So here's the entire path in detail: what happens at each stage, what we'll ask of you, how long it takes and what stays protected throughout."
-          note="Wameir is early-stage. This is how we intend to work with every owner, and the standard we're holding ourselves to."
+          lede="The hardest part of selling is not knowing how it goes. So here's the entire path in detail: what happens at each stage, what we'll ask of you, how long it takes and what stays protected throughout. This is how we intend to work with every owner, and the standard we're holding ourselves to."
         >
           The whole process, <span className="g">start to finish.</span>
         </VisionIntro>
+
+        {/* The status sat inside the intro as a bespoke note, under the
+            headline. It is the same claim the goal pages make, so it is the
+            same dated strip. What that note also said, that this is the
+            standard we hold ourselves to, is about the process rather than the
+            company's status, so it moved into the lede above. */}
+        <StatusStrip />
 
         <ol className="sp-strip" aria-hidden="true">
           {STRIP.map((label, i) => (

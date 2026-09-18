@@ -1,7 +1,10 @@
 /**
  * The opening block every vision section and deep page shares (§5.1): eyebrow,
- * headline, lede, and the early-stage note. The note lives here rather than in
- * each caller so a section can't ship without one.
+ * headline and lede.
+ *
+ * It used to carry an early-stage `note` too. That claim is now <StatusStrip />,
+ * one dated line used by every page that talks about goals, so the prop is gone
+ * rather than left available to reintroduce a per-section wording.
  */
 export default function VisionIntro({
   eyebrow,
@@ -9,7 +12,6 @@ export default function VisionIntro({
   onDark = false,
   children,
   lede,
-  note,
   className,
   long = false,
 }: {
@@ -18,7 +20,6 @@ export default function VisionIntro({
   onDark?: boolean;
   children: React.ReactNode;
   lede?: React.ReactNode;
-  note?: React.ReactNode;
   className?: string;
   /** Headline over ~8 words: one size step down so it doesn't wrap to 4-5 lines. */
   long?: boolean;
@@ -30,7 +31,6 @@ export default function VisionIntro({
       )}
       <Heading className={`t-h2 vsec-title${long ? " t-h2--long" : ""}`}>{children}</Heading>
       {lede && <p className="vsec-intro__lede">{lede}</p>}
-      {note && <p className="track__disclaimer track__disclaimer--sm">{note}</p>}
     </div>
   );
 }

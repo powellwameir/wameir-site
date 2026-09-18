@@ -501,19 +501,27 @@ main p { max-width: var(--measure); }
   color: var(--cream);
 }
 /* The early-stage status: one line in the header, said once per page. */
+/* The strip now appears on light bands too (Home's communities track, the
+   seller process), so ink is the default and the dark treatment is the
+   override — the same convention .eyebrow uses, since .page-header and .hero
+   are not <Section>s and never get .on-navy. */
 .status-strip {
   display: inline-flex;
   align-items: baseline;
   gap: 10px;
   margin-top: 22px;
   padding: 8px 14px;
-  border: 1px solid var(--hairline-cream);
+  border: 1px solid var(--hairline-ink);
   border-radius: var(--radius);
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--cream-70);
+  color: var(--ink-70);
 }
-.status-strip strong { color: var(--cream); font-weight: 600; }
+.status-strip strong { color: var(--navy); font-weight: 600; }
+.on-navy .status-strip,
+.page-header .status-strip { border-color: var(--hairline-cream); color: var(--cream-70); }
+.on-navy .status-strip strong,
+.page-header .status-strip strong { color: var(--cream); }
 .status-strip__dot {
   flex: none;
   width: 8px; height: 8px;
@@ -624,15 +632,9 @@ main p { max-width: var(--measure); }
 .track__intro { max-width: 52ch; }
 .track__intro h2 { margin-top: 12px; }
 .track__intro p { color: var(--ink-70); margin-top: 16px; }
-.track__disclaimer {
-  margin-top: 28px;
-  padding: 16px 20px;
-  border-left: 3px solid var(--gold);
-  background: var(--paper);
-  color: var(--ink-70);
-  font-size: 0.9375rem;
-  max-width: var(--measure);
-}
+/* .track__disclaimer and .track__disclaimer--sm removed: every early-stage
+   callout they styled is now <StatusStrip />, one dated line (audit v4 §1). */
+
 /* ---- Benefits grid (§5.1) — every goal visible, grouped under its header ---- */
 .benefits { margin-top: 56px; display: grid; gap: 48px; }
 /* Group-level label: the eyebrow style with a rule under it. Same family, size
@@ -1119,18 +1121,6 @@ main p { max-width: var(--measure); }
 .on-navy .vsec-closer .g { color: var(--gold-light); }
 .vsec-intro__lede { margin-top: 20px; color: var(--ink-70); max-width: var(--measure); }
 .on-navy .vsec-intro__lede { color: var(--cream-70); }
-/* The early-stage note: the existing disclaimer block, set quieter. */
-.track__disclaimer--sm {
-  margin-top: 16px;
-  padding: 0 0 0 14px;
-  border-left-width: 2px;
-  background: none;
-  font-size: 0.875rem;
-  color: var(--ink-45);
-}
-.on-navy .track__disclaimer,
-.page-header .track__disclaimer { background: none; color: var(--cream-70); }
-.page-header .track__disclaimer { margin-top: 20px; }
 .vsplit .eyebrow { display: block; margin-bottom: 16px; }
 .vsec-closer {
   margin: 40px auto 0;

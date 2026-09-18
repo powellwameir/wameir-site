@@ -3,10 +3,25 @@
  * every page and component. Do not paraphrase these.
  */
 
-/** Early-stage disclaimer — verbatim (§7). Shown in the footer and near the
- *  resident-benefits track on the home page. */
+/** Early-stage disclaimer — verbatim (§7). The standing, site-wide line; it
+ *  lives in the footer, so it reaches the pages that carry no StatusStrip
+ *  (/approach, /team, /faq, /privacy). Pages that talk about goals say it
+ *  instead through <StatusStrip />, which is dated. */
 export const DISCLAIMER =
   "Wameir is early-stage. The resident benefits described here are goals we're working toward, not services running today.";
+
+/*
+ * The month the status line speaks for (audit v4 §1: the strip is dated, so a
+ * reader can tell whether they are looking at current information).
+ *
+ * UPDATE THIS BY HAND when the status changes — notably on the day Wameir buys
+ * its first company, when the strip's claim stops being true. It is deliberately
+ * not derived from the current date: a date that advances on its own would keep
+ * asserting freshness for a sentence nobody had re-checked.
+ */
+export const STATUS_AS_OF = "September 2026";
+/** Machine-readable form of STATUS_AS_OF, for <time dateTime>. */
+export const STATUS_AS_OF_ISO = "2026-09";
 
 export const CONTACT_EMAIL = "hello@wameir.com";
 export const LOCATION = "Greater Houston, Texas";
