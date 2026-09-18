@@ -7,6 +7,7 @@ import ContactSection from "@/components/ContactSection";
 import MoreGoals from "@/components/MoreGoals";
 import ScaleFunnelDiagram from "@/components/diagrams/ScaleFunnelDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
+import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/lower-taxes",
@@ -20,7 +21,7 @@ const STEPS: LoopStep[] = [
     n: "01 · Review",
     icon: "doc-search",
     title: "Check every assessment",
-    body: "Each home's assessed value is compared with similar properties nearby, using the same kind of evidence an appraisal district uses, gathered once for the whole community.",
+    body: "Each home's assessed value is compared with similar properties nearby, using the same evidence HCAD uses, gathered once for the whole community.",
   },
   {
     n: "02 · File",
@@ -52,10 +53,7 @@ export default function LowerTaxesPage() {
             the higher bill. Almost any homeowner can protest an assessment, and almost
             no one does. Our aim is to do it for everyone, at once.
           </p>
-          <p className="track__disclaimer track__disclaimer--sm">
-            Wameir is early-stage. This explains how a community-wide tax appeal would
-            work. It&apos;s a goal, not a service running today.
-          </p>
+          <StatusStrip />
         </div>
       </header>
 
@@ -104,7 +102,7 @@ export default function LowerTaxesPage() {
         </div>
       </Section>
 
-      <LimitsBand heading="What we can and can't promise">
+      <LimitsBand heading="Where this stops.">
         Not every appeal succeeds, and no one can promise a specific reduction;
         assessments and outcomes vary from home to home and year to year. What a
         community-wide effort can commit to is that the appeal gets filed,

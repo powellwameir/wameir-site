@@ -3,9 +3,10 @@ import VisionIntro from "./VisionIntro";
 import Icon, { type IconName } from "./Icon";
 
 /*
- * "A day in a community" (§5.1) — the same day run two ways, as one ruled
- * ledger. Copy is verbatim from the design spec; the icons come from the
- * site's own family rather than the spec's inline SVGs.
+ * "A day in a community" (§5.1): the same day run two ways, as one ruled
+ * ledger. It opens /working-toward, straight under the navy page header, so
+ * it sits on navy-90 to read as its own band. The icons come from the site's
+ * own family rather than the spec's inline SVGs.
  */
 type Row = { icon: IconName; time: string; title: string; line: string };
 
@@ -98,7 +99,7 @@ function Column({
 
 export default function DayInCommunitySection() {
   return (
-    <Section bg="navy">
+    <Section bg="navy-90">
       <div className="wrap">
         <VisionIntro
           eyebrow="The vision"
@@ -112,7 +113,7 @@ export default function DayInCommunitySection() {
           <Column variant="before" tag="The usual" head="How it often goes" rows={USUAL} />
           <Column
             variant="after"
-            tag="The Wameir way"
+            tag="What we're building"
             head="How we want it to go"
             rows={OURS}
           />

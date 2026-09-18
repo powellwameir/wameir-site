@@ -6,6 +6,8 @@ import JsonLd from "./JsonLd";
 import { GROUPS } from "@/lib/goals";
 import { SITE_URL } from "@/lib/seo";
 
+const COUNT: Record<number, string> = { 1: "one", 2: "two", 3: "three", 4: "four" };
+
 /*
  * The way out of a goal page: the other goals in the same group that have a
  * page of their own, then a link back to all eight. Sits between the
@@ -45,7 +47,8 @@ export default function MoreGoals({ current }: { current: string }) {
     <Section bg="paper" className="more-goals">
       <JsonLd data={breadcrumbs} />
       <div className="wrap">
-        <h2 className="group-head">{group.head}</h2>
+        {/* Not the group's name: the page's eyebrow already says it. */}
+        <h2 className="group-head">The other {COUNT[items.length] ?? items.length} in this group</h2>
         <BenefitsGrid groups={[{ head: "", items }]} cols={2} />
         <Link className="teaser__link" href="/working-toward">
           See all eight goals <Arrow />

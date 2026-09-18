@@ -11,6 +11,7 @@ import AlwaysOnSection from "@/components/AlwaysOnSection";
 import { GROUPS, slugify, type Goal } from "@/lib/goals";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
+import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/working-toward",
@@ -20,9 +21,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 /*
- * Band colours per goal group. Set explicitly rather than alternating, so the
- * vision sections sitting between groups never leave two bands of the same
- * colour touching.
+ * Band colours per goal group. Set explicitly rather than alternating: the
+ * page runs header (navy), day in a community (navy-90), index (cream),
+ * group 1 (paper), always on (navy-90), group 2 (cream), group 3 (paper),
+ * closing (cream), contact (navy), so no two bands of one colour touch.
  */
 const GROUP_BG = ["paper", "cream", "paper"] as const;
 
@@ -34,7 +36,9 @@ const sentence = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
  * building toward) stays in view on the left while the reasoning scrolls on
  * the right. No "The goal:" / "What we're building toward:" labels: the goal
  * reads as the lead sentence and the payoff line is set apart by its type.
- * The id is the anchor the goal index links to.
+ * A goal with a page of its own ends on that link, after its limit, so the row
+ * closes on "How it would work" rather than on a caveat. The id is the anchor
+ * the goal index links to.
  */
 function GoalBlock({ g }: { g: Goal }) {
   return (
@@ -46,17 +50,6 @@ function GoalBlock({ g }: { g: Goal }) {
         <h3 className="goal__title">{g.title}</h3>
         <p className="goal__goal">{sentence(g.goal)}</p>
         <p className="goal__toward">{sentence(g.toward)}</p>
-        {/* The goals with a page of their own: the mechanism, argued in full.
-            A card rather than a text link, so it isn't lost at the end of the
-            summary. */}
-        {g.link && (
-          <Link className="bcard bcard--link goal__deep" href={g.link.href}>
-            <span className="bcard__arrow">
-              <Arrow />
-            </span>
-            <span className="goal__deep-title">How it would work</span>
-          </Link>
-        )}
       </div>
       <div className="goal__reasoning">
         <div className="goal__block">
@@ -70,6 +63,11 @@ function GoalBlock({ g }: { g: Goal }) {
             <p>{g.limit}</p>
           </div>
         )}
+        {g.link && (
+          <Link className="teaser__link goal__more" href={g.link.href}>
+            How it would work <Arrow />
+          </Link>
+        )}
       </div>
     </article>
   );
@@ -81,36 +79,27 @@ export default function WorkingTowardPage() {
       <header className="page-header">
         <WeirWatermark className="page-header__watermark" />
         <div className="wrap">
-          <span className="eyebrow eyebrow-gold-light">For communities</span>
-          <h1 className="font-display">What we&apos;re working toward</h1>
+          <h1 className="font-display">For communities</h1>
+          <p className="page-header__sub">What we&apos;re working toward</p>
+          <StatusStrip />
           <p className="lede">
-            We are early. Wameir has not yet bought its first company, so
-            everything on this page is a goal, not a service running today. We are
-            writing it down anyway, because the <em>reasoning</em> behind a promise
-            matters as much as the promise, and because we want to be held to it.
+            We are writing it down anyway, because the <em>reasoning</em> behind a
+            promise matters as much as the promise, and because we want to be held to
+            it.
           </p>
         </div>
       </header>
 
-      {/* The rule */}
+      {/* Leads with the day itself: the most concrete picture on the page. */}
+      <DayInCommunitySection />
+
+      {/* The rule, then the index */}
       <Section bg="cream">
         <div className="wrap">
           <p className="lead-statement" style={{ maxWidth: "30ch" }}>
             Every benefit has to save a household money or effort, or it{" "}
             <span className="g">doesn&apos;t belong here.</span>
           </p>
-          <div className="goals-intro">
-            <p>
-              It has to be a measurable improvement for someone who lives in one of
-              these communities. If we can&apos;t explain plainly why something works,
-              we won&apos;t build it.
-            </p>
-            <p>
-              The goals fall into three groups: an association that&apos;s easy to
-              live with, money back in your pocket, and stronger communities.
-              Here&apos;s the thinking behind each.
-            </p>
-          </div>
 
           {/* Jump links to every group and goal. */}
           <GoalIndex variant="page" />
@@ -137,30 +126,24 @@ export default function WorkingTowardPage() {
             </div>
           </Section>
 
-          {/* Each group is followed by the vision section that shows it, so the
-              page alternates argument and picture rather than running as prose. */}
-          {gi === 0 && <DayInCommunitySection />}
-          {gi === 2 && <AlwaysOnSection />}
+          {/* The 24-hour dial follows the first group: it shows "You get an
+              answer" in practice. */}
+          {gi === 0 && <AlwaysOnSection />}
         </Fragment>
       ))}
 
       {/* Closing */}
-      <Section bg="navy" className="invite">
-        <WeirWatermark className="invite__watermark" />
+      <Section bg="cream">
         <div className="wrap">
-          <div className="goals-closing">
+          <p className="lead-statement" style={{ maxWidth: "30ch" }}>
+            Each of these rests on something we can explain,{" "}
+            <span className="g">and we&apos;ve tried to.</span>
+          </p>
+          <div className="goals-intro">
             <p>
-              None of this is delivered yet. What we hope this page shows is that each
-              goal rests on a mechanism we can explain plainly: routine work automated
-              so people can do the work that matters, per-home friction removed by
-              working at community scale, cost asymmetries and risk pricing used in the
-              resident&apos;s favor, and technology built by an owner who plans to
-              stay.
-            </p>
-            <p>
-              As we buy and run our first communities, the reasoning on this
-              page will be replaced, piece by piece, with results. We&apos;d rather
-              earn that page than write it early.
+              As we buy and run our first communities, the reasoning on this page will
+              be replaced, piece by piece, with results. We&apos;d rather earn that page
+              than write it early.
             </p>
           </div>
         </div>

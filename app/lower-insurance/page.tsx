@@ -8,6 +8,7 @@ import MoreGoals from "@/components/MoreGoals";
 import { goalLink } from "@/lib/goals";
 import RiskPricingDiagram from "@/components/diagrams/RiskPricingDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
+import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/lower-insurance",
@@ -23,7 +24,7 @@ const STEPS: LoopStep[] = [
     title: "Reduce the risk itself",
     body: "The same monitoring that catches leaks and failures early makes a home measurably less likely to file the claims insurers care most about: water, freeze and electrical.",
     // The monitoring is what earns the lower rate, so the dependency is linked.
-    link: goalLink("Smarter preventive maintenance"),
+    link: goalLink("Home monitoring"),
   },
   {
     n: "02 · Show",
@@ -55,10 +56,7 @@ export default function LowerInsurancePage() {
             Our aim is to bring it down by making each home less risky to insure, and
             making sure insurers recognize the lower risk.
           </p>
-          <p className="track__disclaimer track__disclaimer--sm">
-            Wameir is early-stage. This explains how lower premiums would be earned.
-            It&apos;s a goal, not a service running today.
-          </p>
+          <StatusStrip />
         </div>
       </header>
 
@@ -105,7 +103,7 @@ export default function LowerInsurancePage() {
         </div>
       </Section>
 
-      <LimitsBand heading="What we can and can't promise">
+      <LimitsBand heading="Where this stops.">
         Any discount depends on insurers, coverage, and factors outside our control, so
         we can&apos;t promise a specific number in advance. What we can do is make a home
         lower-risk and make that reduction visible, which is the honest basis for a

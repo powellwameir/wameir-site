@@ -8,12 +8,13 @@ import MoreGoals from "@/components/MoreGoals";
 import Icon, { type IconName } from "@/components/Icon";
 import HouseSectionDiagram from "@/components/diagrams/HouseSectionDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
+import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/home-monitoring",
-  title: "Smarter Preventive Maintenance",
+  title: "Home Monitoring",
   description:
-    "Smarter preventive maintenance: a home that keeps its own records, watches its own vital signs, and helps you act before small problems become big ones. A goal Wameir is working toward, not a service running today.",
+    "Home monitoring for the whole community: a home that keeps its own records, watches its own vital signs, and helps you act before small problems become big ones. A goal Wameir is working toward, not a service running today.",
 });
 
 const STEPS: LoopStep[] = [
@@ -72,7 +73,8 @@ export default function HomeMonitoringPage() {
         <div className="wrap">
           <span className="eyebrow eyebrow-gold-light">Money back in your pocket</span>
           <h1 className="font-display">
-            A home that <span className="accent-italic">looks after itself.</span>
+            Home monitoring,{" "}
+            <span className="accent-italic">done for the whole community.</span>
           </h1>
           <p className="lede">
             Owning a home means inheriting a complex machine with no manual: systems you
@@ -80,17 +82,14 @@ export default function HomeMonitoringPage() {
             Our aim is to change that: a home that keeps its own records, watches its own
             vital signs, and helps you act before small problems become big ones.
           </p>
-          <p className="track__disclaimer track__disclaimer--sm">
-            Wameir is early-stage. This describes what we&apos;re working toward for the
-            communities we serve. It&apos;s a goal, not a service running today.
-          </p>
+          <StatusStrip />
         </div>
       </header>
 
       <Section bg="navy-90">
         <div className="wrap">
           <LoopGrid
-            label="How it works for you"
+            label="How it would work"
             steps={STEPS}
             closer={
               <>
@@ -136,7 +135,7 @@ export default function HomeMonitoringPage() {
         </div>
       </Section>
 
-      <LimitsBand heading="What this is, and isn't">
+      <LimitsBand heading="Where this stops.">
         Monitoring reduces risk; it doesn&apos;t remove it, and it only helps with what
         it can detect. Your home&apos;s information is yours. The point is to protect
         you and help you make good decisions, not to watch over you.
