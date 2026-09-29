@@ -8,7 +8,6 @@ import MoreGoals from "@/components/MoreGoals";
 import Icon, { type IconName } from "@/components/Icon";
 import HouseSectionDiagram from "@/components/diagrams/HouseSectionDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
-import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/home-monitoring",
@@ -82,7 +81,6 @@ export default function HomeMonitoringPage() {
             Our aim is to change that: a home that keeps its own records, watches its own
             vital signs, and helps you act before small problems become big ones.
           </p>
-          <StatusStrip />
         </div>
       </header>
 

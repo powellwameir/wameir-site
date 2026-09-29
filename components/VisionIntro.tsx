@@ -2,9 +2,9 @@
  * The opening block every vision section and deep page shares (§5.1): eyebrow,
  * headline and lede.
  *
- * It used to carry an early-stage `note` too. That claim is now <StatusStrip />,
- * one dated line used by every page that talks about goals, so the prop is gone
- * rather than left available to reintroduce a per-section wording.
+ * It used to carry an early-stage `note` too. That claim now lives once in the
+ * footer (DISCLAIMER, §7), so the prop is gone rather than left available to
+ * reintroduce a per-section wording.
  */
 export default function VisionIntro({
   eyebrow,
