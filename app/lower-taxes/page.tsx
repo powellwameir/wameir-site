@@ -7,7 +7,6 @@ import ContactSection from "@/components/ContactSection";
 import MoreGoals from "@/components/MoreGoals";
 import ScaleFunnelDiagram from "@/components/diagrams/ScaleFunnelDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
-import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/lower-taxes",
@@ -53,7 +52,6 @@ export default function LowerTaxesPage() {
             the higher bill. Almost any homeowner can protest an assessment, and almost
             no one does. Our aim is to do it for everyone, at once.
           </p>
-          <StatusStrip />
         </div>
       </header>
 

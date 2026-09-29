@@ -8,8 +8,7 @@
  * To put the detail back, ask the owner for:
  *   Mitch  the HOA platform's name, years there, how many companies folded in
  *   Will   years as a consultant, the firm, one concrete project and its result
- *   Bob    how many companies he bought and combined, over how long, and how
- *          long he has been Mitch's mentor
+ *   Bob    how many companies he bought and combined, over how long
  * Re-add them as [FILL: ...] while drafting: they render as a dashed warning
  * chip (components/FillText.tsx) and `npm run check:fills` fails while any
  * remain, so a placeholder cannot reach production unnoticed.
@@ -36,7 +35,7 @@ export const TEAM: TeamMember[] = [
     kind: "Co-founder",
     role: "Co-Founder, Finance & Growth",
     paras: [
-      "Mitch helped scale one of the country's fastest-growing HOA management platforms. He has led deals end to end, from the first model through diligence and closing, and has served as interim CFO of a multi-market construction services company.",
+      "Mitch helped scale one of the country's fastest-growing HOA management platforms. He has led deals end to end, from the first model through diligence and closing, and has served as interim CFO of a multi-market construction and HOA management company.",
       "At Wameir he handles the money side: what a company is worth, how the purchase closes, and how the numbers get reported back to the people who work there.",
     ],
     linkedin: "https://www.linkedin.com/in/mitchell-r-maurer-8826a357/",
@@ -50,7 +49,7 @@ export const TEAM: TeamMember[] = [
     role: "Co-Founder, Technology & Operations",
     paras: [
       "Will is a consultant who builds data and AI systems for Fortune 100 companies.",
-      "At Wameir he leads technology and operations, with a simple goal: the portal loads, the payment posts, and nobody has to retype anything.",
+      "At Wameir he leads technology and operations, putting modern technology to work in the management business so homeowners get a better experience.",
     ],
     linkedin: "https://www.linkedin.com/in/william-1-powell/",
     photoBase: "/img/team-will-powell",
@@ -63,7 +62,7 @@ export const TEAM: TeamMember[] = [
     role: "Strategic Advisor",
     paras: [
       "Bob was CFO of an international HOA management company, where he oversaw a sustained programme of buying and combining management companies.",
-      "He has since served as CFO of a national nonprofit and now runs mergers and acquisitions as a chief investment officer. He is Mitch's mentor, and he advises Wameir on how to buy a company without breaking it.",
+      "He has since served as CFO of a national nonprofit and now runs mergers and acquisitions as a chief investment officer. He advises Wameir on how to buy a company without breaking it.",
     ],
     linkedin: "https://www.linkedin.com/in/bogreen/",
     photoBase: "/img/team-bob-green",

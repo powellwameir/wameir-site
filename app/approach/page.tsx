@@ -63,10 +63,6 @@ export default function ApproachPage() {
             </div>
             <div className="split__body">
               <p>
-                We plan to own these companies for decades, and that shapes{" "}
-                <strong>nearly every decision we make</strong>.
-              </p>
-              <p>
                 An owner who stays is the one who lives with the results. So we spend on
                 what pays off over years: the people who run the company, the service
                 residents notice, and technology that keeps improving. We set budgets for

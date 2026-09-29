@@ -11,7 +11,6 @@ import AlwaysOnSection from "@/components/AlwaysOnSection";
 import { GROUPS, slugify, type Goal } from "@/lib/goals";
 import ContactSection from "@/components/ContactSection";
 import { WeirWatermark } from "@/components/WeirLattice";
-import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/working-toward",
@@ -81,7 +80,6 @@ export default function WorkingTowardPage() {
         <div className="wrap">
           <h1 className="font-display">For communities</h1>
           <p className="page-header__sub">What we&apos;re working toward</p>
-          <StatusStrip />
           <p className="lede">
             We are writing it down anyway, because the <em>reasoning</em> behind a
             promise matters as much as the promise, and because we want to be held to

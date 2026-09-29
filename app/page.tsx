@@ -4,7 +4,6 @@ import { pageMetadata, SITE_DESCRIPTION } from "@/lib/seo";
 import Section from "@/components/Section";
 import DualCTA from "@/components/DualCTA";
 import ContactSection from "@/components/ContactSection";
-import StatusStrip from "@/components/StatusStrip";
 import Picture from "@/components/Picture";
 import Arrow from "@/components/Arrow";
 import Headshot from "@/components/Headshot";
@@ -205,10 +204,6 @@ export default function Home() {
                 Each goal has to save a household money or time. If it doesn&apos;t, it
                 comes off the list.
               </p>
-              {/* The status, in the same dated strip every goal-facing page
-                  uses. The verbatim §7 disclaimer still runs site-wide in the
-                  footer; this replaces the second, differently-worded copy. */}
-              <StatusStrip />
             </div>
             {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
             <Picture

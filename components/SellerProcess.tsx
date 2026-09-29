@@ -1,6 +1,5 @@
 import Section from "./Section";
 import VisionIntro from "./VisionIntro";
-import StatusStrip from "./StatusStrip";
 
 /*
  * The selling process, in detail (/selling #how-it-works). Rebuilt from the
@@ -32,8 +31,8 @@ type Stage = {
    *  company, how the money works, what changes in a transition. Prose, so we
    *  don't reintroduce a label pair per card. */
   extra?: string[];
-  reassure: string;
-  reassureIcon: React.ReactNode;
+  reassure?: string;
+  reassureIcon?: React.ReactNode;
 };
 type Col = { head: string; items: string[] };
 
@@ -103,18 +102,10 @@ const STAGES: Stage[] = [
         ],
       },
     ],
-    reassure:
-      "Your employees and clients don't learn anything unless and until you choose to tell them.",
-    reassureIcon: (
-      <>
-        <path d="M4 20v-1a6 6 0 0 1 12 0v1" />
-        <circle cx="10" cy="7" r="3.5" />
-      </>
-    ),
   },
   {
     title: "A fair, tailored offer",
-    lead: "A clear written offer, shaped around what you told us you want: a clean exit, a transition period or a continuing role. We walk you through how we arrived at it, plainly.",
+    lead: "A clear written offer, shaped around what you told us you want: a clean exit, a transition period or a continuing role.",
     icon: (
       <>
         <path d="M6 3h9l3 3v15H6z" />
@@ -244,13 +235,6 @@ export default function SellerProcess() {
           The whole process, <span className="g">start to finish.</span>
         </VisionIntro>
 
-        {/* The status sat inside the intro as a bespoke note, under the
-            headline. It is the same claim the goal pages make, so it is the
-            same dated strip. What that note also said, that this is the
-            standard we hold ourselves to, is about the process rather than the
-            company's status, so it moved into the lede above. */}
-        <StatusStrip />
-
         <ol className="sp-strip" aria-hidden="true">
           {STRIP.map((label, i) => (
             <li key={label}>
@@ -295,10 +279,12 @@ export default function SellerProcess() {
                     {para}
                   </p>
                 ))}
-                <p className="sp-reassure">
-                  <Svg>{s.reassureIcon}</Svg>
-                  <span>{s.reassure}</span>
-                </p>
+                {s.reassure ? (
+                  <p className="sp-reassure">
+                    <Svg>{s.reassureIcon}</Svg>
+                    <span>{s.reassure}</span>
+                  </p>
+                ) : null}
               </article>
             </li>
           ))}
@@ -308,9 +294,6 @@ export default function SellerProcess() {
           <h3>
             Ready when you are, <span className="g">even if that&apos;s a year out.</span>
           </h3>
-          <p>
-            A first conversation costs nothing and commits you to nothing.
-          </p>
         </div>
       </div>
     </Section>

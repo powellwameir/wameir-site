@@ -8,7 +8,6 @@ import MoreGoals from "@/components/MoreGoals";
 import { goalLink } from "@/lib/goals";
 import RiskPricingDiagram from "@/components/diagrams/RiskPricingDiagram";
 import { WeirWatermark } from "@/components/WeirLattice";
-import StatusStrip from "@/components/StatusStrip";
 
 export const metadata: Metadata = pageMetadata({
   path: "/lower-insurance",
@@ -56,7 +55,6 @@ export default function LowerInsurancePage() {
             Our aim is to bring it down by making each home less risky to insure, and
             making sure insurers recognize the lower risk.
           </p>
-          <StatusStrip />
         </div>
       </header>
 
