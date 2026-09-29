@@ -207,7 +207,7 @@ const STAGES: Stage[] = [
     extra: [
       "If you want a part in it, you can stay involved, advise, or step away entirely. The rest of the price, paid over the next year or two, keeps you invested in how the community does either way.",
     ],
-    reassure: "We plan to still be running it in ten years.",
+    reassure: "We bought it to run it, and that is what we do.",
     reassureIcon: SHIELD,
   },
 ];

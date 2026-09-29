@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/team",
   title: "Team",
   description:
-    "The two founders who will run the companies themselves, and the advisor guiding them. Meet the people building Wameir.",
+    "The two founders who will run the companies themselves, and the advisor who has done this before. Meet the people building Wameir.",
 });
 
 /*
@@ -40,7 +40,7 @@ export default function TeamPage() {
         <div className="wrap">
           <span className="eyebrow eyebrow-gold-light">Who&apos;s behind it</span>
           <h1 className="font-display">
-            Two founders, and the advisor who taught one of them the business.
+            Two founders, and an advisor who has done this before.
           </h1>
           <p className="lede">
             We started Wameir because we think community management can be better,
