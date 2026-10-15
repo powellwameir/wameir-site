@@ -123,15 +123,6 @@ export const GROUPS: Group[] = [
         toward:
           "Dues, statements, and payments will be clear and accessible online, so you always know exactly what you owe and why, without ever needing to make a phone call.",
       },
-      {
-        title: "You can see the books",
-        icon: "clarity",
-        goal: "where the money goes and how decisions get made, out in the open.",
-        why: [
-          "An association's finances are its members' finances. Budgets, reserves and spending can be set out in plain language, where members can find them. We intend to start from openness, because trust in an association begins with books its members can read.",
-        ],
-        toward: "an association you can see into.",
-      },
     ],
   },
 ];

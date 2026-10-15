@@ -10,7 +10,7 @@ const COUNT: Record<number, string> = { 1: "one", 2: "two", 3: "three", 4: "four
 
 /*
  * The way out of a goal page: the other goals in the same group that have a
- * page of their own, then a link back to all eight. Sits between the
+ * page of their own, then a link back to all seven. Sits between the
  * honest-limits band and the contact band, so a reader who finishes one page
  * reaches the next without going through the footer.
  *
@@ -51,7 +51,7 @@ export default function MoreGoals({ current }: { current: string }) {
         <h2 className="group-head">The other {COUNT[items.length] ?? items.length} in this group</h2>
         <BenefitsGrid groups={[{ head: "", items }]} cols={2} />
         <Link className="teaser__link" href="/working-toward">
-          See all eight goals <Arrow />
+          See all seven goals <Arrow />
         </Link>
       </div>
     </Section>

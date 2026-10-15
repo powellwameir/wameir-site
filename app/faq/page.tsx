@@ -95,7 +95,7 @@ const BOARD_FAQS: QA[] = [
       <p>
         No. Wameir hasn&apos;t bought its first company yet, so the goals on this
         site describe what we&apos;re working toward, not services running today.{" "}
-        <Link href="/working-toward">See all eight goals<Arrow /></Link>
+        <Link href="/working-toward">See all seven goals<Arrow /></Link>
       </p>
     ),
   },

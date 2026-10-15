@@ -185,7 +185,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ---- Communities teaser (paper): all eight goals as the compact index,
+      {/* ---- Communities teaser (paper): all seven goals as the compact index,
           one disclaimer. Replaces three large cards, which hid the five goals a
           board asks about first. The three goals with a page of their own link
           straight to it; the reasoning for the rest lives on /working-toward. ---- */}
@@ -217,7 +217,7 @@ export default function Home() {
 
           <GoalIndex variant="home" />
           <Link className="teaser__link teaser__link--after" href="/working-toward">
-            See all eight goals <Arrow />
+            See all seven goals <Arrow />
           </Link>
         </div>
       </Section>
