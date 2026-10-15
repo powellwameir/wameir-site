@@ -35,8 +35,8 @@ export const TEAM: TeamMember[] = [
     kind: "Co-founder",
     role: "Co-Founder, Finance & Growth",
     paras: [
-      "Mitch helped scale one of the country's fastest-growing HOA management platforms. He has led deals end to end, from the first model through diligence and closing, and has served as interim CFO of a multi-market construction and HOA management company.",
-      "At Wameir he handles the money side: what a company is worth, how the purchase closes, and how the numbers get reported back to the people who work there.",
+      "Mitch scaled one of the fastest-growing HOA management platforms in the country. He has led acquisitions from initial modeling through diligence and closing, and served as interim CFO for a multi-market construction and HOA management company.",
+      "At Wameir, he manages all financial matters: valuations, transaction closings, and reporting to our team members.",
     ],
     linkedin: "https://www.linkedin.com/in/mitchell-r-maurer-8826a357/",
     photoBase: "/img/team-mitch-maurer",
@@ -48,8 +48,8 @@ export const TEAM: TeamMember[] = [
     kind: "Co-founder",
     role: "Co-Founder, Technology & Operations",
     paras: [
-      "Will is a consultant who builds data and AI systems for Fortune 100 companies.",
-      "At Wameir he leads technology and operations, putting modern technology to work in the management business so homeowners get a better experience.",
+      "Will is a Data and Analytics consultant with over 10 years of experience across CPG, Retail, Automotive, and Aerospace industries. He has led projects across Sales and Marketing, Supply Chain, and R&D that improved revenue growth and reduced costs, often using AI tools and change management strategies to streamline business processes.",
+      "At Wameir, he leads technology and operations, implementing modern systems that improve the homeowner experience.",
     ],
     linkedin: "https://www.linkedin.com/in/william-1-powell/",
     photoBase: "/img/team-will-powell",
@@ -61,8 +61,9 @@ export const TEAM: TeamMember[] = [
     kind: "Advisor",
     role: "Strategic Advisor",
     paras: [
-      "Bob was CFO of an international HOA management company, where he oversaw a sustained programme of buying and combining management companies.",
-      "He has since served as CFO of a national nonprofit and now runs mergers and acquisitions as a chief investment officer. He advises Wameir on how to buy a company without breaking it.",
+      "Bob is a senior finance executive with over 25 years of experience in finance and operations across publicly-traded and privately-held corporations in the service, manufacturing, and nonprofit sectors.",
+      "He has served as CFO for multiple HOA management companies and non-profits, where he led the acquisition and integration of businesses.",
+      "At Wameir, he advises us on acquiring companies while preserving their value.",
     ],
     linkedin: "https://www.linkedin.com/in/bogreen/",
     photoBase: "/img/team-bob-green",
