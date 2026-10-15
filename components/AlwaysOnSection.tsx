@@ -5,17 +5,17 @@ import ClockDialDiagram from "./diagrams/ClockDialDiagram";
 /*
  * "Always on" (§5.1): the routine answered at any hour, with a person for
  * anything that needs judgment. On /working-toward it follows the first goal
- * group, as "You get an answer" in practice.
+ * group.
  */
 const POINTS: { icon: IconName; line: string }[] = [
   {
     icon: "chat-lines",
-    line: "Your balance, documents and request status, on demand.",
+    line: "Balance, documents, and request status, available on demand.",
   },
-  { icon: "clock", line: "Day or night, weekday or weekend. No waiting for Monday." },
+  { icon: "clock", line: "Day or night, weekday or weekend. No waiting until Monday." },
   {
     icon: "droplet-watch",
-    line: "A person, with full context, for anything that needs judgment.",
+    line: "A person with full context for anything that needs judgment.",
   },
 ];
 
@@ -30,10 +30,10 @@ export default function AlwaysOnSection() {
               Answered <span className="g">when you ask.</span>
             </h2>
             <p className="vsec-intro__lede">
-              The routine questions don&apos;t wait for office hours, so the answers
-              shouldn&apos;t either. A balance, a gate code or a rule you forgot,
-              handled the moment you ask, at any hour. And a person for anything that
-              needs one.
+              You should not have to wait for office hours to get a simple answer. We
+              handle balance inquiries, gate codes, and rule questions instantly, at
+              any hour. For anything that requires judgment, you get a real person
+              with full context.
             </p>
             <ul className="icon-list">
               {POINTS.map((p) => (
