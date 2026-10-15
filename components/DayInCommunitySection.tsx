@@ -60,7 +60,7 @@ const OURS: Row[] = [
     icon: "list-status",
     time: "Always",
     title: "You can see where things stand",
-    line: "Requests, decisions and the books are open and current.",
+    line: "Requests, decisions and finances are open and current.",
   },
 ];
 
