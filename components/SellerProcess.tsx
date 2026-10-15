@@ -5,8 +5,8 @@ import VisionIntro from "./VisionIntro";
  * The selling process, in detail (/selling #how-it-works). Rebuilt from the
  * standalone visual spec (reference_material/wameir-seller-process-detailed.html)
  * on the site's tokens: one radius, one card depth, the existing label and
- * disclaimer styles. The copy is the spec's, edited to the site's house style (no em dashes, no
- * "not X" contrasts, no serial comma).
+ * disclaimer styles. The copy is the spec's, edited to the site's house style
+ * (docs/WRITING_STYLE.md).
  *
  * Five stages, each a node on a gold rail beside a card: timing, two detail
  * columns and a reassurance line. The overview strip above repeats the stage

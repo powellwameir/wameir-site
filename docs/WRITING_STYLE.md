@@ -7,7 +7,7 @@ The voice for all copy on wameir.com. Check new or edited copy against the
 
 | | |
 | --- | --- |
-| **Tone** | Confident, direct and human |
+| **Tone** | Confident, direct, and human |
 | **Perspective** | First-person plural ("we") for the company; second person ("you") when addressing readers |
 | **Energy** | Grounded, committed, forward-looking |
 | **Avoid** | AI-generated patterns, corporate jargon, hedging language, defensive phrasing |
@@ -49,7 +49,7 @@ The voice for all copy on wameir.com. Check new or edited copy against the
 ### 4. Second-person engagement ("you")
 
 - Address readers directly as "you".
-- Focus on their experience, needs and perspective.
+- Focus on their experience, needs, and perspective.
 - Balance "we" statements with "you" engagement.
 
 > **Good:** "You get to relax and enjoy a job well done."
@@ -60,7 +60,7 @@ The voice for all copy on wameir.com. Check new or edited copy against the
 
 ### AI-style patterns
 
-- **No em dashes.** Use commas, periods or colons instead.
+- **No em dashes.** Use commas, periods, or colons instead.
 - **No hedging phrases**, such as:
   - "We are writing this down because..."
   - "We've tried to explain..."
@@ -71,6 +71,12 @@ The voice for all copy on wameir.com. Check new or edited copy against the
   - "Earn that page"
   - "Magic solutions"
   - "Minding the store"
+
+### Punctuation
+
+- **Use the serial comma** before the last item in a list of three or more:
+  "our team, the quality of service, and reliable software", not "our team,
+  the quality of service and reliable software".
 
 ### Structural issues
 
@@ -203,6 +209,7 @@ not forced.
 Before publishing any copy, verify:
 
 - [ ] No em dashes
+- [ ] Serial comma in every list of three or more
 - [ ] "We" used consistently for company actions
 - [ ] Readers addressed directly as "you"
 - [ ] No AI-style hedging or defensive language
