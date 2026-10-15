@@ -26,8 +26,9 @@ const FAQS: QA[] = [
     q: "Where does your funding come from?",
     a: (
       <p>
-        Our own money, plus money from people who know us. There&apos;s no fund and
-        no fund timeline, so nobody upstream can make us sell.
+        We use our own capital and funds from partners who know us well. We are not
+        backed by a fund with a fixed timeline, so we have full control over our
+        decisions.
       </p>
     ),
   },
@@ -35,9 +36,9 @@ const FAQS: QA[] = [
     q: "What kind of companies do you buy?",
     a: (
       <p>
-        HOA management companies in Greater Houston. We look for established
-        businesses with strong local teams and reputations worth building on, and our
-        aim is to make them stronger.
+        We acquire HOA management companies in Greater Houston. We seek established
+        businesses with strong local teams and reputations that we can build upon.
+        Our goal is to strengthen these companies.
       </p>
     ),
   },
@@ -45,10 +46,10 @@ const FAQS: QA[] = [
     q: "What happens to my employees and community managers?",
     a: (
       <p>
-        They stay, and we invest in them. Your community managers and staff are the
-        reason boards and residents trust your company, so keeping them is the plan.
-        We give them better tools, systems and support, and the people who know each
-        community keep looking after it.
+        Your employees and community managers remain in their positions. We invest in
+        them because they are the foundation of trust between your company and its
+        communities. We provide better tools, systems, and support so your team can
+        continue serving their neighborhoods effectively.
       </p>
     ),
   },
@@ -56,9 +57,10 @@ const FAQS: QA[] = [
     q: "What happens to me after the sale?",
     a: (
       <p>
-        That&apos;s up to you. Most owners stay through a handover, introducing us to
-        boards and passing over the day-to-day at a pace that protects the business;
-        some step away sooner, and some stay for years.
+        The transition is your choice. Most owners remain through an initial handover
+        period to introduce us to boards and transfer operations at a comfortable
+        pace. Some choose to step away sooner, while others stay involved for several
+        years.
       </p>
     ),
   },
@@ -66,9 +68,9 @@ const FAQS: QA[] = [
     q: "Is this confidential?",
     a: (
       <p>
-        Yes. Every conversation and every document you share stays confidential, from
-        the first call onward. Your employees, boards and clients won&apos;t hear about
-        it from us.
+        Confidentiality begins immediately. All conversations and documents remain
+        secure from our first interaction. We will not disclose your interest to
+        employees, boards, or clients.
       </p>
     ),
   },
@@ -76,10 +78,10 @@ const FAQS: QA[] = [
     q: "Will you merge us into something else?",
     a: (
       <p>
-        Where shared tools or support help your team, we bring them in. Where your
-        local identity, name and relationships are part of what makes the business
-        work, they stay. The test is always whether a change makes the community
-        better.
+        We integrate shared tools and support only where they benefit your team. Your
+        local identity, company name, and community relationships remain intact when
+        they contribute to the business&apos;s success. Every decision is evaluated
+        based on whether it improves outcomes for residents.
       </p>
     ),
   },
@@ -93,9 +95,9 @@ const BOARD_FAQS: QA[] = [
     q: "Is any of this running in our community today?",
     a: (
       <p>
-        No. Wameir hasn&apos;t bought its first company yet, so the goals on this
-        site describe what we&apos;re working toward, not services running today.{" "}
-        <Link href="/working-toward">See all seven goals<Arrow /></Link>
+        Not yet. Wameir has not acquired its first management company, so these goals
+        represent our commitments for the future rather than current services.{" "}
+        <Link href="/working-toward">View all seven goals<Arrow /></Link>
       </p>
     ),
   },
@@ -103,10 +105,10 @@ const BOARD_FAQS: QA[] = [
     q: "Can you promise a lower property tax bill?",
     a: (
       <p>
-        No one can. Not every appeal succeeds, and assessments and outcomes vary from
-        home to home and year to year. What a community-wide effort can commit to is
-        that the appeal gets filed, correctly and on time, for every home that wants
-        it. <Link href="/lower-taxes">How it would work<Arrow /></Link>
+        We cannot guarantee specific tax reductions. Property assessment appeals vary
+        by location and year, and success is never certain. Our commitment is to file
+        accurate, timely appeals for every home that requests one.{" "}
+        <Link href="/lower-taxes">See how it works<Arrow /></Link>
       </p>
     ),
   },
@@ -114,11 +116,10 @@ const BOARD_FAQS: QA[] = [
     q: "Will monitoring stop damage to our homes?",
     a: (
       <p>
-        It reduces risk; it doesn&apos;t remove it, and it only helps with what it can
-        detect. Your home&apos;s information stays yours.{" "}
-        <Link href="/home-monitoring">
-          How it would work<Arrow />
-        </Link>
+        Monitoring reduces risk but does not eliminate it entirely. Sensors only
+        detect issues they are designed to sense. Your property data remains private
+        and under your control.{" "}
+        <Link href="/home-monitoring">See how it works<Arrow /></Link>
       </p>
     ),
   },
@@ -126,10 +127,11 @@ const BOARD_FAQS: QA[] = [
     q: "Will our insurance premiums go down?",
     a: (
       <p>
-        We can&apos;t promise a specific number. Any discount depends on insurers,
-        coverage and factors outside our control. What we can do is make a home
-        lower-risk and make that reduction visible, which is the honest basis for a
-        better rate. <Link href="/lower-insurance">How it would work<Arrow /></Link>
+        Insurance discounts depend on external factors including insurer policies,
+        coverage terms, and regulatory requirements. We cannot guarantee specific
+        premium reductions. Our approach is to demonstrate measurable risk reduction
+        to insurers, creating a foundation for potential savings.{" "}
+        <Link href="/lower-insurance">See how it works<Arrow /></Link>
       </p>
     ),
   },
@@ -162,9 +164,9 @@ export default function FaqPage() {
         <WeirWatermark className="page-header__watermark" />
         <div className="wrap">
           <span className="eyebrow eyebrow-gold-light">For founders, boards and residents</span>
-          <h1 className="font-display">Questions we hear.</h1>
+          <h1 className="font-display">Common questions.</h1>
           <p className="lede">
-            Short answers. Where we can&apos;t promise something, we say so.
+            Direct answers. We are honest about what we can and cannot deliver.
           </p>
         </div>
       </header>
@@ -180,12 +182,12 @@ export default function FaqPage() {
             {
               label: "If you own a management company",
               intro:
-                "The questions we get in a first call, answered the way we'd answer them on the phone.",
+                "Questions from founders considering a sale",
               items: FAQS,
             },
             {
               label: "If you're on a board, or live in a managed community",
-              intro: "What we'd change, what we can't promise, and what's true today.",
+              intro: "Questions from boards and residents",
               items: BOARD_FAQS,
             },
           ].map((group, i) => (
