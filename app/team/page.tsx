@@ -40,12 +40,12 @@ export default function TeamPage() {
         <div className="wrap">
           <span className="eyebrow eyebrow-gold-light">Who&apos;s behind it</span>
           <h1 className="font-display">
-            Two founders, and an advisor who has done this before.
+            Two founders and an advisor with deep industry experience.
           </h1>
           <p className="lede">
-            We started Wameir because we think community management can be better,
-            and the way to show it is to own the work ourselves. We put in our own
-            money, keep the local teams, and stay.
+            We founded Wameir because we believe community management can be
+            better. The proof is in the work: we invest our own capital, retain
+            local teams, and stay committed.
           </p>
         </div>
       </header>

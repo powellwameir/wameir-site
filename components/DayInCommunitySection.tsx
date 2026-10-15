@@ -60,7 +60,7 @@ const OURS: Row[] = [
     icon: "list-status",
     time: "Always",
     title: "You can see where things stand",
-    line: "Requests, decisions and the books are open and current.",
+    line: "Requests, decisions and finances are open and current.",
   },
 ];
 
@@ -104,7 +104,7 @@ export default function DayInCommunitySection() {
         <VisionIntro
           eyebrow="The vision"
           onDark
-          lede="Most of what makes an HOA frustrating is small, daily friction: the email that sits for a week, the bill no one can explain, the problem found too late. Here's the same day, run the way we think it should be."
+          lede="Most HOA frustration comes from small, daily friction: emails that sit unanswered for days, bills with no clear explanation, and problems detected too late. Here is how that same day should work."
         >
           A day in a community <span className="g">we&apos;re building toward.</span>
         </VisionIntro>

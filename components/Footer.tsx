@@ -23,7 +23,7 @@ const FOUNDER_LINKS = [
 ];
 
 const COMMUNITY_LINKS = [
-  { href: "/working-toward", label: "All eight goals" },
+  { href: "/working-toward", label: "All seven goals" },
   ...GROUPS.flatMap((group) =>
     group.goals.flatMap((g) => (g.link ? [{ href: g.link.href, label: g.title }] : [])),
   ),

@@ -5,8 +5,8 @@ import VisionIntro from "./VisionIntro";
  * The selling process, in detail (/selling #how-it-works). Rebuilt from the
  * standalone visual spec (reference_material/wameir-seller-process-detailed.html)
  * on the site's tokens: one radius, one card depth, the existing label and
- * disclaimer styles. The copy is the spec's, edited to the site's house style (no em dashes, no
- * "not X" contrasts, no serial comma).
+ * disclaimer styles. The copy is the spec's, edited to the site's house style
+ * (docs/WRITING_STYLE.md).
  *
  * Five stages, each a node on a gold rail beside a card: timing, two detail
  * columns and a reassurance line. The overview strip above repeats the stage
@@ -49,7 +49,7 @@ const SHIELD = (
 const STAGES: Stage[] = [
   {
     title: "A first conversation",
-    lead: "You reach out, or we're introduced. This first step is a conversation, a chance to get a feel for each other and for whether there's a fit. Nothing is decided, and nothing is expected.",
+    lead: "This initial step is simply a conversation. It is a chance to see if we are a good fit for each other. No decisions are made, and no commitments are required.",
     icon: (
       <>
         <path d="M4 5h16v11H8l-4 4z" />
@@ -60,24 +60,24 @@ const STAGES: Stage[] = [
       {
         head: HAPPENS,
         items: [
-          "An informal call or meeting, whenever suits you",
-          "We share who we are and how we work",
-          "You ask anything you want, in confidence",
+          "An informal call or meeting at your convenience",
+          "We explain who we are and how we operate",
+          "You can ask any questions in confidence",
         ],
       },
       {
         head: NEEDED,
-        items: ["Nothing but a willingness to talk", "No documents, no financials yet"],
+        items: ["Just a willingness to talk", "No documents or financials required yet"],
       },
     ],
     reassure:
-      "Confidential from the first word. If the timing's not right, that's a fine outcome too.",
+      "Confidentiality begins immediately. If the timing is not right, that is an acceptable outcome.",
     reassureIcon: SHIELD,
   },
   {
     title: "Getting to know the business",
     when: "Usually 2–4 weeks",
-    lead: "A few conversations and a look at the numbers, enough to understand how the company runs and who makes it run. We want to learn what makes it work, so we can keep it working.",
+    lead: "Through several conversations and a review of your financials, we gain a clear understanding of how your company operates and who drives its success. Our goal is to learn what makes your business work so we can preserve and strengthen it.",
     icon: (
       <>
         <circle cx="11" cy="11" r="7" />
@@ -88,24 +88,24 @@ const STAGES: Stage[] = [
       {
         head: HAPPENS,
         items: [
-          "We review financials and key contracts, privately",
-          "We learn the team, the communities, the systems",
-          "We talk through what you want out of a sale",
+          "We review financials and key contracts privately",
+          "We learn about your team, communities, and systems",
+          "We discuss what you want from the sale",
         ],
       },
       {
         head: NEEDED,
         items: [
           "Financial statements and a contract overview",
-          "A straight account of how the business runs",
-          "A confidentiality agreement before anything sensitive is shared",
+          "An honest account of how the business operates",
+          "A signed confidentiality agreement before sharing sensitive information",
         ],
       },
     ],
   },
   {
     title: "A fair, tailored offer",
-    lead: "A clear written offer, shaped around what you told us you want: a clean exit, a transition period or a continuing role.",
+    lead: "A clear written offer designed around your goals: a clean exit, a transition period, or a continuing role.",
     icon: (
       <>
         <path d="M6 3h9l3 3v15H6z" />
@@ -116,21 +116,21 @@ const STAGES: Stage[] = [
       {
         head: HAPPENS,
         items: [
-          "You get the offer in writing",
-          "We walk you through how we got to the number",
-          "You take it to your own lawyer and accountant",
+          "You receive the offer in writing",
+          "We explain how we determined the valuation",
+          "You review it with your lawyer and accountant",
         ],
       },
       {
         head: NEEDED,
         items: [
-          "Nothing new; we work from what you have already shared",
-          "Time to read it and talk it over",
+          "Nothing new; we use information already shared",
+          "Time to review and discuss",
         ],
       },
     ],
     extra: [
-      "What we look at when we put a number on it: your recurring revenue and the doors you manage, board relationships and the strength of your contracts, and a steady team and clean books.",
+      "We consider recurring revenue, managed properties, board relationships, contract strength, team stability, and financial clarity when determining the offer.",
       "How the money usually works: most of the price at closing, the rest paid over the next year or two, so we both have a stake in how the handover goes. You can keep a share if you want one.",
     ],
     reassure: "You take the time you need to decide, with no pressure and no deadline.",
@@ -143,7 +143,7 @@ const STAGES: Stage[] = [
   },
   {
     title: "The transition",
-    lead: "The managers and staff who know your communities stay right where they are. We add support, tools and money behind them, and keep the relationships that made the company worth buying.",
+    lead: "Your managers and staff remain in their current positions. We provide additional support, tools, and capital for your team while maintaining the relationships that give your company its value.",
     icon: (
       <>
         <path d="M4 20v-1a5 5 0 0 1 10 0v1" />
@@ -156,25 +156,25 @@ const STAGES: Stage[] = [
       {
         head: HAPPENS,
         items: [
-          "Your managers and staff stay where they are",
-          "We put support, tools and money behind them",
-          "We keep the relationships that made the company worth buying",
+          "Your managers and staff remain in their positions",
+          "We provide support, tools, and capital for your team",
+          "We maintain the relationships that give your company value",
         ],
       },
       {
         head: NEEDED,
         items: [
-          "Introductions to your boards, at a pace you set",
-          "Time with your team, so we learn how things actually run",
+          "Introductions to your boards at your pace",
+          "Time with your team to understand daily operations",
         ],
       },
     ],
     extra: [
-      "What stays the same: the local team and the faces boards know, your company's name and identity in the community, and the service your clients rely on.",
-      "What gets better: tools that give the team its time back, back-office support run once for everyone, and money for the investments you couldn't make alone.",
+      "What stays the same: The local team, community identity, and service quality remain unchanged.",
+      "What gets better: Tools that return time to your team, centralized back-office support, and capital for investments you could not make alone.",
     ],
     reassure:
-      "Your role in the transition is yours to choose: a full handoff, a set period or staying on.",
+      "Your role in the transition is your choice: a full handoff, a set period, or staying on.",
     reassureIcon: (
       <>
         <path d="M3 21h18M6 21V10l6-4 6 4v11" />
@@ -184,7 +184,7 @@ const STAGES: Stage[] = [
   },
   {
     title: "We stay",
-    lead: "We run the company ourselves and plan to own it for years. What you built keeps its name, its people and its place in the community, and gets the investment to become stronger over time.",
+    lead: "We work hands-on with your team to preserve and grow your legacy for years to come. Your company keeps its name, its people, and its community presence while receiving the investment needed to become stronger over time.",
     icon: (
       <>
         <path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2" />
@@ -195,19 +195,20 @@ const STAGES: Stage[] = [
       {
         head: HAPPENS,
         items: [
-          "We run it, and we're staying",
-          "Your legacy continues, with more behind it",
+          "We manage the company and intend to keep it",
+          "Your legacy continues with stronger support",
         ],
       },
       {
         head: NEEDED,
-        items: ["Nothing. The company is ours to run now"],
+        items: ["Now you get to relax and enjoy a job well done."],
       },
     ],
     extra: [
-      "If you want a part in it, you can stay involved, advise, or step away entirely. The rest of the price, paid over the next year or two, keeps you invested in how the community does either way.",
+      "You may choose to stay involved, advise, or step away entirely. The remaining payment over one to two years keeps you invested in the community's success regardless of your role.",
     ],
-    reassure: "We bought it to run it, and that is what we do.",
+    reassure:
+      "We bought it to run it, so you can feel confident leaving your company in good hands.",
     reassureIcon: SHIELD,
   },
 ];
@@ -230,9 +231,9 @@ export default function SellerProcess() {
       <div className="wrap">
         <VisionIntro
           eyebrow="The process"
-          lede="The hardest part of selling is not knowing how it goes. So here's the entire path in detail: what happens at each stage, what we'll ask of you, how long it takes and what stays protected throughout. This is how we intend to work with every owner, and the standard we're holding ourselves to."
+          lede="Uncertainty makes selling difficult. Here is the complete path: what happens at each stage, what we need from you, how long it takes, and what remains protected. This is our standard for working with every owner."
         >
-          The whole process, <span className="g">start to finish.</span>
+          From first contact <span className="g">to closing.</span>
         </VisionIntro>
 
         <ol className="sp-strip" aria-hidden="true">

@@ -40,13 +40,13 @@ export default function SellingPage() {
         size="md"
         after={
           <p>
-            That&apos;s why we started Wameir: to be a buyer founders are comfortable
-            handing them to.
+            That is why we founded Wameir: to be a buyer you can trust with your
+            legacy.
           </p>
         }
       >
-        Selling your company means handing over your employees, your clients and{" "}
-        <span className="g">your name.</span>
+        Selling your company means handing over your employees, your clients, and{" "}
+        <span className="g">your reputation.</span>
       </PullQuote>
 
       {/* Positive statement of how we buy (§5.2 — no fund/PE contrast, §6 rule 1) */}
@@ -62,18 +62,18 @@ export default function SellingPage() {
               <span className="eyebrow" aria-hidden="true">
                 How we buy
               </span>
-              <h2 className="kicker">We run what we buy.</h2>
+              <h2 className="kicker">We run what we acquire.</h2>
             </div>
             <div className="split__body">
               <p>
-                We buy with our own money and money from people who know us, and we
-                run every company ourselves. What already makes your company work stays. What we
-                add is support behind your team: <strong>better systems</strong> for
-                billing, portals and reporting.
+                We use our own capital and funds from partners who know us well. We
+                manage every company we acquire directly. The systems that make your
+                business successful remain in place. We add support for your team
+                through better billing, portals, and reporting tools.
               </p>
               <p>
-                Some founders want to retire soon. Others want to stay on for a while.
-                Either works.
+                Some founders choose to retire immediately. Others prefer a transition
+                period. Both options work.
               </p>
               <Link className="teaser__link" href="/faq">
                 Common questions from founders <Arrow />

@@ -22,7 +22,8 @@ export const metadata: Metadata = pageMetadata({
 /*
  * Band colours per goal group. Set explicitly rather than alternating: the
  * page runs header (navy), day in a community (navy-90), index (cream),
- * group 1 (paper), always on (navy-90), group 2 (cream), group 3 (paper),
+ * money (paper), always on (navy-90), stronger communities (cream),
+ * easy to live with (paper),
  * closing (cream), contact (navy), so no two bands of one colour touch.
  */
 const GROUP_BG = ["paper", "cream", "paper"] as const;
@@ -78,12 +79,11 @@ export default function WorkingTowardPage() {
       <header className="page-header">
         <WeirWatermark className="page-header__watermark" />
         <div className="wrap">
-          <h1 className="font-display">For communities</h1>
-          <p className="page-header__sub">What we&apos;re working toward</p>
+          <span className="eyebrow eyebrow-gold-light">For communities</span>
+          <h1 className="font-display">Our goals for your neighborhood</h1>
           <p className="lede">
-            We are writing it down anyway, because the <em>reasoning</em> behind a
-            promise matters as much as the promise, and because we want to be held to
-            it.
+            The reasoning behind a commitment matters just as much as the commitment
+            itself. We want to be held accountable to these standards.
           </p>
         </div>
       </header>
@@ -95,8 +95,9 @@ export default function WorkingTowardPage() {
       <Section bg="cream">
         <div className="wrap">
           <p className="lead-statement" style={{ maxWidth: "30ch" }}>
-            Every benefit has to save a household money or effort, or it{" "}
-            <span className="g">doesn&apos;t belong here.</span>
+            We are committed to delivering tangible value to every household. Every
+            initiative we pursue{" "}
+            <span className="g">must save time or money for our residents.</span>
           </p>
 
           {/* Jump links to every group and goal. */}
@@ -124,8 +125,8 @@ export default function WorkingTowardPage() {
             </div>
           </Section>
 
-          {/* The 24-hour dial follows the first group: it shows "You get an
-              answer" in practice. */}
+          {/* The 24-hour dial follows the first group (money back in your
+              pocket), breaking up the run of goal bands. */}
           {gi === 0 && <AlwaysOnSection />}
         </Fragment>
       ))}
@@ -134,14 +135,15 @@ export default function WorkingTowardPage() {
       <Section bg="cream">
         <div className="wrap">
           <p className="lead-statement" style={{ maxWidth: "30ch" }}>
-            Each of these rests on something we can explain,{" "}
-            <span className="g">and we&apos;ve tried to.</span>
+            We aren&apos;t stopping at these goals. We will continue to find new and
+            exciting opportunities{" "}
+            <span className="g">to improve our communities.</span>
           </p>
           <div className="goals-intro">
             <p>
-              As we buy and run our first communities, the reasoning on this page will
-              be replaced, piece by piece, with results. We&apos;d rather earn that page
-              than write it early.
+              As we acquire and manage more communities, we will keep pushing forward
+              with fresh ideas and innovations. Our commitment to improvement is
+              ongoing, and we are excited about what lies ahead.
             </p>
           </div>
         </div>
@@ -150,10 +152,10 @@ export default function WorkingTowardPage() {
       <ContactSection
         source="/working-toward"
         audience="board"
-        intro="On a board? Tell us what you'd fix first. Answers like that shape what we build."
+        intro="If you are on a board, tell us what needs fixing first. Your feedback shapes what we build."
         heading={
           <>
-            Want to hold us to <span className="it">these goals?</span>
+            Do you want to hold us to <span className="it">these goals?</span>
           </>
         }
       />

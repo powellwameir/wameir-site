@@ -24,109 +24,104 @@ export type Group = { n: string; head: string; intro: string; goals: Goal[] };
 export const GROUPS: Group[] = [
   {
     n: "Group 1",
-    head: "An association that's easy to live with",
-    intro:
-      "Most frustration with an HOA isn't about big things. It's the unanswered email, the confusing bill, the sense that no one is minding the store. Better systems, and the staff to run them, can fix all of it.",
-    goals: [
-      {
-        title: "You get an answer",
-        icon: "responsive",
-        goal: "when you ask a question or report a problem, you get a prompt answer, every time.",
-        why: [
-          "Slow service is usually a capacity problem. A small team is buried in routine requests, so the important ones wait. The fix is to take the routine work off their plate. When common requests like a gate code, a balance or a status update are handled automatically, the team can spend its time on the things that need judgment, and responsiveness stops depending on whether someone happens to have a free hour.",
-        ],
-        toward:
-          "systems that answer the routine immediately, so the people can answer the rest well.",
-      },
-      {
-        title: "A bill you can read",
-        icon: "billing",
-        goal: "dues, statements, and payments that are plain and online, so it's always clear what you owe and why.",
-        why: [
-          "Confusing bills come from systems built for the accountant. There's no technical reason a homeowner can't see a clear running statement, understand every line, and pay in a few taps. It's a design choice, and we'll make it for the resident, not the accountant.",
-        ],
-        toward: "billing you never have to call to understand.",
-      },
-      {
-        title: "You can see the books",
-        icon: "clarity",
-        goal: "where the money goes and how decisions get made, out in the open.",
-        why: [
-          "An association's finances are its members' finances. Budgets, reserves and spending can be set out in plain language, where members can find them. We intend to start from openness, because trust in an association begins with books its members can read.",
-        ],
-        toward: "an association you can see into.",
-      },
-    ],
-  },
-  {
-    n: "Group 2",
     head: "Money back in your pocket",
     intro:
-      "This is the group where the reasoning matters most, because the savings only exist if the mechanics are right. None of these are magic. Each works because doing something at the scale of a whole community changes the economics of it.",
+      "Your home should work for you, not against you. We are actively pursuing strategies that put money back into your pocket through lower taxes, reduced insurance premiums, and prevention of costly repairs. These benefits come from leveraging the scale of community management to negotiate better rates and catch problems before they become expensive.",
     goals: [
       {
         title: "Lower property taxes",
         icon: "taxes",
-        goal: "protest every home's assessment each year, to keep the tax bill fair.",
+        goal: "We will protest every home's assessment annually to ensure you pay a fair tax bill.",
         why: [
           "Any homeowner can protest their own property assessment, but almost none do: for one household, the effort rarely feels worth an uncertain result. At community scale that friction disappears, because the same appeal is prepared once and filed the same way for every home.",
         ],
         limit:
-          "Not every appeal succeeds, and no one can promise a specific reduction; assessments and outcomes vary. What we can commit to is that the appeal gets filed, every year, for every home that wants it. The value is in doing the thing that otherwise doesn't get done.",
+          "While we cannot guarantee specific reduction amounts, our commitment is to file appeals for every home that wants them. The value is in doing the work that homeowners typically skip.",
         toward:
-          "a refund you'd never have chased yourself, because someone chases it for the whole community.",
+          "This is a refund you would rarely chase on your own, but we handle it for the entire community.",
         link: { href: "/lower-taxes" },
       },
       {
         title: "Home monitoring",
         icon: "maintenance",
-        goal: "simple sensors that catch a leak, a freeze risk, or a failing system early.",
+        goal: "We will install simple sensors to detect leaks, freeze risks, or system failures early.",
         why: [
           "Home damage is lopsided: a slow leak caught at the supply line is a small repair, and the same leak found a week later is a flooded floor and an insurance claim. Low-cost sensors only need to raise the alarm before the small problem becomes the expensive one.",
         ],
         limit:
-          "Sensors reduce risk; they don't eliminate it, and they only help with what they can detect. It shifts the odds. It can't guarantee against every failure.",
-        toward: "the repair that never has to happen.",
+          "These sensors reduce risk and shift the odds in your favor. While they cannot guarantee against every failure, they significantly lower the chance of catastrophic damage like flooding.",
+        toward:
+          "Our goal is to prevent repairs entirely by catching issues when they are small and inexpensive.",
         link: { href: "/home-monitoring" },
       },
       {
         title: "Lower insurance costs",
         icon: "insurance",
-        goal: "turn a well-monitored, well-kept home into a lower insurance premium.",
+        goal: "We aim to turn your well-monitored home into a lower insurance premium.",
         why: [
           "Insurance is priced on risk, and a home monitored for the failures behind many claims, such as water and freeze, is measurably lower-risk. Our aim is to make that connection explicit, so the reduced risk shows up where a homeowner can feel it: on the bill.",
         ],
         limit:
-          "This is the goal that depends most on parties outside our control: insurers, underwriting and regulation. The mechanism is sound, but the size and availability of any discount is not something we can promise in advance. We'll be straight about what's achievable as we build it.",
-        toward: "lower premiums for doing nothing extra.",
+          "This depends on external factors like insurers and regulation. We will be transparent about what is achievable as we build it, but the mechanism is sound and the potential savings are real.",
+        toward:
+          "Because monitored homes are statistically lower-risk, we will work with insurers to ensure this reduced risk shows up as lower bills for you.",
         link: { href: "/lower-insurance" },
       },
     ],
   },
   {
-    n: "Group 3",
+    n: "Group 2",
     head: "Stronger communities",
     intro:
-      "The first two groups are about residents. This one is about the people who govern and the systems that carry the load. A community is only as good as the tools its people have to work with.",
+      "A thriving community needs empowered leaders and reliable systems. We are building a future where board members have the tools they need to govern effectively, and where technology works seamlessly in the background to support your community's operations.",
     goals: [
       {
         title: "Better tools for your board",
         icon: "board-tools",
-        goal: "give boards a clear, single view of finances, requests, and decisions.",
+        goal: "We will provide boards with a single, clear view of finances, requests, and decisions.",
         why: [
-          "Board members are volunteers with day jobs. When the information they need is scattered across email threads, PDF attachments, and the management company's internal systems, good governance becomes a time sink that burns out the people willing to serve. Consolidating that into one clear view is a matter of designing the board's experience on purpose.",
+          "By consolidating scattered information into one easy-to-use dashboard, we eliminate the time sink that often burns out volunteers. This allows boards to focus on governance rather than data hunting.",
         ],
         toward:
-          "board service that respects the time of the people who volunteer for it.",
+          "Our goal is to make board service efficient and respectful of the time our volunteer members contribute.",
       },
       {
         title: "Technology that works",
         icon: "technology",
-        goal: "portals that load, payments that clear, requests that don't vanish.",
+        goal: "We envision software that simply works: portals that load quickly, payments that clear instantly, and requests that never disappear.",
         why: [
-          "This is the least glamorous goal and the most important. Much of the frustration with community management is technology that doesn't work reliably. Fixing it takes discipline: building things that work, and an owner who keeps investing in them. Because we run these companies ourselves, we have every reason to build technology that lasts.",
+          "Reliable technology is the foundation of good management. We are committed to building systems that last and investing in them consistently because we run these companies ourselves.",
         ],
-        toward: "software that stays out of your way.",
+        toward:
+          "Our goal is for technology to stay out of your way and support your community's needs.",
+      },
+    ],
+  },
+  {
+    n: "Group 3",
+    head: "An association that's easy to live with",
+    intro:
+      "Imagine a community where daily life is smooth and predictable. No more chasing answers or deciphering confusing bills. We are building an environment where technology handles the routine, so our team can focus on what matters: your experience.",
+    goals: [
+      {
+        title: "You get an answer",
+        icon: "responsive",
+        goal: "Our goal is simple: when you reach out, you get a prompt response every time.",
+        why: [
+          "Slow service is usually a capacity problem. A small team is buried in routine requests, so the important ones wait. The fix is to take the routine work off their plate. When common requests like a gate code, a balance or a status update are handled automatically, the team can spend its time on the things that need judgment, and responsiveness stops depending on whether someone happens to have a free hour.",
+        ],
+        toward:
+          "We use automated systems to handle routine inquiries instantly, ensuring that our team is always available for issues that require human judgment and care.",
+      },
+      {
+        title: "A bill you can read",
+        icon: "billing",
+        goal: "We envision billing that is completely transparent and easy to understand.",
+        why: [
+          "Confusing bills come from systems built for the accountant. There's no technical reason a homeowner can't see a clear running statement, understand every line, and pay in a few taps. It's a design choice, and we'll make it for the resident, not the accountant.",
+        ],
+        toward:
+          "Dues, statements, and payments will be clear and accessible online, so you always know exactly what you owe and why, without ever needing to make a phone call.",
       },
     ],
   },

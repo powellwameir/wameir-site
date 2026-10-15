@@ -4,7 +4,7 @@ import Arrow from "./Arrow";
 import { GROUPS, slugify } from "@/lib/goals";
 
 /*
- * All eight goals as a compact three-column index: group heading, then one
+ * All seven goals as a compact three-column index: group heading, then one
  * icon link per goal. Rendered at the top of /working-toward and in the home
  * communities band, so every goal is one click from the front door.
  *
@@ -22,7 +22,7 @@ export default function GoalIndex({ variant }: { variant: "page" | "home" }) {
     <nav
       className="goal-index"
       id={onPage ? "all-goals" : undefined}
-      aria-label={onPage ? "Goals on this page" : "All eight goals"}
+      aria-label={onPage ? "Goals on this page" : "All seven goals"}
     >
       {GROUPS.map((group) => {
         const groupHref = `${onPage ? "" : "/working-toward"}#${slugify(group.head)}`;

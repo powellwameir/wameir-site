@@ -43,7 +43,7 @@ const ORGANIZATION = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://wameir.com"),
   title: {
-    default: "Wameir | Community management, done right",
+    default: "Wameir | Community management, with integrity",
     template: "%s | Wameir",
   },
   description: SITE_DESCRIPTION,
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    title: "Wameir | Community management, done right",
+    title: "Wameir | Community management, with integrity",
     description: SITE_DESCRIPTION,
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Wameir" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wameir | Community management, done right",
+    title: "Wameir | Community management, with integrity",
     description: SITE_DESCRIPTION,
     images: ["/og.png"],
   },

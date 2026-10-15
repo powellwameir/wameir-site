@@ -21,17 +21,17 @@ const INVEST: { icon: IconName; title: string; line: string }[] = [
   {
     icon: "local-teams",
     title: "People, first",
-    line: "Local teams run good communities. We give them better tools and support, and the managers stay close to the neighborhoods they know.",
+    line: "Local teams run good communities. We give them better tools and support, and our managers stay close to the neighborhoods they know.",
   },
   {
     icon: "technology",
-    title: "Technology that removes friction",
-    line: "Software that makes an association faster to deal with and easier to understand, for residents, boards and the managers running the day-to-day. It should work well enough that nobody has to think about it.",
+    title: "Technology that empowers",
+    line: "We use software to make an association faster to deal with and easier to understand for residents, boards, and the managers running day-to-day operations. Technology should augment what people do, not replace them.",
   },
   {
     icon: "long-term",
     title: "Relationships that last",
-    line: "We expect to serve every community we take on for a long time, so we don't treat a board or a founder like a transaction.",
+    line: "We will continue to serve each community and nurture long-lasting relationships. That is why we do not treat a board or a founder like a transaction.",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function ApproachPage() {
             We run what we buy, and we plan to keep it.
           </h1>
           <p className="lede">
-            We buy established HOA management companies around Houston, and we run
+            We buy established HOA management companies around Houston, then run
             them ourselves.
           </p>
         </div>
@@ -56,17 +56,18 @@ export default function ApproachPage() {
         <div className="wrap">
           <div className="split">
             <div className="split__label">
-              <span className="eyebrow">Why we stay</span>
+              <span className="eyebrow">Our commitment</span>
               <h2 className="kicker">
-                An owner who stays invests in what pays off slowly.
+                We invest in people first, then give them the tools to do their jobs
+                well.
               </h2>
             </div>
             <div className="split__body">
               <p>
-                An owner who stays is the one who lives with the results. So we spend on
-                what pays off over years: the people who run the company, the service
-                residents notice, and technology that keeps improving. We set budgets for
-                the company we want to be running.
+                Our communities deserve management companies that treat their residents,
+                boards, and employees with respect. That starts with investing in the
+                people who show up every day. We give them better tools, stronger support,
+                and technology that makes their work easier instead of replacing them.
               </p>
             </div>
           </div>
@@ -87,7 +88,7 @@ export default function ApproachPage() {
         <div className="wrap">
           <div className="track__intro">
             <span className="eyebrow">What we invest in</span>
-            <h2 className="t-h2">Where staying changes what we do.</h2>
+            <h2 className="t-h2">Our commitment to people and communities.</h2>
           </div>
           <div className="trio">
             {INVEST.map((c) => (
@@ -129,7 +130,7 @@ export default function ApproachPage() {
       <ContactSection
         source="/approach"
         audience="board"
-        intro="Ask us how we'd run your company, or what we'd change in your community."
+        intro="Ask us how we would run your company, or what we would change in your community."
         heading={
           <>
             Curious what this could mean for your <span className="it">community?</span>
