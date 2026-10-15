@@ -15,7 +15,7 @@ import { SELLER_POINTS } from "@/lib/sellerPoints";
 // explicitly so it gets a canonical and its own share card like every page.
 export const metadata: Metadata = pageMetadata({
   path: "/",
-  title: "Wameir | Community management, done right",
+  title: "Wameir | Community management, with integrity",
   description: SITE_DESCRIPTION,
   absoluteTitle: true,
 });
@@ -44,16 +44,11 @@ export default function Home() {
           <h1 className="t-hero hero-reveal hero-reveal--2">
             Community management,
             <br />
-            <span className="accent-italic">done right.</span>
+            <span className="accent-italic">with integrity.</span>
           </h1>
-          {/* Audit v5 (G-10) replaced the owner-chosen three-beat line ("Better
-              tools. Faster answers. Stronger communities.") with a plain
-              statement of what Wameir does. FLAGGED FOR THE OWNER: the rhythm
-              was a deliberate choice (§15 #10), but it never said what the
-              company is, and the hero is where a seller decides to keep reading. */}
           <p className="hero__sub font-display hero-reveal hero-reveal--3">
-            We buy HOA management companies in Greater Houston with our own money,
-            and we run them ourselves.
+            We acquire HOA management companies in Greater Houston using our own
+            capital, and we manage them directly.
           </p>
           <div className="hero__actions hero-reveal hero-reveal--4">
             <DualCTA onDark />
@@ -67,10 +62,11 @@ export default function Home() {
         <div className="wrap">
           <div className="track__intro">
             <span className="eyebrow">Thinking about selling?</span>
-            <h2 className="t-h2">You built it. We&apos;ll keep building it.</h2>
+            <h2 className="t-h2">You built the business. We will preserve its value.</h2>
             <p>
-              If you&apos;ve spent years running a management company and you care
-              what happens to it next, we should talk.
+              If you have spent years building your management company and want to
+              ensure it continues to serve residents well after you leave, we should
+              talk.
             </p>
           </div>
           {/* These three tiles used to land on /selling's "What you can count
@@ -126,15 +122,15 @@ export default function Home() {
           <figure className="pullquote__figure">
             <figcaption className="eyebrow eyebrow-gold-light">Our approach</figcaption>
             <blockquote className="pullquote__text pullquote__text--md">
-              We run what we buy, and <span className="g">we&apos;re not leaving.</span>
+              We run what we buy, and <span className="g">we build for the long term.</span>
             </blockquote>
             <div className="pullquote__after">
               {/* The hero now states what we buy and with whose money, so this
                   band says what that ownership changes instead of repeating it.
                   Deliberately not the same sentence as /approach's opening. */}
               <p>
-                Which is why we spend on the things that take years to show up:
-                the team, the service, the software.
+                This long-term ownership allows us to invest in the things that
+                matter most: our team, the quality of service, and reliable software.
               </p>
               <Link className="teaser__link" href="/approach">
                 Read our approach <Arrow />
@@ -160,13 +156,14 @@ export default function Home() {
                 Who&apos;s behind it
               </span>
               <h2 className="kicker">
-                Two founders and an advisor who has done this before.
+                Two founders and an advisor with deep industry experience.
               </h2>
             </div>
             <div className="split__body">
               <p>
-                We started Wameir because we believe community management can be
-                better, and we run the companies we buy ourselves.
+                We founded Wameir to improve standards in community management. We
+                take a careful hands-on approach to ensure we exceed the expectations
+                of our teams and communities.
               </p>
             </div>
           </div>
@@ -198,11 +195,11 @@ export default function Home() {
             <div className="track__intro">
               <span className="eyebrow">For communities</span>
               <h2 className="t-h2">
-                What we&apos;re working toward in every community.
+                Our commitments to every community we manage.
               </h2>
               <p>
-                Each goal has to save a household money or time. If it doesn&apos;t, it
-                comes off the list.
+                We are committed to only focusing our time and effort on improving
+                the experience and wallets of our communities.
               </p>
             </div>
             {/* Warm human anchor (§4A req 3) — faces not identifiable; kept that way. */}
